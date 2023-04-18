@@ -9,7 +9,7 @@ public class Internship
     public Internship() {}
     
     public InternshipId Id { get; private set; }
-    public InternshipStatus Status { get; private set; } = InternshipStatus.NotStarted;
+    public InternshipStatus Status { get; private set; } = InternshipStatus.SetupInProgress;
     public Timeframe Timeframe { get; set; } = null!;
     public Location Location { get; private set; } = null!;
     public int MaximumInternsToEnroll { get; private set; }

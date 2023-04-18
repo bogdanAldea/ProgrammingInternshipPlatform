@@ -1,6 +1,10 @@
 ﻿namespace ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
-public class RuleConstants
+public static class RuleConstants
 {
-    
+    public static class InternshipConstants
+    {
+        public const int MinDurationInMonths = 1;
+        public const int MinInternsToEnrol = 1;
+    }
 }

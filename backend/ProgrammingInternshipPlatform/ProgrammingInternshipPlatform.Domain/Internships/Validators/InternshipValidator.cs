@@ -27,7 +27,7 @@ public class InternshipValidator : DomainAbstractValidator<Internship>
             .IsInEnum()
             .WithMessage(RuleFailureMessages.InternshipRules.StatusNotAnEnumValue);
 
-        RuleFor(internship => internship.Location)
+        RuleFor(internship => internship.LocationId)
             .NotEmpty()
             .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty);
 

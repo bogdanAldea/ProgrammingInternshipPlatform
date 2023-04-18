@@ -10,4 +10,15 @@ public class Timeframe
     public InternshipId InternshipId { get; set; }
     public DateTime ScheduledToStartOn { get; private set; }
     public DateTime ScheduledToEndOn { get; private set; }
+
+    public static Timeframe ScheduleNewTimeframe(DateTime startDate, DateTime endDate)
+    {
+        var timeframe =  new Timeframe()
+        {
+            Id = new TimeframeId(Guid.NewGuid()),
+            ScheduledToStartOn = startDate,
+            ScheduledToEndOn = endDate
+        };
+        return timeframe;
+    }
 }

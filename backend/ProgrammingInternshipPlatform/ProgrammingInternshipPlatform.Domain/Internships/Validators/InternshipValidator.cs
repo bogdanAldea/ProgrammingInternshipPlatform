@@ -35,7 +35,7 @@ public class InternshipValidator : DomainAbstractValidator<Internship>
             .NotEmpty()
             .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty);
 
-        RuleFor(internship => internship.Status)
+        /*RuleFor(internship => internship.Status)
             .Must((internship, status) =>
             {
                 switch (internship.Status)
@@ -52,6 +52,6 @@ public class InternshipValidator : DomainAbstractValidator<Internship>
                         return false;
                 }
             })
-            .WithMessage(RuleFailureMessages.InternshipRules.InvalidStatusTransition);
+            .WithMessage(RuleFailureMessages.InternshipRules.InvalidStatusTransition);*/
     }
 }

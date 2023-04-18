@@ -1,4 +1,7 @@
+using System.Reflection;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Dal.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,10 +13,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMediatR(typeof(SetupNewInternshipProgramCommand));
+
+
 builder.Services.AddDbContext<ProgrammingInternshipPlatformDbContext>
 (
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("ProgrammingInternshipPlatformDatabase"))
 );
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .SetIsOriginAllowed((host) => true)
+            .AllowAnyHeader());
+});
 
 var app = builder.Build();
 

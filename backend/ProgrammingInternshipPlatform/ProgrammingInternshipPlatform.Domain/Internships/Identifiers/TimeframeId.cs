@@ -1,22 +1,22 @@
 ﻿namespace ProgrammingInternshipPlatform.Domain.Internships.Identifiers;
 
-public struct InternshipId : IEquatable<InternshipId>
+public struct TimeframeId : IEquatable<TimeframeId>
 {
-    public InternshipId(Guid value)
+    public TimeframeId(Guid value)
     {
         Value = value;
     }
 
     public Guid Value { get; set; }
 
-    public bool Equals(InternshipId other)
+    public bool Equals(TimeframeId other)
     {
         return Value.Equals(other.Value);
     }
 
     public override bool Equals(object? obj)
     {
-        return obj is InternshipId other && Equals(other);
+        return obj is TimeframeId other && Equals(other);
     }
 
     public override int GetHashCode()
@@ -24,12 +24,12 @@ public struct InternshipId : IEquatable<InternshipId>
         return Value.GetHashCode();
     }
 
-    public static bool operator ==(InternshipId left, InternshipId right)
+    public static bool operator ==(TimeframeId left, TimeframeId right)
     {
         return left.Equals(right);
     }
 
-    public static bool operator !=(InternshipId left, InternshipId right)
+    public static bool operator !=(TimeframeId left, TimeframeId right)
     {
         return !left.Equals(right);
     }

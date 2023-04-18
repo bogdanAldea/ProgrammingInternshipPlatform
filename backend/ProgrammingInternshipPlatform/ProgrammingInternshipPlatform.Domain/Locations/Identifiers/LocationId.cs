@@ -1,8 +1,36 @@
-﻿using ProgrammingInternshipPlatform.Domain.Shared.Identifiers;
+﻿namespace ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 
-namespace ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
-
-public class LocationId : BaseIdentifier
+public struct LocationId : IEquatable<LocationId>
 {
-    protected LocationId(Guid value) : base(value) {}
+    public LocationId(Guid value)
+    {
+        Value = value;
+    }
+
+    public Guid Value { get; set; }
+
+    public bool Equals(LocationId other)
+    {
+        return Value.Equals(other.Value);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is LocationId other && Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return Value.GetHashCode();
+    }
+
+    public static bool operator ==(LocationId left, LocationId right)
+    {
+        return left.Equals(right);
+    }
+
+    public static bool operator !=(LocationId left, LocationId right)
+    {
+        return !left.Equals(right);
+    }
 }

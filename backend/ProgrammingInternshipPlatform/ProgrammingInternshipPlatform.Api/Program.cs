@@ -1,6 +1,8 @@
-using System.Reflection;
+
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ProgrammingInternshipPlatform.Api.Contracts.ApiErrorResponse;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -13,8 +15,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMediatR(typeof(SetupNewInternshipProgramCommand));
+/*builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = ApiErrorResponse.CreateErrorResponse;
+});*/
 
+builder.Services.AddMediatR(typeof(SetupNewInternshipProgramCommand));
 
 builder.Services.AddDbContext<ProgrammingInternshipPlatformDbContext>
 (

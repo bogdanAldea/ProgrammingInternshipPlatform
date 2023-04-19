@@ -14,7 +14,7 @@ public class ApiController : ControllerBase
 
     protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>();
 
-    public IActionResult HandleApiErrorResponse(ApplicationError applicationError)
+    protected IActionResult HandleApiErrorResponse(ApplicationError applicationError)
     {
         var apiErrorResponse = new ApiErrorResponse();
         apiErrorResponse.AddErrorMessage(applicationError.ApplicationErrorMessage);

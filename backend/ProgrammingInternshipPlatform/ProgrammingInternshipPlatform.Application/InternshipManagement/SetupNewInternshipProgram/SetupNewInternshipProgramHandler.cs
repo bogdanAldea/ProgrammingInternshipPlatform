@@ -42,6 +42,7 @@ public class
 
     private HandlerResult<Internship> HandleDomainModelError(string exceptionMessage)
     {
-        return HandlerResult<Internship>.Fail(exceptionMessage);
+        var domainValidationError = ApplicationError.DomainValidationFailure(exceptionMessage);
+        return HandlerResult<Internship>.Fail(domainValidationError);
     }
 }

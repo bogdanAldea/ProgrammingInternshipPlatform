@@ -9,5 +9,6 @@ public static class RuleFailureMessages
         public const string InvalidMinInternsToEnrol = "{PropertyName} is lower than expected";
         public const string StatusNotAnEnumValue = "{PropertyName not in enum}";
         public const string InvalidStatusTransition = "{PropertyName} transition is not valid.";
+        public const string InvalidStatusAtCreation = "{PropertyName} must be set to Setup In Progress at Creation.";
     }
 }

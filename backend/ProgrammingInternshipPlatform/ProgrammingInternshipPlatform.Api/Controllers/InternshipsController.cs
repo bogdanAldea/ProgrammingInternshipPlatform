@@ -18,7 +18,8 @@ public class InternshipsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> SetUpNewInternshipProgram([FromBody] InternshipPostDto internshipPostDto, CancellationToken cancellationToken)
+    public async Task<IActionResult> SetUpNewInternshipProgram([FromBody] InternshipPostDto internshipPostDto,
+        CancellationToken cancellationToken)
     {
         var internshipSetUpCommand = new SetupNewInternshipProgramCommand(
             locationId: new LocationId(internshipPostDto.LocationId),
@@ -31,7 +32,8 @@ public class InternshipsController : ControllerBase
         var handlerResult = await _mediator.Send(internshipSetUpCommand, cancellationToken);
         if (!handlerResult.IsSuccess)
         {
-            return BadRequest(handlerResult.FailureReason);}
+            return BadRequest(handlerResult.FailureReason);
+        }
 
         return Ok(handlerResult.Payload);
     }

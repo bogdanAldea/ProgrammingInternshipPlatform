@@ -25,7 +25,9 @@ public class InternshipValidator : DomainAbstractValidator<Internship>
             .NotEmpty()
             .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty)
             .IsInEnum()
-            .WithMessage(RuleFailureMessages.InternshipRules.StatusNotAnEnumValue);
+            .WithMessage(RuleFailureMessages.InternshipRules.StatusNotAnEnumValue)
+            .Equal(InternshipStatus.SetupInProgress)
+            .WithMessage(RuleFailureMessages.InternshipRules.InvalidStatusAtCreation);;
 
         RuleFor(internship => internship.LocationId)
             .NotEmpty()
@@ -34,24 +36,5 @@ public class InternshipValidator : DomainAbstractValidator<Internship>
         RuleFor(internship => internship.Timeframe)
             .NotEmpty()
             .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty);
-
-        /*RuleFor(internship => internship.Status)
-            .Must((internship, status) =>
-            {
-                switch (internship.Status)
-                {
-                    case InternshipStatus.SetupInProgress:
-                        return status == InternshipStatus.ReadyToStart;
-                    case InternshipStatus.ReadyToStart:
-                        return status == InternshipStatus.Ongoing;
-                    case InternshipStatus.Ongoing:
-                        return status == InternshipStatus.Completed;
-                    case InternshipStatus.Completed:
-                        return false;
-                    default:
-                        return false;
-                }
-            })
-            .WithMessage(RuleFailureMessages.InternshipRules.InvalidStatusTransition);*/
     }
 }

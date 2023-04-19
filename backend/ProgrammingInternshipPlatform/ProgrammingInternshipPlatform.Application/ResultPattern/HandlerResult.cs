@@ -15,7 +15,7 @@ public class HandlerResult<TEntity>
     }
 
     public TEntity? Payload { get; set; }
-    public ApplicationError? FailureReason { get; set; }
+    public ApplicationError FailureReason { get; set; } = null!;
     public bool IsSuccess { get; set; }
 
     public static HandlerResult<TEntity> Fail(ApplicationError failureReason) => new(failureReason);

@@ -6,16 +6,8 @@ using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 
 namespace ProgrammingInternshipPlatform.Api.Controllers;
 
-[Route("api/[controller]")]
-[ApiController]
-public class InternshipsController : ControllerBase
+public class InternshipsController : ApiController
 {
-    private readonly IMediator _mediator;
-
-    public InternshipsController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
 
     [HttpPost]
     public async Task<IActionResult> SetUpNewInternshipProgram([FromBody] InternshipPostDto internshipPostDto,
@@ -29,10 +21,10 @@ public class InternshipsController : ControllerBase
             scheduledToEndOnDate: internshipPostDto.ScheduledToEndOnDate
         );
 
-        var handlerResult = await _mediator.Send(internshipSetUpCommand, cancellationToken);
+        var handlerResult = await Mediator.Send(internshipSetUpCommand, cancellationToken);
         if (!handlerResult.IsSuccess)
         {
-            return BadRequest(handlerResult.FailureReason);
+            return HandleApiErrorResponse(handlerResult.FailureReason);
         }
 
         return Ok(handlerResult.Payload);

@@ -32,16 +32,16 @@ public class
     private async Task<HandlerResult<Internship>> HandleInternshipSetUp(SetupNewInternshipProgramCommand request,
         CancellationToken cancellationToken)
     {
-        var internshipToSetUp = await SetUpNewInternshipAsync(request);
+        var internshipToSetUp = await SetUpNewInternshipAsync(request, cancellationToken);
         var newInternshipResource = await SaveInternshipAsync(internshipToSetUp, cancellationToken);
         return HandlerResult<Internship>.Success(newInternshipResource);
     }
 
-    private async Task<Internship> SetUpNewInternshipAsync(SetupNewInternshipProgramCommand request)
+    private async Task<Internship> SetUpNewInternshipAsync(SetupNewInternshipProgramCommand request, CancellationToken cancellationToken)
     {
         return await Internship.SetupInternship(locationId: request.LocationId,
             maxInternsToEnroll: request.MaximumInternsToEnroll, durationInMonths: request.DurationInMonths,
-            startDate: request.ScheduledToStartOnDate, endDate: request.ScheduledToEndOnDate);
+            startDate: request.ScheduledToStartOnDate, endDate: request.ScheduledToEndOnDate, cancellationToken);
     }
 
     private async Task<Internship> SaveInternshipAsync(Internship internship, CancellationToken cancellationToken)

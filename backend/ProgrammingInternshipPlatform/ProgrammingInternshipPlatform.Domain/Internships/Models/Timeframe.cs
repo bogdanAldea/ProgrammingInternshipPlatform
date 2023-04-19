@@ -12,7 +12,7 @@ public class Timeframe
     public DateTime ScheduledToStartOn { get; private set; }
     public DateTime ScheduledToEndOn { get; private set; }
 
-    public static async Task<Timeframe> ScheduleNewTimeframe(DateTime startDate, DateTime endDate)
+    public static async Task<Timeframe> ScheduleNewTimeframe(DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
     {
         var timeframeValidator = new TimeframeValidator();
         var timeframe =  new Timeframe()
@@ -21,8 +21,16 @@ public class Timeframe
             ScheduledToStartOn = startDate,
             ScheduledToEndOn = endDate
         };
-        await timeframeValidator.ValidateDomainModelAsync(timeframe);
+        await timeframeValidator.ValidateDomainModelAsync(timeframe, cancellationToken);
         return timeframe;
+    }
+
+    public async Task RescheduleStartDate(DateTime rescheduledStartDate, CancellationToken cancellationToken)
+    {
+        var timeframeValidator = new TimeframeValidator();
+        ScheduledToStartOn = rescheduledStartDate;
+        ScheduledToEndOn = ScheduledToStartOn.AddMonths(3);
+        await timeframeValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
     
 }

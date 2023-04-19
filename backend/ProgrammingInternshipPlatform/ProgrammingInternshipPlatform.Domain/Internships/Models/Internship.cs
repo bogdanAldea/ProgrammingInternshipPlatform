@@ -19,10 +19,10 @@ public class Internship
     public int DurationInMonths { get; set; }
 
     public static async Task<Internship> SetupInternship(LocationId locationId, int maxInternsToEnroll,
-        int durationInMonths, DateTime startDate, DateTime endDate)
+        int durationInMonths, DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
     {
         var internshipValidator = new InternshipValidator();
-        var timeframe = await Timeframe.ScheduleNewTimeframe(startDate, endDate);
+        var timeframe = await Timeframe.ScheduleNewTimeframe(startDate, endDate, cancellationToken);
         var internshipToValidate = new Internship()
         {
             Id = new InternshipId(Guid.NewGuid()),
@@ -32,7 +32,12 @@ public class Internship
             DurationInMonths = durationInMonths
         };
 
-        await internshipValidator.ValidateDomainModelAsync(internshipToValidate);
+        await internshipValidator.ValidateDomainModelAsync(internshipToValidate, cancellationToken);
         return internshipToValidate;
+    }
+
+    public async Task RescheduleInternshipStartDate(DateTime rescheduledStartDate, CancellationToken cancellationToken)
+    {
+        await Timeframe.RescheduleStartDate(rescheduledStartDate, cancellationToken);
     }
 }

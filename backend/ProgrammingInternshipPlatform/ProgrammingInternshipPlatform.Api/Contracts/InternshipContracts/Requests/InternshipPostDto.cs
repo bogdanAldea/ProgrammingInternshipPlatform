@@ -19,7 +19,4 @@ public class InternshipPostDto
     
     [Required]
     public DateTime ScheduledToStartOnDate { get; set; }
-    
-    [Required]
-    public DateTime ScheduledToEndOnDate { get; set; }
 }

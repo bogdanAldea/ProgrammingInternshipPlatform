@@ -41,7 +41,7 @@ public class
     {
         return await Internship.SetupInternship(locationId: request.LocationId,
             maxInternsToEnroll: request.MaximumInternsToEnroll, durationInMonths: request.DurationInMonths,
-            startDate: request.ScheduledToStartOnDate, endDate: request.ScheduledToEndOnDate, cancellationToken);
+            startDate: request.ScheduledToStartOnDate, cancellationToken);
     }
 
     private async Task<Internship> SaveInternshipAsync(Internship internship, CancellationToken cancellationToken)

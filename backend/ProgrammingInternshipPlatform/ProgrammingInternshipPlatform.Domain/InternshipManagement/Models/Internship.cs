@@ -19,10 +19,10 @@ public class Internship
     public int DurationInMonths { get; set; }
 
     public static async Task<Internship> SetupInternship(LocationId locationId, int maxInternsToEnroll,
-        int durationInMonths, DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
+        int durationInMonths, DateTime startDate, CancellationToken cancellationToken)
     {
         var internshipValidator = new InternshipValidator();
-        var timeframe = await Timeframe.ScheduleNewTimeframe(startDate, endDate, cancellationToken);
+        var timeframe = await Timeframe.ScheduleNewTimeframe(startDate, durationInMonths, cancellationToken);
         var internshipToValidate = new Internship()
         {
             Id = new InternshipId(Guid.NewGuid()),

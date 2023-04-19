@@ -12,14 +12,14 @@ public class Timeframe
     public DateTime ScheduledToStartOn { get; private set; }
     public DateTime ScheduledToEndOn { get; private set; }
 
-    public static async Task<Timeframe> ScheduleNewTimeframe(DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
+    public static async Task<Timeframe> ScheduleNewTimeframe(DateTime startDate, int durationInMonths, CancellationToken cancellationToken)
     {
         var timeframeValidator = new TimeframeValidator();
         var timeframe =  new Timeframe()
         {
             Id = new TimeframeId(Guid.NewGuid()),
             ScheduledToStartOn = startDate,
-            ScheduledToEndOn = endDate
+            ScheduledToEndOn = startDate.AddMonths(durationInMonths)
         };
         await timeframeValidator.ValidateDomainModelAsync(timeframe, cancellationToken);
         return timeframe;

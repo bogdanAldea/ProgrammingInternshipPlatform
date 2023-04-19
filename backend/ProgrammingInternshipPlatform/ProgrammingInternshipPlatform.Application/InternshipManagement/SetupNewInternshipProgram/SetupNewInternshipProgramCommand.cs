@@ -8,19 +8,17 @@ namespace ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNe
 public class SetupNewInternshipProgramCommand : IRequest<HandlerResult<Internship>>
 {
 
-    public SetupNewInternshipProgramCommand(LocationId locationId, int maximumInternsToEnroll, 
-        int durationInMonths, DateTime scheduledToStartOnDate, DateTime scheduledToEndOnDate)
+    public SetupNewInternshipProgramCommand(LocationId locationId, int maximumInternsToEnroll,
+        int durationInMonths, DateTime scheduledToStartOnDate)
     {
         LocationId = locationId;
         MaximumInternsToEnroll = maximumInternsToEnroll;
         DurationInMonths = durationInMonths;
         ScheduledToStartOnDate = scheduledToStartOnDate;
-        ScheduledToEndOnDate = scheduledToEndOnDate;
     }
 
     public LocationId LocationId { get; }
     public int MaximumInternsToEnroll { get; }
     public int DurationInMonths { get; }
     public DateTime ScheduledToStartOnDate { get; }
-    public DateTime ScheduledToEndOnDate { get; }
 }

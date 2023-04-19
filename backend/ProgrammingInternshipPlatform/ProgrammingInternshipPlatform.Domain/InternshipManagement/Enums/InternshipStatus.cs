@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProgrammingInternshipPlatform.Domain.Internships.Enums;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Enums;
 
 public enum InternshipStatus
 {

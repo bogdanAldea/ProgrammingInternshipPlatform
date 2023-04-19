@@ -1,7 +1,7 @@
-﻿using ProgrammingInternshipPlatform.Domain.Internships.Identifiers;
-using ProgrammingInternshipPlatform.Domain.Internships.Validators;
+﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Validators;
 
-namespace ProgrammingInternshipPlatform.Domain.Internships.Models;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 
 public class Timeframe
 {

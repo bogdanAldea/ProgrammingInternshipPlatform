@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
-using ProgrammingInternshipPlatform.Domain.Internships.Identifiers;
-using ProgrammingInternshipPlatform.Domain.Internships.Models;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
 

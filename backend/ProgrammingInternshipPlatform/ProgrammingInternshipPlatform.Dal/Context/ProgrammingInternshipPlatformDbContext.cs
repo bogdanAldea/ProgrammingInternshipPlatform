@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using ProgrammingInternshipPlatform.Domain.Internships.Models;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 using ProgrammingInternshipPlatform.Domain.Locations.Models;
 
 namespace ProgrammingInternshipPlatform.Dal.Context;

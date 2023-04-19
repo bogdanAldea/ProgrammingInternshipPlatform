@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Internships.Identifiers;
+﻿namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
 
 public struct TimeframeId : IEquatable<TimeframeId>
 {

@@ -1,9 +1,9 @@
-﻿using ProgrammingInternshipPlatform.Domain.Internships.Enums;
-using ProgrammingInternshipPlatform.Domain.Internships.Identifiers;
-using ProgrammingInternshipPlatform.Domain.Internships.Validators;
+﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Enums;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Validators;
 using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 
-namespace ProgrammingInternshipPlatform.Domain.Internships.Models;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 
 public class Internship
 {

@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using ProgrammingInternshipPlatform.Domain.Internships.Models;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 using ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
-namespace ProgrammingInternshipPlatform.Domain.Internships.Validators;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Validators;
 
 public class TimeframeValidator : DomainAbstractValidator<Timeframe>
 {

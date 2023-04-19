@@ -4,7 +4,7 @@ using ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Requests;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
-using ProgrammingInternshipPlatform.Domain.Internships.Identifiers;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
 using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 
 namespace ProgrammingInternshipPlatform.Api.Controllers;

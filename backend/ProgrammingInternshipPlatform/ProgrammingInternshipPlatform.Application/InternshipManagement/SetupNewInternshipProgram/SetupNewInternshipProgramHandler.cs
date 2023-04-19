@@ -32,12 +32,23 @@ public class
     private async Task<HandlerResult<Internship>> HandleInternshipSetUp(SetupNewInternshipProgramCommand request,
         CancellationToken cancellationToken)
     {
-        var internshipToSetUp = await Internship.SetupInternship(locationId: request.LocationId,
+        var internshipToSetUp = await SetUpNewInternshipAsync(request);
+        var newInternshipResource = await SaveInternshipAsync(internshipToSetUp, cancellationToken);
+        return HandlerResult<Internship>.Success(newInternshipResource);
+    }
+
+    private async Task<Internship> SetUpNewInternshipAsync(SetupNewInternshipProgramCommand request)
+    {
+        return await Internship.SetupInternship(locationId: request.LocationId,
             maxInternsToEnroll: request.MaximumInternsToEnroll, durationInMonths: request.DurationInMonths,
             startDate: request.ScheduledToStartOnDate, endDate: request.ScheduledToEndOnDate);
-        var newInternshipResource = await _context.Internships.AddAsync(internshipToSetUp, cancellationToken);
+    }
+
+    private async Task<Internship> SaveInternshipAsync(Internship internship, CancellationToken cancellationToken)
+    {
+        var newInternshipResource = await _context.Internships.AddAsync(internship, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
-        return HandlerResult<Internship>.Success(newInternshipResource.Entity);
+        return newInternshipResource.Entity;
     }
 
     private HandlerResult<Internship> HandleDomainModelError(string exceptionMessage)

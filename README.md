@@ -1,1 +1,1 @@
-# ProgrammingInternshipPlatform
+# Programming Internship Platform

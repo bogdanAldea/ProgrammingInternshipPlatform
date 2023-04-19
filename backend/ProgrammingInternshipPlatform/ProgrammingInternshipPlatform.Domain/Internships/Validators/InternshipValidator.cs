@@ -11,30 +11,30 @@ public class InternshipValidator : DomainAbstractValidator<Internship>
     {
         RuleFor(internship => internship.DurationInMonths)
             .NotEmpty()
-            .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty)
+            .WithMessage(RuleFailureMessages.InternshipMessages.EmptyOrNullProperty)
             .Must(durationInMonths => durationInMonths > RuleConstants.InternshipConstants.MinDurationInMonths)
-            .WithMessage(RuleFailureMessages.InternshipRules.InvalidMinDurationInMonths);
+            .WithMessage(RuleFailureMessages.InternshipMessages.InvalidMinDurationInMonths);
 
         RuleFor(internship => internship.MaximumInternsToEnroll)
             .NotEmpty()
-            .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty)
+            .WithMessage(RuleFailureMessages.InternshipMessages.EmptyOrNullProperty)
             .Must(maxEnrolledInterns => maxEnrolledInterns > RuleConstants.InternshipConstants.MinInternsToEnrol)
-            .WithMessage(RuleFailureMessages.InternshipRules.InvalidMinInternsToEnrol);
+            .WithMessage(RuleFailureMessages.InternshipMessages.InvalidMinInternsToEnrol);
 
         RuleFor(internship => internship.Status)
             .NotEmpty()
-            .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty)
+            .WithMessage(RuleFailureMessages.InternshipMessages.EmptyOrNullProperty)
             .IsInEnum()
-            .WithMessage(RuleFailureMessages.InternshipRules.StatusNotAnEnumValue)
+            .WithMessage(RuleFailureMessages.InternshipMessages.StatusNotAnEnumValue)
             .Equal(InternshipStatus.SetupInProgress)
-            .WithMessage(RuleFailureMessages.InternshipRules.InvalidStatusAtCreation);;
+            .WithMessage(RuleFailureMessages.InternshipMessages.InvalidStatusAtCreation);;
 
         RuleFor(internship => internship.LocationId)
             .NotEmpty()
-            .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty);
+            .WithMessage(RuleFailureMessages.InternshipMessages.EmptyOrNullProperty);
 
         RuleFor(internship => internship.Timeframe)
             .NotEmpty()
-            .WithMessage(RuleFailureMessages.InternshipRules.EmptyOrNullProperty);
+            .WithMessage(RuleFailureMessages.InternshipMessages.EmptyOrNullProperty);
     }
 }

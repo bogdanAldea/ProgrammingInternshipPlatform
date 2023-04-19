@@ -1,4 +1,5 @@
 ﻿using ProgrammingInternshipPlatform.Domain.Internships.Identifiers;
+using ProgrammingInternshipPlatform.Domain.Internships.Validators;
 
 namespace ProgrammingInternshipPlatform.Domain.Internships.Models;
 
@@ -11,14 +12,17 @@ public class Timeframe
     public DateTime ScheduledToStartOn { get; private set; }
     public DateTime ScheduledToEndOn { get; private set; }
 
-    public static Timeframe ScheduleNewTimeframe(DateTime startDate, DateTime endDate)
+    public static async Task<Timeframe> ScheduleNewTimeframe(DateTime startDate, DateTime endDate)
     {
+        var timeframeValidator = new TimeframeValidator();
         var timeframe =  new Timeframe()
         {
             Id = new TimeframeId(Guid.NewGuid()),
             ScheduledToStartOn = startDate,
             ScheduledToEndOn = endDate
         };
+        await timeframeValidator.ValidateDomainModelAsync(timeframe);
         return timeframe;
     }
+    
 }

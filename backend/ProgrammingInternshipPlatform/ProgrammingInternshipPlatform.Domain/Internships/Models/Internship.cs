@@ -22,7 +22,7 @@ public class Internship
         int durationInMonths, DateTime startDate, DateTime endDate)
     {
         var internshipValidator = new InternshipValidator();
-        var timeframe = Timeframe.ScheduleNewTimeframe(startDate, endDate);
+        var timeframe = await Timeframe.ScheduleNewTimeframe(startDate, endDate);
         var internshipToValidate = new Internship()
         {
             Id = new InternshipId(Guid.NewGuid()),

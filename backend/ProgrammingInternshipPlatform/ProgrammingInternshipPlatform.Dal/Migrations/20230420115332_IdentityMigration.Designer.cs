@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -11,9 +12,10 @@ using ProgrammingInternshipPlatform.Dal.Context;
 namespace ProgrammingInternshipPlatform.Dal.Migrations
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    partial class ProgrammingInternshipPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230420115332_IdentityMigration")]
+    partial class IdentityMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,14 +270,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

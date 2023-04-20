@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 using ProgrammingInternshipPlatform.Domain.Locations.Models;
 
 namespace ProgrammingInternshipPlatform.Dal.Context;
 
-public class ProgrammingInternshipPlatformDbContext : DbContext
+public class ProgrammingInternshipPlatformDbContext : IdentityDbContext
 {
     public ProgrammingInternshipPlatformDbContext() : base() {}
 

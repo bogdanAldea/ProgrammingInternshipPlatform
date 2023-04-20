@@ -25,12 +25,13 @@ public class Timeframe
         return timeframe;
     }
 
-    public async Task RescheduleStartDate(DateTime rescheduledStartDate, CancellationToken cancellationToken)
+    public async Task RescheduleStartDate(DateTime rescheduledStartDate, int durationInMonths, CancellationToken cancellationToken)
     {
         var timeframeValidator = new TimeframeValidator();
         ScheduledToStartOn = rescheduledStartDate;
-        ScheduledToEndOn = ScheduledToStartOn.AddMonths(3);
+        ScheduledToEndOn = ScheduledToStartOn.AddMonths(durationInMonths);
         await timeframeValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
     
+
 }

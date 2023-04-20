@@ -39,7 +39,7 @@ public class Internship
     public async Task RescheduleInternshipStartDate(DateTime rescheduledStartDate, CancellationToken cancellationToken)
     {
         var internshipValidator = new InternshipValidator();
-        await Timeframe.RescheduleStartDate(rescheduledStartDate, cancellationToken);
+        await Timeframe.RescheduleStartDate(rescheduledStartDate, DurationInMonths, cancellationToken);
         await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
 }

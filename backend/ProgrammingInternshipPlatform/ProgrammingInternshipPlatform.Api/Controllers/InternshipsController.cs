@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ProgrammingInternshipPlatform.Api.Constants;
 using ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Requests;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
@@ -13,7 +14,7 @@ namespace ProgrammingInternshipPlatform.Api.Controllers;
 public class InternshipsController : ApiController
 {
     [HttpGet]
-    [Route("{id}")]
+    [Route(ApiRoutes.IdRoute)]
     public async Task<IActionResult> GetInternshipProgramById(Guid id)
     {
         var internshipGetQuery = new GetInternshipProgramByIdQuery(new InternshipId(id));
@@ -48,7 +49,7 @@ public class InternshipsController : ApiController
     }
 
     [HttpPatch]
-    [Route("{id}/timeframe/start-date")]
+    [Route(ApiRoutes.InternshipRoutes.StartDateRescheduling)]
     public async Task<IActionResult> RescheduleInternshipStartDate(Guid id,
         [FromBody] InternshipRescheduleDto rescheduleDto)
     {
@@ -66,7 +67,7 @@ public class InternshipsController : ApiController
     }
 
     [HttpPatch]
-    [Route("{id}/timeframe/end-date")]
+    [Route(ApiRoutes.InternshipRoutes.EndDateExtending)]
     public async Task<IActionResult> ExtendInternshipEndDate(Guid id, [FromBody] InternshipRescheduleDto rescheduleDto)
     {
         var internshipEndDateExtensionCommand =

@@ -5,5 +5,5 @@ namespace ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Reques
 public class InternshipRescheduleDto
 {
     [Required]
-    public DateTime RescheduledStartDate { get; set; }
+    public DateTime RescheduledDate { get; set; }
 }

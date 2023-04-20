@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Requests;
+using ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
@@ -49,12 +50,29 @@ public class InternshipsController : ApiController
     [HttpPatch]
     [Route("{id}/timeframe/start-date")]
     public async Task<IActionResult> RescheduleInternshipStartDate(Guid id,
-        [FromBody] InternshipRescheduleDto internshipRescheduleDto)
+        [FromBody] InternshipRescheduleDto rescheduleDto)
     {
         var internshipStartRescheduleCommand = new RescheduleInternshipStartDateCommand(
-            new InternshipId(id), internshipRescheduleDto.RescheduledStartDate);
+            new InternshipId(id), rescheduleDto.RescheduledDate);
 
         var handlerResult = await Mediator.Send(internshipStartRescheduleCommand);
+
+        if (handlerResult.IsSuccess)
+        {
+            return NoContent();
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpPatch]
+    [Route("{id}/timeframe/end-date")]
+    public async Task<IActionResult> ExtendInternshipEndDate(Guid id, [FromBody] InternshipRescheduleDto rescheduleDto)
+    {
+        var internshipEndDateExtensionCommand =
+            new ExtendInternshipEndDateCommand(new InternshipId(id), rescheduleDto.RescheduledDate);
+
+        var handlerResult = await Mediator.Send(internshipEndDateExtensionCommand);
 
         if (handlerResult.IsSuccess)
         {

@@ -42,4 +42,11 @@ public class Internship
         await Timeframe.RescheduleStartDate(rescheduledStartDate, DurationInMonths, cancellationToken);
         await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
+
+    public async Task ExtendInternshipEndDate(DateTime extendedEndDate, CancellationToken cancellationToken)
+    {
+        var internshipValidator = new InternshipValidator();
+        await Timeframe.ExtendEndDate(extendedEndDate, DurationInMonths, cancellationToken);
+        await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
+    }
 }

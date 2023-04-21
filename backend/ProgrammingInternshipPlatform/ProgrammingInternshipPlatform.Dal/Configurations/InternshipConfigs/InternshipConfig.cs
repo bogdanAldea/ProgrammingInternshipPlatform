@@ -30,6 +30,12 @@ public class InternshipConfig : IEntityTypeConfiguration<Internship>
             .WithOne()
             .HasForeignKey<Internship>(internship => internship.LocationId);
 
+        builder
+            .HasMany(internship => internship.Mentorships)
+            .WithOne()
+            .HasForeignKey(mentorship => mentorship.InternshipId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         builder.Property(internship => internship.Status)
             .IsRequired();
 

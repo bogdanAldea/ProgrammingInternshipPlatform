@@ -7,6 +7,8 @@ namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 
 public class Internship
 {
+    private readonly List<Mentorship> _mentorships = new();
+    
     public Internship()
     {
     }
@@ -15,6 +17,7 @@ public class Internship
     public LocationId LocationId { get; private set; }
     public InternshipStatus Status { get; private set; } = InternshipStatus.SetupInProgress;
     public Timeframe Timeframe { get; set; } = null!;
+    public IReadOnlyCollection<Mentorship> Mentorships => _mentorships;
     public int MaximumInternsToEnroll { get; private set; }
     public int DurationInMonths { get; set; }
 

@@ -18,7 +18,13 @@ public class LocationConfig : IEntityTypeConfiguration<Location>
         builder.Property(location => location.Center)
             .IsRequired();
 
+        builder.HasIndex(location => location.Center)
+            .IsUnique();
+
         builder.Property(location => location.Country)
             .IsRequired();
+
+        builder.HasIndex(location => location.Country)
+            .IsUnique();
     }
 }

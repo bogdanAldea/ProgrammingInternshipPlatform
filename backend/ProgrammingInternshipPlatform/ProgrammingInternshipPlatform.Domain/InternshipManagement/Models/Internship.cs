@@ -1,7 +1,9 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Enums;
+﻿using ProgrammingInternshipPlatform.Domain.Account.Identifiers;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Enums;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Validators;
 using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
+using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 
@@ -16,10 +18,10 @@ public class Internship
     public InternshipId Id { get; private set; }
     public LocationId LocationId { get; private set; }
     public InternshipStatus Status { get; private set; } = InternshipStatus.SetupInProgress;
-    public Timeframe Timeframe { get; set; } = null!;
+    public Timeframe Timeframe { get; private set; } = null!;
     public IReadOnlyCollection<Mentorship> Mentorships => _mentorships;
     public int MaximumInternsToEnroll { get; private set; }
-    public int DurationInMonths { get; set; }
+    public int DurationInMonths { get; private set; }
 
     public static async Task<Internship> SetupInternship(LocationId locationId, int maxInternsToEnroll,
         int durationInMonths, DateTime startDate, CancellationToken cancellationToken)

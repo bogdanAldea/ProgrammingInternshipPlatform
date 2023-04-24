@@ -33,6 +33,7 @@ public class
     private async Task<Internship?> RetrieveInternshipResource(InternshipId id, CancellationToken cancellationToken)
     {
         return await _context.Internships
+            .Include(internship => internship.Timeframe)
             .FirstOrDefaultAsync(internship => internship.Id == id, cancellationToken: cancellationToken);
     }
 

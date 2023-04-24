@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.Constants;
 using ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Requests;
+using ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Responses;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
@@ -21,9 +22,9 @@ public class InternshipsController : ApiController
         var handlerResult = await Mediator.Send(internshipGetQuery);
         if (handlerResult.IsSuccess)
         {
-            return Ok(handlerResult.Payload);
+            var internshipResponse = InternshipDetailsDto.MapFromInternship(handlerResult.Payload!);
+            return Ok(internshipResponse);
         }
-
         return HandleApiErrorResponse(handlerResult.FailureReason);
     }
 
@@ -44,8 +45,9 @@ public class InternshipsController : ApiController
             return HandleApiErrorResponse(handlerResult.FailureReason);
         }
 
-        return CreatedAtAction(nameof(GetInternshipProgramById), new { Id = handlerResult.Payload!.Id },
-            handlerResult.Payload);
+        var internshipResponse = InternshipDetailsDto.MapFromInternship(handlerResult.Payload!);
+        return CreatedAtAction(nameof(GetInternshipProgramById), new { Id = internshipResponse.Id },
+            internshipResponse);
     }
 
     [HttpPatch]

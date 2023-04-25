@@ -8,6 +8,9 @@ using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
 
+public record ExtendInternshipEndDateCommand(InternshipId InternshipId, DateTime ExtendedEndDate) 
+    : IRequest<HandlerResult<Internship>>;
+
 public class ExtendInternshipEndDateHandler : IRequestHandler<ExtendInternshipEndDateCommand, HandlerResult<Internship>>
 {
     private readonly ProgrammingInternshipPlatformDbContext _context;

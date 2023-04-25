@@ -7,18 +7,14 @@ using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInt
 using ProgrammingInternshipPlatform.Dal.Context;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-/*builder.Services.Configure<ApiBehaviorOptions>(options =>
+builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.InvalidModelStateResponseFactory = ApiErrorResponse.CreateErrorResponse;
-});*/
+});
 
 builder.Services.AddMediatR(typeof(SetupNewInternshipProgramCommand));
 

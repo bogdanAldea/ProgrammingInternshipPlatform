@@ -2,9 +2,13 @@
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
+using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
+
+public record SetupNewInternshipProgramCommand(LocationId LocationId, int MaximumInternsToEnroll, 
+    int DurationInMonths, DateTime ScheduledToStartOnDate) : IRequest<HandlerResult<Internship>>;
 
 public class
     SetupNewInternshipProgramHandler : IRequestHandler<SetupNewInternshipProgramCommand, HandlerResult<Internship>>

@@ -7,8 +7,10 @@ using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
 
-public class
-    GetInternshipIdProgramByIdHandler : IRequestHandler<GetInternshipProgramByIdQuery, HandlerResult<Internship>>
+public record GetInternshipProgramByIdQuery(InternshipId Id) : IRequest<HandlerResult<Internship>>;
+
+public class GetInternshipIdProgramByIdHandler : IRequestHandler<GetInternshipProgramByIdQuery, 
+    HandlerResult<Internship>>
 {
     private readonly ProgrammingInternshipPlatformDbContext _context;
 

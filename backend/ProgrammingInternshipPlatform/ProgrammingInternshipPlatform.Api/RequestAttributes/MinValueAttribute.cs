@@ -2,6 +2,7 @@
 
 namespace ProgrammingInternshipPlatform.Api.RequestAttributes;
 
+// Investigate generics here(datetime)
 public class MinValueAttribute : ValidationAttribute
 {
     private readonly int _maxValue;

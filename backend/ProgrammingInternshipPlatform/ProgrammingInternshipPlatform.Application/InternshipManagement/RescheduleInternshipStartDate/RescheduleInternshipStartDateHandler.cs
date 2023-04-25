@@ -8,6 +8,9 @@ using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
 
+public record RescheduleInternshipStartDateCommand(InternshipId InternshipId, DateTime RescheduledStartDate) : 
+    IRequest<HandlerResult<Internship>>;
+
 public class
     RescheduleInternshipStartDateHandler : IRequestHandler<RescheduleInternshipStartDateCommand,
         HandlerResult<Internship>>

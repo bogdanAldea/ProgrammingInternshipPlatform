@@ -33,10 +33,10 @@ public class InternshipsController : ApiController
         CancellationToken cancellationToken)
     {
         var internshipSetUpCommand = new SetupNewInternshipProgramCommand(
-            locationId: new LocationId(internshipPostDto.LocationId),
-            maximumInternsToEnroll: internshipPostDto.MaximumInternsToEnroll,
-            durationInMonths: internshipPostDto.DurationInMonths,
-            scheduledToStartOnDate: internshipPostDto.ScheduledToStartOnDate
+            LocationId: new LocationId(internshipPostDto.LocationId),
+            MaximumInternsToEnroll: internshipPostDto.MaximumInternsToEnroll,
+            DurationInMonths: internshipPostDto.DurationInMonths,
+            ScheduledToStartOnDate: internshipPostDto.ScheduledToStartOnDate
         );
 
         var handlerResult = await Mediator.Send(internshipSetUpCommand, cancellationToken);

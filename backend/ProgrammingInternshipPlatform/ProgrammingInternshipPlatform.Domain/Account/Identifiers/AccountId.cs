@@ -1,5 +1,7 @@
 ﻿namespace ProgrammingInternshipPlatform.Domain.Account.Identifiers;
 
+// Use record structs
+// Move model and id in same file
 public struct AccountId : IEquatable<AccountId>
 {
     public AccountId(Guid value)

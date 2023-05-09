@@ -1,6 +1,6 @@
 ﻿namespace ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 
-public class CompanyId : IEquatable<CompanyId>
+public struct CompanyId : IEquatable<CompanyId>
 {
     public Guid Value { get; }
 
@@ -9,19 +9,15 @@ public class CompanyId : IEquatable<CompanyId>
         Value = value;
     }
 
-    public bool Equals(CompanyId? other)
+
+    public bool Equals(CompanyId other)
     {
-        if (ReferenceEquals(null, other)) return false;
-        if (ReferenceEquals(this, other)) return true;
         return Value.Equals(other.Value);
     }
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((CompanyId)obj);
+        return obj is CompanyId other && Equals(other);
     }
 
     public override int GetHashCode()
@@ -29,13 +25,13 @@ public class CompanyId : IEquatable<CompanyId>
         return Value.GetHashCode();
     }
 
-    public static bool operator ==(CompanyId? left, CompanyId? right)
+    public static bool operator ==(CompanyId left, CompanyId right)
     {
-        return Equals(left, right);
+        return left.Equals(right);
     }
 
-    public static bool operator !=(CompanyId? left, CompanyId? right)
+    public static bool operator !=(CompanyId left, CompanyId right)
     {
-        return !Equals(left, right);
+        return !left.Equals(right);
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Shared.Validators;
+﻿using System.Globalization;
+
+namespace ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
 public static class RuleConstants
 {

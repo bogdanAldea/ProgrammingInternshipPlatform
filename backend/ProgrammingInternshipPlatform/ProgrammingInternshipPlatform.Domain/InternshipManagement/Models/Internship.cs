@@ -1,4 +1,5 @@
 ﻿using ProgrammingInternshipPlatform.Domain.Account.Identifiers;
+using ProgrammingInternshipPlatform.Domain.Account.Models;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Enums;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Validators;
@@ -10,20 +11,24 @@ namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 public class Internship
 {
     private readonly List<Mentorship> _mentorships = new();
-    
+    private readonly List<InternId> _internIds = new();
+
     public Internship()
     {
     }
 
     public InternshipId Id { get; private set; }
+    public CompanyId CompanyId { get; private set; }
     public LocationId LocationId { get; private set; }
     public InternshipStatus Status { get; private set; } = InternshipStatus.SetupInProgress;
     public Timeframe Timeframe { get; private set; } = null!;
     public IReadOnlyCollection<Mentorship> Mentorships => _mentorships;
+    public IReadOnlyCollection<InternId> InternIds => _internIds;
     public int MaximumInternsToEnroll { get; private set; }
     public int DurationInMonths { get; private set; }
 
-    public static async Task<Internship> SetupInternship(LocationId locationId, int maxInternsToEnroll,
+    public static async Task<Internship> SetupInternship(CompanyId companyId, LocationId locationId,
+        int maxInternsToEnroll,
         int durationInMonths, DateTime startDate, CancellationToken cancellationToken)
     {
         var internshipValidator = new InternshipValidator();
@@ -31,6 +36,7 @@ public class Internship
         var internshipToValidate = new Internship()
         {
             Id = new InternshipId(Guid.NewGuid()),
+            CompanyId = companyId,
             LocationId = locationId,
             Timeframe = timeframe,
             MaximumInternsToEnroll = maxInternsToEnroll,
@@ -52,6 +58,18 @@ public class Internship
     {
         var internshipValidator = new InternshipValidator();
         await Timeframe.ExtendEndDate(extendedEndDate, DurationInMonths, cancellationToken);
+        await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
+    }
+
+    public async Task EnrollIntern(InternId internId, CancellationToken cancellationToken)
+    {
+        var internshipValidator = new InternshipValidator();
+        if (_internIds.Count <= MaximumInternsToEnroll && Status == InternshipStatus.SetupInProgress &&
+            !_internIds.Contains(internId))
+        {
+            _internIds.Add(internId);
+        }
+
         await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
 }

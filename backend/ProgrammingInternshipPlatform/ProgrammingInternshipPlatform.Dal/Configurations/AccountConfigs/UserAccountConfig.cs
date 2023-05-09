@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Account.Identifiers;
 using ProgrammingInternshipPlatform.Domain.Account.Models;
+using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.AccountConfigs;
 
@@ -13,5 +14,9 @@ public class UserAccountConfig : IEntityTypeConfiguration<UserAccount>
         builder.Property(account => account.Id)
             .HasConversion(id => id.Value, 
                 value => new AccountId(value));
+        
+        builder.Property(userAccount => userAccount.CompanyId)
+            .HasConversion(id => id.Value, 
+                value => new CompanyId(value));
     }
 }

@@ -7,6 +7,9 @@ namespace ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Reques
 public class InternshipPostDto
 {
     [Required]
+    public Guid CompanyId { get; set; }
+    
+    [Required]
     public Guid LocationId { get; set; }
     
     [Required]

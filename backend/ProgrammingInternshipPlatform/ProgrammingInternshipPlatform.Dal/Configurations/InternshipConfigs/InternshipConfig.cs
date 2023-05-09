@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
+using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 using ProgrammingInternshipPlatform.Domain.Locations.Models;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
@@ -35,6 +36,10 @@ public class InternshipConfig : IEntityTypeConfiguration<Internship>
             .WithOne()
             .HasForeignKey(mentorship => mentorship.InternshipId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Property(internship => internship.CompanyId)
+            .HasConversion(companyId => companyId.Value,
+                value => new CompanyId(value));
 
         builder.Property(internship => internship.Status)
             .IsRequired();

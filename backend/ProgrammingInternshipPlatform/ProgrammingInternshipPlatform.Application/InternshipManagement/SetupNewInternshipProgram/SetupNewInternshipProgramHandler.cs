@@ -7,7 +7,7 @@ using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 
-public record SetupNewInternshipProgramCommand(LocationId LocationId, int MaximumInternsToEnroll, 
+public record SetupNewInternshipProgramCommand(CompanyId CompanyId, LocationId LocationId, int MaximumInternsToEnroll, 
     int DurationInMonths, DateTime ScheduledToStartOnDate) : IRequest<HandlerResult<Internship>>;
 
 public class
@@ -43,7 +43,7 @@ public class
 
     private async Task<Internship> SetUpNewInternshipAsync(SetupNewInternshipProgramCommand request, CancellationToken cancellationToken)
     {
-        return await Internship.SetupInternship(locationId: request.LocationId,
+        return await Internship.SetupInternship(companyId: request.CompanyId, locationId: request.LocationId,
             maxInternsToEnroll: request.MaximumInternsToEnroll, durationInMonths: request.DurationInMonths,
             startDate: request.ScheduledToStartOnDate, cancellationToken);
     }

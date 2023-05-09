@@ -1,2 +1,0 @@
-﻿using System.ComponentModel.DataAnnotations;
-namespace ProgrammingInternshipPlatform.Api.RequestAttributes;

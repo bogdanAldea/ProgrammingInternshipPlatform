@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Account.Identifiers;
 using ProgrammingInternshipPlatform.Domain.Account.Models;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.AccountConfigs;
 
@@ -9,9 +10,9 @@ public class InternConfig : IEntityTypeConfiguration<Intern>
 {
     public void Configure(EntityTypeBuilder<Intern> builder)
     {
-        builder.HasKey(trainer => trainer.Id);
+        builder.HasKey(intern => intern.Id);
         
-        builder.Property(trainer => trainer.Id)
+        builder.Property(intern => intern.Id)
             .HasConversion(id => id.Value, 
                 value => new InternId(value));
         
@@ -20,5 +21,9 @@ public class InternConfig : IEntityTypeConfiguration<Intern>
             .WithOne()
             .HasForeignKey<Intern>(intern => intern.AccountId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Property(intern => intern.InternshipId)
+            .HasConversion(id => id.Value, 
+                value => new InternshipId(value));
     }
 }

@@ -33,6 +33,7 @@ public class InternshipsController : ApiController
         CancellationToken cancellationToken)
     {
         var internshipSetUpCommand = new SetupNewInternshipProgramCommand(
+            CompanyId: new CompanyId(internshipPostDto.CompanyId),
             LocationId: new LocationId(internshipPostDto.LocationId),
             MaximumInternsToEnroll: internshipPostDto.MaximumInternsToEnroll,
             DurationInMonths: internshipPostDto.DurationInMonths,

@@ -55,16 +55,4 @@ public class Internship
         await Timeframe.ExtendEndDate(extendedEndDate, DurationInMonths, cancellationToken);
         await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
-
-    public async Task EnrollIntern(InternId internId, CancellationToken cancellationToken)
-    {
-        var internshipValidator = new InternshipValidator();
-        if (_internIds.Count <= MaximumInternsToEnroll && Status == InternshipStatus.SetupInProgress &&
-            !_internIds.Contains(internId))
-        {
-            _internIds.Add(internId);
-        }
-
-        await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
-    }
 }

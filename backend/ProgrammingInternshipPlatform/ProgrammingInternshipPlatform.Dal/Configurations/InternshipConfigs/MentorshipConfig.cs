@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.Account.Identifiers;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
+using ProgrammingInternshipPlatform.Domain.Account.Intern;
+using ProgrammingInternshipPlatform.Domain.Account.Trainer;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorship;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
 

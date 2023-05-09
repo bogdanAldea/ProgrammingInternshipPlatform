@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
 using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 

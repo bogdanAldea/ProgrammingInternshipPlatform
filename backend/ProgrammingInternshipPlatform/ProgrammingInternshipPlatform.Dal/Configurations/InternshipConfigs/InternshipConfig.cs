@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframe;
 using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 using ProgrammingInternshipPlatform.Domain.Locations.Models;
 

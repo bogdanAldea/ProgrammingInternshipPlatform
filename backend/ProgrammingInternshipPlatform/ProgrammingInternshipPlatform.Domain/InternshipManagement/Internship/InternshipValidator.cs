@@ -1,9 +1,7 @@
 ﻿using FluentValidation;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Enums;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
 using ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
-namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Validators;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
 
 public class InternshipValidator : DomainAbstractValidator<Internship>
 {

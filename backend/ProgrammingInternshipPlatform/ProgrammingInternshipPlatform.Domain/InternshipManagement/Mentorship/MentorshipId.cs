@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
+﻿namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorship;
 
 public struct MentorshipId : IEquatable<MentorshipId>
 {

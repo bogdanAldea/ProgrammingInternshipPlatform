@@ -1,4 +1,4 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
+﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
 
 namespace ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Responses;
 

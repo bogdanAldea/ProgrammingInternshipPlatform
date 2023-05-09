@@ -1,7 +1,8 @@
-﻿using ProgrammingInternshipPlatform.Domain.Account.Identifiers;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
+﻿using ProgrammingInternshipPlatform.Domain.Account.Intern;
+using ProgrammingInternshipPlatform.Domain.Account.Trainer;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
 
-namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorship;
 
 public class Mentorship
 {

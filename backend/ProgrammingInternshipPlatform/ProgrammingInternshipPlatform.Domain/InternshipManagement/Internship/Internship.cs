@@ -1,16 +1,11 @@
-﻿using ProgrammingInternshipPlatform.Domain.Account.Identifiers;
-using ProgrammingInternshipPlatform.Domain.Account.Models;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Enums;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Identifiers;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Validators;
+﻿using ProgrammingInternshipPlatform.Domain.Account.Intern;
 using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
-using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 
-namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Models;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
 
 public class Internship
 {
-    private readonly List<Mentorship> _mentorships = new();
+    private readonly List<Mentorship.Mentorship> _mentorships = new();
     private readonly List<InternId> _internIds = new();
 
     public Internship()
@@ -21,8 +16,8 @@ public class Internship
     public CompanyId CompanyId { get; private set; }
     public LocationId LocationId { get; private set; }
     public InternshipStatus Status { get; private set; } = InternshipStatus.SetupInProgress;
-    public Timeframe Timeframe { get; private set; } = null!;
-    public IReadOnlyCollection<Mentorship> Mentorships => _mentorships;
+    public Timeframe.Timeframe Timeframe { get; private set; } = null!;
+    public IReadOnlyCollection<Mentorship.Mentorship> Mentorships => _mentorships;
     public IReadOnlyCollection<InternId> InternIds => _internIds;
     public int MaximumInternsToEnroll { get; private set; }
     public int DurationInMonths { get; private set; }
@@ -32,7 +27,7 @@ public class Internship
         int durationInMonths, DateTime startDate, CancellationToken cancellationToken)
     {
         var internshipValidator = new InternshipValidator();
-        var timeframe = await Timeframe.ScheduleNewTimeframe(startDate, durationInMonths, cancellationToken);
+        var timeframe = await InternshipManagement.Timeframe.Timeframe.ScheduleNewTimeframe(startDate, durationInMonths, cancellationToken);
         var internshipToValidate = new Internship()
         {
             Id = new InternshipId(Guid.NewGuid()),

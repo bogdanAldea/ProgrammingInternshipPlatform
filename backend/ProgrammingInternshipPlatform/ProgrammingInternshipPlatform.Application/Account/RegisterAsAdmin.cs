@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
-using ProgrammingInternshipPlatform.Domain.Account.Models;
+using ProgrammingInternshipPlatform.Domain.Account.UserAccount;
 using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 
 namespace ProgrammingInternshipPlatform.Application.Account;

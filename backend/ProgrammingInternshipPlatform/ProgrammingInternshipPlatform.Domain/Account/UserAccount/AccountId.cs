@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Account.Identifiers;
+﻿namespace ProgrammingInternshipPlatform.Domain.Account.UserAccount;
 
 // Use record structs
 // Move model and id in same file

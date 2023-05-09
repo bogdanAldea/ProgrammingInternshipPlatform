@@ -1,6 +1,4 @@
-﻿using ProgrammingInternshipPlatform.Domain.Account.Identifiers;
-using ProgrammingInternshipPlatform.Domain.Account.Models;
-using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
+﻿using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
 
 namespace ProgrammingInternshipPlatform.Domain.Locations.Models;
 

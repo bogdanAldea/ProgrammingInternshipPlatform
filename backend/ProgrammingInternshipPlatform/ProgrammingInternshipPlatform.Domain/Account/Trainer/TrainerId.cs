@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Account.Identifiers;
+﻿namespace ProgrammingInternshipPlatform.Domain.Account.Trainer;
 
 public readonly struct TrainerId : IEquatable<TrainerId>
 {

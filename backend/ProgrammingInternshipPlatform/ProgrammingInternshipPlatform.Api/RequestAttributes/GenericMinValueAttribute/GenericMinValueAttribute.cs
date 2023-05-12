@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProgrammingInternshipPlatform.Api.RequestAttributes.GenericMinValueAttribute;
-
 public class GenericMinValueAttribute<T> : ValidationAttribute
 {
     private readonly T _minValue;

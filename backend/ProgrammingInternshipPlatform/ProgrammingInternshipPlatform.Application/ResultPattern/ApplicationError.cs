@@ -24,4 +24,7 @@ public class ApplicationError
     
     public static ApplicationError UniqueConstraintFailure(string errorMessage)
         => new(errorType: ApplicationErrorType.UniqueConstraintFailure, errorMessage: errorMessage);
+
+    public static ApplicationError IdentityUserAlreadyExists(string errorMessage)
+        => new(errorType: ApplicationErrorType.IdentityUserAlreadyExists, errorMessage: errorMessage);
 }

@@ -6,4 +6,9 @@ public static class ApplicationErrorMessages
     {
         public const string InternshipNotFound = "The internship could not be found.";
     }
+
+    public static class UserAccount
+    {
+        public const string EmailAlreadyRegistered = "An user with this email is already registered.";
+    }
 }

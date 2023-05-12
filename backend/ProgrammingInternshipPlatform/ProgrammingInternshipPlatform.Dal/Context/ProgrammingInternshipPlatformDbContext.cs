@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
-using ProgrammingInternshipPlatform.Domain.Locations.Models;
+using ProgrammingInternshipPlatform.Domain.Organization.Center;
 
 namespace ProgrammingInternshipPlatform.Dal.Context;
 

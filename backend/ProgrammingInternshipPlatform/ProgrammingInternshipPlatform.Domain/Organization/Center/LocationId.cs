@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
+﻿namespace ProgrammingInternshipPlatform.Domain.Organization.Center;
 
 public struct LocationId : IEquatable<LocationId>
 {

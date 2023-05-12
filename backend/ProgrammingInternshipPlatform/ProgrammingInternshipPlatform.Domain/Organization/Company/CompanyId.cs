@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
+﻿namespace ProgrammingInternshipPlatform.Domain.Organization.Company;
 
 public struct CompanyId : IEquatable<CompanyId>
 {

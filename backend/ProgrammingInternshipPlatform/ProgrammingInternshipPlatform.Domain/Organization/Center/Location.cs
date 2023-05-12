@@ -1,6 +1,6 @@
-﻿using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
+﻿using ProgrammingInternshipPlatform.Domain.Organization.Company;
 
-namespace ProgrammingInternshipPlatform.Domain.Locations.Models;
+namespace ProgrammingInternshipPlatform.Domain.Organization.Center;
 
 public class Location
 {

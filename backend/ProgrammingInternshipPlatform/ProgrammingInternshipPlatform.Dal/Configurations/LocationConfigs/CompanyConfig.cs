@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
-using ProgrammingInternshipPlatform.Domain.Locations.Models;
+using ProgrammingInternshipPlatform.Domain.Organization.Company;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.LocationConfigs;
 

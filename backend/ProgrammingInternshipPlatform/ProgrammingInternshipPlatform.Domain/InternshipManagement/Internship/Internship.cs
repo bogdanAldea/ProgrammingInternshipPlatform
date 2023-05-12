@@ -1,5 +1,6 @@
 ﻿using ProgrammingInternshipPlatform.Domain.Account.Intern;
-using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
+using ProgrammingInternshipPlatform.Domain.Organization.Center;
+using ProgrammingInternshipPlatform.Domain.Organization.Company;
 
 namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
 

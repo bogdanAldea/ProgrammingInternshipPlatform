@@ -8,7 +8,8 @@ using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternsh
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
-using ProgrammingInternshipPlatform.Domain.Locations.Identifiers;
+using ProgrammingInternshipPlatform.Domain.Organization.Center;
+using ProgrammingInternshipPlatform.Domain.Organization.Company;
 
 namespace ProgrammingInternshipPlatform.Api.Controllers;
 

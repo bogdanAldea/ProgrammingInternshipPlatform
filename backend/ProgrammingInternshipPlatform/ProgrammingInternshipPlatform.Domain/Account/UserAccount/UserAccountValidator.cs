@@ -8,23 +8,24 @@ public class UserAccountValidator : DomainAbstractValidator<UserAccount>
     public UserAccountValidator()
     {
         RuleFor(account => account.Id)
-            .NotEmpty();
+            .NotEmpty().WithMessage(RuleFailureMessages.UserAccount.EmptyOrNullProperty);
 
         RuleFor(account => account.CompanyId)
-            .NotEmpty();
+            .NotEmpty().WithMessage(RuleFailureMessages.UserAccount.EmptyOrNullProperty);;
 
         RuleFor(account => account.IdentityId)
-            .NotEmpty();
+            .NotEmpty().WithMessage(RuleFailureMessages.UserAccount.EmptyOrNullProperty);;
 
         RuleFor(account => account.FirstName)
-            .NotEmpty();
+            .NotEmpty().WithMessage(RuleFailureMessages.UserAccount.EmptyOrNullProperty);;
 
         RuleFor(account => account.LastName)
-            .NotEmpty();
+            .NotEmpty().WithMessage(RuleFailureMessages.UserAccount.EmptyOrNullProperty);;
 
         RuleFor(account => account.JoiningDate)
             .NotEmpty()
-            .Must(joiningDate => joiningDate.Equals(DateTime.Today));
+            .Must(joiningDate => joiningDate.Equals(DateTime.Today))
+            .WithMessage(RuleFailureMessages.UserAccount.JoiningDateSetInThePast);
 
     }
 }

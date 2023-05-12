@@ -62,7 +62,7 @@ public class ExtendInternshipEndDateHandler : IRequestHandler<ExtendInternshipEn
         return HandlerResult<Internship>.Success(internship);
     }
 
-    private HandlerResult<Internship> HandleDomainModelValidationError(string errorMessage)
+    private HandlerResult<Internship> HandleDomainModelValidationError(string? errorMessage)
     {
         var applicationError = ApplicationError.DomainValidationFailure(errorMessage);
         return HandlerResult<Internship>.Fail(applicationError);

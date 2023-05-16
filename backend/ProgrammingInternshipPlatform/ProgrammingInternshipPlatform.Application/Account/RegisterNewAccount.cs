@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccount;
@@ -40,12 +41,12 @@ public class RegisterNewAccountHandler : IRequestHandler<RegisterNewAccountComma
         {
             var newUserIdentity = new IdentityUser { Email = request.Email, UserName = request.Email };
             var createdUserIdentity = await _userManager.CreateAsync(newUserIdentity, request.Password);
- 
+
             if (createdUserIdentity.Succeeded)
             {
                 try
                 {
-                    return await HandleCreateUserAccount(request, newUserIdentity.Id, cancellationToken);
+                    return await HandleCreateUserAccount(request, newUserIdentity.Id, transaction, cancellationToken);
                 
                 }
                 catch (DomainModelValidationException exception)
@@ -54,8 +55,8 @@ public class RegisterNewAccountHandler : IRequestHandler<RegisterNewAccountComma
                     return HandleUserAccountValidationError(exception.Message);
                 }
             }
-
             return HandleIdentityRegistrationError(createdUserIdentity.Errors);
+            
         }
         catch (Exception exception)
         {
@@ -78,7 +79,7 @@ public class RegisterNewAccountHandler : IRequestHandler<RegisterNewAccountComma
         return HandlerResult<UserAccount>.Fail(existingUserIdentityApplicationError);
     }
 
-    private async Task<HandlerResult<UserAccount>> HandleCreateUserAccount(RegisterNewAccountCommand request, string identityId, CancellationToken cancellationToken)
+    private async Task<HandlerResult<UserAccount>> HandleCreateUserAccount(RegisterNewAccountCommand request, string identityId, IDbContextTransaction transaction, CancellationToken cancellationToken)
     {
         var newUserAccount = await UserAccount.CreateNew(firstName: request.FirstName, lastName: request.LastName,
             pictureUrl: request.PictureUrl, companyId: request.CompanyId,
@@ -86,6 +87,7 @@ public class RegisterNewAccountHandler : IRequestHandler<RegisterNewAccountComma
 
         var createdUserAccount = await _context.UserAccount.AddAsync(newUserAccount, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
+        await transaction.CommitAsync(cancellationToken);
         return HandlerResult<UserAccount>.Success(createdUserAccount.Entity);
     }
 

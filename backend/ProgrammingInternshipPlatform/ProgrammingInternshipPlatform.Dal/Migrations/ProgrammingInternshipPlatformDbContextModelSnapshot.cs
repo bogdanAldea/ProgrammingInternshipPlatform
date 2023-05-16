@@ -236,7 +236,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasIndex("AccountId")
                         .IsUnique();
 
-                    b.ToTable("Intern");
+                    b.ToTable("Intern", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Account.Models.Trainer", b =>
@@ -255,7 +255,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasIndex("AccountId")
                         .IsUnique();
 
-                    b.ToTable("Trainer");
+                    b.ToTable("Trainer", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Account.Models.UserAccount", b =>
@@ -285,7 +285,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserAccount");
+                    b.ToTable("UserAccount", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Models.Internship", b =>
@@ -313,7 +313,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasIndex("LocationId")
                         .IsUnique();
 
-                    b.ToTable("Internships");
+                    b.ToTable("Internships", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Models.Mentorship", b =>
@@ -334,7 +334,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasIndex("InternshipId");
 
-                    b.ToTable("Mentorship");
+                    b.ToTable("Mentorship", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Models.Timeframe", b =>
@@ -356,7 +356,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasIndex("InternshipId")
                         .IsUnique();
 
-                    b.ToTable("Timeframe");
+                    b.ToTable("Timeframe", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Locations.Models.Company", b =>
@@ -372,7 +372,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("Company");
+                    b.ToTable("Company", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Locations.Models.Location", b =>
@@ -398,7 +398,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Locations");
+                    b.ToTable("Locations", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -38,7 +38,7 @@ public class RegisterNewAccountHandler : IRequestHandler<RegisterNewAccountComma
 
         try
         {
-            var newUserIdentity = new IdentityUser { Email = request.Email };
+            var newUserIdentity = new IdentityUser { Email = request.Email, UserName = request.Email };
             var createdUserIdentity = await _userManager.CreateAsync(newUserIdentity, request.Password);
  
             if (createdUserIdentity.Succeeded)
@@ -84,7 +84,7 @@ public class RegisterNewAccountHandler : IRequestHandler<RegisterNewAccountComma
             pictureUrl: request.PictureUrl, companyId: request.CompanyId,
             identityId: Guid.Parse(identityId), cancellationToken: cancellationToken);
 
-        var createdUserAccount = await _context.UserAccounts.AddAsync(newUserAccount, cancellationToken);
+        var createdUserAccount = await _context.UserAccount.AddAsync(newUserAccount, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
         return HandlerResult<UserAccount>.Success(createdUserAccount.Entity);
     }

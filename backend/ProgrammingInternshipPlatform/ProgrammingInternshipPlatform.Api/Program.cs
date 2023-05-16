@@ -1,5 +1,6 @@
 
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
@@ -22,6 +23,9 @@ builder.Services.AddDbContext<ProgrammingInternshipPlatformDbContext>
 (
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("ProgrammingInternshipPlatformDatabase")!)
 );
+
+builder.Services.AddIdentityCore<IdentityUser>()
+    .AddEntityFrameworkStores<ProgrammingInternshipPlatformDbContext>();
 
 builder.Services.AddCors(options =>
 {

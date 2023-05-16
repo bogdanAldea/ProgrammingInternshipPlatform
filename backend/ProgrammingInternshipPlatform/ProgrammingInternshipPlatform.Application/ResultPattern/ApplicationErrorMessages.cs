@@ -4,7 +4,7 @@ public static class ApplicationErrorMessages
 {
     public static class InternshipMessages
     {
-        public const string? InternshipNotFound = "The internship could not be found.";
+        public const string InternshipNotFound = "The internship could not be found.";
     }
 
     public static class UserAccount

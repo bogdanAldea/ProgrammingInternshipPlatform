@@ -56,7 +56,7 @@ public class
         return newInternshipResource.Entity;
     }
 
-    private HandlerResult<Internship> HandleDomainModelError(string? exceptionMessage)
+    private HandlerResult<Internship> HandleDomainModelError(string exceptionMessage)
     {
         var domainValidationError = ApplicationError.DomainValidationFailure(exceptionMessage);
         return HandlerResult<Internship>.Fail(domainValidationError);

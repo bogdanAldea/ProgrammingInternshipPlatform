@@ -17,7 +17,18 @@ public class ApiController : ControllerBase
     protected IActionResult HandleApiErrorResponse(ApplicationError applicationError)
     {
         var apiErrorResponse = new ApiErrorResponse();
-        apiErrorResponse.AddErrorMessage(applicationError.ApplicationErrorMessage);
+        if (applicationError.Errors.Count > 0)
+        {
+            applicationError.Errors
+                .ToList()
+                .ForEach(error => apiErrorResponse.AddErrorMessage(error));
+        }
+        else
+        {
+            apiErrorResponse.AddErrorMessage(applicationError.ApplicationErrorMessage);
+        }
+        
+        if (applicationError.Errors.Count > 0)
 
         if (applicationError.ApplicationErrorType is ApplicationErrorType.AccessDeniedFailure)
         {
@@ -33,6 +44,5 @@ public class ApiController : ControllerBase
 
         apiErrorResponse.StatusCode = HttpStatusCode.BadRequest;
         return BadRequest(apiErrorResponse);
-        
     }
 }

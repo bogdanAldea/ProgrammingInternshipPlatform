@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.Account.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
-using ProgrammingInternshipPlatform.Api.Controllers;
+using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Application.Account;
 using ProgrammingInternshipPlatform.Domain.Organization.Company;
 

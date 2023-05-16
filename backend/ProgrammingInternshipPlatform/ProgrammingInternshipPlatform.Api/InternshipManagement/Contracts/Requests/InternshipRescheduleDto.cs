@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using ProgrammingInternshipPlatform.Api.RequestAttributes;
 
-namespace ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Requests;
+namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;
 
 public class InternshipRescheduleDto
 {

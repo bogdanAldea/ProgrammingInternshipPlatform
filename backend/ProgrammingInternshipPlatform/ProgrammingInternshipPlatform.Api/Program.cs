@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProgrammingInternshipPlatform.Api.Contracts.ApiErrorResponse;
+using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -20,13 +20,13 @@ builder.Services.AddMediatR(typeof(SetupNewInternshipProgramCommand));
 
 builder.Services.AddDbContext<ProgrammingInternshipPlatformDbContext>
 (
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("ProgrammingInternshipPlatformDatabase"))
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("ProgrammingInternshipPlatformDatabase")!)
 );
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy",
-        builder => builder
+        corsPolicyBuilder => corsPolicyBuilder
             .AllowAnyMethod()
             .AllowCredentials()
             .SetIsOriginAllowed((host) => true)

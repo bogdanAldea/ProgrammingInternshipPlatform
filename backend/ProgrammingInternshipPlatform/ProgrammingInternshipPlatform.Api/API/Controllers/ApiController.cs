@@ -1,10 +1,10 @@
 ﻿using System.Net;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ProgrammingInternshipPlatform.Api.Contracts.ApiErrorResponse;
+using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 
-namespace ProgrammingInternshipPlatform.Api.Controllers;
+namespace ProgrammingInternshipPlatform.Api.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

@@ -2,7 +2,7 @@
 using ProgrammingInternshipPlatform.Api.RequestAttributes;
 using ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
-namespace ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Requests;
+namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;
 
 public class InternshipPostDto
 {

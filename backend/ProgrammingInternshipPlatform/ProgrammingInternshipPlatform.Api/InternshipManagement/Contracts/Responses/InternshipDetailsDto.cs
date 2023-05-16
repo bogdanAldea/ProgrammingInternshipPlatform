@@ -1,6 +1,6 @@
 ﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
 
-namespace ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Responses;
+namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Responses;
 
 public class InternshipDetailsDto
 {

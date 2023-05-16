@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Api.Constants;
+﻿namespace ProgrammingInternshipPlatform.Api.API.Constants;
 
 public static class ApiRoutes
 {

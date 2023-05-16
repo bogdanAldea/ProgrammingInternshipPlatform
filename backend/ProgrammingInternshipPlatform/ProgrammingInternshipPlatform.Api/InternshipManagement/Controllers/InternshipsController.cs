@@ -1,8 +1,8 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using ProgrammingInternshipPlatform.Api.Constants;
-using ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Requests;
-using ProgrammingInternshipPlatform.Api.Contracts.InternshipContracts.Responses;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProgrammingInternshipPlatform.Api.API.Constants;
+using ProgrammingInternshipPlatform.Api.API.Controllers;
+using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;
+using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Responses;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
@@ -11,7 +11,7 @@ using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
 using ProgrammingInternshipPlatform.Domain.Organization.Center;
 using ProgrammingInternshipPlatform.Domain.Organization.Company;
 
-namespace ProgrammingInternshipPlatform.Api.Controllers;
+namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Controllers;
 
 public class InternshipsController : ApiController
 {

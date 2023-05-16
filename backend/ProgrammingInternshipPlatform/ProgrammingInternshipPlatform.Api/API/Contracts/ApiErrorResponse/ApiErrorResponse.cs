@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ProgrammingInternshipPlatform.Api.Contracts.ApiErrorResponse;
+namespace ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
 
 public class ApiErrorResponse
 {

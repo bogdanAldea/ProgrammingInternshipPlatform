@@ -6,6 +6,6 @@ public enum ApplicationErrorType
     DomainValidationFailure = 1,
     AccessDeniedFailure = 2,
     UniqueConstraintFailure = 4,
-    IdentityUserAlreadyExists = 5,
+    IdentityUserAlreadyExistsFailure = 5,
     IdentityRegistrationFailure = 6,
 }

@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProgrammingInternshipPlatform.Api.RequestAttributes;
+namespace ProgrammingInternshipPlatform.Api.API.RequestAttributes;
 
-public class MaxValueAttribute : ValidationAttribute
+// Investigate generics here(datetime)
+public class MinValueAttribute : ValidationAttribute
 {
     private readonly int _maxValue;
 
-    public MaxValueAttribute(int maxValue)
+    public MinValueAttribute(int maxValue)
     {
         _maxValue = maxValue;
     }
@@ -17,11 +18,11 @@ public class MaxValueAttribute : ValidationAttribute
         {
             if (int.TryParse(value.ToString(), out var intValue))
             {
-                if (intValue > _maxValue)
+                if (intValue < _maxValue)
                 {
                     return new ValidationResult(
                         $"The field {validationContext.DisplayName} must " +
-                        $"be less than or equal to {_maxValue}.");
+                        $"be greater than or equal to {_maxValue}.");
                 }
             }
         }

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ProgrammingInternshipPlatform.Api.RequestAttributes;
+using ProgrammingInternshipPlatform.Api.API.RequestAttributes;
 using ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
 namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;

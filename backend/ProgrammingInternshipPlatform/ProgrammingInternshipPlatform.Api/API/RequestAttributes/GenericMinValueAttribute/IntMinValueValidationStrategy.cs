@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProgrammingInternshipPlatform.Api.RequestAttributes.GenericMinValueAttribute;
+namespace ProgrammingInternshipPlatform.Api.API.RequestAttributes.GenericMinValueAttribute;
 
 public class IntMinValueValidationStrategy : IMinValueValidationStrategy
 {

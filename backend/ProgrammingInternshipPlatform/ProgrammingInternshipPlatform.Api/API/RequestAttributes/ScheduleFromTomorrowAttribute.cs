@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProgrammingInternshipPlatform.Api.RequestAttributes;
+namespace ProgrammingInternshipPlatform.Api.API.RequestAttributes;
 
 public class ScheduleFromTomorrowAttribute : ValidationAttribute
 {

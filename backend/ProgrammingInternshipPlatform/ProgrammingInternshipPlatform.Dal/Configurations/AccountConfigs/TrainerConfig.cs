@@ -20,9 +20,5 @@ public class TrainerConfig : IEntityTypeConfiguration<Trainer>
             .WithOne()
             .HasForeignKey<Trainer>(trainer => trainer.AccountId)
             .OnDelete(DeleteBehavior.Cascade);
-        
-        builder.Property(trainer => trainer.InternshipId)
-            .HasConversion(id => id.Value, 
-                value => new InternshipId(value));
     }
 }

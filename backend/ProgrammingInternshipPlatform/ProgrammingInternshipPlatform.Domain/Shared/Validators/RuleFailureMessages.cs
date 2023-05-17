@@ -20,7 +20,7 @@ public static class RuleFailureMessages
             "{PropertyName} cannot be more recent than the start date of the internship.";
     }
     
-    public static class UserAccount
+    public static class UserAccountMessages
     {
         public const string EmptyOrNullProperty = "{PropertyName} is required and must be valid.";
         public const string JoiningDateSetInThePast = "{PropertyName} must start from today.";

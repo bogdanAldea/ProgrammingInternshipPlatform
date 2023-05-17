@@ -36,8 +36,8 @@ public class RegisterUserAccountHandler : IRequestHandler<RegisterUserAccountCom
         await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
         try
         {
-            var newIdentityUser = new IdentityUser { Email = request.Email, UserName = request.Email };
-            var createdIdentityUser = await _userManager.CreateAsync(newIdentityUser, request.Password);
+            var newIdentityUser = CreateIdentityUser(request.Email);
+            var createdIdentityUser = await SaveCreatedIdentityUser(newIdentityUser, request.Password);
             if (!createdIdentityUser.Succeeded)
             {
                 return await HandleCreateIdentityError(createdIdentityUser, transaction, cancellationToken);
@@ -68,6 +68,16 @@ public class RegisterUserAccountHandler : IRequestHandler<RegisterUserAccountCom
         var identityAlreadyRegisteredError = ApplicationError.IdentityUserAlreadyExists(
             ApplicationErrorMessages.UserAccount.EmailAlreadyRegistered);
         return HandlerResult<UserAccount>.Fail(identityAlreadyRegisteredError);
+    }
+
+    private IdentityUser CreateIdentityUser(string emailAddress)
+    {
+        return new IdentityUser { Email = emailAddress, UserName = emailAddress };
+    }
+
+    private async Task<IdentityResult> SaveCreatedIdentityUser(IdentityUser identityUser, string password)
+    {
+        return await _userManager.CreateAsync(identityUser, password);
     }
 
     private async Task<HandlerResult<UserAccount>> HandleCreateIdentityError(IdentityResult identityResult,

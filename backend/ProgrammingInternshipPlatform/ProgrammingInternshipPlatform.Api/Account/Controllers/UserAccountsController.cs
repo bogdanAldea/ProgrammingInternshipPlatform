@@ -29,7 +29,7 @@ public class UserAccountsController : ApiController
     [HttpPost]
     public async Task<IActionResult> RegisterUserAccount([FromBody] UserAccountRegistration userAccountRegistration)
     {
-        var userAccountRegistrationCommand = new RegisterNewAccountCommand(FirstName: userAccountRegistration.FirstName,
+        var userAccountRegistrationCommand = new RegisterUserAccountCommand(FirstName: userAccountRegistration.FirstName,
             LastName: userAccountRegistration.LastName, Email: userAccountRegistration.Email,
             Password: userAccountRegistration.Password, PictureUrl: userAccountRegistration.PictureUrl,
             CompanyId: new CompanyId(userAccountRegistration.CompanyId));

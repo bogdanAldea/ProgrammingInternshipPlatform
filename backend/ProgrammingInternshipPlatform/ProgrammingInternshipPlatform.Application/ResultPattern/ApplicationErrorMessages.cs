@@ -17,4 +17,9 @@ public static class ApplicationErrorMessages
     {
         public const string ProjectNotFound = "The project you tried to access could not be found.";
     }
+    
+    public static class Board
+    {
+        public const string BoardNotFound = "The Backlog board you tried to access could not be found.";
+    }
 }

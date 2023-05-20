@@ -24,12 +24,10 @@ public class CreateBacklogBoardHandler : IRequestHandler<CreateBacklogBoardComma
     public async Task<HandlerResult<Board>> Handle(CreateBacklogBoardCommand request, CancellationToken cancellationToken)
     {
         var existingProject = await FindProjectById(request.ProjectId, cancellationToken);
-
         if (existingProject is null)
         {
             return HandleProjectNotFoundError();
         }
-        
         try
         {
             return await HandleCreationForBoard(existingProject, request.InternId, cancellationToken);

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.LocationConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.Location;
 
 public class CompanyConfig : IEntityTypeConfiguration<Company>
 {

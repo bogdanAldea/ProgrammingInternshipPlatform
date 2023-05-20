@@ -2,10 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
-using ProgrammingInternshipPlatform.Domain.Organization.Center;
 using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipManagement;
 
 public class InternshipConfig : IEntityTypeConfiguration<Internship>
 {
@@ -27,7 +26,7 @@ public class InternshipConfig : IEntityTypeConfiguration<Internship>
             .IsRequired();
 
         builder
-            .HasOne<Location>()
+            .HasOne<Domain.Organization.Center.Location>()
             .WithOne()
             .HasForeignKey<Internship>(internship => internship.LocationId);
 

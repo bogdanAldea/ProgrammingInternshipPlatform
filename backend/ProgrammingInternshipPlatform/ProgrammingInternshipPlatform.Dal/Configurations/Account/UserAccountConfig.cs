@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.AccountConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.Account;
 
 public class UserAccountConfig : IEntityTypeConfiguration<UserAccount>
 {

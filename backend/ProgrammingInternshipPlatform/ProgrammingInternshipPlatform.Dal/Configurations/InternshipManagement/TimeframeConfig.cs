@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipManagement;
 
 public class TimeframeConfig : IEntityTypeConfiguration<Timeframe>
 {

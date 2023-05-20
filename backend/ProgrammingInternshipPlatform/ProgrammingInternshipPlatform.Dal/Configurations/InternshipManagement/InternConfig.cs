@@ -4,7 +4,7 @@ using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipManagement;
 
 public class InternConfig : IEntityTypeConfiguration<Intern>
 {

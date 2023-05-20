@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Organization.Center;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.LocationConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.Location;
 
-public class LocationConfig : IEntityTypeConfiguration<Location>
+public class LocationConfig : IEntityTypeConfiguration<Domain.Organization.Center.Location>
 {
-    public void Configure(EntityTypeBuilder<Location> builder)
+    public void Configure(EntityTypeBuilder<Domain.Organization.Center.Location> builder)
     {
         builder.HasKey(location => location.Id);
         

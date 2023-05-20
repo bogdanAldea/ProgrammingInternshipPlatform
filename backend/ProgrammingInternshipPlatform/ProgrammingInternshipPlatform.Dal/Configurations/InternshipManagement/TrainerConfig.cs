@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipManagement;
 
 public class TrainerConfig : IEntityTypeConfiguration<Trainer>
 {

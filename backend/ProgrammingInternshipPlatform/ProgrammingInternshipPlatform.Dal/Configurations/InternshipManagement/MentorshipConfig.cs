@@ -5,7 +5,7 @@ using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipManagement;
 
 public class MentorshipConfig : IEntityTypeConfiguration<Mentorship>
 {

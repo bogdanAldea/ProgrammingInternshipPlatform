@@ -25,6 +25,14 @@ public class BoardConfig : IEntityTypeConfiguration<Board>
                 id => id.Value,
                 value => new ProjectId(value))
             .IsRequired();
+
+        builder
+            .HasIndex(board => board.Title)
+            .IsUnique();
+
+        builder
+            .Property(board => board.Title)
+            .IsRequired();
         
         builder
             .Property(board => board.OwnerIntern)

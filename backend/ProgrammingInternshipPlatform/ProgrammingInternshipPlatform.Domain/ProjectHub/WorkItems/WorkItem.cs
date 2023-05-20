@@ -1,5 +1,5 @@
-﻿using ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.AcceptanceCriteria;
+﻿using ProgrammingInternshipPlatform.Domain.ProjectHub.AcceptanceCriteria;
+using ProgrammingInternshipPlatform.Domain.ProjectHub.Labels;
 using ProgrammingInternshipPlatform.Domain.ProjectHub.Projects;
 
 namespace ProgrammingInternshipPlatform.Domain.ProjectHub.WorkItems;

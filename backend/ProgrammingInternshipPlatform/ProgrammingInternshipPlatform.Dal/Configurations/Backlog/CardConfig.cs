@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Backlog.Cards;
-using ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
 using ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 using ProgrammingInternshipPlatform.Domain.ProjectHub.WorkItems;
 

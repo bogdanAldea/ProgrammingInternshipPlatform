@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
+﻿namespace ProgrammingInternshipPlatform.Domain.ProjectHub.Labels;
 
 public enum Item
 {

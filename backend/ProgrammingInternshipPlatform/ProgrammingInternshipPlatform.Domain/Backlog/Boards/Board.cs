@@ -11,5 +11,6 @@ public class Board
     public BoardId BoardId { get; private set; }
     public ProjectId ProjectId { get; private set; }
     public InternId OwnerIntern { get; private set; }
+    public string Title { get; private set; } = null!;
     public IReadOnlyCollection<Stage> Stages => _stages;
 }

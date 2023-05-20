@@ -1,4 +1,6 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Shared.Validators;
+﻿using ProgrammingInternshipPlatform.Domain.Backlog.Cards;
+
+namespace ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
 public static class RuleFailureMessages
 {
@@ -24,5 +26,21 @@ public static class RuleFailureMessages
     {
         public const string EmptyOrNullProperty = "{PropertyName} is required and must be valid.";
         public const string JoiningDateSetInThePast = "{PropertyName} must start from today.";
+    }
+    
+    public static class BoardMessages
+    {
+        public const string EmptyOrNullProperty = "{PropertyName} is required and must be valid.";
+    }
+    
+    public static class CardMessages 
+    {
+        public const string EmptyOrNullProperty = "{PropertyName} is required and must be valid.";
+        public const string StatusNotAnEnumValue = "{PropertyName not in enum}";
+    }
+    
+    public static class StageMessages 
+    {
+        public const string EmptyOrNullProperty = "{PropertyName} is required and must be valid.";
     }
 }

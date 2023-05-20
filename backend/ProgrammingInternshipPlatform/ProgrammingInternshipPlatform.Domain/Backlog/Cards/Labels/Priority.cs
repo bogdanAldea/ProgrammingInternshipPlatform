@@ -1,6 +1,6 @@
 ﻿namespace ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
 
-public enum PriorityLabel
+public enum Priority
 {
     High = 0,
     Medium = 1,

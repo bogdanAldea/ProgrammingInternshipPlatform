@@ -38,5 +38,11 @@ public class ProjectConfig : IEntityTypeConfiguration<Project>
         builder
             .Property(project => project.Documentation)
             .IsRequired();
+
+        builder
+            .HasMany(project => project.WorkItems)
+            .WithOne()
+            .HasForeignKey(workItem => workItem.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

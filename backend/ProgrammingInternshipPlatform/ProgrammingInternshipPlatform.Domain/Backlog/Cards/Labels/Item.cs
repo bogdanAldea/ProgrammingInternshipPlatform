@@ -1,6 +1,6 @@
 ﻿namespace ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
 
-public enum TypeLabel
+public enum Item
 {
     Bug = 0,
     Feature = 1,

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -11,9 +12,10 @@ using ProgrammingInternshipPlatform.Dal.Context;
 namespace ProgrammingInternshipPlatform.Dal.Migrations
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    partial class ProgrammingInternshipPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230520080739_ProjectHubEntitiesAndConfigsMigration")]
+    partial class ProjectHubEntitiesAndConfigsMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

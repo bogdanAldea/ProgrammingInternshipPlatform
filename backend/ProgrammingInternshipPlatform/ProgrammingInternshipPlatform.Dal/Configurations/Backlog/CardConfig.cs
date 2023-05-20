@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Backlog.Cards;
 using ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
 using ProgrammingInternshipPlatform.Domain.Backlog.Stages;
+using ProgrammingInternshipPlatform.Domain.ProjectHub.WorkItems;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.Backlog;
 
@@ -27,51 +28,10 @@ public class CardConfig : IEntityTypeConfiguration<Card>
             .IsRequired();
 
         builder
-            .Property(card => card.Title)
-            .IsRequired();
-
-        builder
-            .HasIndex(card => card.Title)
-            .IsUnique();
-        
-        builder
-            .Property(card => card.Description)
-            .IsRequired();
-
-        builder
-            .HasIndex(card => card.Description)
-            .IsUnique();
-
-        builder
-            .Property(card => card.AddedOn)
-            .HasDefaultValue(DateTime.Today)
-            .IsRequired();
-
-        builder
-            .Property(card => card.TypeLabel)
+            .Property(card => card.WorkItemId)
             .HasConversion(
-                label => (int)label,
-                value => (TypeLabel)value)
+                id => id.Value,
+                value => new WorkItemId(value))
             .IsRequired();
-        
-        builder
-            .Property(card => card.PriorityLabel)
-            .HasConversion(
-                label => (int)label,
-                value => (PriorityLabel)value)
-            .IsRequired();
-        
-        builder
-            .Property(card => card.ComplexityLabel)
-            .HasConversion(
-                label => (int)label,
-                value => (ComplexityLabel)value)
-            .IsRequired();
-
-        builder
-            .Property(card => card.RiskLabel)
-            .HasConversion(
-                label => label.HasValue ? (int)label.Value : default(int?),
-                value => value.HasValue ? (RiskLabel)value.Value : default);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
 
-public enum ComplexityLabel
+public enum Complexity
 {
     Easy = 1,
     Moderate = 2,

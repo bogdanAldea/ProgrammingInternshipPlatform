@@ -1,5 +1,6 @@
 ﻿using ProgrammingInternshipPlatform.Domain.Backlog.Boards;
 using ProgrammingInternshipPlatform.Domain.Backlog.Cards;
+using ProgrammingInternshipPlatform.Domain.ProjectHub.WorkItems;
 
 namespace ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 
@@ -38,6 +39,13 @@ public class Stage
     public async Task ChangeOrder(int newOrder, CancellationToken cancellationToken)
     {
         Order = newOrder;
+        await StageValidator.ValidateDomainModelAsync(this, cancellationToken);
+    }
+
+    public async Task AddNewCard(WorkItemId workItemId, CancellationToken cancellationToken)
+    {
+        var cardToAdd = await Card.CreateNew(StageId, workItemId, cancellationToken);
+        _cards.Add(cardToAdd);
         await StageValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.Backlog.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.Backlog.Contracts.Responses;
@@ -7,6 +8,7 @@ using ProgrammingInternshipPlatform.Domain.Backlog.Boards;
 using ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.ProjectHub.Projects;
+using ProgrammingInternshipPlatform.Domain.ProjectHub.WorkItems;
 
 namespace ProgrammingInternshipPlatform.Api.Backlog.Controllers;
 
@@ -28,7 +30,7 @@ public class BoardsController : ApiController
     }
 
     [HttpPost]
-    [Route("{id}/stages")]
+    [Route(ApiRoutes.BoardRoutes.BoardStages)]
     public async Task<IActionResult> AddStageToBoard([FromBody] StageToBoardPostDto stagePostDto, Guid id)
     {
         var stageToBoardCreateCommand = new AddStageToBoardCommand(
@@ -45,8 +47,23 @@ public class BoardsController : ApiController
         return HandleApiErrorResponse(handlerResult.FailureReason);
     }
 
+    [HttpPost]
+    [Route(ApiRoutes.BoardRoutes.StageCards)]
+    public async Task<IActionResult> AddCardToBoardStage(Guid id, Guid stageId, Guid workItemId)
+    {
+        var cardToBoardStageCreateCommand = new AddCardToBoardStageCommand(
+            BoardId: new BoardId(id), StageId: new StageId(stageId), WorkItemId: new WorkItemId(workItemId));
+        var handlerResult = await Mediator.Send(cardToBoardStageCreateCommand);
+        if (handlerResult.IsSuccess)
+        {
+            return NoContent();
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
     [HttpDelete]
-    [Route("{id}/stages")]
+    [Route(ApiRoutes.BoardRoutes.BoardStages)]
     public async Task<IActionResult> RemoveStageFromBoard(Guid id, Guid stageId)
     {
         var stageFromBoardRemovalCommand = new RemoveStageFromBoardCommand(

@@ -1,6 +1,7 @@
 ﻿using ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.ProjectHub.Projects;
+using ProgrammingInternshipPlatform.Domain.ProjectHub.WorkItems;
 
 namespace ProgrammingInternshipPlatform.Domain.Backlog.Boards;
 
@@ -48,6 +49,13 @@ public class Board
     {
         var stageToUpdateTitleTo = _stages.FirstOrDefault(stage => stage.StageId == stageId);
         if (stageToUpdateTitleTo != null) await stageToUpdateTitleTo.ChangeTitle(newTitle, cancellationToken);
+        await BoardValidator.ValidateDomainModelAsync(this, cancellationToken);
+    }
+
+    public async Task AddCard(StageId stageId, WorkItemId workItemId, CancellationToken cancellationToken)
+    {
+        var stageToAddCardTo = _stages.FirstOrDefault(stage => stage.StageId == stageId);
+        if (stageToAddCardTo is not null) await stageToAddCardTo.AddNewCard(workItemId, cancellationToken);
         await BoardValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
 }

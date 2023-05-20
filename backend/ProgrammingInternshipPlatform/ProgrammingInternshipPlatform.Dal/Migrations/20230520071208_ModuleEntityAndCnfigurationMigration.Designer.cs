@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -11,9 +12,10 @@ using ProgrammingInternshipPlatform.Dal.Context;
 namespace ProgrammingInternshipPlatform.Dal.Migrations
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    partial class ProgrammingInternshipPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230520071208_ModuleEntityAndCnfigurationMigration")]
+    partial class ModuleEntityAndCnfigurationMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,61 +250,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserAccount");
-                });
-
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Assignments.Assignment", b =>
-                {
-                    b.Property<Guid>("AssignmentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("LessonId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("AssignmentId");
-
-                    b.HasIndex("AssignmentId");
-
-                    b.HasIndex("LessonId")
-                        .IsUnique();
-
-                    b.ToTable("Assignment");
-                });
-
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Lessons.Lesson", b =>
-                {
-                    b.Property<Guid>("LessonId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(560)
-                        .HasColumnType("nvarchar(560)");
-
-                    b.Property<Guid>("ModuleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("LessonId");
-
-                    b.HasIndex("Description")
-                        .IsUnique();
-
-                    b.HasIndex("LessonId");
-
-                    b.HasIndex("ModuleId");
-
-                    b.HasIndex("Title")
-                        .IsUnique();
-
-                    b.ToTable("Lesson");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Modules.Module", b =>
@@ -658,24 +605,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Assignments.Assignment", b =>
-                {
-                    b.HasOne("ProgrammingInternshipPlatform.Domain.Curriculum.Lessons.Lesson", null)
-                        .WithOne("Assignment")
-                        .HasForeignKey("ProgrammingInternshipPlatform.Domain.Curriculum.Assignments.Assignment", "LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Lessons.Lesson", b =>
-                {
-                    b.HasOne("ProgrammingInternshipPlatform.Domain.Curriculum.Modules.Module", null)
-                        .WithMany("Lessons")
-                        .HasForeignKey("ModuleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns.Intern", b =>
                 {
                     b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Internship", null)
@@ -746,17 +675,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .HasForeignKey("BoardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Lessons.Lesson", b =>
-                {
-                    b.Navigation("Assignment")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Modules.Module", b =>
-                {
-                    b.Navigation("Lessons");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Internship", b =>

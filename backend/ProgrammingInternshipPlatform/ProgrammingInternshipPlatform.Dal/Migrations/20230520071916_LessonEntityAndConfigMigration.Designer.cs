@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -11,9 +12,10 @@ using ProgrammingInternshipPlatform.Dal.Context;
 namespace ProgrammingInternshipPlatform.Dal.Migrations
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    partial class ProgrammingInternshipPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230520071916_LessonEntityAndConfigMigration")]
+    partial class LessonEntityAndConfigMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,28 +250,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserAccount");
-                });
-
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Assignments.Assignment", b =>
-                {
-                    b.Property<Guid>("AssignmentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("LessonId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("AssignmentId");
-
-                    b.HasIndex("AssignmentId");
-
-                    b.HasIndex("LessonId")
-                        .IsUnique();
-
-                    b.ToTable("Assignment");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Lessons.Lesson", b =>
@@ -658,15 +638,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Assignments.Assignment", b =>
-                {
-                    b.HasOne("ProgrammingInternshipPlatform.Domain.Curriculum.Lessons.Lesson", null)
-                        .WithOne("Assignment")
-                        .HasForeignKey("ProgrammingInternshipPlatform.Domain.Curriculum.Assignments.Assignment", "LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Lessons.Lesson", b =>
                 {
                     b.HasOne("ProgrammingInternshipPlatform.Domain.Curriculum.Modules.Module", null)
@@ -745,12 +716,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .WithMany("Stages")
                         .HasForeignKey("BoardId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Curriculum.Lessons.Lesson", b =>
-                {
-                    b.Navigation("Assignment")
                         .IsRequired();
                 });
 

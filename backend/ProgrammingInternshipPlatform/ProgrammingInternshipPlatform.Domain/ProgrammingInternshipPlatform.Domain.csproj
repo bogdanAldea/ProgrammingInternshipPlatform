@@ -14,6 +14,7 @@
 
     <ItemGroup>
       <Folder Include="Organization\Country" />
+      <Folder Include="Shared\Identifiers" />
     </ItemGroup>
 
 </Project>

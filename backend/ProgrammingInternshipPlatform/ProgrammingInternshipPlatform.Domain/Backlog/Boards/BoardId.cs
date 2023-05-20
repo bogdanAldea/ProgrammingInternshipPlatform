@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.ProjectHub.Boards;
+﻿namespace ProgrammingInternshipPlatform.Domain.Backlog.Boards;
 
 public readonly struct BoardId : IEquatable<BoardId>
 {

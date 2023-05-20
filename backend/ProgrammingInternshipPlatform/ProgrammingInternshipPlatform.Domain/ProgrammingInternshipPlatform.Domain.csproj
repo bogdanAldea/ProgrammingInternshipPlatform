@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Backlog" />
       <Folder Include="Organization\Country" />
       <Folder Include="Shared\Identifiers" />
     </ItemGroup>

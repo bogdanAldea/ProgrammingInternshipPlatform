@@ -1,7 +1,7 @@
-﻿using ProgrammingInternshipPlatform.Domain.ProjectHub.Boards;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Cards;
+﻿using ProgrammingInternshipPlatform.Domain.Backlog.Boards;
+using ProgrammingInternshipPlatform.Domain.Backlog.Cards;
 
-namespace ProgrammingInternshipPlatform.Domain.ProjectHub.Stages;
+namespace ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 
 public class Stage
 {

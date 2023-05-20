@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.ProjectHub.Stages;
+﻿namespace ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 
 public readonly struct StageId : IEquatable<StageId>
 {

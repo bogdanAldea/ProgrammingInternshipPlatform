@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProgrammingInternshipPlatform.Domain.Backlog.Boards;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Boards;
 using ProgrammingInternshipPlatform.Domain.ProjectHub.Projects;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Stages;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.ProjectHub;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.Backlog;
 
 public class BoardConfig : IEntityTypeConfiguration<Board>
 {

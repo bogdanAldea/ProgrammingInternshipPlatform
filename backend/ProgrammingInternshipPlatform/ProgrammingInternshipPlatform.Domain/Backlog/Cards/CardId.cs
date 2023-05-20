@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.ProjectHub.Cards;
+﻿namespace ProgrammingInternshipPlatform.Domain.Backlog.Cards;
 
 public readonly struct CardId : IEquatable<CardId>
 {

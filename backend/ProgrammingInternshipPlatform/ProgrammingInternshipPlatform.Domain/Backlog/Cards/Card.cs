@@ -1,7 +1,7 @@
-﻿using ProgrammingInternshipPlatform.Domain.ProjectHub.Cards.Labels;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Stages;
+﻿using ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
+using ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 
-namespace ProgrammingInternshipPlatform.Domain.ProjectHub.Cards;
+namespace ProgrammingInternshipPlatform.Domain.Backlog.Cards;
 
 public class Card
 {

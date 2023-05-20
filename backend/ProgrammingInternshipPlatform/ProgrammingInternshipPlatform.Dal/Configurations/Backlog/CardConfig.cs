@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Cards;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Cards.Labels;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Stages;
+using ProgrammingInternshipPlatform.Domain.Backlog.Cards;
+using ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
+using ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.ProjectHub;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.Backlog;
 
 public class CardConfig : IEntityTypeConfiguration<Card>
 {

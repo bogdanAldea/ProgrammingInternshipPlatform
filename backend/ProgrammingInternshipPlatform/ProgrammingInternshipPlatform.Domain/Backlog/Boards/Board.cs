@@ -1,9 +1,8 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Cards;
+﻿using ProgrammingInternshipPlatform.Domain.Backlog.Stages;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.ProjectHub.Projects;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Stages;
 
-namespace ProgrammingInternshipPlatform.Domain.ProjectHub.Boards;
+namespace ProgrammingInternshipPlatform.Domain.Backlog.Boards;
 
 public class Board
 {

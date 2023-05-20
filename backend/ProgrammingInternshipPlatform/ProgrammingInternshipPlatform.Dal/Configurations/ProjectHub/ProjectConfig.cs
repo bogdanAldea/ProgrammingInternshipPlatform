@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProgrammingInternshipPlatform.Domain.Backlog.Boards;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
-using ProgrammingInternshipPlatform.Domain.ProjectHub.Boards;
 using ProgrammingInternshipPlatform.Domain.ProjectHub.Projects;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.ProjectHub;
@@ -29,12 +29,6 @@ public class ProjectConfig : IEntityTypeConfiguration<Project>
         builder
             .Property(project => project.ProjectStatus)
             .IsRequired();
-
-        builder
-            .HasOne(project => project.Board)
-            .WithOne()
-            .HasForeignKey<Board>(board => board.ProjectId)
-            .OnDelete(DeleteBehavior.Cascade);
 
         builder
             .Property(project => project.Title)

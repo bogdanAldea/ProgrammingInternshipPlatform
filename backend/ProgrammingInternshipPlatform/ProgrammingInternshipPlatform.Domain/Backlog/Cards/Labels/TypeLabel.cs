@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.ProjectHub.Cards.Labels;
+﻿namespace ProgrammingInternshipPlatform.Domain.Backlog.Cards.Labels;
 
 public enum TypeLabel
 {

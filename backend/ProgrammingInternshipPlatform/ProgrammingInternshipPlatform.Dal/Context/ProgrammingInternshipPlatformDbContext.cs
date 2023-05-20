@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ProgrammingInternshipPlatform.Domain.Account.UserAccount;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
+using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 using ProgrammingInternshipPlatform.Domain.Organization.Center;
 
 namespace ProgrammingInternshipPlatform.Dal.Context;

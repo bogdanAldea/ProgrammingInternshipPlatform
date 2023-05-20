@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
-namespace ProgrammingInternshipPlatform.Domain.Account.UserAccount;
+namespace ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
 public class UserAccountValidator : DomainAbstractValidator<UserAccount>
 {

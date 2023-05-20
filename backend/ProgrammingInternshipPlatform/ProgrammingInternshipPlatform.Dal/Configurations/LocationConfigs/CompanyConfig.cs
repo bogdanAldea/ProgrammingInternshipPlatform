@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.Organization.Company;
+using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.LocationConfigs;
 

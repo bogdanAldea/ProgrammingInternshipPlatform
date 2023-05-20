@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.Account.Trainer;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
+using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.AccountConfigs;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
 
 public class TrainerConfig : IEntityTypeConfiguration<Trainer>
 {
@@ -15,10 +15,8 @@ public class TrainerConfig : IEntityTypeConfiguration<Trainer>
             .HasConversion(id => id.Value, 
                 value => new TrainerId(value));
 
-        builder
-            .HasOne(trainer => trainer.Account)
-            .WithOne()
-            .HasForeignKey<Trainer>(trainer => trainer.AccountId)
-            .OnDelete(DeleteBehavior.Cascade);
+        builder.Property(trainer => trainer.AccountId)
+            .HasConversion(id => id.Value,
+                value => new AccountId(value));
     }
 }

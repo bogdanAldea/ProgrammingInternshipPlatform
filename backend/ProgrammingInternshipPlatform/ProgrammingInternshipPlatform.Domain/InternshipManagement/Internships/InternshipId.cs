@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
+﻿namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 
 public struct InternshipId : IEquatable<InternshipId>
 {

@@ -1,8 +1,8 @@
-﻿using ProgrammingInternshipPlatform.Domain.Account.Intern;
-using ProgrammingInternshipPlatform.Domain.Account.Trainer;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
+﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
 
-namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorship;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships;
 
 public class Mentorship
 {

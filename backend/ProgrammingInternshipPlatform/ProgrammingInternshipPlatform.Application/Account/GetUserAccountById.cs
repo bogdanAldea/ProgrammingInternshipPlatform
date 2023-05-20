@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
-using ProgrammingInternshipPlatform.Domain.Account.UserAccount;
+using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
 namespace ProgrammingInternshipPlatform.Application.Account;
 

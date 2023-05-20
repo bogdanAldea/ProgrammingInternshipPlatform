@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using ProgrammingInternshipPlatform.Domain.Account.UserAccount;
+using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
 namespace ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
 

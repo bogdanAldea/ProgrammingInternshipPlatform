@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframe;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
 using ProgrammingInternshipPlatform.Domain.Organization.Center;
-using ProgrammingInternshipPlatform.Domain.Organization.Company;
+using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
 

@@ -4,8 +4,8 @@ using ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Application.Account;
-using ProgrammingInternshipPlatform.Domain.Account.UserAccount;
-using ProgrammingInternshipPlatform.Domain.Organization.Company;
+using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
+using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
 namespace ProgrammingInternshipPlatform.Api.Account.Controllers;
 

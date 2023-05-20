@@ -1,7 +1,7 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
+﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 
-namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframe;
+namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
 
 public class Timeframe
 {

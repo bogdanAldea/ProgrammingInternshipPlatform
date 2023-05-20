@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframe;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.InternshipConfigs;
 

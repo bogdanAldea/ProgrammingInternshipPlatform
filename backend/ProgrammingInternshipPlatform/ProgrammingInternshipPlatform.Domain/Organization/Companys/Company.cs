@@ -1,6 +1,6 @@
 ﻿using ProgrammingInternshipPlatform.Domain.Organization.Center;
 
-namespace ProgrammingInternshipPlatform.Domain.Organization.Company;
+namespace ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
 public class Company
 {

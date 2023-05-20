@@ -1,6 +1,6 @@
-﻿using ProgrammingInternshipPlatform.Domain.Organization.Company;
+﻿using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
-namespace ProgrammingInternshipPlatform.Domain.Account.UserAccount;
+namespace ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
 public class UserAccount
 {

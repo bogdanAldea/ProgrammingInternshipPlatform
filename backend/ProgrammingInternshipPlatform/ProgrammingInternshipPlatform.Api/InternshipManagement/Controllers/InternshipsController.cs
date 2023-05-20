@@ -7,9 +7,9 @@ using ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInter
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internship;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 using ProgrammingInternshipPlatform.Domain.Organization.Center;
-using ProgrammingInternshipPlatform.Domain.Organization.Company;
+using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
 namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Controllers;
 

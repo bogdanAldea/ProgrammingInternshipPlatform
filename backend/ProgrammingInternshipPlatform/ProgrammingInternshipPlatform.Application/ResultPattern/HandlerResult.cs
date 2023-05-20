@@ -2,6 +2,7 @@
 
 public class HandlerResult<TEntity>
 {
+    private HandlerResult() { }
     private HandlerResult(ApplicationError failureReason)
     {
         FailureReason = failureReason;
@@ -20,4 +21,5 @@ public class HandlerResult<TEntity>
 
     public static HandlerResult<TEntity> Fail(ApplicationError failureReason) => new(failureReason);
     public static HandlerResult<TEntity> Success(TEntity payload) => new(payload);
+    public static HandlerResult<TEntity> Success() => new();
 }

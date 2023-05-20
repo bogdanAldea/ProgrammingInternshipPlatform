@@ -3,6 +3,8 @@ using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.Backlog.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.Backlog.Contracts.Responses;
 using ProgrammingInternshipPlatform.Application.Backlog;
+using ProgrammingInternshipPlatform.Domain.Backlog.Boards;
+using ProgrammingInternshipPlatform.Domain.Backlog.Stages;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.ProjectHub.Projects;
 
@@ -22,6 +24,41 @@ public class BoardsController : ApiController
             var mappedBoardResponse = BoardGetDto.MapFromBoard(handlerResult.Payload!);
             return Ok(mappedBoardResponse);
         }
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpPost]
+    [Route("{id}/stages")]
+    public async Task<IActionResult> AddStageToBoard([FromBody] StageToBoardPostDto stagePostDto, Guid id)
+    {
+        var stageToBoardCreateCommand = new AddStageToBoardCommand(
+            BoardId: new BoardId(id),
+            StageTitle: stagePostDto.StageTitle,
+            StageOrder: stagePostDto.StageOrder);
+
+        var handlerResult = await Mediator.Send(stageToBoardCreateCommand);
+        if (handlerResult.IsSuccess)
+        {
+            return NoContent();
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpDelete]
+    [Route("{id}/stages")]
+    public async Task<IActionResult> RemoveStageFromBoard(Guid id, Guid stageId)
+    {
+        var stageFromBoardRemovalCommand = new RemoveStageFromBoardCommand(
+            BoardId: new BoardId(id), StageId: new StageId(stageId));
+
+        var handlerResult = await Mediator.Send(stageFromBoardRemovalCommand);
+
+        if (handlerResult.IsSuccess)
+        {
+            return NoContent();
+        }
+
         return HandleApiErrorResponse(handlerResult.FailureReason);
     }
 }

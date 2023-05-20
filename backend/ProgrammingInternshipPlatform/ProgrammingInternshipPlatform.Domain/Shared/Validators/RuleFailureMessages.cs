@@ -43,4 +43,12 @@ public static class RuleFailureMessages
     {
         public const string EmptyOrNullProperty = "{PropertyName} is required and must be valid.";
     }
+    
+    public static class ProjectMessages
+    {
+        public const string EmptyOrNullProperty = "{PropertyName} is required and must be valid.";
+        public const string StatusNotAnEnumValue = "{PropertyName not in enum}";
+        public const string StartDateNotSet = "{PropertyName} must be set when project is started.";
+        public const string CompletedDateNotSet = "{PropertyName} must be set when project is completed.";
+    }
 }

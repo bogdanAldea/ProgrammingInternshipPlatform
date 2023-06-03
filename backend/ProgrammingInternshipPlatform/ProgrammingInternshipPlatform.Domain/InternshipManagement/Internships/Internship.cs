@@ -1,6 +1,8 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
+﻿using System.ComponentModel.DataAnnotations;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
 using ProgrammingInternshipPlatform.Domain.Organization.Center;
 using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
@@ -56,6 +58,15 @@ public class Internship
     {
         var internshipValidator = new InternshipValidator();
         await Timeframe.ExtendEndDate(extendedEndDate, DurationInMonths, cancellationToken);
+        await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
+    }
+
+    public async Task AddMentoringCollaboration(TrainerId trainerId, InternId internId, CancellationToken cancellationToken)
+    {
+        var internshipValidator = new InternshipValidator();
+        var mentorship = await Mentorship
+            .CreateNew(trainerId: trainerId, internId: internId, internshipId: Id, cancellationToken);
+        _mentorships.Add(mentorship);
         await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
 }

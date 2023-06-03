@@ -16,4 +16,8 @@
       <ProjectReference Include="..\ProgrammingInternshipPlatform.Domain\ProgrammingInternshipPlatform.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="ProjectHub" />
+    </ItemGroup>
+
 </Project>

@@ -27,9 +27,11 @@ public class UserAccountsController : ApiController
     }
 
     [HttpPost]
+    [Route("registration")]
     public async Task<IActionResult> RegisterUserAccount([FromBody] UserAccountRegistration userAccountRegistration)
     {
-        var userAccountRegistrationCommand = new RegisterUserAccountCommand(FirstName: userAccountRegistration.FirstName,
+        var userAccountRegistrationCommand = new RegisterUserAccountCommand(
+            FirstName: userAccountRegistration.FirstName,
             LastName: userAccountRegistration.LastName, Email: userAccountRegistration.Email,
             Password: userAccountRegistration.Password, PictureUrl: userAccountRegistration.PictureUrl,
             CompanyId: new CompanyId(userAccountRegistration.CompanyId));
@@ -38,8 +40,25 @@ public class UserAccountsController : ApiController
         if (handlerResult.IsSuccess)
         {
             var userAccountResponse = UserAccountDetails.MapFromUserAccount(handlerResult.Payload!);
-            return CreatedAtAction(nameof(GetUserAccountById), new { Id = userAccountResponse.Id },
+            return CreatedAtAction(nameof(GetUserAccountById), new { userAccountResponse.Id },
                 userAccountResponse);
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpPost]
+    [Route("login")]
+    public async Task<IActionResult> LoginToUserAccount([FromBody] UserAccountAuthentication userAccountAuthentication)
+    {
+        var authenticationCommand = new LoginToAccountCommand(
+            EmailAddress: userAccountAuthentication.EmailAddress,
+            Password: userAccountAuthentication.Password);
+
+        var handlerResult = await Mediator.Send(authenticationCommand);
+        if (handlerResult.IsSuccess)
+        {
+            return Ok(handlerResult.Payload);
         }
 
         return HandleApiErrorResponse(handlerResult.FailureReason);

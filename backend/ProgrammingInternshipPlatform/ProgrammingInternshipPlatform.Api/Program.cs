@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
+using ProgrammingInternshipPlatform.Application.Identity;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -26,6 +27,11 @@ builder.Services.AddDbContext<ProgrammingInternshipPlatformDbContext>
 
 builder.Services.AddIdentityCore<IdentityUser>()
     .AddEntityFrameworkStores<ProgrammingInternshipPlatformDbContext>();
+
+var jwtSettings = new JwtSettings();
+builder.Configuration.Bind(nameof(JwtSettings), jwtSettings);
+var jwtSection = builder.Configuration.GetSection(nameof(JwtSettings));
+builder.Services.Configure<JwtSettings>(jwtSection);
 
 builder.Services.AddCors(options =>
 {

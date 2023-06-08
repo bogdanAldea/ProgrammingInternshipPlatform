@@ -8,4 +8,5 @@ public enum ApplicationErrorType
     UniqueConstraintFailure = 4,
     IdentityUserAlreadyExistsFailure = 5,
     IdentityRegistrationFailure = 6,
+    IdentityLoginPasswordFailure = 7,
 }

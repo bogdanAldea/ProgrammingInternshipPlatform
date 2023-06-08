@@ -42,4 +42,7 @@ public class ApplicationError
 
     public static ApplicationError IdentityRegistrationFailure(string errorMessage)
         => new(errorType: ApplicationErrorType.IdentityRegistrationFailure, errorMessage: errorMessage);
+    
+    public static ApplicationError IdentityLoginPasswordFailure(string errorMessage)
+        => new(errorType: ApplicationErrorType.IdentityLoginPasswordFailure, errorMessage: errorMessage);
 }

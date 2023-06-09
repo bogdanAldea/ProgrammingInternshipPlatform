@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;
@@ -13,6 +14,7 @@ using ProgrammingInternshipPlatform.Domain.Organization.Companys;
 
 namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Controllers;
 
+[Authorize]
 public class InternshipsController : ApiController
 {
     [HttpGet]

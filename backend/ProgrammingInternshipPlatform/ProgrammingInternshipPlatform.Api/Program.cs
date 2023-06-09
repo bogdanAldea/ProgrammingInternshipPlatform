@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
 using ProgrammingInternshipPlatform.Application.Identity;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
@@ -14,7 +15,29 @@ using ProgrammingInternshipPlatform.Dal.Context;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    var securitySchema = new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        Reference = new OpenApiReference
+        {
+            Type = ReferenceType.SecurityScheme,
+            Id = "Bearer"
+        }
+    };
+    c.AddSecurityDefinition("Bearer", securitySchema);
+
+    var securityRequirement = new OpenApiSecurityRequirement
+    {
+        { securitySchema, new[] { "Bearer" } }
+    };
+    c.AddSecurityRequirement(securityRequirement);
+});
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -78,6 +101,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
   
+app.UseAuthorization();
+
 app.UseAuthorization();
 
 app.MapControllers();

@@ -27,8 +27,6 @@ public class ApiController : ControllerBase
         {
             apiErrorResponse.AddErrorMessage(applicationError.ApplicationErrorMessage);
         }
-        
-        if (applicationError.Errors.Count > 0)
 
         if (applicationError.ApplicationErrorType is ApplicationErrorType.AccessDeniedFailure)
         {

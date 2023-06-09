@@ -86,7 +86,6 @@ public class LoginToAccountHandler : IRequestHandler<LoginToAccountCommand, Hand
             Subject = new ClaimsIdentity(new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, existingIdentity.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, existingIdentity.Email),
                 new Claim(JwtRegisteredClaimNames.GivenName, account.FirstName),
                 new Claim(JwtRegisteredClaimNames.FamilyName, account.LastName)

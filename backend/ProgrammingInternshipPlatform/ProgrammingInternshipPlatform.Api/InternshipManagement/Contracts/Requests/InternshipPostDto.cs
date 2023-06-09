@@ -21,6 +21,5 @@ public class InternshipPostDto
     public int DurationInMonths { get; set; }
     
     [Required]
-    [ScheduleFromTomorrow]
     public DateTime ScheduledToStartOnDate { get; set; }
 }

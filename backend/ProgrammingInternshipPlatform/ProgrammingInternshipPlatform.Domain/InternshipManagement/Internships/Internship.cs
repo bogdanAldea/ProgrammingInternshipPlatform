@@ -1,18 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
+﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
 using ProgrammingInternshipPlatform.Domain.Organization.Center;
 using ProgrammingInternshipPlatform.Domain.Organization.Companys;
+using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 
 public class Internship
 {
+    private static readonly InternshipValidator Validator = new();
     private readonly List<Mentorship> _mentorships = new();
     private readonly List<Intern> _interns = new();
-
+    private readonly List<Trainer> _trainers = new();
     public Internship()
     {
     }
@@ -24,6 +25,7 @@ public class Internship
     public Timeframe Timeframe { get; private set; } = null!;
     public IReadOnlyCollection<Mentorship> Mentorships => _mentorships;
     public IReadOnlyCollection<Intern> Interns => _interns;
+    public IReadOnlyCollection<Trainer> Trainers => _trainers;
     public int MaximumInternsToEnroll { get; private set; }
     public int DurationInMonths { get; private set; }
 
@@ -61,12 +63,15 @@ public class Internship
         await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
     }
 
-    public async Task AddMentoringCollaboration(TrainerId trainerId, InternId internId, CancellationToken cancellationToken)
+    public async Task EnrollNewIntern(Intern intern, CancellationToken cancellationToken)
     {
-        var internshipValidator = new InternshipValidator();
-        var mentorship = await Mentorship
-            .CreateNew(trainerId: trainerId, internId: internId, internshipId: Id, cancellationToken);
-        _mentorships.Add(mentorship);
-        await internshipValidator.ValidateDomainModelAsync(this, cancellationToken);
+        if (_interns.Count <= MaximumInternsToEnroll)
+        {
+            _interns.Add(intern);
+            await Validator.ValidateDomainModelAsync(this, cancellationToken);
+            return;
+        }
+
+        throw new MaximumNumberOfInternsReachedException();
     }
 }

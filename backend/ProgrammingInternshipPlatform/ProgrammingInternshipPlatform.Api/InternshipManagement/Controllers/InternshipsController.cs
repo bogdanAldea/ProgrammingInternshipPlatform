@@ -4,10 +4,12 @@ using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Responses;
+using ProgrammingInternshipPlatform.Application.InternshipManagement.EnrollInternToInternship;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
+using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 using ProgrammingInternshipPlatform.Domain.Organization.Center;
 using ProgrammingInternshipPlatform.Domain.Organization.Companys;
@@ -81,6 +83,24 @@ public class InternshipsController : ApiController
 
         var handlerResult = await Mediator.Send(internshipEndDateExtensionCommand);
 
+        if (handlerResult.IsSuccess)
+        {
+            return NoContent();
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpPatch]
+    [Route(ApiRoutes.InternshipRoutes.InternshipInternsEnrollment)]
+    public async Task<IActionResult> EnrollInternToInternship(Guid id, [FromBody] InternEnrollment internEnrollment)
+    {
+        var internEnrollmentCommand = new EnrollNewInternToInternshipCommand(
+            InternshipId: new InternshipId(id),
+            AccountId: new AccountId(internEnrollment.UserAccountId)
+        );
+
+        var handlerResult = await Mediator.Send(internEnrollmentCommand);
         if (handlerResult.IsSuccess)
         {
             return NoContent();

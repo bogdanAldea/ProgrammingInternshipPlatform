@@ -5,6 +5,9 @@ public static class ApplicationErrorMessages
     public static class InternshipMessages
     {
         public const string InternshipNotFound = "The internship could not be found.";
+
+        public const string MaximumInternsReached =
+            "The maximum number of interns to enroll that has been set is was reached.";
     }
 
     public static class UserAccount

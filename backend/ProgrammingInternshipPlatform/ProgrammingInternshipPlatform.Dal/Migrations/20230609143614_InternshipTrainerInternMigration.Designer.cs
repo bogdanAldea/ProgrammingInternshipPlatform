@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -11,9 +12,10 @@ using ProgrammingInternshipPlatform.Dal.Context;
 namespace ProgrammingInternshipPlatform.Dal.Migrations
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    partial class ProgrammingInternshipPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230609143614_InternshipTrainerInternMigration")]
+    partial class InternshipTrainerInternMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +23,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("InternshipTrainer", b =>
-                {
-                    b.Property<Guid>("InternshipsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TrainersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("InternshipsId", "TrainersId");
-
-                    b.HasIndex("TrainersId");
-
-                    b.ToTable("InternshipTrainer");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -463,10 +450,15 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("TrainerId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LocationId")
                         .IsUnique();
+
+                    b.HasIndex("TrainerId");
 
                     b.ToTable("Internships");
                 });
@@ -749,21 +741,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.ToTable("WorkItem");
                 });
 
-            modelBuilder.Entity("InternshipTrainer", b =>
-                {
-                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Internship", null)
-                        .WithMany()
-                        .HasForeignKey("InternshipsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers.Trainer", null)
-                        .WithMany()
-                        .HasForeignKey("TrainersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -867,6 +844,10 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .HasForeignKey("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Internship", "LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers.Trainer", null)
+                        .WithMany("Internships")
+                        .HasForeignKey("TrainerId");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships.Mentorship", b =>
@@ -961,6 +942,11 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.Navigation("Timeframe")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers.Trainer", b =>
+                {
+                    b.Navigation("Internships");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.LearningHub.AssignmentRequests.AssignmentRequest", b =>

@@ -36,6 +36,16 @@ public class InternshipConfig : IEntityTypeConfiguration<Internship>
             .HasForeignKey(mentorship => mentorship.InternshipId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        builder
+            .HasMany(internship => internship.Interns)
+            .WithOne()
+            .HasForeignKey(intern => intern.InternshipId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder
+            .HasMany(internship => internship.Trainers)
+            .WithMany(trainer => trainer.Internships);
+
         builder.Property(internship => internship.CompanyId)
             .HasConversion(companyId => companyId.Value,
                 value => new CompanyId(value));

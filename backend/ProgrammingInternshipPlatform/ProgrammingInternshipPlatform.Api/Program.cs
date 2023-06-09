@@ -73,8 +73,9 @@ builder.Services.AddAuthentication(auth =>
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.SigningKey)),
-            ValidateIssuer = true,
             ValidIssuer = jwtSettings.Issuer,
+            ValidateIssuer = false,
+            ValidateAudience = false,
             RequireExpirationTime = false,
             ValidateLifetime = true
         };

@@ -2,7 +2,10 @@
 
 public class HandlerResult<TEntity>
 {
-    private HandlerResult() { }
+    private HandlerResult()
+    {
+        IsSuccess = true;
+    }
     private HandlerResult(ApplicationError failureReason)
     {
         FailureReason = failureReason;

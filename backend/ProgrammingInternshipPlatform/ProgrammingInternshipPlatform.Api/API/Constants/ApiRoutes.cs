@@ -15,6 +15,7 @@ public static class ApiRoutes
     {
         public const string StartDateRescheduling = $"{IdRoute}/timeframe/start-date";
         public const string EndDateExtending = $"{IdRoute}/timeframe/end-date";
+        public const string InternshipInternsEnrollment = $"{IdRoute}/interns";
     }
 
     public static class BoardRoutes

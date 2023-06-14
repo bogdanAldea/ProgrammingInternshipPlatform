@@ -4,6 +4,7 @@ export class InternshipDetails
 {
     public id: string;
     public status: number;
+    public numberOfInterns: number;
     public maximumInternsToEnroll: number;
     public durationInMonths: number;
     public scheduledToStartOn: Date;
@@ -13,6 +14,7 @@ export class InternshipDetails
     {
         this.id = internship.id;
         this.status = internship.status;
+        this.numberOfInterns = internship.numberOfInterns;
         this.maximumInternsToEnroll = internship.maximumInternsToEnroll;
         this.durationInMonths = internship.durationInMonths;
         this.scheduledToStartOn = internship.scheduledToStartOn;

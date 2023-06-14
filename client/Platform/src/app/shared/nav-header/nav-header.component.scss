@@ -1,0 +1,56 @@
+.container-fluid {
+    padding: 0 64px;
+}
+
+.navbar {
+    padding: 0;
+    margin: 0;
+}
+
+.top-nav-container {
+    min-height: 60px;
+    height: 60px;
+    background-color: #2B2F42;
+}
+
+.menu-nav-container {
+    min-height: 50px;
+    height: 50px;
+    background-color: #F6F6FB;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.menu-link-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.account-control-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.nav-item {
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+}
+
+.user-welcome-message {
+    line-height: 12px;
+
+    p {
+        margin: 0;
+        font-size: 10px;
+        color: white;
+        font-weight: 300;
+    }
+}
+
+.user-account-controls {
+    align-items: center;
+}

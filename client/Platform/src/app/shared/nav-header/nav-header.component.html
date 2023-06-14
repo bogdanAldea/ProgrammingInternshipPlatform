@@ -1,1 +1,51 @@
-<p>nav-header works!</p>
+<nav class="navbar navbar-expand-lg flex-column">
+    <div class="container-fluid top-nav-container">
+      <div>
+        <img src= "../../../assets/images/logo/app-logo-full-light.svg">
+      </div>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+      <div class="user-account-controls d-flex flex-row gap-5">
+        <img class="account-control-icon" src="../../../assets/icons/global/notification.svg" alt="">
+        <div class="user-welcome-message m-0 p-0 d-flex gap-3 align-items-center">
+          <div class="">
+            <p>Welcome, </p>
+            <p>Firstname</p>
+          </div>
+          <img src="../../../assets/images/profile/placeholder-profile-pic.svg" alt="">
+        </div>
+
+        <img class="account-control-icon" src="../../../assets/icons/global/more.svg" alt="">
+      </div>
+
+    </div>
+    <div class="container-fluid menu-nav-container">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
+            <li class="nav-item d-flex">
+              <img class="menu-link-icon" src= "../../../assets/icons/menus/admin/overview.svg">
+              <a class="nav-link active" aria-current="page" href="#">Overview</a>
+            </li>
+            <li class="nav-item d-flex">
+              <img class="menu-link-icon"  src= "../../../assets/icons/menus/admin/internship.svg">
+              <a class="nav-link" aria-current="page" href="#">Internships</a>
+            </li>
+            <li class="nav-item d-flex">
+              <img class="menu-link-icon"  src= "../../../assets/icons/menus/admin/acounts.svg">
+              <a class="nav-link" aria-current="page" href="#">Accounts</a>
+            </li>
+            <li class="nav-item d-flex">
+              <img class="menu-link-icon"  src= "../../../assets/icons/menus/admin/list.svg">
+              <a class="nav-link" aria-current="page" href="#">Curriculum</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </nav>

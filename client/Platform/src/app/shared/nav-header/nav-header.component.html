@@ -29,21 +29,11 @@
     <div class="container-fluid menu-nav-container">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
-            <li class="nav-item d-flex">
-              <img class="menu-link-icon" src= "../../../assets/icons/menus/admin/overview.svg">
-              <a class="nav-link active" aria-current="page" href="#">Overview</a>
-            </li>
-            <li class="nav-item d-flex">
-              <img class="menu-link-icon"  src= "../../../assets/icons/menus/admin/internship.svg">
-              <a class="nav-link" aria-current="page" href="#">Internships</a>
-            </li>
-            <li class="nav-item d-flex">
-              <img class="menu-link-icon"  src= "../../../assets/icons/menus/admin/acounts.svg">
-              <a class="nav-link" aria-current="page" href="#">Accounts</a>
-            </li>
-            <li class="nav-item d-flex">
-              <img class="menu-link-icon"  src= "../../../assets/icons/menus/admin/list.svg">
-              <a class="nav-link" aria-current="page" href="#">Curriculum</a>
+            <li class="nav-item d-flex" *ngFor="let menuItem of menuItems">
+              <a class="nav-link active" [routerLink]="menuItem.route" aria-current="page" href="#">
+                <img class="menu-link-icon" [src]= "menuItem.icon">
+                {{ menuItem.name }}
+              </a>
             </li>
           </ul>
         </div>

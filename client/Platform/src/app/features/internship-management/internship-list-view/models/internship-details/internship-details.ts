@@ -1,5 +1,4 @@
 import {InternshipDetailResponse} from "../../contracts/responses/internship-details/internship-detail-response";
-import { Timeframe } from "../timframe/timeframe";
 
 export class InternshipDetails 
 {
@@ -16,7 +15,7 @@ export class InternshipDetails
         this.status = internship.status;
         this.maximumInternsToEnroll = internship.maximumInternsToEnroll;
         this.durationInMonths = internship.durationInMonths;
-        this.scheduledToStartOn = internship.timeframe.scheduledToStartOn;
-        this.scheduledToEndOn = internship.timeframe.scheduledToEndOn;
+        this.scheduledToStartOn = internship.scheduledToStartOn;
+        this.scheduledToEndOn = internship.scheduledToEndOn;
     }
 }

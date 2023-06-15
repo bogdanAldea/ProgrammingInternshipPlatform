@@ -1,11 +1,3 @@
-<p>internship-list-view works!</p>
-<ul>
-    <li *ngFor="let internship of internships">
-        <p>Guid: {{ internship.id }}</p>
-        <p>Status: {{ internship.status }}</p>
-        <p>Scheduled to start on: {{ internship.scheduledToStartOn }}</p>
-        <p>Scheduled to start on:: {{ internship.scheduledToEndOn }}</p>
-        <p>Maximum interns to enroll: {{ internship.maximumInternsToEnroll }}</p>
-        <a [routerLink]="['/internships', internship.id]">See</a>
-    </li>
-</ul>
+<div class="container-fluid">
+    <app-internship-table [internships]="internships"></app-internship-table>
+</div>

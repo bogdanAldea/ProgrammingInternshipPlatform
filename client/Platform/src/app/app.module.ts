@@ -4,23 +4,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { InternshipManagementModule } from './features/internship-management/internship-management/internship-management.module';
-import { InternshipListViewComponent } from './features/internship-management/internship-list-view/component/internship-list-view.component';
-import { AccountsListViewComponent } from './features/authentication/accounts-list-view/accounts-list-view.component';
 import { AuthenticationModule } from './features/authentication/authentication/authentication.module';
-import { ContextLayoutComponent } from './shared/layouts/context-layout/context-layout.component';
 import { RouterModule } from '@angular/router';
+import { OrganisationModule } from './features/organisation/organisation.module';
+import { CurriculumModule } from './features/curriculum/curriculum.module';
+import { OverviewModule } from './features/overview/overview.module';
+import { HttpClientModule } from '@angular/common/http';
+import { InternshipTableComponent } from './features/internship-management/internship-list-view/component/internship-table/internship-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    HttpClientModule,
+    RouterModule, 
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     InternshipManagementModule,
     AuthenticationModule,
-    RouterModule
+    OrganisationModule,
+    CurriculumModule,
+    OverviewModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

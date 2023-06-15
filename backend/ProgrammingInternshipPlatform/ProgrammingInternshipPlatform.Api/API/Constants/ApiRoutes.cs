@@ -17,11 +17,9 @@ public static class ApiRoutes
         public const string EndDateExtending = $"{IdRoute}/timeframe/end-date";
         public const string InternshipInternsEnrollment = $"{IdRoute}/interns";
     }
-
-    public static class BoardRoutes
+    
+    public static class OrganisationRoutes
     {
-        public const string StageIdRoute = "{stageId}";
-        public const string BoardStages = $"{IdRoute}/stages";
-        public const string StageCards = $"{IdRoute}/stages/{StageIdRoute}";
+        public const string AllInternships = $"{IdRoute}/internships";
     }
 }

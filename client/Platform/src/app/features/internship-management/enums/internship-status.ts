@@ -5,3 +5,11 @@ export enum InternshipStatus
     ongoing = 3,
     completed = 4
 }
+
+export enum InternshipStatusAsString
+{
+    setupInProgress = "Setup In Progress",
+    notStarted = "Not Started",
+    ongoing = "Ongoing",
+    completed = "Completed"
+}

@@ -27,8 +27,8 @@ public class InternshipConfig : IEntityTypeConfiguration<Internship>
 
         builder
             .HasOne<Domain.Organization.Center.Location>()
-            .WithOne()
-            .HasForeignKey<Internship>(internship => internship.LocationId);
+            .WithMany()
+            .HasForeignKey(internship => internship.LocationId);
 
         builder
             .HasMany(internship => internship.Mentorships)

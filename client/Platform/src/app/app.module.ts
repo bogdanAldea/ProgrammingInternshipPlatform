@@ -10,10 +10,11 @@ import { OrganisationModule } from './features/organisation/organisation.module'
 import { CurriculumModule } from './features/curriculum/curriculum.module';
 import { OverviewModule } from './features/overview/overview.module';
 import { HttpClientModule } from '@angular/common/http';
+import { InternshipTableComponent } from './features/internship-management/internship-list-view/component/internship-table/internship-table.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     HttpClientModule,

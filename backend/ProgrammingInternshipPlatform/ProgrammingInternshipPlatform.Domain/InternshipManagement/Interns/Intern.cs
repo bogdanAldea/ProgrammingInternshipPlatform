@@ -11,6 +11,7 @@ public class Intern
     public InternId Id { get; private set; }
     public AccountId AccountId { get; private set; }
     public InternshipId InternshipId { get; private set; }
+    public GraduationStatus GraduationStatus { get; private set; } = GraduationStatus.Ongoing;
 
     public static async Task<Intern> CreateNew(AccountId accountId, InternshipId internshipId, CancellationToken cancellationToken)
     {

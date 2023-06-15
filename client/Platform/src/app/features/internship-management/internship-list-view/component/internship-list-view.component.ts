@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InternshipService } from '../services/internship-service.service';
 import { InternshipDetails } from '../models/internship-details/internship-details';
+import { InternshipStatusAsString } from '../../enums/internship-status';
 
 
 @Component({

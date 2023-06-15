@@ -17,7 +17,10 @@ export class InternshipListViewComponent implements OnInit {
     // this only for testing
     this.internshipService
       .getAllInternshipsAtOrganisation()
-      .subscribe(response => this.internships = response);
+      .subscribe(response => {
+        this.internships = response,
+        console.log(response)
+      });
   }
 
 }

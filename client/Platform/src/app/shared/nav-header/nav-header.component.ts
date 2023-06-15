@@ -7,10 +7,13 @@ import { MenuItem, Menus } from 'src/app/core/menus/menus';
   styleUrls: ['./nav-header.component.scss']
 })
 export class NavHeaderComponent implements OnInit {
-  public menuItems: MenuItem[] = Menus.administratorMenuItems;
+
+  public menuItems: MenuItem[] = [];
+
   
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.menuItems = Menus.administratorMenuItems;
   }
+
 
 }

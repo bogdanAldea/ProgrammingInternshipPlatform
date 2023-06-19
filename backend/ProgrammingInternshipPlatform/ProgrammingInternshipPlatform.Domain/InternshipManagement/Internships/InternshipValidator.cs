@@ -27,7 +27,7 @@ public class InternshipValidator : DomainAbstractValidator<Internship>
             .Equal(InternshipStatus.SetupInProgress)
             .WithMessage(RuleFailureMessages.InternshipMessages.InvalidStatusAtCreation);;
 
-        RuleFor(internship => internship.LocationId)
+        RuleFor(internship => internship.CenterId)
             .NotEmpty()
             .WithMessage(RuleFailureMessages.InternshipMessages.EmptyOrNullProperty);
 

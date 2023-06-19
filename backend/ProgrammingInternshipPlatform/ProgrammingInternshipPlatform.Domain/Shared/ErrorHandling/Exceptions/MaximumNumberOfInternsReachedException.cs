@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
+﻿namespace ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 public class MaximumNumberOfInternsReachedException : Exception
 {

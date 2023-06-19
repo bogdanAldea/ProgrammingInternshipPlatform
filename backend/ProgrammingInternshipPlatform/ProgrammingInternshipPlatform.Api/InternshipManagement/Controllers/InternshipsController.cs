@@ -11,8 +11,8 @@ using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleI
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
-using ProgrammingInternshipPlatform.Domain.Organization.Center;
-using ProgrammingInternshipPlatform.Domain.Organization.Companys;
+using ProgrammingInternshipPlatform.Domain.Organisation.Centers;
+using ProgrammingInternshipPlatform.Domain.Organisation.Company;
 
 namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Controllers;
 
@@ -39,7 +39,7 @@ public class InternshipsController : ApiController
     {
         var internshipSetUpCommand = new SetupNewInternshipProgramCommand(
             CompanyId: new CompanyId(internshipPostDto.CompanyId),
-            LocationId: new LocationId(internshipPostDto.LocationId),
+            CenterId: new CenterId(internshipPostDto.LocationId),
             MaximumInternsToEnroll: internshipPostDto.MaximumInternsToEnroll,
             DurationInMonths: internshipPostDto.DurationInMonths,
             ScheduledToStartOnDate: internshipPostDto.ScheduledToStartOnDate

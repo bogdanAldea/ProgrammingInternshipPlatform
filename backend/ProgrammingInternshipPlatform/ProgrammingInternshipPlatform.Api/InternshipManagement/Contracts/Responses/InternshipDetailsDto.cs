@@ -16,7 +16,7 @@ public class InternshipDetailsDto
         return new InternshipDetailsDto()
         {
             Id = internship.Id.Value,
-            LocationId = internship.LocationId.Value,
+            LocationId = internship.CenterId.Value,
             Timeframe = new TimeframeDetailsDto()
             {
                 ScheduledToStartOn = internship.Timeframe.ScheduledToStartOn,

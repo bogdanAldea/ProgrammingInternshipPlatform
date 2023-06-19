@@ -11,7 +11,7 @@ public class AssignmentRequestConfig : IEntityTypeConfiguration<AssignmentReques
 {
     public void Configure(EntityTypeBuilder<AssignmentRequest> builder)
     {
-        builder.HasIndex(request => request.AssignmentId);
+        builder.HasKey(request => request.AssignmentRequestId);
 
         builder
             .Property(request => request.AssignmentRequestId)

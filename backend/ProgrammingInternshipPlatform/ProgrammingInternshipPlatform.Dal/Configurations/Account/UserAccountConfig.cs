@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
-using ProgrammingInternshipPlatform.Domain.Organization.Companys;
+using ProgrammingInternshipPlatform.Domain.Organisation.Company;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.Account;
 

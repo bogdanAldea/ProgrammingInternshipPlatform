@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingInternshipPlatform.Dal.Context;
 
@@ -11,9 +12,10 @@ using ProgrammingInternshipPlatform.Dal.Context;
 namespace ProgrammingInternshipPlatform.Dal.Migrations
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    partial class ProgrammingInternshipPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230619121442_InternshipModuleConfig")]
+    partial class InternshipModuleConfig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -439,14 +441,14 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CenterId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("CompanyId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("DurationInMonths")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("MaximumInternsToEnroll")
                         .HasColumnType("int");
@@ -456,7 +458,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CenterId");
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Internships");
                 });
@@ -602,20 +604,33 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.ToTable("ScheduledPresentation");
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Centers.Center", b =>
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organization.Center.Location", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CountryId")
+                    b.Property<string>("Center")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("CompanyId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Center")
+                        .IsUnique();
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Company.Company", b =>
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organization.Companys.Company", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -627,25 +642,6 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Company");
-                });
-
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Countries.Country", b =>
-                {
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CompanyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CountryId");
-
-                    b.HasIndex("CompanyId");
-
-                    b.ToTable("Country");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.ProjectHub.AcceptanceCriteria.AcceptanceCriterion", b =>
@@ -862,9 +858,9 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Internship", b =>
                 {
-                    b.HasOne("ProgrammingInternshipPlatform.Domain.Organisation.Centers.Center", null)
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.Organization.Center.Location", null)
                         .WithMany()
-                        .HasForeignKey("CenterId")
+                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -905,10 +901,10 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Countries.Country", b =>
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organization.Center.Location", b =>
                 {
-                    b.HasOne("ProgrammingInternshipPlatform.Domain.Organisation.Company.Company", null)
-                        .WithMany("Countries")
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.Organization.Companys.Company", null)
+                        .WithMany("Locations")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -973,9 +969,9 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.Navigation("AssignmentRequest");
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Company.Company", b =>
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organization.Companys.Company", b =>
                 {
-                    b.Navigation("Countries");
+                    b.Navigation("Locations");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.ProjectHub.Projects.Project", b =>

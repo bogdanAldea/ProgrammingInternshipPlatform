@@ -9,7 +9,7 @@ public class AcceptanceCriterionConfig : IEntityTypeConfiguration<AcceptanceCrit
 {
     public void Configure(EntityTypeBuilder<AcceptanceCriterion> builder)
     {
-        builder.HasIndex(criterion => criterion.AcceptanceCriterionId);
+        builder.HasKey(criterion => criterion.AcceptanceCriterionId);
 
         builder
             .Property(criterion => criterion.AcceptanceCriterionId)

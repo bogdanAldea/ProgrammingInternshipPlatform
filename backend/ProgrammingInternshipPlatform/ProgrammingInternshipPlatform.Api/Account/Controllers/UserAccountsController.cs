@@ -5,7 +5,7 @@ using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Application.Account;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
-using ProgrammingInternshipPlatform.Domain.Organization.Companys;
+using ProgrammingInternshipPlatform.Domain.Organisation.Company;
 
 namespace ProgrammingInternshipPlatform.Api.Account.Controllers;
 

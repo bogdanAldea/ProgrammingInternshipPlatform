@@ -9,7 +9,7 @@ public class StageConfig : IEntityTypeConfiguration<Stage>
 {
     public void Configure(EntityTypeBuilder<Stage> builder)
     {
-        builder.HasIndex(stage => stage.StageId);
+        builder.HasKey(stage => stage.StageId);
 
         builder
             .Property(stage => stage.StageId)

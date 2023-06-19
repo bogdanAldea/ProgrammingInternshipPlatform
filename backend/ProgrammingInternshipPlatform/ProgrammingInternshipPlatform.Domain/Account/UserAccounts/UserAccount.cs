@@ -1,4 +1,4 @@
-﻿using ProgrammingInternshipPlatform.Domain.Organization.Companys;
+﻿using ProgrammingInternshipPlatform.Domain.Organisation.Company;
 
 namespace ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 

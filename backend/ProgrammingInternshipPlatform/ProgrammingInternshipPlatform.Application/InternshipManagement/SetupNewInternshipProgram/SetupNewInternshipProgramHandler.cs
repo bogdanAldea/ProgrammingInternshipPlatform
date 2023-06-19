@@ -2,13 +2,13 @@
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
-using ProgrammingInternshipPlatform.Domain.Organization.Center;
-using ProgrammingInternshipPlatform.Domain.Organization.Companys;
-using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
+using ProgrammingInternshipPlatform.Domain.Organisation.Centers;
+using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 
-public record SetupNewInternshipProgramCommand(CompanyId CompanyId, LocationId LocationId, int MaximumInternsToEnroll, 
+public record SetupNewInternshipProgramCommand(CompanyId CompanyId, CenterId CenterId, int MaximumInternsToEnroll, 
     int DurationInMonths, DateTime ScheduledToStartOnDate) : IRequest<HandlerResult<Internship>>;
 
 public class
@@ -44,7 +44,7 @@ public class
 
     private async Task<Internship> SetUpNewInternshipAsync(SetupNewInternshipProgramCommand request, CancellationToken cancellationToken)
     {
-        return await Internship.SetupInternship(companyId: request.CompanyId, locationId: request.LocationId,
+        return await Internship.SetupInternship(companyId: request.CompanyId, centerId: request.CenterId,
             maxInternsToEnroll: request.MaximumInternsToEnroll, durationInMonths: request.DurationInMonths,
             startDate: request.ScheduledToStartOnDate, cancellationToken);
     }

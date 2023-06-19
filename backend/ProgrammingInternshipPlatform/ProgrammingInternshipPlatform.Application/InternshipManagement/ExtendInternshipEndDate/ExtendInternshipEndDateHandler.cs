@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
-using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
+using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
 

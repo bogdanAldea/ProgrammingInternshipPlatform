@@ -10,7 +10,7 @@ public class ScheduledPresentationConfig : IEntityTypeConfiguration<ScheduledPre
 {
     public void Configure(EntityTypeBuilder<ScheduledPresentation> builder)
     {
-        builder.HasIndex(presentation => presentation.ScheduledPresentationId);
+        builder.HasKey(presentation => presentation.ScheduledPresentationId);
 
         builder
             .Property(presentation => presentation.ScheduledPresentationId)

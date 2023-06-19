@@ -10,7 +10,7 @@ public class CardConfig : IEntityTypeConfiguration<Card>
 {
     public void Configure(EntityTypeBuilder<Card> builder)
     {
-        builder.HasIndex(card => card.CardId);
+        builder.HasKey(card => card.CardId);
 
         builder
             .Property(card => card.CardId)

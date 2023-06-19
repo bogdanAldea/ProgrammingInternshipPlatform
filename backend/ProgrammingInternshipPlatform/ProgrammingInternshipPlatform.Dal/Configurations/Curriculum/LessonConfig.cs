@@ -10,7 +10,7 @@ public class LessonConfig : IEntityTypeConfiguration<Lesson>
 {
     public void Configure(EntityTypeBuilder<Lesson> builder)
     {
-        builder.HasIndex(lesson => lesson.LessonId);
+        builder.HasKey(lesson => lesson.LessonId);
 
         builder
             .Property(lesson => lesson.LessonId)

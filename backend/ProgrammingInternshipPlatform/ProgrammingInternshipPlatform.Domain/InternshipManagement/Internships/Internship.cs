@@ -2,9 +2,9 @@
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
-using ProgrammingInternshipPlatform.Domain.Organization.Center;
-using ProgrammingInternshipPlatform.Domain.Organization.Companys;
-using ProgrammingInternshipPlatform.Domain.Shared.Exceptions;
+using ProgrammingInternshipPlatform.Domain.Organisation.Centers;
+using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 
@@ -20,7 +20,7 @@ public class Internship
 
     public InternshipId Id { get; private set; }
     public CompanyId CompanyId { get; private set; }
-    public LocationId LocationId { get; private set; }
+    public CenterId CenterId { get; private set; }
     public InternshipStatus Status { get; private set; } = InternshipStatus.SetupInProgress;
     public Timeframe Timeframe { get; private set; } = null!;
     public IReadOnlyCollection<Mentorship> Mentorships => _mentorships;
@@ -29,7 +29,7 @@ public class Internship
     public int MaximumInternsToEnroll { get; private set; }
     public int DurationInMonths { get; private set; }
 
-    public static async Task<Internship> SetupInternship(CompanyId companyId, LocationId locationId,
+    public static async Task<Internship> SetupInternship(CompanyId companyId, CenterId centerId,
         int maxInternsToEnroll,
         int durationInMonths, DateTime startDate, CancellationToken cancellationToken)
     {
@@ -39,7 +39,7 @@ public class Internship
         {
             Id = new InternshipId(Guid.NewGuid()),
             CompanyId = companyId,
-            LocationId = locationId,
+            CenterId = centerId,
             Timeframe = timeframe,
             MaximumInternsToEnroll = maxInternsToEnroll,
             DurationInMonths = durationInMonths

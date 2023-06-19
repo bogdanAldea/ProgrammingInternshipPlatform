@@ -9,7 +9,7 @@ public class AssignmentConfig : IEntityTypeConfiguration<Assignment>
 {
     public void Configure(EntityTypeBuilder<Assignment> builder)
     {
-        builder.HasIndex(assignment => assignment.AssignmentId);
+        builder.HasKey(assignment => assignment.AssignmentId);
 
         builder
             .Property(assignment => assignment.AssignmentId)

@@ -1,22 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.Organization.Companys;
+using ProgrammingInternshipPlatform.Domain.Organisation.Company;
 
-namespace ProgrammingInternshipPlatform.Dal.Configurations.Location;
+namespace ProgrammingInternshipPlatform.Dal.Configurations.Organisation;
 
 public class CompanyConfig : IEntityTypeConfiguration<Company>
 {
     public void Configure(EntityTypeBuilder<Company> builder)
     {
-        builder.HasIndex(company => company.Id);
+        builder.HasKey(company => company.Id);
         builder.Property(company => company.Id)
             .HasConversion(id => id.Value,
                 value => new CompanyId((value)));
 
         builder
-            .HasMany(company => company.Locations)
+            .HasMany(company => company.Countries)
             .WithOne()
-            .HasForeignKey(location => location.CompanyId)
+            .HasForeignKey(country => country.CompanyId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

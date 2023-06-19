@@ -3,7 +3,7 @@ using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.Organisation.Contracts.Responses;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipsByOrganisation;
-using ProgrammingInternshipPlatform.Domain.Organization.Companys;
+using ProgrammingInternshipPlatform.Domain.Organisation.Company;
 
 namespace ProgrammingInternshipPlatform.Api.Organisation.Controller;
 

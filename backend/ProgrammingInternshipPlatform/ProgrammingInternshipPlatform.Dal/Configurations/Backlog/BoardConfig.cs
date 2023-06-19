@@ -10,7 +10,7 @@ public class BoardConfig : IEntityTypeConfiguration<Board>
 {
     public void Configure(EntityTypeBuilder<Board> builder)
     {
-        builder.HasIndex(board => board.BoardId);
+        builder.HasKey(board => board.BoardId);
 
         builder
             .Property(board => board.BoardId)

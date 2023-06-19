@@ -9,7 +9,7 @@ public class WorkItemConfig : IEntityTypeConfiguration<WorkItem>
 {
     public void Configure(EntityTypeBuilder<WorkItem> builder)
     {
-        builder.HasIndex(workItem => workItem.WorkItemId);
+        builder.HasKey(workItem => workItem.WorkItemId);
 
         builder
             .Property(workItem => workItem.WorkItemId)

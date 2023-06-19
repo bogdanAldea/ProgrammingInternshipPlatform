@@ -9,7 +9,7 @@ public class CommentConfig : IEntityTypeConfiguration<Comment>
 {
     public void Configure(EntityTypeBuilder<Comment> builder)
     {
-        builder.HasIndex(comment => comment.CommentId);
+        builder.HasKey(comment => comment.CommentId);
 
         builder
             .Property(comment => comment.CommentId)

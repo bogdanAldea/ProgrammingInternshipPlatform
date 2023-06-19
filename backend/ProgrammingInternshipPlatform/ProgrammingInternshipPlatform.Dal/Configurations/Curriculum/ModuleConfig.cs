@@ -8,7 +8,7 @@ public class ModuleConfig : IEntityTypeConfiguration<Module>
 {
     public void Configure(EntityTypeBuilder<Module> builder)
     {
-        builder.HasIndex(module => module.ModuleId);
+        builder.HasKey(module => module.ModuleId);
 
         builder
             .Property(module => module.ModuleId)

@@ -65,13 +65,22 @@ public class Internship
 
     public async Task EnrollNewIntern(Intern intern, CancellationToken cancellationToken)
     {
-        if (_interns.Count <= MaximumInternsToEnroll)
+        if (_interns.Count == MaximumInternsToEnroll)
         {
-            _interns.Add(intern);
-            await Validator.ValidateDomainModelAsync(this, cancellationToken);
-            return;
+            throw new MaximumNumberOfInternsReachedException();
         }
 
-        throw new MaximumNumberOfInternsReachedException();
+        if (_interns.Contains(intern))
+        {
+            throw new InternAlreadyEnrolledException();
+        }
+        
+        if(Status != InternshipStatus.SetupInProgress)
+        {
+            throw new InternshipAlreadySetupException();
+        }
+        
+        _interns.Add(intern);
+        await Validator.ValidateDomainModelAsync(this, cancellationToken);
     }
 }

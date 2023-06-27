@@ -45,4 +45,7 @@ public class ApplicationError
     
     public static ApplicationError IdentityLoginPasswordFailure(string errorMessage)
         => new(errorType: ApplicationErrorType.IdentityLoginPasswordFailure, errorMessage: errorMessage);
+
+    public static ApplicationError TransactionFailure(string errorMessage)
+        => new(errorType: ApplicationErrorType.TransactionFailure, errorMessage: errorMessage);
 }

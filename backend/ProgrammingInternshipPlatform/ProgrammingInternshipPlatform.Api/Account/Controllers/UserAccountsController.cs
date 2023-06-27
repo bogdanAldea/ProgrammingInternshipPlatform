@@ -30,11 +30,12 @@ public class UserAccountsController : ApiController
     [Route("registration")]
     public async Task<IActionResult> RegisterUserAccount([FromBody] UserAccountRegistration userAccountRegistration)
     {
-        var userAccountRegistrationCommand = new RegisterUserAccountCommand(
+        var userAccountRegistrationCommand = new RegisterUserAccountWithRolesCommand(
             FirstName: userAccountRegistration.FirstName,
             LastName: userAccountRegistration.LastName, Email: userAccountRegistration.Email,
             Password: userAccountRegistration.Password, PictureUrl: userAccountRegistration.PictureUrl,
-            CompanyId: new CompanyId(userAccountRegistration.CompanyId));
+            CompanyId: new CompanyId(userAccountRegistration.CompanyId),
+            Roles: userAccountRegistration.Roles);
 
         var handlerResult = await Mediator.Send(userAccountRegistrationCommand);
         if (handlerResult.IsSuccess)

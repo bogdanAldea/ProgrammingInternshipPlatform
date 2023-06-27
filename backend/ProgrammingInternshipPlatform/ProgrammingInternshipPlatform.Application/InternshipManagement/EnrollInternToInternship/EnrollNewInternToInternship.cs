@@ -35,35 +35,58 @@ public class EnrollNewInternToInternshipHandler : IRequestHandler<EnrollNewInter
             return HandlerResult<Internship>.Fail(internshipNotFoundError);
         }
 
-        Intern internToEnroll;
-        try
-        {
-            internToEnroll = await Intern.CreateNew(accountId: request.AccountId, 
-                internshipId: request.InternshipId, cancellationToken);
-        }
-        catch (DomainModelValidationException exception)
-        {
-            var domainValidationError = ApplicationError.DomainValidationFailure(exception.Message);
-            return HandlerResult<Internship>.Fail(domainValidationError);
-        }
-
-        try
-        {
-            await internshipToAddInternTo.EnrollNewIntern(internToEnroll, cancellationToken);
-            await _context.SaveChangesAsync(cancellationToken);
-            return HandlerResult<Internship>.Success();
-        }
-        catch (DomainModelValidationException exception)
-        {
-            var domainValidationError = ApplicationError.DomainValidationFailure(exception.Message);
-            return HandlerResult<Internship>.Fail(domainValidationError);
-        }
-        catch (MaximumNumberOfInternsReachedException)
-        {
-            var internsEnrolledError = ApplicationErrorMessages.InternshipMessages.MaximumInternsReached;
-            var internEnrollError = ApplicationError.DomainValidationFailure(internsEnrolledError);
-            return HandlerResult<Internship>.Fail(internEnrollError);
-        }
         
+        await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
+        try
+        {
+            Intern internToEnroll;
+            try
+            {
+                internToEnroll = await Intern.CreateNew(accountId: request.AccountId, 
+                    internshipId: request.InternshipId, cancellationToken);
+            }
+            catch (DomainModelValidationException exception)
+            {
+                var domainValidationError = ApplicationError.DomainValidationFailure(exception.Message);
+                return HandlerResult<Internship>.Fail(domainValidationError);
+            }
+
+            try
+            {
+                await internshipToAddInternTo.EnrollNewIntern(internToEnroll, cancellationToken);
+                await _context.SaveChangesAsync(cancellationToken);
+                await transaction.CommitAsync(cancellationToken);
+                return HandlerResult<Internship>.Success();
+            }
+            catch (DomainModelValidationException exception)
+            {
+                var domainValidationError = ApplicationError.DomainValidationFailure(exception.Message);
+                return HandlerResult<Internship>.Fail(domainValidationError);
+            }
+            catch (MaximumNumberOfInternsReachedException)
+            {
+                var internsEnrolledError = ApplicationErrorMessages.InternshipMessages.MaximumInternsReached;
+                var internEnrollError = ApplicationError.DomainValidationFailure(internsEnrolledError);
+                return HandlerResult<Internship>.Fail(internEnrollError);
+            }
+            catch (InternAlreadyEnrolledException)
+            {
+                var internsEnrolledError = ApplicationErrorMessages.InternshipMessages.InternAlreadyEnrolled;
+                var internEnrollError = ApplicationError.DomainValidationFailure(internsEnrolledError);
+                return HandlerResult<Internship>.Fail(internEnrollError);
+            }
+            catch (InternshipAlreadySetupException)
+            {
+                var internsEnrolledError = ApplicationErrorMessages.InternshipMessages.InternshipSetUpPhaseHasPassed;
+                var internEnrollError = ApplicationError.DomainValidationFailure(internsEnrolledError);
+                return HandlerResult<Internship>.Fail(internEnrollError);
+            }
+        }
+        catch (Exception exception)
+        {
+            await transaction.RollbackAsync(cancellationToken);
+            var transactionError = ApplicationError.TransactionFailure(exception.Message);
+            return HandlerResult<Internship>.Fail(transactionError);
+        }
     }
 }

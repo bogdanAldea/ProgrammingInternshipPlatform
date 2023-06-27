@@ -52,7 +52,7 @@ public class LoginToAccountHandler : IRequestHandler<LoginToAccountCommand, Hand
             return HandleUserAccountNotFoundError();
         }
 
-        var token = GenerateAuthenticationToken(existingIdentity, userAccount);
+        var token = await GenerateAuthenticationToken(existingIdentity, userAccount);
         return HandlerResult<string>.Success(token);
     }
 
@@ -77,24 +77,32 @@ public class LoginToAccountHandler : IRequestHandler<LoginToAccountCommand, Hand
         return HandlerResult<string>.Fail(userAccountNotFoundError);
     }
 
-    private string GenerateAuthenticationToken(IdentityUser existingIdentity, UserAccount account)
+    private async Task<string> GenerateAuthenticationToken(IdentityUser existingIdentity, UserAccount account)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var signingKey = Encoding.ASCII.GetBytes(_jwtSettings.SigningKey);
+
+        var claims = new List<Claim>
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, existingIdentity.Email),
+            new Claim(JwtRegisteredClaimNames.Email, existingIdentity.Email),
+            new Claim(JwtRegisteredClaimNames.GivenName, account.FirstName),
+            new Claim(JwtRegisteredClaimNames.FamilyName, account.LastName),
+        };
+        
+        var roles = await _userManager.GetRolesAsync(existingIdentity);
+        foreach (var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
+        
         var tokenDescriptor = new SecurityTokenDescriptor()
         {
-            Subject = new ClaimsIdentity(new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, existingIdentity.Email),
-                new Claim(JwtRegisteredClaimNames.Email, existingIdentity.Email),
-                new Claim(JwtRegisteredClaimNames.GivenName, account.FirstName),
-                new Claim(JwtRegisteredClaimNames.FamilyName, account.LastName)
-            }),
-
+            Subject = new ClaimsIdentity(claims),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(signingKey),
                 SecurityAlgorithms.HmacSha256Signature)
         };
-
+        
         var tokenCreate = tokenHandler.CreateToken(tokenDescriptor);
         var token = tokenHandler.WriteToken(tokenCreate);
         return token;

@@ -1,0 +1,12 @@
+<!-- <div *ngFor="let option of options">
+    <app-internship-option-card [option]="option" [internshipId]="internshipId"></app-internship-option-card>
+</div> -->
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 py-3" *ngFor="let option of options">
+            <app-internship-option-card [option]="option" [internshipId]="internshipId"></app-internship-option-card>
+        </div>
+    </div>
+</div>

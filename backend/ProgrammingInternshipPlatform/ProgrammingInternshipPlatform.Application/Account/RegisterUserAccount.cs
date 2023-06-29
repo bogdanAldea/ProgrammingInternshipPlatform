@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.Account;

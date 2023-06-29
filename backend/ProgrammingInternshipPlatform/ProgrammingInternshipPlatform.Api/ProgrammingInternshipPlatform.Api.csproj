@@ -24,4 +24,8 @@
       <ProjectReference Include="..\ProgrammingInternshipPlatform.Domain\ProgrammingInternshipPlatform.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="API\Policies" />
+    </ItemGroup>
+
 </Project>

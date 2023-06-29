@@ -3,7 +3,7 @@ using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 using ProgrammingInternshipPlatform.Domain.Organisation.Centers;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;

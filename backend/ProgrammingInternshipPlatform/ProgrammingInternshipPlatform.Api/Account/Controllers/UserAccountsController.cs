@@ -5,7 +5,7 @@ using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Application.Account;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
 namespace ProgrammingInternshipPlatform.Api.Account.Controllers;
 
@@ -27,7 +27,7 @@ public class UserAccountsController : ApiController
     }
 
     [HttpPost]
-    [Route("registration")]
+    [Route(ApiRoutes.UserAccountRoutes.AccountRegistration)]
     public async Task<IActionResult> RegisterUserAccount([FromBody] UserAccountRegistration userAccountRegistration)
     {
         var userAccountRegistrationCommand = new RegisterUserAccountCommand(
@@ -48,7 +48,7 @@ public class UserAccountsController : ApiController
     }
 
     [HttpPost]
-    [Route("login")]
+    [Route(ApiRoutes.UserAccountRoutes.AccountAuthentication)]
     public async Task<IActionResult> LoginToUserAccount([FromBody] UserAccountAuthentication userAccountAuthentication)
     {
         var authenticationCommand = new LoginToAccountCommand(

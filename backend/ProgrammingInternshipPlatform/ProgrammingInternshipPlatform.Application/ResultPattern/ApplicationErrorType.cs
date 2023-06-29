@@ -9,4 +9,5 @@ public enum ApplicationErrorType
     IdentityUserAlreadyExistsFailure = 5,
     IdentityRegistrationFailure = 6,
     IdentityLoginPasswordFailure = 7,
+    TransactionFailure = 8
 }

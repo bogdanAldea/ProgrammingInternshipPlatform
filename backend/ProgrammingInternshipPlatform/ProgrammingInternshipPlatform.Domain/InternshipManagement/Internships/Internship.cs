@@ -1,9 +1,10 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
+﻿using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
 using ProgrammingInternshipPlatform.Domain.Organisation.Centers;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
@@ -65,13 +66,22 @@ public class Internship
 
     public async Task EnrollNewIntern(Intern intern, CancellationToken cancellationToken)
     {
-        if (_interns.Count <= MaximumInternsToEnroll)
+        if (_interns.Count == MaximumInternsToEnroll)
         {
-            _interns.Add(intern);
-            await Validator.ValidateDomainModelAsync(this, cancellationToken);
-            return;
+            throw new MaximumNumberOfInternsReachedException();
         }
 
-        throw new MaximumNumberOfInternsReachedException();
+        if (_interns.Contains(intern))
+        {
+            throw new InternAlreadyEnrolledException();
+        }
+        
+        if(Status != InternshipStatus.SetupInProgress)
+        {
+            throw new InternshipAlreadySetupException();
+        }
+        
+        _interns.Add(intern);
+        await Validator.ValidateDomainModelAsync(this, cancellationToken);
     }
 }

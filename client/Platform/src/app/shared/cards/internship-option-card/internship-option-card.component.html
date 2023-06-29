@@ -1,0 +1,17 @@
+<div class="card internship-option-card">
+    <!-- Card header: for icon and title -->
+    <div class="card-header">
+        <img class="option-icon me-3" [src]="option.icon">
+        <span class="option-title">{{ option.name }}</span>
+    </div>
+
+    <!-- Card body: for option description -->
+    <div class="card-body">
+        <p class="option-description">{{ option.description }}</p>
+    </div>
+
+    <!-- Card actions: for button -->
+    <div class="card-actions d-flex justify-content-end">
+        <button class="btn redirect-to-option-btn" [routerLink]="'/internships/' + internshipId + '/' + option.route.substring(1)">See {{ option.name }}</button>
+    </div>
+</div>

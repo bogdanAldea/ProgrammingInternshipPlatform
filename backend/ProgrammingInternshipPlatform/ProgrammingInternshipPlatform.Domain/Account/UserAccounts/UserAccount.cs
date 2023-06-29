@@ -28,4 +28,20 @@ public class UserAccount
         await userAccountValidator.ValidateDomainModelAsync(userAccount, cancellationToken);
         return userAccount;
     }
+    
+    public static async Task<UserAccount> CreateNew(string firstName, string lastName, string? pictureUrl,
+        Guid identityId, CancellationToken cancellationToken)
+    {
+        var userAccountValidator = new UserAccountSignUpValidator();
+        var userAccount = new UserAccount
+        {
+            Id = new AccountId(Guid.NewGuid()),
+            IdentityId = identityId,
+            FirstName = firstName,
+            LastName = lastName,
+            PictureUrl = pictureUrl,
+        };
+        await userAccountValidator.ValidateDomainModelAsync(userAccount, cancellationToken);
+        return userAccount;
+    }
 }

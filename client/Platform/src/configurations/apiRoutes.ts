@@ -3,4 +3,5 @@ export class ApiBaseUrls {
     
     public static Organisations = `${this.Server}/Organisations`;
     public static Internships = `${this.Server}/Internships`;
+    public static Accounts = `${this.Server}/UserAccounts`;
 }

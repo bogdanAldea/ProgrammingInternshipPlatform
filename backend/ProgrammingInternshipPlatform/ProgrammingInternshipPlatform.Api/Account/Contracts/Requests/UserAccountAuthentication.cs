@@ -4,14 +4,14 @@ namespace ProgrammingInternshipPlatform.Api.Account.Contracts.Requests;
 
 public class UserAccountAuthentication
 {
-    public UserAccountAuthentication(string emailAddress, string password)
+    public UserAccountAuthentication(string email, string password)
     {
-        EmailAddress = emailAddress;
+        Email = email;
         Password = password;
     }
     [Required]
     [EmailAddress]
-    public string EmailAddress { get; }
+    public string Email { get; }
     [Required]
     public string Password { get; }
 }

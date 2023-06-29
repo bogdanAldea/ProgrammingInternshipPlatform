@@ -10,7 +10,7 @@ using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 namespace ProgrammingInternshipPlatform.Application.Account;
 
 public record RegisterUserAccountCommand(string FirstName, string LastName, string Email, string Password,
-    string? PictureUrl, CompanyId CompanyId) : IRequest<HandlerResult<UserAccount>>;
+    string? PictureUrl) : IRequest<HandlerResult<UserAccount>>;
 
 public class RegisterUserAccountHandler : IRequestHandler<RegisterUserAccountCommand, HandlerResult<UserAccount>>
 {
@@ -97,7 +97,7 @@ public class RegisterUserAccountHandler : IRequestHandler<RegisterUserAccountCom
     {
         var newUserAccount = await UserAccount.CreateNew(firstName: request.FirstName,
             lastName: request.LastName,
-            pictureUrl: request.PictureUrl, companyId: request.CompanyId,
+            pictureUrl: request.PictureUrl,
             identityId: Guid.Parse(identityUserId), cancellationToken: cancellationToken);
 
         var createdUserAccount = await _context.UserAccount.AddAsync(newUserAccount, cancellationToken);

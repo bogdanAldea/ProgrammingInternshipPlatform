@@ -3,6 +3,7 @@ using System.Text;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -51,8 +52,12 @@ builder.Services.AddDbContext<ProgrammingInternshipPlatformDbContext>
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("ProgrammingInternshipPlatformDatabase")!)
 );
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddIdentityCore<IdentityUser>()
-    .AddEntityFrameworkStores<ProgrammingInternshipPlatformDbContext>();
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ProgrammingInternshipPlatformDbContext>()
+    .AddDefaultTokenProviders();
 
 var jwtSettings = new JwtSettings();
 builder.Configuration.Bind(nameof(JwtSettings), jwtSettings);

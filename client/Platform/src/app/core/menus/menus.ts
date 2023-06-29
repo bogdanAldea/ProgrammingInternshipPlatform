@@ -17,27 +17,27 @@ export class Menus {
     [
         {
             name: "Overview",
-            route: "/overview",
+            route: "overview",
             icon: "../../../assets/icons/menus/admin/overview.svg"
         },
         {
             name: "Internships",
-            route: "/internships",
+            route: "internships",
             icon: "../../../assets/icons/menus/admin/internship.svg"
         },
         {
             name: "Curriculum",
-            route: "/curriculum",
+            route: "curriculum",
             icon: "../../../assets/icons/menus/admin/list.svg"
         },
         {
             name: "Accounts",
-            route: "/accounts",
+            route: "accounts",
             icon: "../../../assets/icons/menus/admin/acounts.svg"
         },
         {
             name: "Organisation",
-            route: "/organisation",
+            route: "organisation",
             icon: "../../../assets/icons/menus/admin/organisation.svg"
         }
     ]

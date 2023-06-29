@@ -21,25 +21,26 @@
                     <h1>Create your account</h1>
                 </div>
 
-                <div class="row form-body">
+                <form [formGroup]='registrationForm' (ngSubmit)="submitSignupForm()" class="row form-body">
+
                     <div class="row form-field-row">
                         <label for="">First Name</label>
-                        <input class="form-input" type="text">
+                        <input class="form-input" type="text" formControlName="firstName">
                     </div>
     
                     <div class="row form-field-row">
                         <label for="">Last Name</label>
-                        <input type="text">
+                        <input type="text" formControlName="lastName">
                     </div>
     
                     <div class="row form-field-row">
                         <label for="">Email</label>
-                        <input type="text">
+                        <input type="text" formControlName="email">
                     </div>
     
                     <div class="row form-field-row">
                         <label for="">Pasword</label>
-                        <input type="text">
+                        <input type="password" formControlName="password">
                     </div>
 
                     <div class="row form-field-row">
@@ -51,7 +52,7 @@
                             <span>Sign in</span>
                         </small>
                     </div>
-                </div>
+                </form>
 
             </div>
         </div>

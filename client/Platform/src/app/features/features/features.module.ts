@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InternshipManagementModule } from '../internship-management/internship-management.module';
+import { AuthencationModule } from '../authencation/authencation.module';
 
 
 
@@ -8,7 +9,8 @@ import { InternshipManagementModule } from '../internship-management/internship-
   declarations: [],
   imports: [
     CommonModule,
-    InternshipManagementModule
+    InternshipManagementModule,
+    AuthencationModule
   ]
 })
 export class FeaturesModule { }

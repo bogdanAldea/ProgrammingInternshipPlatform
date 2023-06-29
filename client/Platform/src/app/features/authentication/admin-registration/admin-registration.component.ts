@@ -10,7 +10,8 @@ import { AuthenticationService } from '../core/services/authentication.service';
 })
 export class AdminRegistrationComponent implements OnInit {
   
-  public constructor(private formBuilder: FormBuilder, private authService: AuthenticationService) {}
+  public constructor(private formBuilder: FormBuilder, 
+    private authService: AuthenticationService) {}
   
   public ngOnInit(): void {
   }
@@ -21,10 +22,6 @@ export class AdminRegistrationComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   })
-
-  public get firstNameControl() {
-    return this.registrationForm.get('firstName');
-  }
 
   public getSignupValuesFromForm = () : SignupRequest => {
     const signupRequest: SignupRequest = {

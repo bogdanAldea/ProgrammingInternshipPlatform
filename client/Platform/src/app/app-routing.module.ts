@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContextLayoutComponent } from './shared/layouts/context-layout/context-layout.component';
 import { AuthenticationLayoutComponent } from './shared/layouts/authentication-layout/authentication-layout.component';
-import { AdminRegistrationComponent } from './features/authencation/admin-registration/admin-registration.component';
+import { AdminRegistrationComponent } from './features/authentication/admin-registration/admin-registration.component';
+import { SignInComponent } from './features/authentication/sign-in/sign-in.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
       {
         path: 'registration',
         component: AdminRegistrationComponent
+      },
+
+      {
+        path: 'signin',
+        component: SignInComponent
       }
     ]
   }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InternshipManagementModule } from '../internship-management/internship-management.module';
-import { AuthencationModule } from '../authencation/authencation.module';
+import { AuthencationModule } from '../authentication/authencation.module';
 
 
 

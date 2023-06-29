@@ -22,6 +22,10 @@ export class AdminRegistrationComponent implements OnInit {
     password: ['', [Validators.required]],
   })
 
+  public get firstNameControl() {
+    return this.registrationForm.get('firstName');
+  }
+
   public getSignupValuesFromForm = () : SignupRequest => {
     const signupRequest: SignupRequest = {
       firstName: this.registrationForm.value.firstName!,

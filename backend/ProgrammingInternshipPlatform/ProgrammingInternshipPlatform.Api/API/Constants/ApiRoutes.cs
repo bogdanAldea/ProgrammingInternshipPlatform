@@ -9,6 +9,8 @@ public static class ApiRoutes
     
     public static class UserAccountRoutes
     {
+        public const string AccountRegistration = "registration";
+        public const string AccountAuthentication = "login";
     }
     
     public static class InternshipRoutes
@@ -16,6 +18,8 @@ public static class ApiRoutes
         public const string StartDateRescheduling = $"{IdRoute}/timeframe/start-date";
         public const string EndDateExtending = $"{IdRoute}/timeframe/end-date";
         public const string InternshipInternsEnrollment = $"{IdRoute}/interns";
+        public const string InternshipSettings = $"{IdRoute}/settings";
+        public const string EnrolledInterns = $"{IdRoute}/interns";
     }
     
     public static class OrganisationRoutes

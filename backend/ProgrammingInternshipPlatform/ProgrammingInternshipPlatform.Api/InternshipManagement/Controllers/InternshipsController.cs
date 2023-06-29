@@ -6,17 +6,18 @@ using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Responses;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.EnrollInternToInternship;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
+using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternsEnrolledInInternship;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
+using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipSettings;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
 using ProgrammingInternshipPlatform.Domain.Organisation.Centers;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
 namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Controllers;
 
-[Authorize]
 public class InternshipsController : ApiController
 {
     [HttpGet]
@@ -30,6 +31,31 @@ public class InternshipsController : ApiController
             var internshipResponse = InternshipDetailsDto.MapFromInternship(handlerResult.Payload!);
             return Ok(internshipResponse);
         }
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpGet]
+    [Route(ApiRoutes.InternshipRoutes.InternshipSettings)]
+    public async Task<IActionResult> GetInternshipSettings(Guid id)
+    {
+        var internshipSettingsQuery = new GetInternshipSettingsQuery(id);
+        var handlerResult = await Mediator.Send(internshipSettingsQuery);
+        if (handlerResult.IsSuccess)
+            return Ok(handlerResult.Payload);
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpGet]
+    [Route(ApiRoutes.InternshipRoutes.EnrolledInterns)]
+    public async Task<IActionResult> GetInternsEnrolledInInternship(Guid id)
+    {
+        var enrolledInternsQuery = new GetInternsEnrolledInInternshipQuery(id);
+        var handlerResult = await Mediator.Send(enrolledInternsQuery);
+        if (handlerResult.IsSuccess)
+        {
+            return Ok(handlerResult.Payload);
+        }
+
         return HandleApiErrorResponse(handlerResult.FailureReason);
     }
 

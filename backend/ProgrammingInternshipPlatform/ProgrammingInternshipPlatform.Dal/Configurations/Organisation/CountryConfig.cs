@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 using ProgrammingInternshipPlatform.Domain.Organisation.Countries;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.Organisation;
@@ -18,5 +18,10 @@ public class CountryConfig : IEntityTypeConfiguration<Country>
         builder.Property(country => country.CompanyId)
             .HasConversion(id => id.Value, 
                 value => new CompanyId(value));
+
+        builder.HasMany(country => country.Centers)
+            .WithOne()
+            .HasForeignKey(center => center.CountryId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -5,7 +5,7 @@ using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Application.Account;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
 namespace ProgrammingInternshipPlatform.Api.Account.Controllers;
 
@@ -27,15 +27,14 @@ public class UserAccountsController : ApiController
     }
 
     [HttpPost]
-    [Route("registration")]
+    [Route(ApiRoutes.UserAccountRoutes.AccountRegistration)]
     public async Task<IActionResult> RegisterUserAccount([FromBody] UserAccountRegistration userAccountRegistration)
     {
-        var userAccountRegistrationCommand = new RegisterUserAccountWithRolesCommand(
+        var userAccountRegistrationCommand = new RegisterUserAccountCommand(
             FirstName: userAccountRegistration.FirstName,
             LastName: userAccountRegistration.LastName, Email: userAccountRegistration.Email,
             Password: userAccountRegistration.Password, PictureUrl: userAccountRegistration.PictureUrl,
-            CompanyId: new CompanyId(userAccountRegistration.CompanyId),
-            Roles: userAccountRegistration.Roles);
+            CompanyId: new CompanyId(userAccountRegistration.CompanyId));
 
         var handlerResult = await Mediator.Send(userAccountRegistrationCommand);
         if (handlerResult.IsSuccess)
@@ -49,7 +48,7 @@ public class UserAccountsController : ApiController
     }
 
     [HttpPost]
-    [Route("login")]
+    [Route(ApiRoutes.UserAccountRoutes.AccountAuthentication)]
     public async Task<IActionResult> LoginToUserAccount([FromBody] UserAccountAuthentication userAccountAuthentication)
     {
         var authenticationCommand = new LoginToAccountCommand(

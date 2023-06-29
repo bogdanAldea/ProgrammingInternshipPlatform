@@ -3,7 +3,7 @@ using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.Organisation.Contracts.Responses;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipsByOrganisation;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
 namespace ProgrammingInternshipPlatform.Api.Organisation.Controller;
 
@@ -18,7 +18,9 @@ public class OrganisationsController : ApiController
         if (result.IsSuccess)
         {
             var mappedInternships = new List<InternshipDetail>();
-            result.Payload!.ForEach(internship => mappedInternships.Add(InternshipDetail.MapFromInternship(internship)));
+            result.Payload!.ForEach(internship => 
+                mappedInternships.Add(InternshipDetail.MapFromInternship(internship)));
+            
             return Ok(mappedInternships);
         }
 

@@ -1,9 +1,10 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
+﻿using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Timeframes;
 using ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers;
 using ProgrammingInternshipPlatform.Domain.Organisation.Centers;
-using ProgrammingInternshipPlatform.Domain.Organisation.Company;
+using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;

@@ -11,7 +11,7 @@
     </div>
 
     <!-- Card actions: for button -->
-    <div class="card-actions d-flex justify-content-center">
-        <button class="btn redirect-to-option-btn" [routerLink]="'/internships/' + option.route">See {{ option.name }}</button>
+    <div class="card-actions d-flex justify-content-end">
+        <button class="btn redirect-to-option-btn" [routerLink]="'/internships/' + internshipId + '/' + option.route.substring(1)">See {{ option.name }}</button>
     </div>
 </div>

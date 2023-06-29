@@ -17,8 +17,7 @@ public class ApiErrorResponse
 
     public static IActionResult CreateErrorResponse(ActionContext context)
     {
-        var apiErrorResponse = new ApiErrorResponse();
-        apiErrorResponse.StatusCode = HttpStatusCode.BadRequest;
+        var apiErrorResponse = new ApiErrorResponse { StatusCode = HttpStatusCode.BadRequest };
         foreach (var error in context.ModelState)
         {
             foreach (var innerError in error.Value.Errors)

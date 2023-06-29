@@ -4,6 +4,8 @@ import { Observable, map } from 'rxjs';
 import { InternshipResponse } from '../interfaces/internship-response';
 import { Internship } from '../models/internship';
 import { ApiBaseUrls } from 'src/configurations/apiRoutes';
+import { InternshipSettingsResponse } from '../interfaces/internship-settings';
+import { InternshipSettings } from '../models/internship-settings';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +23,12 @@ export class InternshipManagementService
       })
     );
   };
+
+  public getInternshipSettings = (internshipId: string) : Observable<InternshipSettings> => {
+    const apiUrl = `${ApiBaseUrls.Internships}/${internshipId}/settings`;
+    return this.httpClient.get<InternshipSettingsResponse>(apiUrl).pipe(map((response: InternshipSettingsResponse) => {
+      return new InternshipSettings(response);
+    }))
+  }; 
 
 }

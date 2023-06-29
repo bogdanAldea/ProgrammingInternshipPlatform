@@ -8,4 +8,5 @@ public class Center
 
     public CenterId Id { get; private set; }
     public CountryId CountryId { get; private set; }
+    public string Location { get; private set; }
 }

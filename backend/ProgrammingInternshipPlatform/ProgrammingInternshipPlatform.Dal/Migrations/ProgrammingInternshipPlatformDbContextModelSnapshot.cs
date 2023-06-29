@@ -66,37 +66,37 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "65781022-fe05-4766-b21d-90f8234e3e60",
+                            Id = "e4231d54-8656-4a14-a7fc-4ad26a0ebf37",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "44c4ad45-c1c9-4852-8d61-d5aa9d2ad579",
+                            Id = "83c723c0-7df0-4edb-b13c-04591b9a0eef",
                             Name = "Coordinator",
                             NormalizedName = "COORDINATOR"
                         },
                         new
                         {
-                            Id = "af5c8802-ad30-4e86-a6e5-3012c6c7e8b9",
+                            Id = "1fa3440c-9d6c-4c5d-95b9-bd56664020f5",
                             Name = "Trainer",
                             NormalizedName = "TRAINER"
                         },
                         new
                         {
-                            Id = "49653e7e-a172-4094-890c-b41750e3f81c",
+                            Id = "a15d2ba4-5f57-4a48-820a-f75eb41197b0",
                             Name = "Intern",
                             NormalizedName = "INTERN"
                         },
                         new
                         {
-                            Id = "3a437707-eb13-45e7-a13e-42fda1b543b7",
+                            Id = "430f9c54-aa71-47f6-81bb-f15e36081de4",
                             Name = "HR Rep",
                             NormalizedName = "HR REP"
                         },
                         new
                         {
-                            Id = "78c1226e-d0a0-40b7-a05a-bc1b2189a6b7",
+                            Id = "95833de9-6e18-461e-8314-e42fa2949364",
                             Name = "Development",
                             NormalizedName = "DEVELOPMENT"
                         });
@@ -648,12 +648,18 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Locations");
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Center");
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Company.Company", b =>
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Companies.Company", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -664,7 +670,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Company");
+                    b.ToTable("Companies");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Countries.Country", b =>
@@ -943,9 +949,18 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Centers.Center", b =>
+                {
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.Organisation.Countries.Country", null)
+                        .WithMany("Centers")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Countries.Country", b =>
                 {
-                    b.HasOne("ProgrammingInternshipPlatform.Domain.Organisation.Company.Company", null)
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.Organisation.Companies.Company", null)
                         .WithMany("Countries")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1011,9 +1026,14 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.Navigation("AssignmentRequest");
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Company.Company", b =>
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Companies.Company", b =>
                 {
                     b.Navigation("Countries");
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.Organisation.Countries.Country", b =>
+                {
+                    b.Navigation("Centers");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.ProjectHub.Projects.Project", b =>

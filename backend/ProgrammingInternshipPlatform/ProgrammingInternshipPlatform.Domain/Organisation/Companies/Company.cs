@@ -1,7 +1,7 @@
 ﻿
 using ProgrammingInternshipPlatform.Domain.Organisation.Countries;
 
-namespace ProgrammingInternshipPlatform.Domain.Organisation.Company;
+namespace ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
 public class Company
 {

@@ -8,7 +8,7 @@
             <th>Scheduled To End On</th>
             <th>Enrolled Interns</th>
             <th>Maximum Allowd To Enroll</th>
-            <th>Duration In Months</th>
+            <th>Duration</th>
             <th></th>
         </tr>
     </thead>
@@ -28,7 +28,7 @@
             <td>{{ internship.scheduledToEndOn | date: 'mediumDate' }}</td>
             <td>{{ internship.numberOfInterns}}</td>
             <td>{{ internship.maximumInternsToEnroll }}</td>
-            <td>{{ internship.durationInMonths }}</td>
+            <td>{{ internship.durationInMonths }} Months</td>
             <td><button class="btn" [routerLink]="['/internships', internship.id]">See More</button></td>
         </tr>
     </tbody>

@@ -1,0 +1,27 @@
+<div class="row w-100 form-title">
+    <h1>Sign in</h1>
+</div>
+
+<form [formGroup]='signInForm' (ngSubmit)="submitSignInCredentials()" class="row form-body">
+
+    <div class="row form-field-row">
+        <label for="">Email</label>
+        <input type="text" formControlName="email">
+
+    </div>
+
+    <div class="row form-field-row">
+        <label for="">Pasword</label>
+        <input type="password" formControlName="password">
+    </div>
+
+    <div class="row form-field-row">
+        <button class="signup-button">Sign in</button>
+    </div>
+
+    <div class="row form-field-row loggin-option-field">
+        <small>Don't have an account?
+            <span>Sign up</span>
+        </small>
+    </div>
+</form>

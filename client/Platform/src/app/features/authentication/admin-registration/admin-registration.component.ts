@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { SignupRequest } from '../core/interfaces/signup-request';
 import { AuthenticationService } from '../core/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-registration',
@@ -11,7 +12,8 @@ import { AuthenticationService } from '../core/services/authentication.service';
 export class AdminRegistrationComponent implements OnInit {
   
   public constructor(private formBuilder: FormBuilder, 
-    private authService: AuthenticationService) {}
+    private authService: AuthenticationService,
+    private router: Router) {}
   
   public ngOnInit(): void {
   }
@@ -42,7 +44,7 @@ export class AdminRegistrationComponent implements OnInit {
         // Handle successful response 
         // Should redirect to login page
         console.log('Registration successful:', response);
-        this.registrationForm.reset();
+        this.router.navigate(['/signin']);
       },
       error: error => {
         // Handle error

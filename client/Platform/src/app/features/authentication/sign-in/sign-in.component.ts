@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../core/services/authentication.service';
 import { SigninRequest } from '../core/interfaces/signin-request';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +11,8 @@ import { SigninRequest } from '../core/interfaces/signin-request';
 })
 export class SignInComponent {
   public constructor(private formBuilder: FormBuilder, 
-    private authService: AuthenticationService) {}
+    private authService: AuthenticationService,
+    private router: Router) {}
 
   public signInForm: FormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -33,8 +35,9 @@ export class SignInComponent {
     .subscribe({
       next: response => {
         // Handle successful response 
+        // Token should be stored here
         console.log('Registration successful:', response);
-
+        this.router.navigate(['/user/internships']);
       },
       error: error => {
         // Handle error

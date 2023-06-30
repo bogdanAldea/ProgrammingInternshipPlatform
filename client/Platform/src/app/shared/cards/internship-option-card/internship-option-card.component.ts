@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Option } from 'src/app/core/option';
 import { Options } from 'src/app/core/options';
 
@@ -10,4 +11,11 @@ import { Options } from 'src/app/core/options';
 export class InternshipOptionCardComponent {
   @Input() option!: Option;
   @Input() internshipId!: string;
+
+  constructor(private router: Router) {}
+
+  navigateToNext = (next: string) => {
+    const x = this.router.url 
+    return x + `/${next}`;
+  }
 }

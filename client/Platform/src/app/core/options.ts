@@ -11,7 +11,7 @@ export class Options {
                          Here, you can configure and manage various aspects such as the start date, end date, 
                          location, number of interns, and coordinator. This information allows you to set up the 
                          internship parameters and ensure a smooth administrative process throughout the program.`,
-            route: "/settings"
+            route: "settings"
         },
 
         {
@@ -21,7 +21,7 @@ export class Options {
                         internship program. You can access a list of interns and perform CRUD (Create, Read, Update, Delete) 
                         operations on individual intern profiles. This functionality enables you to manage intern-related 
                         information efficiently, track their progress, and update their details as required.`,
-            route: "/interns"
+            route: "interns"
         },
 
         {
@@ -31,7 +31,7 @@ export class Options {
                         You can access a list of trainers and utilize CRUD operations to handle their profiles. This feature 
                         helps you monitor the trainers' involvement, assign responsibilities, and keep track of their 
                         contributions to the interns' development.`,
-            route: "/trainers"
+            route: "trainers"
         },
 
         {
@@ -41,7 +41,7 @@ export class Options {
                         the internship program. It allows you to create and manage mentor-mentee pairs, view the progress of 
                         mentorship activities, and ensure effective guidance for the interns. This feature empowers you to 
                         foster a supportive environment and enhance the overall learning experience.`,
-            route: "/mentorships"
+            route: "mentorships"
         },
 
         {
@@ -51,7 +51,7 @@ export class Options {
                         the internship program. You can organize and structure the curriculum, track the completion status of 
                         each module, and update content as needed. This functionality allows you to ensure a structured and 
                         progressive learning journey for the interns, covering all relevant topics and skill sets.`,
-            route: "/curriculum"
+            route: "curriculum"
         }
     ]
 }

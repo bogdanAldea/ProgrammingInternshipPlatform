@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-context-layout',
   templateUrl: './context-layout.component.html',
   styleUrls: ['./context-layout.component.scss']
 })
-export class ContextLayoutComponent {
+export class ContextLayoutComponent implements OnInit {
+  ngOnInit(): void {
+
+  }
 
 }

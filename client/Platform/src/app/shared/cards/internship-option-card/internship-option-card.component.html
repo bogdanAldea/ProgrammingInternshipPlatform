@@ -12,6 +12,6 @@
 
     <!-- Card actions: for button -->
     <div class="card-actions d-flex justify-content-end">
-        <button class="btn redirect-to-option-btn" [routerLink]="'/internships/' + internshipId + '/' + option.route.substring(1)">See {{ option.name }}</button>
+        <button class="btn redirect-to-option-btn" [routerLink]="navigateToNext(option.route)">See {{ option.name }}</button>
     </div>
 </div>

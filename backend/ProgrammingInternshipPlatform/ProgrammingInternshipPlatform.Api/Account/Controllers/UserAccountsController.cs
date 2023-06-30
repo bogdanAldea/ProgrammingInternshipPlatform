@@ -33,8 +33,7 @@ public class UserAccountsController : ApiController
         var userAccountRegistrationCommand = new RegisterUserAccountCommand(
             FirstName: userAccountRegistration.FirstName,
             LastName: userAccountRegistration.LastName, Email: userAccountRegistration.Email,
-            Password: userAccountRegistration.Password, PictureUrl: userAccountRegistration.PictureUrl,
-            CompanyId: new CompanyId(userAccountRegistration.CompanyId));
+            Password: userAccountRegistration.Password, PictureUrl: userAccountRegistration.PictureUrl);
 
         var handlerResult = await Mediator.Send(userAccountRegistrationCommand);
         if (handlerResult.IsSuccess)
@@ -52,13 +51,13 @@ public class UserAccountsController : ApiController
     public async Task<IActionResult> LoginToUserAccount([FromBody] UserAccountAuthentication userAccountAuthentication)
     {
         var authenticationCommand = new LoginToAccountCommand(
-            EmailAddress: userAccountAuthentication.EmailAddress,
+            EmailAddress: userAccountAuthentication.Email,
             Password: userAccountAuthentication.Password);
 
         var handlerResult = await Mediator.Send(authenticationCommand);
         if (handlerResult.IsSuccess)
         {
-            return Ok(handlerResult.Payload);
+            return Ok(new JwtTokenResponse(handlerResult.Payload!));
         }
 
         return HandleApiErrorResponse(handlerResult.FailureReason);

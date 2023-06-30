@@ -5,15 +5,13 @@ namespace ProgrammingInternshipPlatform.Api.Account.Contracts.Requests;
 public class UserAccountRegistration
 {
     public UserAccountRegistration(string firstName, string lastName, 
-        string email, string password, string? pictureUrl, Guid companyId, IReadOnlyList<string> roles)
+        string email, string password, string? pictureUrl)
     {
         FirstName = firstName;
         LastName = lastName;
         Email = email;
         Password = password;
         PictureUrl = pictureUrl;
-        CompanyId = companyId;
-        Roles = roles;
     }
 
     [Required]
@@ -25,8 +23,4 @@ public class UserAccountRegistration
     [Required]
     public string Password { get; }
     public string? PictureUrl { get; }
-    [Required]
-    public Guid CompanyId { get; }
-    [Required] 
-    public IReadOnlyList<string> Roles { get; }
 }

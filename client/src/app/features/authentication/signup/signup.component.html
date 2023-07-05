@@ -1,0 +1,48 @@
+<div class="row w-100 form-title">
+    <h1>Create your account</h1>
+
+        <form [formGroup]='registrationForm' (ngSubmit)="submitSignupForm()" class="row form-body">
+
+            <div class="row form-field-row">
+                <label for="">First Name</label>
+                <input class="form-input" type="text" formControlName="firstName">
+                <p class="error-message" *ngIf="registrationForm.controls.firstName.touched && registrationForm.controls.firstName.errors?.['required']">
+                    First name is required.
+                </p>
+            </div>
+        
+            <div class="row form-field-row">
+                <label for="">Last Name</label>
+                <input type="text" formControlName="lastName">
+                <p class="error-message" *ngIf="registrationForm.controls.lastName.touched && registrationForm.controls.lastName.errors?.['required']">
+                    Last name is required.
+                </p>
+            </div>
+        
+            <div class="row form-field-row">
+                <label for="">Email</label>
+                <input type="text" formControlName="email">
+                <p class="error-message" *ngIf="registrationForm.controls.email.touched && registrationForm.controls.email.errors?.['required']">
+                    Email is required.
+                </p>
+            </div>
+        
+            <div class="row form-field-row">
+                <label for="">Pasword</label>
+                <input type="password" formControlName="password">
+                <p class="error-message" *ngIf="registrationForm.controls.password.touched && registrationForm.controls.password.errors?.['required']">
+                    Password is required.
+                </p>
+            </div>
+        
+            <div class="row form-field-row">
+                <button class="signup-button">Sign up</button>
+            </div>
+        
+            <div class="row form-field-row loggin-option-field">
+                <small>Already have an account?
+                    <span>Sign in</span>
+                </small>
+            </div>
+        </form>
+</div>

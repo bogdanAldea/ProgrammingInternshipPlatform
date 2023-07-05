@@ -1,0 +1,80 @@
+@import '../../../../assets/theme/colours/palette.scss';
+
+
+.container-fluid {
+    padding: 0 160px;
+}
+
+.navbar {
+    padding: 0;
+    margin: 0;
+}
+
+.top-nav-container {
+    min-height: 60px;
+    height: 60px;
+    background-color: $primary-dark;
+}
+
+.search-box {
+    background-color: $primary-dark-lighter;
+    border: none;
+    width: 300px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.user-account-controls {
+    align-items: center;
+}
+
+.user-welcome-message {
+    line-height: 12px;
+
+    p {
+        margin: 0;
+        font-size: 10px;
+        color: white;
+        font-weight: 300;
+    }
+}
+
+.account-control-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.menu-nav-container {
+    min-height: 50px;
+    height: 50px;
+    
+    border-bottom: 1px solid $muted-light;
+}
+
+.nav-item {
+    align-items: center;
+}
+
+.menu-link-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.nav-link {
+    position: relative;
+    transition: border-bottom-color 0.9s ease;
+    color: $primary-dark-lighter;
+    font-size: 12px;
+    font-weight: 500;
+}
+  
+.nav-link.active::after {
+content: "";
+position: absolute;
+bottom: -8px;
+left: 0;
+width: 100%;
+height: 1.6px;
+background-color: $primary-dark-lighter;
+transition: width 0.3s ease;
+}

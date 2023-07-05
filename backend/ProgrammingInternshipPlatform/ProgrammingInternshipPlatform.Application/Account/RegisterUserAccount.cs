@@ -16,12 +16,14 @@ public class RegisterUserAccountHandler : IRequestHandler<RegisterUserAccountCom
 {
     private readonly ProgrammingInternshipPlatformDbContext _context;
     private readonly UserManager<IdentityUser> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
 
     public RegisterUserAccountHandler(ProgrammingInternshipPlatformDbContext context,
-        UserManager<IdentityUser> userManager)
+        UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _context = context;
         _userManager = userManager;
+        _roleManager = roleManager;
     }
 
     public async Task<HandlerResult<UserAccount>> Handle(RegisterUserAccountCommand request,

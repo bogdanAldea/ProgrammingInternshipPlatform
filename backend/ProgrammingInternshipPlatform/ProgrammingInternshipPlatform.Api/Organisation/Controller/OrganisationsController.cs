@@ -2,6 +2,7 @@
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.Organisation.Contracts.Responses;
+using ProgrammingInternshipPlatform.Application.Account;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipsByOrganisation;
 using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
@@ -25,5 +26,19 @@ public class OrganisationsController : ApiController
         }
 
         return HandleApiErrorResponse(result.FailureReason);
+    }
+
+    [HttpGet]
+    [Route(ApiRoutes.OrganisationRoutes.AllUserAccounts)]
+    public async Task<IActionResult> GetAllUserAccount(Guid id)
+    {
+        var allAccountsAtOrganisationQuery = new GetAllUserAccountsAtCompanyQuery(id);
+        var handlerResult = await Mediator.Send(allAccountsAtOrganisationQuery);
+        if (handlerResult.IsSuccess)
+        {
+            return Ok(handlerResult.Payload);
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
     }
 }

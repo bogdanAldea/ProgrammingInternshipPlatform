@@ -1,0 +1,37 @@
+<table>
+        
+    <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Status</th>
+            <th>Scheduled To Start On</th>
+            <th>Scheduled To End On</th>
+            <th>Enrolled Interns</th>
+            <th>Maximum Allowd To Enroll</th>
+            <th>Duration</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let internship of internships" class="internship-row">
+            <td>Software Development</td>
+            <td>
+                <div [ngClass]="{ 
+                    'setup-in-progress': internship.status === status.setupInProgress,
+                    'not-started': internship.status === status.notStarted,
+                    'ongoing': internship.status === status.ongoing,
+                    'completed': internship.status === status.completed 
+                }">{{ internship.status }}</div>
+              </td>
+            <td class="">{{ internship.scheduledToStartOn | date: 'mediumDate' }}</td>
+            <td>{{ internship.scheduledToEndOn | date: 'mediumDate' }}</td>
+            <td>{{ internship.numberOfInterns}}</td>
+            <td>{{ internship.maximumInternsToEnroll }}</td>
+            <td>{{ internship.durationInMonths }} Months</td>
+            <!-- <td><button class="see-more-btn" [routerLink]="[internship.id]">See More</button></td> -->
+            <td><app-button-rect-small actionName="See More" [routerLink]="[internship.id]"></app-button-rect-small></td>
+        </tr>
+    </tbody>
+
+</table>

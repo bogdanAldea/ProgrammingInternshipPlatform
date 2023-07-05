@@ -11,6 +11,11 @@ public static class ApiRoutes
     {
         public const string AccountRegistration = "registration";
         public const string AccountAuthentication = "login";
+        public static class Roles
+        {
+            public const string BaseRoute = "roles";
+            public const string Administrator = $"{BaseRoute}/administrator";
+        }
     }
     
     public static class InternshipRoutes
@@ -25,5 +30,6 @@ public static class ApiRoutes
     public static class OrganisationRoutes
     {
         public const string AllInternships = $"{IdRoute}/internships";
+        public const string AllUserAccounts = $"{IdRoute}/user-accounts";
     }
 }

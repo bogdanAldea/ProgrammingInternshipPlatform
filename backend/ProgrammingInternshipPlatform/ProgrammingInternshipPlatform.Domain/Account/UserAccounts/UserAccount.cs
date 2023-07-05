@@ -12,7 +12,7 @@ public class UserAccount
     public string? PictureUrl { get; private set; }
     public DateTime JoiningDate { get; private set; } = DateTime.Today;
 
-    public static async Task<UserAccount> CreateNew(string firstName, string lastName, string? pictureUrl,
+    public static async Task<UserAccount> CreateNew(string firstName, string lastName,
         Guid identityId, CompanyId companyId, CancellationToken cancellationToken)
     {
         var userAccountValidator = new UserAccountValidator();
@@ -23,7 +23,6 @@ public class UserAccount
             CompanyId = companyId,
             FirstName = firstName,
             LastName = lastName,
-            PictureUrl = pictureUrl,
         };
         await userAccountValidator.ValidateDomainModelAsync(userAccount, cancellationToken);
         return userAccount;

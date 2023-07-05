@@ -1,0 +1,29 @@
+@import '../../../../assets/theme/colours/palette.scss';
+
+.option-body {
+    border: 2px solid $muted-light;
+    border-radius: 8px;
+    padding: 32px;
+    transition: ease-in-out 0.3s;
+    background-color: white;
+}
+
+.arrow {
+    color: blue;
+}
+
+.option-body:hover {
+    border-color: $primary-dark-lighter;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.card-setting-name {
+    font-size: 14px;
+}
+
+.card-setting-description {
+    font-size: 12px;
+    font-weight: 300;
+    color: $primary-dark-lighter;
+}

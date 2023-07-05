@@ -1,0 +1,32 @@
+<div class="row h-100">
+    <div class="header">
+        <app-title [title]="configurations.title" [icon]="configurations.icon" />
+        <app-description [description]="configurations.description" />
+    </div>
+
+    <div class="col h-100" *ngFor="let setting of configurations.settings">
+        <app-internship-option-card [setting]="setting"></app-internship-option-card>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="header">
+        <app-title [title]="members.title" [icon]="members.icon" />
+        <app-description [description]="members.description" />
+    </div>
+
+    <div class="col h-100" *ngFor="let setting of members.settings">
+        <app-internship-option-card [setting]="setting"></app-internship-option-card>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="header">
+        <app-title [title]="collaboration.title" [icon]="collaboration.icon" />
+        <app-description [description]="collaboration.description" />
+    </div>
+
+    <div class="col col-md-6 h-100" *ngFor="let setting of collaboration.settings">
+        <app-internship-option-card [setting]="setting"></app-internship-option-card>
+    </div>
+</div>

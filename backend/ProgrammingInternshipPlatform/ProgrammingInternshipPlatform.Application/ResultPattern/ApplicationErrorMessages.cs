@@ -19,5 +19,11 @@ public static class ApplicationErrorMessages
         public const string EmailNotFoundForUser = "User with this email could not be found.";
         public const string PasswordNotValid = "Password is not valid.";
         public const string InvalidRequestedRoles = "One or more roles requested to add to user are invalid.";
+        public const string RoleNotFound = "Role was not found in the system.";
+    }
+    
+    public static class Company
+    {
+        public const string CompanyNotFound = "This company could not be found.";
     }
 }

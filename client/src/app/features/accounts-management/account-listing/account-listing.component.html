@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row page-header-with-details">
+
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+            <div class="row justify-content-between">
+                <div class="col">
+                    <app-title title="Accounts" />
+                    <app-description description="Manage accounts and access" />
+                </div>
+                <div class="col text-end align-self-end">
+                    <div class="">
+                        <span class="me-4">13 Accounts</span>
+                        <app-button-rect-small actionName="+ Add Member" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4 justify-content-center" *ngIf="(accounts$ | async) as accounts">
+                <table>        
+                    <tbody>
+                        <tr *ngFor="let account of accounts" class="account-row">
+                            <td>
+                                <span class="profile-pic profile">{{account.firstName[0]}}{{account.lastName[0]}}</span>
+                                <span class="profile-name profile ms-2">{{ account.firstName}} {{ account.lastName}}</span>
+                                <span class="profile-email profile ms-3">{{ account.email }}</span>
+                            </td>
+                            <td class="profile-joining-date profile">{{ account.joiningDate | date: 'mediumDate' }}</td>
+                            <td>
+                                <!-- display roles here -->
+                                <span *ngIf="account.roles.length === 1">{{ account.roles[0].name}} </span>
+                                <span *ngIf="account.roles.length < 1">N/A</span>
+                                <span *ngIf="account.roles.length > 1">{{ account.roles[0].name}} + {{ account.roles.length - 1 }} other</span>
+                            </td>
+                            <td class="d-flex justify-content-end align-items-center">
+                                <app-button-rect-small actionName="-"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,7 @@
 using System.Text;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
+using ProgrammingInternshipPlatform.Api.API.Requirements;
 using ProgrammingInternshipPlatform.Application.Identity;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Dal.Context;
@@ -85,6 +87,20 @@ builder.Services.AddAuthentication(auth =>
             ValidateLifetime = true
         };
     });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(
+        nameof(UserEnrolledAsInternRequirement),
+        policy => policy.Requirements.Add(new UserEnrolledAsInternRequirement()));
+    
+    options.AddPolicy(
+        nameof(UserAssignedAsTrainerRequirement),
+        policy => policy.Requirements.Add(new UserAssignedAsTrainerRequirement()));
+});
+
+builder.Services.AddScoped<IAuthorizationHandler, UserEnrolledAsInternHandler>();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddCors(options =>
 {

@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -11,18 +10,17 @@ using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.Account;
 
-public record RegisterAdministratorAccountWithRolesCommand(string FirstName, string LastName, string Email, string Password,
-    string? PictureUrl, IReadOnlyList<string> Roles) : IRequest<HandlerResult<UserAccount>>;
+public record RegisterMemberUserWithRolesCommand(string FirstName, string LastName, string Email,
+    Guid CompanyId, IReadOnlyList<string> Roles) : IRequest<HandlerResult<UserAccount>>;
 
-public class
-    RegisterAdministratorAccountWithRolesHandler : IRequestHandler<RegisterAdministratorAccountWithRolesCommand,
-        HandlerResult<UserAccount>>
+public class RegisterMemberUserWithRolesHandler : IRequestHandler<RegisterMemberUserWithRolesCommand,
+    HandlerResult<UserAccount>>
 {
     private readonly ProgrammingInternshipPlatformDbContext _context;
     private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public RegisterAdministratorAccountWithRolesHandler(ProgrammingInternshipPlatformDbContext context,
+    public RegisterMemberUserWithRolesHandler(ProgrammingInternshipPlatformDbContext context,
         UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _context = context;
@@ -30,7 +28,7 @@ public class
         _roleManager = roleManager;
     }
 
-    public async Task<HandlerResult<UserAccount>> Handle(RegisterAdministratorAccountWithRolesCommand request,
+    public async Task<HandlerResult<UserAccount>> Handle(RegisterMemberUserWithRolesCommand request,
         CancellationToken cancellationToken)
     {
         var identityAlreadyExists = await CheckIfEmailIsAlreadyRegistered(request.Email, cancellationToken);
@@ -51,12 +49,13 @@ public class
 
             validatedRoles.Add(role);
         }
-        
+
         await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
         try
         {
-            var newIdentity = new IdentityUser { Email = request.Email, UserName = request.Email};
-            var createdIdentity = await _userManager.CreateAsync(newIdentity, request.Password);
+            var newIdentity = new IdentityUser { Email = request.Email, UserName = request.Email };
+            var tempGeneratedPassword = GenerateTemporaryPassword();
+            var createdIdentity = await _userManager.CreateAsync(newIdentity, tempGeneratedPassword);
             if (!createdIdentity.Succeeded)
             {
                 return await HandleIdentityCreationError(createdIdentity, transaction, cancellationToken);
@@ -125,17 +124,16 @@ public class
     }
 
     private async Task<HandlerResult<UserAccount>> CreateUserAccountForIdentity(
-        RegisterAdministratorAccountWithRolesCommand request,
+        RegisterMemberUserWithRolesCommand request,
         IdentityUser newIdentity, CancellationToken cancellationToken, IDbContextTransaction transaction)
     {
-        // This should be a factory pattern
         var newUserAccount = await UserAccount.CreateNew(
-                firstName: request.FirstName,
-                lastName: request.LastName,
-                pictureUrl: request.PictureUrl,
-                identityId: Guid.Parse(newIdentity.Id),
-                cancellationToken
-            );
+            firstName: request.FirstName,
+            lastName: request.LastName,
+            identityId: Guid.Parse(newIdentity.Id),
+            companyId: new CompanyId((Guid)request.CompanyId),
+            cancellationToken);
+
 
         var createdUserAccount = await _context.UserAccount.AddAsync(newUserAccount, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
@@ -158,5 +156,38 @@ public class
         await transaction.RollbackAsync(cancellationToken);
         var transactionApplicationError = ApplicationError.IdentityRegistrationFailure(errorMessage);
         return HandlerResult<UserAccount>.Fail(transactionApplicationError);
+    }
+
+    private string GenerateTemporaryPassword()
+    {
+        Random random = new Random();
+        List<char> requiredChars = new List<char>();
+
+        // Generate at least one capital letter
+        requiredChars.Add((char)random.Next('A', 'Z' + 1));
+
+        // Generate at least one symbol
+        string symbols = "!@#$%^&*";
+        requiredChars.Add(symbols[random.Next(symbols.Length)]);
+
+        // Generate at least one number
+        requiredChars.Add((char)random.Next('0', '9' + 1));
+
+        int requiredLength = 16;
+        int remainingLength = requiredLength - requiredChars.Count;
+
+        // Generate remaining characters
+        string allChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+        for (int i = 0; i < remainingLength; i++)
+        {
+            requiredChars.Add(allChars[random.Next(allChars.Length)]);
+        }
+
+        // Shuffle the characters randomly
+        requiredChars = requiredChars.OrderBy(c => random.Next()).ToList();
+
+        // Convert the list of characters to a string
+        string result = new string(requiredChars.ToArray());
+        return result;
     }
 }

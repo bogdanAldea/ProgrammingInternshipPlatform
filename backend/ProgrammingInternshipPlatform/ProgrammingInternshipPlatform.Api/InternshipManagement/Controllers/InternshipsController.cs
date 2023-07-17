@@ -23,7 +23,7 @@ public class InternshipsController : ApiController
 {
     [HttpGet]
     [Route(ApiRoutes.IdRoute)]
-    [Authorize(Policy = nameof(UserEnrolledAsInternRequirement))]
+    /*[Authorize(Policy = nameof(UserEnrolledAsInternRequirement))]*/
     public async Task<IActionResult> GetInternshipProgramById(Guid id)
     {
         var internshipGetQuery = new GetInternshipProgramByIdQuery(new InternshipId(id));

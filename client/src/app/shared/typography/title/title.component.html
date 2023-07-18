@@ -1,0 +1,8 @@
+<div class="title-with-icon d-flex">
+    <img [src]="icon" class="title-icon">
+    <h1 [class.margin-off-no-icon]="!icon" 
+        [ngStyle]="{'font-size': size}"
+        class="title-text">{{ text }}
+    </h1>
+</div>
+

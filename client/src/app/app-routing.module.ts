@@ -1,33 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutWithNavigationComponent } from './shared/layouts/layout-with-navigation/layout-with-navigation.component';
-import { LayoutWithoutNavigationComponent } from './shared/layouts/layout-without-navigation/layout-without-navigation.component';
+import { NavLayoutComponent } from './shared/layouts/nav-layout/nav-layout.component';
+import { NoNavLayoutComponent } from './shared/layouts/no-nav-layout/no-nav-layout.component';
 
 const routes: Routes = 
 [
   {
-    path: 'home',
-    component: LayoutWithNavigationComponent,
-    children: [
-      {
-        path: 'internships',
-        loadChildren: () => import('./features/internship-management/internship-management.module').then(module => module.InternshipManagementModule)
-      },
-
+    path: '',
+    component: NavLayoutComponent,
+    children: 
+    [
       {
         path: 'accounts',
-        loadChildren: () => import('./features/accounts-management/accounts-management.module').then(module => module.AccountsManagementModule)
+        loadChildren: () => import('./features/accounts/accounts.module')
+        .then(module => module.AccountsModule)
       }
     ]
   },
 
   {
     path: 'auth',
-    component: LayoutWithoutNavigationComponent,
-    children: [
+    component: NoNavLayoutComponent,
+    children: 
+    [
       {
         path: '',
-        loadChildren: () => import('./features/authentication/authentication.module').then(module => module.AuthenticationModule)
+        loadChildren: () => import('./features/authentication/authentication.module')
+        .then(module => module.AuthenticationModule)
       }
     ]
   }

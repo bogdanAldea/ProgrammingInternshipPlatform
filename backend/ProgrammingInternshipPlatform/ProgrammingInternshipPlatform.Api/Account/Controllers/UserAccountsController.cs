@@ -28,13 +28,13 @@ public class UserAccountsController : ApiController
 
     [HttpPost]
     [Route(ApiRoutes.UserAccountRoutes.AccountRegistration)]
-    public async Task<IActionResult> RegisterUserAccount([FromBody] UserAccountRegistration userAccountRegistration)
+    public async Task<IActionResult> SignupAsAdministrator([FromBody] AdminAccountRegistration adminAccountRegistration)
     {
-        var userAccountRegistrationCommand = new RegisterUserAccountWithRolesCommand(
-            FirstName: userAccountRegistration.FirstName,
-            LastName: userAccountRegistration.LastName, Email: userAccountRegistration.Email,
-            Password: userAccountRegistration.Password, PictureUrl: userAccountRegistration.PictureUrl,
-            Roles: userAccountRegistration.Roles, CompanyId: userAccountRegistration.CompanyId);
+        var userAccountRegistrationCommand = new RegisterAdministratorAccountWithRolesCommand(
+            FirstName: adminAccountRegistration.FirstName,
+            LastName: adminAccountRegistration.LastName, Email: adminAccountRegistration.Email,
+            Password: adminAccountRegistration.Password, PictureUrl: adminAccountRegistration.PictureUrl,
+            Roles: adminAccountRegistration.Roles);
 
         var handlerResult = await Mediator.Send(userAccountRegistrationCommand);
         if (handlerResult.IsSuccess)
@@ -42,6 +42,26 @@ public class UserAccountsController : ApiController
             var userAccountResponse = UserAccountDetails.MapFromUserAccount(handlerResult.Payload!);
             return CreatedAtAction(nameof(GetUserAccountById), new { userAccountResponse.Id },
                 userAccountResponse);
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RegisterNewMemberAccount(
+        [FromBody] MemberAccountRegistration memberAccountRegistration)
+    {
+        var memberAccountRegistrationCommand = new RegisterMemberUserWithRolesCommand(
+            FirstName: memberAccountRegistration.FirstName,
+            LastName: memberAccountRegistration.LastName,
+            Email: memberAccountRegistration.Email,
+            CompanyId: memberAccountRegistration.CompanyId,
+            Roles: memberAccountRegistration.Roles);
+
+        var handlerResult = await Mediator.Send(memberAccountRegistrationCommand);
+        if (handlerResult.IsSuccess)
+        {
+            return Ok(handlerResult.Payload);
         }
 
         return HandleApiErrorResponse(handlerResult.FailureReason);

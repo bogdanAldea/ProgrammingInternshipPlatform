@@ -4,21 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-import { InternshipManagementModule } from './features/internship-management/internship-management.module';
 import { AuthenticationModule } from './features/authentication/authentication.module';
-import { AccountsManagementModule } from './features/accounts-management/accounts-management.module';
+import { AccountsModule } from './features/accounts/accounts.module';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    InternshipManagementModule,
     AuthenticationModule,
-    AccountsManagementModule
+    AccountsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

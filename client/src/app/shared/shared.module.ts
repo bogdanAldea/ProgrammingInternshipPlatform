@@ -1,41 +1,42 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutWithNavigationComponent } from './layouts/layout-with-navigation/layout-with-navigation.component';
-import { LayoutWithoutNavigationComponent } from './layouts/layout-without-navigation/layout-without-navigation.component';
-import { StackedNavigationComponent } from './navigations/stacked-navigation/stacked-navigation.component';
+import { NoNavLayoutComponent } from './layouts/no-nav-layout/no-nav-layout.component';
+import { NavLayoutComponent } from './layouts/nav-layout/nav-layout.component';
+import { UserControlsNavComponent } from './navigations/user-controls-nav/user-controls-nav.component';
+import { MenuNavComponent } from './navigations/menu-nav/menu-nav.component';
 import { RouterModule } from '@angular/router';
-import { InternshipsTableComponent } from './tables/internships-table/internships-table.component';
-import { ButtonRectSmallComponent } from './buttons/button-rect-small/button-rect-small.component';
-import { InternshipOptionCardComponent } from './cards/internship-option-card/internship-option-card.component';
-import { BreadcrumbComponent } from './navigations/breadcrumb/breadcrumb.component';
 import { TitleComponent } from './typography/title/title.component';
-import { DescriptionComponent } from './typography/description/description.component';
-
+import { ParagraphComponent } from './typography/paragraph/paragraph.component';
+import { ButtonComponent } from './buttons/button/button.component';
+import { AccountsTableComponent } from './tables/accounts-table/accounts-table.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { RoleButtonComponent } from './buttons/role-button/role-button.component';
 
 
 @NgModule({
   declarations: [
-    LayoutWithNavigationComponent,
-    LayoutWithoutNavigationComponent,
-    StackedNavigationComponent,
-    InternshipsTableComponent,
-    ButtonRectSmallComponent,
-    InternshipOptionCardComponent,
-    BreadcrumbComponent,
+    NoNavLayoutComponent,
+    NavLayoutComponent,
+    UserControlsNavComponent,
+    MenuNavComponent,
     TitleComponent,
-    DescriptionComponent
+    ParagraphComponent,
+    ButtonComponent,
+    AccountsTableComponent,
+    RoleButtonComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   exports: [
-    InternshipsTableComponent,
-    ButtonRectSmallComponent,
-    InternshipOptionCardComponent,
-    BreadcrumbComponent,
-    TitleComponent,
-    DescriptionComponent
+    TitleComponent, 
+    ParagraphComponent,
+    ButtonComponent,
+    AccountsTableComponent
   ]
 })
 export class SharedModule { }

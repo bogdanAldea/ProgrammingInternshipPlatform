@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
+using ProgrammingInternshipPlatform.Api.API.Requirements;
 using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Responses;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.EnrollInternToInternship;
@@ -22,6 +23,7 @@ public class InternshipsController : ApiController
 {
     [HttpGet]
     [Route(ApiRoutes.IdRoute)]
+    /*[Authorize(Policy = nameof(UserEnrolledAsInternRequirement))]*/
     public async Task<IActionResult> GetInternshipProgramById(Guid id)
     {
         var internshipGetQuery = new GetInternshipProgramByIdQuery(new InternshipId(id));

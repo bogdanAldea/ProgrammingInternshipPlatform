@@ -11,18 +11,18 @@ using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.Account;
 
-public record RegisterUserAccountWithRolesCommand(string FirstName, string LastName, string Email, string Password,
-    string? PictureUrl, Guid? CompanyId, IReadOnlyList<string> Roles) : IRequest<HandlerResult<UserAccount>>;
+public record RegisterAdministratorAccountWithRolesCommand(string FirstName, string LastName, string Email, string Password,
+    string? PictureUrl, IReadOnlyList<string> Roles) : IRequest<HandlerResult<UserAccount>>;
 
 public class
-    RegisterUserAccountWithRolesHandler : IRequestHandler<RegisterUserAccountWithRolesCommand,
+    RegisterAdministratorAccountWithRolesHandler : IRequestHandler<RegisterAdministratorAccountWithRolesCommand,
         HandlerResult<UserAccount>>
 {
     private readonly ProgrammingInternshipPlatformDbContext _context;
     private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public RegisterUserAccountWithRolesHandler(ProgrammingInternshipPlatformDbContext context,
+    public RegisterAdministratorAccountWithRolesHandler(ProgrammingInternshipPlatformDbContext context,
         UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _context = context;
@@ -30,7 +30,7 @@ public class
         _roleManager = roleManager;
     }
 
-    public async Task<HandlerResult<UserAccount>> Handle(RegisterUserAccountWithRolesCommand request,
+    public async Task<HandlerResult<UserAccount>> Handle(RegisterAdministratorAccountWithRolesCommand request,
         CancellationToken cancellationToken)
     {
         var identityAlreadyExists = await CheckIfEmailIsAlreadyRegistered(request.Email, cancellationToken);
@@ -125,29 +125,17 @@ public class
     }
 
     private async Task<HandlerResult<UserAccount>> CreateUserAccountForIdentity(
-        RegisterUserAccountWithRolesCommand request,
+        RegisterAdministratorAccountWithRolesCommand request,
         IdentityUser newIdentity, CancellationToken cancellationToken, IDbContextTransaction transaction)
     {
         // This should be a factory pattern
-        UserAccount newUserAccount;
-        if(request.CompanyId is null) {
-            newUserAccount = await UserAccount.CreateNew(
+        var newUserAccount = await UserAccount.CreateNew(
                 firstName: request.FirstName,
                 lastName: request.LastName,
                 pictureUrl: request.PictureUrl,
                 identityId: Guid.Parse(newIdentity.Id),
                 cancellationToken
             );
-        }
-        else
-        {
-            newUserAccount = await UserAccount.CreateNew(
-                firstName: request.FirstName,
-                lastName: request.LastName,
-                identityId: Guid.Parse(newIdentity.Id),
-                companyId: new CompanyId((Guid)request.CompanyId),
-                cancellationToken);
-        }
 
         var createdUserAccount = await _context.UserAccount.AddAsync(newUserAccount, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);

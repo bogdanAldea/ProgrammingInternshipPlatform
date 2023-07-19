@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="dialog-header">
+        <app-title text="Change team member role"/>
+        <app-paragraph text="Changing user's role might affect their API token access." />
+    </div>
+
+    <div *ngIf="userAccount$ | async as account" class="my-5 p-0">
+        <div class="user-name d-flex align-items-center">
+            <div class="avatar me-3">
+                <span>{{ account.firstName[0] | uppercase }}{{ account.lastName[0] | uppercase }}</span>
+            </div>
+            <app-title text="{{account.firstName}} {{account.lastName}}" size="16px"/>
+        </div>
+
+        <div class="user-roles mt-3" *ngIf="roles$ | async as roles">
+          <div class="row">
+            <div class="col-4" *ngFor="let role of roles">
+              <mat-checkbox 
+                [checked]="isRoleAssignedToUser(role)"
+                (change)="onRoleAssignment(role, $event.checked)">
+                {{ role.name }}
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <mat-dialog-actions class="d-flex justify-content-between">
+        <app-button appearance="filled" label="Cancel" />
+        <app-button appearance="filled" label="Submit" (click)="onRoleChangedSubmit()"/>
+      </mat-dialog-actions>
+</div>

@@ -12,6 +12,10 @@ import { AccountsTableComponent } from './tables/accounts-table/accounts-table.c
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RoleButtonComponent } from './buttons/role-button/role-button.component';
+import { UserRoleDialogComponent } from './dialogs/user-role-dialog/user-role-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -25,12 +29,16 @@ import { RoleButtonComponent } from './buttons/role-button/role-button.component
     ButtonComponent,
     AccountsTableComponent,
     RoleButtonComponent,
+    UserRoleDialogComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   exports: [
     TitleComponent, 

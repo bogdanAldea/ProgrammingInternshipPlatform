@@ -16,6 +16,8 @@ import { UserRoleDialogComponent } from './dialogs/user-role-dialog/user-role-di
 import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material/input';
+import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialog.component';
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AccountsTableComponent,
     RoleButtonComponent,
     UserRoleDialogComponent,
+    AddUserDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatFormFieldModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule
   ],
   exports: [
     TitleComponent, 

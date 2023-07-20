@@ -19,11 +19,7 @@ export class UserRoleDialogComponent implements OnInit{
   public userRoles: Role[] | undefined;
   public deltaRoleChange: DeltaRolesRequest = { rolesToAdd: [], rolesToRemoved: [] }
   
-  public constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private accountService: AccountService,
-    private roleService: RolesService,
-  ) 
+  public constructor(@Inject(MAT_DIALOG_DATA) public data: any,) 
   {
     this.userAccount$ = data.selectedUserAccount,
     this.roles$ = data.systemRoles
@@ -33,7 +29,6 @@ export class UserRoleDialogComponent implements OnInit{
     this.userAccount$?.subscribe(account => {
       this.userRoles = account.roles;
     })
-
   }
 
   public isRoleAssignedToUser = (role: Role) => {
@@ -58,13 +53,5 @@ export class UserRoleDialogComponent implements OnInit{
 
   public onRoleChangedSubmit = (): void => {
     this.userRolesChangedEvent.emit(this.deltaRoleChange);
-  }
-
-  private getUserAccount = (userId: string): Observable<AccountWithRoles> => {
-    return this.accountService.getUserAccount(userId);
-  }
-
-  private getRoles = (): Observable<Role[]> => {
-    return this.roleService.getAllRoles();
   }
 }

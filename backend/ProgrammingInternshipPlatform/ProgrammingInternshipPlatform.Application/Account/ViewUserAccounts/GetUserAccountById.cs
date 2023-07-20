@@ -30,32 +30,6 @@ public class GetUserAccountByIdHandler : IRequestHandler<GetUserAccountById, Han
 
     private async Task<UserAccountWIthRoles?> GetUserAccount(AccountId accountId, CancellationToken cancellationToken)
     {
-        /*return await _context.UserAccount.FirstOrDefaultAsync(account 
-            => account.Id == accountId, cancellationToken);*/
-
-        /*return await _context.UserAccount
-            .Select(account => new UserAccountWIthRoles
-            {
-                Id = account.Id.Value,
-                FirstName = account.FirstName,
-                LastName = account.LastName,
-                IdentityId = account.IdentityId,
-                JoiningDate = account.JoiningDate,
-                PictureUrl = account.PictureUrl,
-                Roles = _context.UserRoles
-                    .Where(role => role.UserId == account.IdentityId.ToString())
-                    .Join(_context.Roles,
-                        user => user.RoleId,
-                        role => role.Id,
-                        (_, role) => new UserAccountRole
-                        {
-                            Name = role.Name,
-                            Id = role.Id
-                        })
-                    .ToList()
-            })
-            .SingleOrDefaultAsync(account => account.Id == accountId.Value, cancellationToken);*/
-
         var userAccount = await _context.UserAccount
             .Where(account => account.Id == accountId)
             .Select(account => new UserAccountWIthRoles

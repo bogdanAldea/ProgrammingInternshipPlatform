@@ -9,12 +9,12 @@
                 <div class="col text-end align-self-end">
                     <div class="">
                         <span class="me-4">13 Accounts</span>
-                        <app-button appearance="filled" label="+ Add Member"/>
+                        <app-button appearance="filled" label="+ Add Member" (click)="addNewUser()"/>
                     </div>
                 </div>
             </div>
 
-            <app-accounts-table [accounts$]="accounts$" (onUserSelectedEvent)="selectUserFromTable($event)" />
+            <app-accounts-table [accounts$]="accounts$" (onUserSelectedEvent)="changeUserRoles($event)" />
         </div>
     </div>
 </div>

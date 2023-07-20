@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Account } from '../../contracts/account';
 import { ApiRoutes } from 'src/app/core/configurations/api-routes';
 import { Role } from '../../contracts/role';
+import { MemberAccountRegistration } from '../../contracts/member-account-registration';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,10 @@ export class AccountService {
   public removeRolesFromUserAccount = (userId: string, roles: Role[]): Observable<void> => {
     const url: string = `${ApiRoutes.Account.Base}/${userId}/roles/remove`;
     return this.httpClient.post<void>(url, roles);
+  }
+
+  public addNewUserAccount = (account: MemberAccountRegistration): Observable<Account> => {
+    const url: string = ApiRoutes.Account.Base;
+    return this.httpClient.post<Account>(url, account);
   }
 }

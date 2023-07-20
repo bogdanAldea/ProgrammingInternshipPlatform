@@ -19,13 +19,18 @@ public class GetAllRolesHandler : IRequestHandler<GetAllRolesQuery, HandlerResul
     
     public async Task<HandlerResult<IReadOnlyList<UserAccountRole>>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken)
     {
-        var allRoles = await _context.Roles
+        var allRoles = await GetAllSystemRoles(cancellationToken);
+        return HandlerResult<IReadOnlyList<UserAccountRole>>.Success(allRoles);
+    }
+
+    private async Task<IReadOnlyList<UserAccountRole>> GetAllSystemRoles(CancellationToken cancellationToken)
+    {
+        return await _context.Roles
             .Select(role => new UserAccountRole
             {
                 Name = role.Name,
                 Id = role.Id
             })
             .ToListAsync(cancellationToken);
-        return HandlerResult<IReadOnlyList<UserAccountRole>>.Success(allRoles);
-    }   
+    }
 }

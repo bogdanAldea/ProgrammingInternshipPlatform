@@ -23,7 +23,8 @@ public class GetUserAccountByIdHandler : IRequestHandler<GetUserAccountById, Han
         var userAccount = await GetUserAccount(request.AccountId, cancellationToken);
         if (userAccount is null)
         {
-            return HandleUserAccountNotFoundError();
+            return ErrorValidationHelper.NotFoundFailure<UserAccountWIthRoles>(
+                ApplicationErrorMessages.UserAccount.UserAccountNotFound);
         }
         return HandlerResult<UserAccountWIthRoles>.Success(userAccount);
     }
@@ -58,12 +59,5 @@ public class GetUserAccountByIdHandler : IRequestHandler<GetUserAccountById, Han
             .ToListAsync(cancellationToken);
 
         return userAccount;
-    }
-
-    private HandlerResult<UserAccountWIthRoles> HandleUserAccountNotFoundError()
-    {
-        var userAccountNotFoundError =
-            ApplicationError.NotFoundFailure(ApplicationErrorMessages.UserAccount.UserAccountNotFound);
-        return HandlerResult<UserAccountWIthRoles>.Fail(userAccountNotFoundError);
     }
 }

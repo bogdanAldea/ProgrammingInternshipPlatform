@@ -20,15 +20,20 @@ public class AssignRolesToUserAccountHandler
     
     public async Task<HandlerResult<UserAccount>> Handle(AssignRolesToUserAccountCommand request, CancellationToken cancellationToken)
     {
-        var identityAccount = await _context.FindByIdAsync(request.IdentityId.ToString());
+        var identityAccount = await FindUserAccountIdentity(request.IdentityId);
         if (identityAccount is null)
         {
-            var identityNotFoundError =
-                ApplicationError.NotFoundFailure(ApplicationErrorMessages.UserAccount.AccountIdentityNotFound);
-            return HandlerResult<UserAccount>.Fail(identityNotFoundError);
+            return ErrorValidationHelper.NotFoundFailure<UserAccount>(
+                ApplicationErrorMessages.UserAccount.AccountIdentityNotFound);
         }
 
         await _context.AddToRolesAsync(identityAccount, request.Roles);
         return HandlerResult<UserAccount>.Success();
     }
+
+    private async Task<IdentityUser> FindUserAccountIdentity(Guid identityId)
+    {
+        return await _context.FindByIdAsync(identityId.ToString());
+    }
+
 }

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Application.Account.Contracts;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
+using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
 namespace ProgrammingInternshipPlatform.Application.Account.ViewUserAccounts;
@@ -26,18 +27,28 @@ public class GetAllUserAccountsAtCompanyHandler :
     public async Task<HandlerResult<IReadOnlyList<UserAccountWIthRoles>>> Handle(GetAllUserAccountsAtCompanyQuery request,
         CancellationToken cancellationToken)
     {
-        var companyExists = await _context.Companies
-            .AnyAsync(company => company.Id == new CompanyId(request.CompanyId), cancellationToken);
+        var companyExists = await CheckIfOrganisationExists(request.CompanyId, cancellationToken);
 
         if (!companyExists)
         {
-            var companyNotFoundErrorMessage = ApplicationErrorMessages.Company.CompanyNotFound;
-            var companyNotFoundError = ApplicationError.NotFoundFailure(companyNotFoundErrorMessage);
-            return HandlerResult<IReadOnlyList<UserAccountWIthRoles>>.Fail(companyNotFoundError);
+            return ErrorValidationHelper.NotFoundFailure<IReadOnlyList<UserAccountWIthRoles>>(
+                ApplicationErrorMessages.Company.CompanyNotFound);
         }
-        
-        var allAccounts = _context.UserAccount
-            .Where(account => account.CompanyId == new CompanyId(request.CompanyId))
+
+        var allAccounts = GetAllAccountsAtOrganisation(request.CompanyId);
+        return HandlerResult<IReadOnlyList<UserAccountWIthRoles>>.Success(allAccounts);
+    }
+
+    private async Task<bool> CheckIfOrganisationExists(Guid companyId, CancellationToken cancellationToken)
+    {
+        return await _context.Companies
+            .AnyAsync(company => company.Id == new CompanyId(companyId), cancellationToken);
+    }
+
+    private List<UserAccountWIthRoles> GetAllAccountsAtOrganisation(Guid companyId)
+    {
+        return _context.UserAccount
+            .Where(account => account.CompanyId == new CompanyId(companyId))
             .Select(account => new UserAccountWIthRoles
             {
                 Id = account.Id.Value,
@@ -59,6 +70,5 @@ public class GetAllUserAccountsAtCompanyHandler :
                     .ToList()
             })
             .ToList();
-        return HandlerResult<IReadOnlyList<UserAccountWIthRoles>>.Success(allAccounts);
     }
 }

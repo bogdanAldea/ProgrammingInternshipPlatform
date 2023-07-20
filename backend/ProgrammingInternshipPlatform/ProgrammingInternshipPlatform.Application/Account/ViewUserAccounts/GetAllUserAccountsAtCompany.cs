@@ -31,7 +31,7 @@ public class GetAllUserAccountsAtCompanyHandler :
 
         if (!companyExists)
         {
-            return ErrorValidationHelper.NotFoundFailure<IReadOnlyList<UserAccountWIthRoles>>(
+            return HandlerResultFailureHelper.NotFoundFailure<IReadOnlyList<UserAccountWIthRoles>>(
                 ApplicationErrorMessages.Company.CompanyNotFound);
         }
 

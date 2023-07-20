@@ -23,7 +23,7 @@ public class RemoveRolesFromUserAccountHandler
         var accountIdentity = await FindUserAccountIdentity(request.IdentityId);
         if (accountIdentity is null)
         {
-            return ErrorValidationHelper.NotFoundFailure<UserAccount>(
+            return HandlerResultFailureHelper.NotFoundFailure<UserAccount>(
                 ApplicationErrorMessages.UserAccount.AccountIdentityNotFound);
         }
 

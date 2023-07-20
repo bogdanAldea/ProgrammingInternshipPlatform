@@ -34,14 +34,14 @@ public class LoginToAccountHandler : IRequestHandler<LoginToAccountCommand, Hand
         var existingIdentity = await _userManager.FindByEmailAsync(request.EmailAddress);
         if (existingIdentity is null)
         {
-            return ErrorValidationHelper.NotFoundFailure<string>(
+            return HandlerResultFailureHelper.NotFoundFailure<string>(
                 ApplicationErrorMessages.UserAccount.EmailNotFoundForUser);
         }
 
         var passwordIsValid = await _userManager.CheckPasswordAsync(existingIdentity, request.Password);
         if (!passwordIsValid)
         {
-            return ErrorValidationHelper.LoginPasswordFailure<string>(
+            return HandlerResultFailureHelper.LoginPasswordFailure<string>(
                 ApplicationErrorMessages.UserAccount.PasswordNotValid);
         }
 
@@ -49,7 +49,7 @@ public class LoginToAccountHandler : IRequestHandler<LoginToAccountCommand, Hand
 
         if (userAccount is null)
         {
-            return ErrorValidationHelper.NotFoundFailure<string>(
+            return HandlerResultFailureHelper.NotFoundFailure<string>(
                 ApplicationErrorMessages.UserAccount.UserAccountNotFound);
         }
 

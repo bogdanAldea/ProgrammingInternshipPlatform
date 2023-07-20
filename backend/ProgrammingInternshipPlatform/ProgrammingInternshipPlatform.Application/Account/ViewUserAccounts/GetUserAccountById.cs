@@ -23,7 +23,7 @@ public class GetUserAccountByIdHandler : IRequestHandler<GetUserAccountById, Han
         var userAccount = await GetUserAccount(request.AccountId, cancellationToken);
         if (userAccount is null)
         {
-            return ErrorValidationHelper.NotFoundFailure<UserAccountWIthRoles>(
+            return HandlerResultFailureHelper.NotFoundFailure<UserAccountWIthRoles>(
                 ApplicationErrorMessages.UserAccount.UserAccountNotFound);
         }
         return HandlerResult<UserAccountWIthRoles>.Success(userAccount);

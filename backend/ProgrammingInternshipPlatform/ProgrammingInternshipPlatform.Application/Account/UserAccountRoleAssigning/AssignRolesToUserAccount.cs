@@ -23,7 +23,7 @@ public class AssignRolesToUserAccountHandler
         var identityAccount = await FindUserAccountIdentity(request.IdentityId);
         if (identityAccount is null)
         {
-            return ErrorValidationHelper.NotFoundFailure<UserAccount>(
+            return HandlerResultFailureHelper.NotFoundFailure<UserAccount>(
                 ApplicationErrorMessages.UserAccount.AccountIdentityNotFound);
         }
 

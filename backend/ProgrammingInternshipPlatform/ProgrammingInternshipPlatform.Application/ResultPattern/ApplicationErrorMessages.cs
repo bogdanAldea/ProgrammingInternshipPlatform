@@ -20,6 +20,7 @@ public static class ApplicationErrorMessages
         public const string PasswordNotValid = "Password is not valid.";
         public const string InvalidRequestedRoles = "One or more roles requested to add to user are invalid.";
         public const string RoleNotFound = "Role was not found in the system.";
+        public const string AccountIdentityNotFound = "Identity for this user could not be found.";
     }
     
     public static class Company

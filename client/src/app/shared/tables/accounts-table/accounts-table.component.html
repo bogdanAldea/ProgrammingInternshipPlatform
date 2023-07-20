@@ -6,13 +6,13 @@
             <td>{{ account.joiningDate | date: 'mediumDate' }}</td>
 
             <td *ngIf="account.roles.length === 0">
-                <app-button appearance="filled" label="+ Add Role" class="role-button"/>
+                <app-button (click)="onUserSelected(account.id, account.identityId)" appearance="filled" label="+ Add Role" class="role-button"/>
             </td>
             <td *ngIf="account.roles.length === 1">
-                <app-button appearance="filled" label="{{ account.roles[0].name }}" class="role-button"/>
+                <app-button (click)="onUserSelected(account.id, account.identityId)" appearance="filled" label="{{ account.roles[0].name }}" class="role-button"/>
             </td>
             <td *ngIf="account.roles.length > 1">
-                <app-button appearance="filled" label="{{ account.roles[0].name }} (+{{ account.roles.length - 1 }} more)" class="role-button"/>
+                <app-button (click)="onUserSelected(account.id, account.identityId)" appearance="filled" label="{{ account.roles[0].name }} (+{{ account.roles.length - 1 }} more)" class="role-button"/>
             </td>
             <td>
                 <app-button appearance="filled" label="-"/>

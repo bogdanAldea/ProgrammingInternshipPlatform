@@ -11,6 +11,9 @@ public static class ApiRoutes
     {
         public const string AccountRegistration = "registration";
         public const string AccountAuthentication = "login";
+        public const string AccountRolesAdd = $"{IdRoute}/{Roles.BaseRoute}/add";
+        public const string AccountRolesRemove = $"{IdRoute}/{Roles.BaseRoute}/remove";
+        
         public static class Roles
         {
             public const string BaseRoute = "roles";

@@ -19,8 +19,7 @@ public class UserAccountsController : ApiController
         var handlerResult = await Mediator.Send(userAccountGetQuery);
         if (handlerResult.IsSuccess)
         {
-            var userAccountResponse = UserAccountDetails.MapFromUserAccount(handlerResult.Payload!);
-            return Ok(userAccountResponse);
+            return Ok(handlerResult.Payload);
         }
 
         return HandleApiErrorResponse(handlerResult.FailureReason);
@@ -79,6 +78,36 @@ public class UserAccountsController : ApiController
         if (handlerResult.IsSuccess)
         {
             return Ok(new JwtTokenResponse(handlerResult.Payload!));
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpPost]
+    [Route(ApiRoutes.UserAccountRoutes.AccountRolesAdd)]
+    public async Task<IActionResult> AssignRolesToUserAccount(Guid id, [FromBody] IReadOnlyList<RoleRequest> roleRequest)
+    {
+        var roles = roleRequest.Select(role => role.Name);
+        var assignRolesToAccountUserCommand = new AssignRolesToUserAccountCommand(id, roles);
+        var handlerResult = await Mediator.Send(assignRolesToAccountUserCommand);
+        if (handlerResult.IsSuccess)
+        {
+            return Ok();
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+    
+    [HttpPost]
+    [Route(ApiRoutes.UserAccountRoutes.AccountRolesRemove)]
+    public async Task<IActionResult> RemoveRolesFromUserAccount(Guid id, [FromBody] IReadOnlyList<RoleRequest> roleRequest)
+    {
+        var roles = roleRequest.Select(role => role.Name);
+        var removeRolesFromAccountUserCommand = new RemoveRolesFromUserAccountCommand(id, roles);
+        var handlerResult = await Mediator.Send(removeRolesFromAccountUserCommand);
+        if (handlerResult.IsSuccess)
+        {
+            return Ok();
         }
 
         return HandleApiErrorResponse(handlerResult.FailureReason);

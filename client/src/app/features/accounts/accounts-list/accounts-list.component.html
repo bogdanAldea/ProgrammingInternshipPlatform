@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <app-accounts-table [accounts$]="accounts$" />
+            <app-accounts-table [accounts$]="accounts$" (onUserSelectedEvent)="selectUserFromTable($event)" />
         </div>
     </div>
 </div>

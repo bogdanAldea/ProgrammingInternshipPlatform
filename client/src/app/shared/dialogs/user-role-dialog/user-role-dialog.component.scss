@@ -1,0 +1,12 @@
+@import '../../../../assets/theme/colours/palette.scss';
+
+.container-fluid {
+    padding: 60px;
+}
+
+.avatar {
+    background-color: $primary-dark;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 50%;
+}

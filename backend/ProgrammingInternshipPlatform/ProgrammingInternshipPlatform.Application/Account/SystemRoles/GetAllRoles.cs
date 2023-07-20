@@ -1,11 +1,10 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Application.Account.Contracts;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.SystemRoles;
 
 public record GetAllRolesQuery : IRequest<HandlerResult<IReadOnlyList<UserAccountRole>>>;
 

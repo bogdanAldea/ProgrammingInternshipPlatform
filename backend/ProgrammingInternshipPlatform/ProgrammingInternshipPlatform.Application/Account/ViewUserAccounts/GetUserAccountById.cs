@@ -5,7 +5,7 @@ using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.ViewUserAccounts;
 
 public record GetUserAccountById(AccountId AccountId) : IRequest<HandlerResult<UserAccountWIthRoles>>;
 

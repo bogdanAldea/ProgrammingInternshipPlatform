@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.UserAccountRoleAssigning;
 
 public record RemoveRolesFromUserAccountCommand(Guid IdentityId, IEnumerable<string> Roles)
     : IRequest<HandlerResult<UserAccount>>;

@@ -1,15 +1,13 @@
-﻿using System.Collections.ObjectModel;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
-using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.UserAccountAuthentication;
 
 public record RegisterAdministratorAccountWithRolesCommand(string FirstName, string LastName, string Email, string Password,
     string? PictureUrl, IReadOnlyList<string> Roles) : IRequest<HandlerResult<UserAccount>>;

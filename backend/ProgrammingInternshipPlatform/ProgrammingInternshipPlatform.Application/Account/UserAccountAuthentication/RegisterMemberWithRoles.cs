@@ -8,7 +8,7 @@ using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.UserAccountAuthentication;
 
 public record RegisterMemberUserWithRolesCommand(string FirstName, string LastName, string Email,
     Guid CompanyId, IReadOnlyList<string> Roles) : IRequest<HandlerResult<UserAccount>>;

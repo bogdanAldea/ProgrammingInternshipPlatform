@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using ProgrammingInternshipPlatform.Application.Identity;
+using ProgrammingInternshipPlatform.Application.Helpers;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.UserAccountAuthentication;
 
 public record LoginToAccountCommand(string EmailAddress, string Password) : IRequest<HandlerResult<string>>;
 

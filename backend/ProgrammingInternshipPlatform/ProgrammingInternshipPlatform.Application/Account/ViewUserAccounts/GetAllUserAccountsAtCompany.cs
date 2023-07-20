@@ -4,10 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Application.Account.Contracts;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
-using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.ViewUserAccounts;
 
 public record GetAllUserAccountsAtCompanyQuery(Guid CompanyId) : IRequest<HandlerResult<IReadOnlyList<UserAccountWIthRoles>>>;
 

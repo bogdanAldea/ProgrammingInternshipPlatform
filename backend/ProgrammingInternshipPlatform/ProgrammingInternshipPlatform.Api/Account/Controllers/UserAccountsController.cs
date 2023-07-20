@@ -4,6 +4,9 @@ using ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Application.Account;
+using ProgrammingInternshipPlatform.Application.Account.UserAccountAuthentication;
+using ProgrammingInternshipPlatform.Application.Account.UserAccountRoleAssigning;
+using ProgrammingInternshipPlatform.Application.Account.ViewUserAccounts;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 

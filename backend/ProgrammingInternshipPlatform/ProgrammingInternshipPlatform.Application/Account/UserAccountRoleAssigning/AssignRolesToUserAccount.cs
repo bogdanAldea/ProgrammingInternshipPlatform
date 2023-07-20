@@ -1,10 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
-using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.UserAccountRoleAssigning;
 
 public record AssignRolesToUserAccountCommand(Guid IdentityId, IEnumerable<string> Roles) 
     : IRequest<HandlerResult<UserAccount>>;
@@ -21,15 +20,20 @@ public class AssignRolesToUserAccountHandler
     
     public async Task<HandlerResult<UserAccount>> Handle(AssignRolesToUserAccountCommand request, CancellationToken cancellationToken)
     {
-        var identityAccount = await _context.FindByIdAsync(request.IdentityId.ToString());
+        var identityAccount = await FindUserAccountIdentity(request.IdentityId);
         if (identityAccount is null)
         {
-            var identityNotFoundError =
-                ApplicationError.NotFoundFailure(ApplicationErrorMessages.UserAccount.AccountIdentityNotFound);
-            return HandlerResult<UserAccount>.Fail(identityNotFoundError);
+            return HandlerResultFailureHelper.NotFoundFailure<UserAccount>(
+                ApplicationErrorMessages.UserAccount.AccountIdentityNotFound);
         }
 
         await _context.AddToRolesAsync(identityAccount, request.Roles);
         return HandlerResult<UserAccount>.Success();
     }
+
+    private async Task<IdentityUser> FindUserAccountIdentity(Guid identityId)
+    {
+        return await _context.FindByIdAsync(identityId.ToString());
+    }
+
 }

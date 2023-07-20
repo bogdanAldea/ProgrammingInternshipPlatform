@@ -1,15 +1,13 @@
-﻿using System.Collections.ObjectModel;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
-using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.UserAccountAuthentication;
 
 public record RegisterAdministratorAccountWithRolesCommand(string FirstName, string LastName, string Email, string Password,
     string? PictureUrl, IReadOnlyList<string> Roles) : IRequest<HandlerResult<UserAccount>>;
@@ -37,7 +35,8 @@ public class
 
         if (identityAlreadyExists)
         {
-            return HandleEMailAlreadyRegisteredError();
+            return HandlerResultFailureHelper.IdentityAlreadyRegisteredFailure<UserAccount>(
+                ApplicationErrorMessages.UserAccount.EmailAlreadyRegistered);
         }
 
         List<IdentityRole> validatedRoles = new();
@@ -46,7 +45,8 @@ public class
             var role = await _roleManager.FindByIdAsync(roleId);
             if (role is null)
             {
-                return HandleRoleNotFoundError();
+                return HandlerResultFailureHelper.NotFoundFailure<UserAccount>(
+                    ApplicationErrorMessages.UserAccount.RoleNotFound);
             }
 
             validatedRoles.Add(role);
@@ -88,20 +88,6 @@ public class
         return await _userManager.Users.AnyAsync(user => user.Email == email, cancellationToken);
     }
 
-    private HandlerResult<UserAccount> HandleEMailAlreadyRegisteredError()
-    {
-        var emailAlreadyRegisteredError =
-            ApplicationError.IdentityUserAlreadyExists(ApplicationErrorMessages.UserAccount.EmailAlreadyRegistered);
-        return HandlerResult<UserAccount>.Fail(emailAlreadyRegisteredError);
-    }
-
-    private HandlerResult<UserAccount> HandleRoleNotFoundError()
-    {
-        var roleNotFoundError =
-            ApplicationError.NotFoundFailure(ApplicationErrorMessages.UserAccount.RoleNotFound);
-        return HandlerResult<UserAccount>.Fail(roleNotFoundError);
-    }
-
     private async Task<IdentityResult> AddRolesToIdentity(IdentityUser newIdentity,
         IReadOnlyList<IdentityRole> validatedRoles)
     {
@@ -116,12 +102,9 @@ public class
         identityResult.Errors.ToList().ForEach(error
             => identityErrorMessages.Add(error.Description));
 
-        var identityRegistrationError = ApplicationError.AddErrors(
-            ApplicationErrorType.IdentityRegistrationFailure, identityErrorMessages);
-
         await transaction.RollbackAsync(cancellationToken);
 
-        return HandlerResult<UserAccount>.Fail(identityRegistrationError);
+        return HandlerResultFailureHelper.IdentityRegistrationFailure<UserAccount>(identityErrorMessages);
     }
 
     private async Task<HandlerResult<UserAccount>> CreateUserAccountForIdentity(
@@ -147,16 +130,13 @@ public class
         string errorMessage, CancellationToken cancellationToken)
     {
         await transaction.RollbackAsync(cancellationToken);
-        var userAccountValidationError =
-            ApplicationError.DomainValidationFailure(errorMessage);
-        return HandlerResult<UserAccount>.Fail(userAccountValidationError);
+        return HandlerResultFailureHelper.DomainValidationFailure<UserAccount>(errorMessage);
     }
 
     private async Task<HandlerResult<UserAccount>> HandleTransactionError(IDbContextTransaction transaction,
         string errorMessage, CancellationToken cancellationToken)
     {
         await transaction.RollbackAsync(cancellationToken);
-        var transactionApplicationError = ApplicationError.IdentityRegistrationFailure(errorMessage);
-        return HandlerResult<UserAccount>.Fail(transactionApplicationError);
+        return HandlerResultFailureHelper.TransactionFailure<UserAccount>(errorMessage);
     }
 }

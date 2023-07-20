@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using ProgrammingInternshipPlatform.Application.Identity;
+using ProgrammingInternshipPlatform.Application.Helpers;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.UserAccountAuthentication;
 
 public record LoginToAccountCommand(string EmailAddress, string Password) : IRequest<HandlerResult<string>>;
 
@@ -34,47 +34,34 @@ public class LoginToAccountHandler : IRequestHandler<LoginToAccountCommand, Hand
         var existingIdentity = await _userManager.FindByEmailAsync(request.EmailAddress);
         if (existingIdentity is null)
         {
-            return HandleIdentityNotFoundError();
+            return HandlerResultFailureHelper.NotFoundFailure<string>(
+                ApplicationErrorMessages.UserAccount.EmailNotFoundForUser);
         }
 
         var passwordIsValid = await _userManager.CheckPasswordAsync(existingIdentity, request.Password);
         if (!passwordIsValid)
         {
-            return HandlePasswordInvalidError();
+            return HandlerResultFailureHelper.LoginPasswordFailure<string>(
+                ApplicationErrorMessages.UserAccount.PasswordNotValid);
         }
 
-        var userAccount = await _context.UserAccount
-            .FirstOrDefaultAsync(account =>
-                account.IdentityId == Guid.Parse(existingIdentity.Id), cancellationToken);
+        var userAccount = await GetUserAccount(existingIdentity.Id, cancellationToken);
 
         if (userAccount is null)
         {
-            return HandleUserAccountNotFoundError();
+            return HandlerResultFailureHelper.NotFoundFailure<string>(
+                ApplicationErrorMessages.UserAccount.UserAccountNotFound);
         }
 
         var token = await GenerateAuthenticationToken(existingIdentity, userAccount);
         return HandlerResult<string>.Success(token);
     }
 
-    private HandlerResult<string> HandleIdentityNotFoundError()
+    private async Task<UserAccount?> GetUserAccount(string accountId, CancellationToken cancellationToken)
     {
-        var identityNotFoundError = ApplicationError
-            .NotFoundFailure(ApplicationErrorMessages.UserAccount.EmailNotFoundForUser);
-        return HandlerResult<string>.Fail(identityNotFoundError);
-    }
-
-    private HandlerResult<string> HandlePasswordInvalidError()
-    {
-        var invalidPasswordError = ApplicationError
-            .IdentityLoginPasswordFailure(ApplicationErrorMessages.UserAccount.PasswordNotValid);
-        return HandlerResult<string>.Fail(invalidPasswordError);
-    }
-
-    private HandlerResult<string> HandleUserAccountNotFoundError()
-    {
-        var userAccountNotFoundError = ApplicationError
-            .NotFoundFailure(ApplicationErrorMessages.UserAccount.UserAccountNotFound);
-        return HandlerResult<string>.Fail(userAccountNotFoundError);
+        return await _context.UserAccount
+            .SingleOrDefaultAsync(account =>
+                account.IdentityId == Guid.Parse(accountId), cancellationToken);
     }
 
     private async Task<string> GenerateAuthenticationToken(IdentityUser existingIdentity, UserAccount account)

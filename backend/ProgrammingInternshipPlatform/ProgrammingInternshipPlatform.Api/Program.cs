@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
 using ProgrammingInternshipPlatform.Api.API.Requirements;
-using ProgrammingInternshipPlatform.Application.Identity;
+using ProgrammingInternshipPlatform.Application.Helpers;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
 using ProgrammingInternshipPlatform.Dal.Context;
 

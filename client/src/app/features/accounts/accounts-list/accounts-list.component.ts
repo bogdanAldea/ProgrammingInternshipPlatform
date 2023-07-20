@@ -6,6 +6,7 @@ import { AccountWithRoles } from 'src/app/core/accounts/contracts/account-with-r
 import { Role } from 'src/app/core/accounts/contracts/role';
 import { UserData } from 'src/app/core/accounts/models/user-data';
 import { AccountService } from 'src/app/core/accounts/services/account-service/account.service';
+import { RolesService } from 'src/app/core/accounts/services/roles-service/roles.service';
 import { UserRoleDialogComponent } from 'src/app/shared/dialogs/user-role-dialog/user-role-dialog.component';
 
 @Component({
@@ -18,6 +19,7 @@ export class AccountsListComponent implements OnInit {
 
   public constructor(
     private accountService: AccountService, 
+    private roleService: RolesService,
     public dialog: MatDialog
   ) {}
   
@@ -35,8 +37,15 @@ export class AccountsListComponent implements OnInit {
   }
 
   public selectUserFromTable = (userData: UserData) => {
+
+    const selectedUserAccount$: Observable<AccountWithRoles> = this.accountService.getUserAccount(userData.userId);
+    const systemRoles$: Observable<Role[]> = this.roleService.getAllRoles();
+
     const dialogRef = this.dialog.open(UserRoleDialogComponent, {
-      data: userData,
+      data: {
+        selectedUserAccount: selectedUserAccount$,
+        systemRoles: systemRoles$ 
+      },
       width: '600px',
     })
 

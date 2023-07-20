@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Application.Identity;
+﻿namespace ProgrammingInternshipPlatform.Application.Helpers;
 
 public class JwtSettings
 {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 
-namespace ProgrammingInternshipPlatform.Application.Account;
+namespace ProgrammingInternshipPlatform.Application.Account.SystemRoles;
 
 public record GetAdministratorRoleQuery : IRequest<HandlerResult<IdentityRole>>;
 

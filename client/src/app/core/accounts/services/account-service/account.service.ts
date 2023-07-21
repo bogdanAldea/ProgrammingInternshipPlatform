@@ -6,6 +6,7 @@ import { Account } from '../../contracts/account';
 import { ApiRoutes } from 'src/app/core/configurations/api-routes';
 import { Role } from '../../contracts/role';
 import { MemberAccountRegistration } from '../../contracts/member-account-registration';
+import { SignupRequest } from 'src/app/core/authentication/contracts/signup-request';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +41,10 @@ export class AccountService {
   public addNewUserAccount = (account: MemberAccountRegistration): Observable<Account> => {
     const url: string = ApiRoutes.Account.Base;
     return this.httpClient.post<Account>(url, account);
+  }
+
+  public signup = (request: SignupRequest): Observable<Account> => {
+    const url: string = ApiRoutes.Account.Signup;
+    return this.httpClient.post<Account>(url, request);
   }
 }

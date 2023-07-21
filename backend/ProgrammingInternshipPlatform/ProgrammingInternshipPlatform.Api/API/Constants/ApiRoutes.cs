@@ -9,15 +9,14 @@ public static class ApiRoutes
     
     public static class UserAccountRoutes
     {
-        public const string AccountRegistration = "registration";
-        public const string AccountAuthentication = "login";
-        public const string AccountRolesAdd = $"{IdRoute}/{Roles.BaseRoute}/add";
-        public const string AccountRolesRemove = $"{IdRoute}/{Roles.BaseRoute}/remove";
+        public const string AccountRegistration = "signup";
+        public const string AccountAuthentication = "signin";
+        public const string AccountRolesAdd = $"{IdRoute}/roles/add";
+        public const string AccountRolesRemove = $"{IdRoute}/roles/remove";
         
         public static class Roles
         {
-            public const string BaseRoute = "roles";
-            public const string Administrator = $"{BaseRoute}/administrator";
+            public const string Administrator = "administrator";
         }
     }
     

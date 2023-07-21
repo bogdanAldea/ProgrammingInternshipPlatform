@@ -5,8 +5,8 @@ export namespace ApiRoutes
     export class Account 
     {
         public static Base = `${server}/UserAccounts`
-        public static Signup = `${this.Base}/`;
-        public static Signin = `${this.Base}/`;
+        public static Signup = `${this.Base}/signup`;
+        public static Signin = `${this.Base}/signin`;
     }
 
     export class Roles 

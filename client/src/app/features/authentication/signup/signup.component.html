@@ -1,1 +1,51 @@
-<p>signup works!</p>
+<div class="container-fluid">
+    <div class="form-container">
+        <div class="row w-100 form-title mb-3">
+            <app-title text="Sign in."/>
+            <app-paragraph text="Please fill the form below in order to create an account." />
+        </div>
+            <form [formGroup]="signupForm" class="d-flex flex-column">
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input type="text" matInput formControlName="firstName" placeholder="Enter your first name">
+                    <mat-error *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched">
+                      First Name is required.
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" matInput formControlName="lastName" placeholder="Enter your last name">
+                    <mat-error *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched">
+                      Last Name is required.
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="Enter your email">
+                    <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                      Email is required.
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password" placeholder="Enter your password">
+                    <mat-error *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+                      Password is required.
+                    </mat-error>
+                </mat-form-field>
+
+                <app-button appearance="filled" label="Sign up" (click)="submitSignupRequest()"/>
+
+                <div class="row form-field-row loggin-option-field mt-3">
+                    <small>Already have an account?
+                        <span>Sign in</span>
+                    </small>
+                </div>
+        
+        </form>
+    </div>
+</div>

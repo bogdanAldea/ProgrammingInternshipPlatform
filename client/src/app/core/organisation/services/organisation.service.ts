@@ -4,6 +4,8 @@ import { ApiRoutes } from '../../configurations/api-routes';
 import { FullInternship } from '../../internship-management/models/enums/FullInternship';
 import { Observable, map } from 'rxjs';
 import { FullInternshipResponse } from '../../internship-management/contracts/responses/FullInternshipResponse';
+import { CountryResponse } from '../contracts/CountryResponse';
+import { CenterResponse } from '../contracts/CenterResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +21,15 @@ export class OrganisationService {
         return response.map((internship: FullInternshipResponse) => new FullInternship(internship));
       })
     );
+  }
+
+  public getAllCountriesAtOrganisation = (organisationId: string): Observable<CountryResponse[]> => {
+    const url = `${ApiRoutes.Organisation.Base}/${organisationId}/${ApiRoutes.Organisation.AllCountries}`;
+    return this.httpClient.get<CountryResponse[]>(url);
+  }
+
+  public getAllCentersInCountry = (id: string, countryId: string): Observable<CenterResponse[]> => {
+    const url = `${ApiRoutes.Organisation.Base}/${id}/${ApiRoutes.Organisation.AllCountries}/${countryId}/centers`;
+    return this.httpClient.get<CenterResponse[]>(url);
   }
 }

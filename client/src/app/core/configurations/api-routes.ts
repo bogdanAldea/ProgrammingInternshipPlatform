@@ -19,5 +19,11 @@ export namespace ApiRoutes
     {
         public static Base = `${server}/Organisations`;
         public static AllAccounts = 'user-accounts';
+        public static AllCountries = 'countries';
+        public static AllCentersInCountry = 'centers';
+    }
+
+    export class Internships {
+        public static Base = `${server}/Internships`;
     }
 }

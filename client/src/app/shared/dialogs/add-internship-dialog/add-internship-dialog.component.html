@@ -1,0 +1,69 @@
+<div class="container-fluid p-5">
+
+    <div class="dialog-header">
+        <app-title text="Add new internship"/>
+        <app-paragraph text="Fill the form below in order to add a new internship."/>
+    </div>
+
+    <div class="form-container my-5">
+      
+        <form [formGroup]="newInternshipForm" class="d-flex flex-column">
+
+          <mat-form-field appearance="outline" *ngIf="countries$ | async as countries">
+            <mat-label>Countries</mat-label>
+            <mat-select formControlName="countries" (selectionChange)="getAllCentersFromSelectedCountry($event)">
+              <mat-select-trigger>
+                {{ getSelectedCountry() }}
+              </mat-select-trigger>
+              <mat-option *ngFor="let country of countries" [value]="country">{{country.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" *ngIf="centers$ | async as centers">
+            <mat-label>Centers</mat-label>
+            <mat-select formControlName="centers">
+              <mat-select-trigger>
+                {{ getSelectedCenter() }}
+              </mat-select-trigger>
+              <mat-option *ngFor="let center of centers" [value]="center">{{center.location}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Interns To Enroll</mat-label>
+                <input matInput formControlName="maximumInternsToEnroll" placeholder="Enter user's first name">
+                <mat-error *ngIf="newInternshipForm.get('maximumInternsToEnroll')?.invalid && newInternshipForm.get('maximumInternsToEnroll')?.touched">
+
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Duration (in months)</mat-label>
+                <input matInput formControlName="durationInMonths" placeholder="Enter user's first name">
+                <mat-error *ngIf="newInternshipForm.get('durationInMonths')?.invalid && newInternshipForm.get('durationInMonths')?.touched">
+
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Scheduled to start on</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="scheduledToStartOn">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+                              <mat-error *ngIf="newInternshipForm.get('scheduledToStartOn')?.invalid && newInternshipForm.get('scheduledToStartOn')?.touched">
+
+              </mat-error>
+          </mat-form-field>
+    
+    
+        </form>
+    </div>
+
+    <mat-dialog-actions class="d-flex justify-content-between">
+        <app-button appearance="filled" label="Cancel" />
+        <app-button appearance="filled" label="Submit" (click)="getInternshipFormData()"/>
+      </mat-dialog-actions>
+
+</div>
+

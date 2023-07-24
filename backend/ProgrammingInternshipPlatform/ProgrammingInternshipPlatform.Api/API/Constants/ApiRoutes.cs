@@ -31,7 +31,15 @@ public static class ApiRoutes
     
     public static class OrganisationRoutes
     {
+        public static class Countries
+        {
+            public const string CountryIdRoute = "{countryId}";
+            public const string AllCountries = $"{IdRoute}/countries";
+            public const string AllCentersFromCountry = $"{IdRoute}/countries/{CountryIdRoute}/centers";
+        }
+        
         public const string AllInternships = $"{IdRoute}/internships";
         public const string AllUserAccounts = $"{IdRoute}/user-accounts";
+
     }
 }

@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="header">
+            <app-title [text]="configurations.title" [icon]="configurations.icon" />
+            <app-paragraph [text]="configurations.description" />
+        </div>
+    
+        <div class="col h-100" *ngFor="let option of configurations.options">
+            <app-internship-option-card [option]="option" />
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="header">
+            <app-title [text]="members.title" [icon]="members.icon" />
+            <app-paragraph [text]="members.description" />
+        </div>
+    
+        <div class="col h-100" *ngFor="let option of members.options">
+            <app-internship-option-card [option]="option" />
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="header">
+            <app-title [text]="collaboration.title" [icon]="collaboration.icon" />
+            <app-paragraph [text]="collaboration.description" />
+        </div>
+    
+        <div class="col col-md-6 h-100" *ngFor="let option of collaboration.options">
+            <app-internship-option-card [option]="option" />
+        </div>
+    </div>
+</div>

@@ -28,7 +28,7 @@
             <td>{{ internship.durationInMonths }} Months</td>
             <!-- <td><button class="see-more-btn" [routerLink]="[internship.id]">See More</button></td> -->
             <td>
-                <app-button appearance="filled" label="See"/>
+                <app-button appearance="filled" label="See" [routerLink]="[internship.id, 'options']"/>
             </td>
         </tr>
     </tbody>

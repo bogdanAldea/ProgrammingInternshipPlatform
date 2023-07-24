@@ -22,6 +22,7 @@ import { InternshipTableComponent } from './tables/internship-table/internship-t
 import { AddInternshipDialogComponent } from './dialogs/add-internship-dialog/add-internship-dialog.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { InternshipOptionCardComponent } from './cards/internship-option-card/internship-option-card.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AddUserDialogComponent,
     InternshipTableComponent,
     AddInternshipDialogComponent,
+    InternshipOptionCardComponent,
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ParagraphComponent,
     ButtonComponent,
     AccountsTableComponent,
-    InternshipTableComponent
+    InternshipTableComponent,
+    InternshipOptionCardComponent
   ]
 })
 export class SharedModule { }

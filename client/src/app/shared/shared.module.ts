@@ -19,6 +19,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialog.component';
 import { InternshipTableComponent } from './tables/internship-table/internship-table.component';
+import { AddInternshipDialogComponent } from './dialogs/add-internship-dialog/add-internship-dialog.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -35,6 +38,7 @@ import { InternshipTableComponent } from './tables/internship-table/internship-t
     UserRoleDialogComponent,
     AddUserDialogComponent,
     InternshipTableComponent,
+    AddInternshipDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +48,9 @@ import { InternshipTableComponent } from './tables/internship-table/internship-t
     MatDialogModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     TitleComponent, 

@@ -26,5 +26,6 @@ public static class ApplicationErrorMessages
     public static class Company
     {
         public const string CompanyNotFound = "This company could not be found.";
+        public const string CountryNotFound = "This country does not the requested company.";
     }
 }

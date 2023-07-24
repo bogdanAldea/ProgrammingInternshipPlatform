@@ -19,11 +19,7 @@ public class OrganisationsController : ApiController
         var result = await Mediator.Send(internshipsOfOrganisationQuery);
         if (result.IsSuccess)
         {
-            var mappedInternships = new List<InternshipDetail>();
-            result.Payload!.ForEach(internship => 
-                mappedInternships.Add(InternshipDetail.MapFromInternship(internship)));
-            
-            return Ok(mappedInternships);
+            return Ok(result.Payload);
         }
 
         return HandleApiErrorResponse(result.FailureReason);

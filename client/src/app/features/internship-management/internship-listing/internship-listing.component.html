@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="header-controls-container d-flex justify-content-between">
+        <div class="header">
+            <app-title text="Internships" />
+            <app-paragraph text="Manage all internships at your organisation." />
+        </div>
+
+        <div class="controls">
+            <app-button appearance="filled" label="+ Schedule internship"/>
+        </div>
+    </div>
+
+    <div class="internships-table">
+        <app-internship-table [internships$]="internships$"/>
+    </div>
+</div>

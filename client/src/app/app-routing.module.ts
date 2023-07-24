@@ -11,6 +11,12 @@ const routes: Routes =
     children: 
     [
       {
+        path: 'internships',
+        loadChildren: () => import('./features/internship-management/internship-management.module')
+        .then(module => module.InternshipManagementModule)
+      },
+
+      {
         path: 'accounts',
         loadChildren: () => import('./features/accounts/accounts.module')
         .then(module => module.AccountsModule)

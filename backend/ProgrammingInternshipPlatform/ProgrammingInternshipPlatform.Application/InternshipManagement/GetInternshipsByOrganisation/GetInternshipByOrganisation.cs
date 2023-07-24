@@ -1,15 +1,16 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ProgrammingInternshipPlatform.Application.InternshipManagement.Responses;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
-using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships;
+using ProgrammingInternshipPlatform.Dal.Queryable.Internships;
 using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipsByOrganisation;
 
-public record GetInternshipByOrganisationQuery(CompanyId CompanyId) : IRequest<HandlerResult<List<Internship>>>;
+public record GetInternshipByOrganisationQuery(CompanyId CompanyId) : IRequest<HandlerResult<List<FullInternshipResponse>>>;
 
-public class GetInternshipByOrganisationHandler : IRequestHandler<GetInternshipByOrganisationQuery, HandlerResult<List<Internship>>>
+public class GetInternshipByOrganisationHandler : IRequestHandler<GetInternshipByOrganisationQuery, HandlerResult<List<FullInternshipResponse>>>
 {
     private readonly ProgrammingInternshipPlatformDbContext _context;
 
@@ -17,11 +18,15 @@ public class GetInternshipByOrganisationHandler : IRequestHandler<GetInternshipB
     {
         _context = context;
     }
-    public Task<HandlerResult<List<Internship>>> Handle(GetInternshipByOrganisationQuery request, CancellationToken cancellationToken)
+    public async Task<HandlerResult<List<FullInternshipResponse>>> Handle(GetInternshipByOrganisationQuery request, CancellationToken cancellationToken)
     {
-        var internships = _context.Internships
-            .Include(internship => internship.Timeframe)
-            .Where(i => i.CompanyId == request.CompanyId);
-        return Task.FromResult(HandlerResult<List<Internship>>.Success(internships.ToList()));
+        var internships = await _context.Internships
+            .ForInternshipAtOrganisation(request.CompanyId)
+            .WithCenter(_context)
+            .Select(result =>
+                FullInternshipResponse.MapFromInternshipQueryResult(result.Internship, result.Center))
+            .ToListAsync(cancellationToken);
+        
+        return HandlerResult<List<FullInternshipResponse>>.Success(internships);
     }
 }

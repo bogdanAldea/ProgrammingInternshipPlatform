@@ -24,8 +24,4 @@
       <ProjectReference Include="..\ProgrammingInternshipPlatform.Domain\ProgrammingInternshipPlatform.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="QueryExtensions" />
-    </ItemGroup>
-
 </Project>

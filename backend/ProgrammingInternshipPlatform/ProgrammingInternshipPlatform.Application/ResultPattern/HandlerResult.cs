@@ -1,4 +1,6 @@
-﻿namespace ProgrammingInternshipPlatform.Application.ResultPattern;
+﻿using ProgrammingInternshipPlatform.Application.InternshipManagement.Responses;
+
+namespace ProgrammingInternshipPlatform.Application.ResultPattern;
 
 public class HandlerResult<TEntity>
 {

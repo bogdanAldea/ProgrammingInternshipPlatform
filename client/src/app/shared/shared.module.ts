@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialog.component';
+import { InternshipTableComponent } from './tables/internship-table/internship-table.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialo
     RoleButtonComponent,
     UserRoleDialogComponent,
     AddUserDialogComponent,
+    InternshipTableComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialo
     TitleComponent, 
     ParagraphComponent,
     ButtonComponent,
-    AccountsTableComponent
+    AccountsTableComponent,
+    InternshipTableComponent
   ]
 })
 export class SharedModule { }

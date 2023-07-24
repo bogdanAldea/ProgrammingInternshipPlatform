@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { InternshipManagementRoutingModule } from './internship-management-routing.module';
 import { InternshipListingComponent } from './internship-listing/internship-listing.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { InternshipListingComponent } from './internship-listing/internship-list
   ],
   imports: [
     CommonModule,
-    InternshipManagementRoutingModule
+    InternshipManagementRoutingModule,
+    SharedModule
   ]
 })
 export class InternshipManagementModule { }

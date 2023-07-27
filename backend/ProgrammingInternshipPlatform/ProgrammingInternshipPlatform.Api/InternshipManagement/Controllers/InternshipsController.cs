@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
+using ProgrammingInternshipPlatform.Api.API.Extensions;
 using ProgrammingInternshipPlatform.Api.API.Requirements;
 using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.InternshipManagement.Contracts.Responses;
@@ -9,6 +10,7 @@ using ProgrammingInternshipPlatform.Application.InternshipManagement.EnrollInter
 using ProgrammingInternshipPlatform.Application.InternshipManagement.ExtendInternshipEndDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternsEnrolledInInternship;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipProgramById;
+using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipsByOrganisation;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.GetInternshipSettings;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.RescheduleInternshipStartDate;
 using ProgrammingInternshipPlatform.Application.InternshipManagement.SetupNewInternshipProgram;
@@ -22,8 +24,24 @@ namespace ProgrammingInternshipPlatform.Api.InternshipManagement.Controllers;
 public class InternshipsController : ApiController
 {
     [HttpGet]
+    [Authorize(Roles = "Administrator")]
+    public async Task<IActionResult> GetAllInternshipsAtOrganisation()
+    {
+        var organisationGuid = User.GetOrganisationGuid();
+        var getAllInternshipsAtOrganisationQuery = new GetInternshipsAtOrganisationQuery(organisationGuid);
+        var handlerResult = await Mediator.Send(getAllInternshipsAtOrganisationQuery);
+        if (handlerResult.IsSuccess && handlerResult.Payload is not null)
+        {
+            var mappedInternships = handlerResult.Payload
+                .Select(InternshipDetailsDto.MapFromInternship);
+            return Ok(mappedInternships);
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+
+    [HttpGet]
     [Route(ApiRoutes.IdRoute)]
-    /*[Authorize(Policy = nameof(UserEnrolledAsInternRequirement))]*/
     public async Task<IActionResult> GetInternshipProgramById(Guid id)
     {
         var internshipGetQuery = new GetInternshipProgramByIdQuery(new InternshipId(id));

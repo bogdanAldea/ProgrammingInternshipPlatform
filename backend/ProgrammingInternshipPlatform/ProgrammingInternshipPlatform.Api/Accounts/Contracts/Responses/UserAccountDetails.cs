@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
+﻿using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
 
-namespace ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
+namespace ProgrammingInternshipPlatform.Api.Accounts.Contracts.Responses;
 
 public class UserAccountDetails
 {

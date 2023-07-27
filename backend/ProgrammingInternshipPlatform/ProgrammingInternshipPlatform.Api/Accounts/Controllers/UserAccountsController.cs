@@ -1,18 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProgrammingInternshipPlatform.Api.Account.Contracts.Requests;
-using ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
+using ProgrammingInternshipPlatform.Api.Accounts.Contracts.Requests;
+using ProgrammingInternshipPlatform.Api.Accounts.Contracts.Responses;
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.API.Extensions;
-using ProgrammingInternshipPlatform.Application.Account;
 using ProgrammingInternshipPlatform.Application.Account.UserAccountAuthentication;
 using ProgrammingInternshipPlatform.Application.Account.UserAccountRoleAssigning;
 using ProgrammingInternshipPlatform.Application.Account.ViewUserAccounts;
 using ProgrammingInternshipPlatform.Domain.Account.UserAccounts;
-using ProgrammingInternshipPlatform.Domain.Organisation.Companies;
 
-namespace ProgrammingInternshipPlatform.Api.Account.Controllers;
+namespace ProgrammingInternshipPlatform.Api.Accounts.Controllers;
 
 public class UserAccountsController : ApiController
 {
@@ -104,6 +102,7 @@ public class UserAccountsController : ApiController
     }
 
     [HttpPost]
+    [Authorize(Roles = "Administrator")]
     [Route(ApiRoutes.UserAccountRoutes.AccountRolesAdd)]
     public async Task<IActionResult> AssignRolesToUserAccount(Guid id, [FromBody] IReadOnlyList<RoleRequest> roleRequest)
     {
@@ -119,6 +118,7 @@ public class UserAccountsController : ApiController
     }
     
     [HttpPost]
+    [Authorize(Roles = "Administrator")]
     [Route(ApiRoutes.UserAccountRoutes.AccountRolesRemove)]
     public async Task<IActionResult> RemoveRolesFromUserAccount(Guid id, [FromBody] IReadOnlyList<RoleRequest> roleRequest)
     {

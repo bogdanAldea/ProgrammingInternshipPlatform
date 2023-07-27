@@ -1,7 +1,17 @@
 <table *ngIf="accounts$ | async as accounts">   
     <tbody>
         <tr *ngFor="let account of accounts" class="account-row">
-            <td>{{ account.firstName }} {{ account.lastName}}</td>
+            <td>
+                <div class="d-flex">
+                    <div class="avatar">
+                        {{ account.firstName[0] }}{{ account.lastName[0] }}
+                    </div>
+                    <div class="user ms-3">
+                        {{ account.firstName }} {{ account.lastName}}
+                        {{ account.email }}
+                    </div>
+                </div>
+            </td>
             <td>{{ account.email }}</td>
             <td>{{ account.joiningDate | date: 'mediumDate' }}</td>
 

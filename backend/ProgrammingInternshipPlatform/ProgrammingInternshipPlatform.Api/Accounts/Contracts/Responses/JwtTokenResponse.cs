@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
+﻿namespace ProgrammingInternshipPlatform.Api.Accounts.Contracts.Responses;
 
 public class JwtTokenResponse
 {

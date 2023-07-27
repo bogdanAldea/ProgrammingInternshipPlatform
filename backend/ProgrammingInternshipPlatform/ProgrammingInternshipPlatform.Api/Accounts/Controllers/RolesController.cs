@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
+using ProgrammingInternshipPlatform.Api.Accounts.Contracts.Responses;
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
-using ProgrammingInternshipPlatform.Application.Account;
 using ProgrammingInternshipPlatform.Application.Account.SystemRoles;
 
-namespace ProgrammingInternshipPlatform.Api.Account.Controllers;
+namespace ProgrammingInternshipPlatform.Api.Accounts.Controllers;
 
 public class RolesController : ApiController
 {

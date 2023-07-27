@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
+namespace ProgrammingInternshipPlatform.Api.Accounts.Contracts.Responses;
 
 public class AdministratorRoleResponse
 {

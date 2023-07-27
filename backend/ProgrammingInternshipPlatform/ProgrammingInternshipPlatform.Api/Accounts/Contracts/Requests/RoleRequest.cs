@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProgrammingInternshipPlatform.Api.Account.Contracts.Requests;
+namespace ProgrammingInternshipPlatform.Api.Accounts.Contracts.Requests;
 
 public class RoleRequest
 {

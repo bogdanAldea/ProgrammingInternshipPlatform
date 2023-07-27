@@ -12,12 +12,12 @@ button {
     /* Filled button style */
     &.filled {
         background-color: #E8EAEE;
-        color: $primary-dark;
+        color: $primary-dark-lighter;
         border: none;
     }
 
     &.filled:hover {
-        background-color: $primary-dark;
+        background-color: $primary-dark-lighter;
         color: white;
         transition: ease-in-out 0.2s;
     }
@@ -25,12 +25,12 @@ button {
     /* Outline button style */
     &.outline {
       background-color: transparent;
-      color: $primary-dark;
-      border: 2px solid $primary-dark;
+      color: $primary-dark-lighter;
+      border: 2px solid $primary-dark-lighter;
     }
 
     &.outline:hover {
-        background-color: $primary-dark;
+        background-color: $primary-dark-lighter;
         color: white;
         transition: ease-in-out 0.2s;
     }

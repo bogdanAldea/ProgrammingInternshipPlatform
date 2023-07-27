@@ -76,7 +76,8 @@ public class LoginToAccountHandler : IRequestHandler<LoginToAccountCommand, Hand
             new Claim(JwtRegisteredClaimNames.GivenName, account.FirstName),
             new Claim(JwtRegisteredClaimNames.FamilyName, account.LastName),
             new Claim(JwtRegisteredClaimNames.NameId, existingIdentity.Id),
-            new Claim("account_identifier", account.Id.Value.ToString())
+            new Claim("accountIdentifier", account.Id.Value.ToString()),
+            new Claim("organisationId", account.CompanyId.Value.ToString())
         };
         
         var roles = await _userManager.GetRolesAsync(existingIdentity);

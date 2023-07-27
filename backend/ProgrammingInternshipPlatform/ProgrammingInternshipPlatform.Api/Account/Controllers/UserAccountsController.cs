@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.Account.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.Account.Contracts.Responses;
 using ProgrammingInternshipPlatform.Api.API.Constants;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
+using ProgrammingInternshipPlatform.Api.API.Extensions;
 using ProgrammingInternshipPlatform.Application.Account;
 using ProgrammingInternshipPlatform.Application.Account.UserAccountAuthentication;
 using ProgrammingInternshipPlatform.Application.Account.UserAccountRoleAssigning;
@@ -20,6 +22,21 @@ public class UserAccountsController : ApiController
     {
         var userAccountGetQuery = new GetUserAccountById(new AccountId(id));
         var handlerResult = await Mediator.Send(userAccountGetQuery);
+        if (handlerResult.IsSuccess)
+        {
+            return Ok(handlerResult.Payload);
+        }
+
+        return HandleApiErrorResponse(handlerResult.FailureReason);
+    }
+    
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> GetAllUserAccount()
+    {
+        var organisationId = User.GetOrganisationGuid();
+        var allAccountsAtOrganisationQuery = new GetAllUserAccountsAtCompanyQuery(organisationId);
+        var handlerResult = await Mediator.Send(allAccountsAtOrganisationQuery);
         if (handlerResult.IsSuccess)
         {
             return Ok(handlerResult.Payload);

@@ -23,10 +23,8 @@ export class AccountService {
     return this.httpClient.get<AccountWithRoles>(url);
   }
 
-  public getAllAccountsAtOrganisation = (organisationId: string) : Observable<AccountWithRoles[]> => {
-    const base: string = ApiRoutes.Organisation.Base;
-    const endpoint: string = ApiRoutes.Organisation.AllAccounts;
-    const url: string = `${base}/${organisationId}/${endpoint}`;
+  public getAllAccountsAtOrganisation = () : Observable<AccountWithRoles[]> => {
+    const url: string = ApiRoutes.Account.Base;
     return this.httpClient.get<AccountWithRoles[]>(url);
   }
 

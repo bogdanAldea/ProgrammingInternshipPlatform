@@ -19,6 +19,7 @@ import { UserRoleDialogComponent } from 'src/app/shared/dialogs/user-role-dialog
 export class AccountsListComponent implements OnInit {
   public accounts$: Observable<AccountWithRoles[]> | undefined;
   public roles$: Observable<Role[]> | undefined;
+  public totalAccounts: number | undefined;
 
   public constructor(
     private accountService: AccountService, 
@@ -29,7 +30,8 @@ export class AccountsListComponent implements OnInit {
   public ngOnInit(): void 
   {
     this.roles$ = this.roleService.getAllRoles();
-    this.accounts$ = this.getAllAccountAtOrganisation();
+    this.accounts$ = this.getAllAccountAtOrganisation()
+    this.accounts$.subscribe((accounts: AccountWithRoles[]) => this.totalAccounts = accounts.length);  
   }
 
   private refresh = () => {
@@ -37,7 +39,7 @@ export class AccountsListComponent implements OnInit {
   }
 
   private getAllAccountAtOrganisation = () => {
-    return this.accountService.getAllAccountsAtOrganisation('b4f75fed-37bf-40fc-a8b3-f071b41a3fc1');
+    return this.accountService.getAllAccountsAtOrganisation();
   }
 
   public changeUserRoles = (userData: UserData) => {

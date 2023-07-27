@@ -28,10 +28,5 @@ public static class ApiRoutes
         public const string InternshipSettings = $"{IdRoute}/settings";
         public const string EnrolledInterns = $"{IdRoute}/interns";
     }
-    
-    public static class OrganisationRoutes
-    {
-        public const string AllInternships = $"{IdRoute}/internships";
-        public const string AllUserAccounts = $"{IdRoute}/user-accounts";
-    }
+
 }

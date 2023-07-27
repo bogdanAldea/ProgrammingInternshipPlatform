@@ -26,7 +26,7 @@ export class SigninComponent {
       this.accountService.signin(request)
         .subscribe({
           next: response => {
-            console.log("Signin successful", response)
+            localStorage.setItem('access_token', response.token)
             this.router.navigate(['/']);
           },
           error: error => {

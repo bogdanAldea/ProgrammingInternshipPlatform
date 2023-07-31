@@ -1,0 +1,18 @@
+@import '../../../../assets/theme/colours/palette.scss';
+
+.container-fluid {
+    padding: 0 100px;
+    background-color: $brand-purple-main;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.search-box {
+    width: 500px;
+}
+
+.user-welcome-message {
+    p {
+        font-size: 12px;
+        color: white;
+    }
+}

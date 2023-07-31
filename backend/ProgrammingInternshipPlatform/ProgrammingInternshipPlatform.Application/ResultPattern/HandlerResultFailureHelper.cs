@@ -8,21 +8,21 @@ public class HandlerResultFailureHelper
     }
     public string ErrorMessage { get; }
 
-    public static HandlerResult<T> NotFoundFailure<T>(string message)
+    public static HandlerResult<TResponse> NotFoundFailure<TResponse>(string message)
     {
         var applicationError = FailureReason.NotFoundFailure(message);
-        return HandlerResult<T>.Fail(applicationError);
+        return HandlerResult<TResponse>.Fail(applicationError);
     }
     
-    public static HandlerResult<T> TransactionFailure<T>(string message)
+    public static HandlerResult<TResponse> TransactionFailure<TResponse>(string message)
     {
         var applicationError = FailureReason.TransactionFailure(message);
-        return HandlerResult<T>.Fail(applicationError);
+        return HandlerResult<TResponse>.Fail(applicationError);
     }
     
-    public static HandlerResult<T> DomainValidationFailure<T>(string message)
+    public static HandlerResult<TResponse> DomainValidationFailure<TResponse>(string message)
     {
         var applicationError = FailureReason.DomainValidationFailure(message);
-        return HandlerResult<T>.Fail(applicationError);
+        return HandlerResult<TResponse>.Fail(applicationError);
     }
 }

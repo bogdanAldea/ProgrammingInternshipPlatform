@@ -27,24 +27,9 @@ public class FailureReason
 
     public static FailureReason NotFoundFailure(string errorMessage)
         => new(errorType: FailureType.ResourceNotFoundFailure, errorMessage: errorMessage);
-    
-    public static FailureReason AccessDeniedFailure(string errorMessage)
-        => new(errorType: FailureType.AccessDeniedFailure, errorMessage: errorMessage);
-    
+
     public static FailureReason DomainValidationFailure(string errorMessage)
         => new(errorType: FailureType.DomainValidationFailure, errorMessage: errorMessage);
-    
-    public static FailureReason UniqueConstraintFailure(string errorMessage)
-        => new(errorType: FailureType.UniqueConstraintFailure, errorMessage: errorMessage);
-
-    public static FailureReason IdentityUserAlreadyExists(string errorMessage)
-        => new(errorType: FailureType.IdentityUserAlreadyExistsFailure, errorMessage: errorMessage);
-
-    public static FailureReason IdentityRegistrationFailure(string errorMessage)
-        => new(errorType: FailureType.IdentityRegistrationFailure, errorMessage: errorMessage);
-    
-    public static FailureReason IdentityLoginPasswordFailure(string errorMessage)
-        => new(errorType: FailureType.IdentityLoginPasswordFailure, errorMessage: errorMessage);
 
     public static FailureReason TransactionFailure(string errorMessage)
         => new(errorType: FailureType.TransactionFailure, errorMessage: errorMessage);

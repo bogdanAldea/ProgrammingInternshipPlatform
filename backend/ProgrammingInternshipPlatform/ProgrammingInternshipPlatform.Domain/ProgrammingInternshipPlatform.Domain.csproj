@@ -13,7 +13,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Backlog" />
+      <Folder Include="InternshipHub\Internships\Validators" />
+      <Folder Include="InternshipHub\Interns\Validators" />
+      <Folder Include="InternshipHub\Mentorships\Validators" />
+      <Folder Include="InternshipHub\Trainers\Validators" />
     </ItemGroup>
 
 </Project>

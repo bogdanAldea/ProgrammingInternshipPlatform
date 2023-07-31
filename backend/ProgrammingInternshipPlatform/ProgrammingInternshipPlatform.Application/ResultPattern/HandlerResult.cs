@@ -6,7 +6,7 @@ public class HandlerResult<TEntity>
     {
         IsSuccess = true;
     }
-    private HandlerResult(ApplicationError failureReason)
+    private HandlerResult(FailureReason failureReason)
     {
         FailureReason = failureReason;
         IsSuccess = false;
@@ -19,10 +19,10 @@ public class HandlerResult<TEntity>
     }
 
     public TEntity? Payload { get; }
-    public ApplicationError FailureReason { get; } = null!;
+    public FailureReason FailureReason { get; } = null!;
     public bool IsSuccess { get; set; }
 
-    public static HandlerResult<TEntity> Fail(ApplicationError failureReason) => new(failureReason);
+    public static HandlerResult<TEntity> Fail(FailureReason failureReason) => new(failureReason);
     public static HandlerResult<TEntity> Success(TEntity payload) => new(payload);
     public static HandlerResult<TEntity> Success() => new();
 }

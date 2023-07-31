@@ -14,27 +14,21 @@ public class ApiController : ControllerBase
 
     protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>();
 
-    protected IActionResult HandleApiErrorResponse(ApplicationError applicationError)
+    protected IActionResult HandleApiErrorResponse(FailureReason failureReason)
     {
         var apiErrorResponse = new ApiErrorResponse();
-        if (applicationError.Errors.Count > 0)
+        if (failureReason.Errors.Count > 0)
         {
-            applicationError.Errors
+            failureReason.Errors
                 .ToList()
                 .ForEach(error => apiErrorResponse.AddErrorMessage(error));
         }
         else
         {
-            apiErrorResponse.AddErrorMessage(applicationError.ApplicationErrorMessage);
+            apiErrorResponse.AddErrorMessage(failureReason.ApplicationErrorMessage);
         }
 
-        if (applicationError.ApplicationErrorType is ApplicationErrorType.AccessDeniedFailure)
-        {
-            apiErrorResponse.StatusCode = HttpStatusCode.Forbidden;
-            return Forbid();
-        }
-
-        if (applicationError.ApplicationErrorType is ApplicationErrorType.ResourceNotFoundFailure)
+        if (failureReason.FailureType is FailureType.ResourceNotFoundFailure)
         {
             apiErrorResponse.StatusCode = HttpStatusCode.NotFound;
             return NotFound(apiErrorResponse);

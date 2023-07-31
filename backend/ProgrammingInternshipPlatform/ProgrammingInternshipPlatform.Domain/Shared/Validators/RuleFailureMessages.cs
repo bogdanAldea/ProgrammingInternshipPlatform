@@ -1,6 +1,4 @@
-﻿using ProgrammingInternshipPlatform.Domain.Backlog.Cards;
-
-namespace ProgrammingInternshipPlatform.Domain.Shared.Validators;
+﻿namespace ProgrammingInternshipPlatform.Domain.Shared.Validators;
 
 public static class RuleFailureMessages
 {

@@ -8,6 +8,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingInternshipPlatfo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingInternshipPlatform.Api", "ProgrammingInternshipPlatform.Api\ProgrammingInternshipPlatform.Api.csproj", "{D2573E79-9FE7-4D83-B4CA-5DEBCACA2237}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingInternshipPlatform.Infrastructure", "ProgrammingInternshipPlatform.Infrastructure\ProgrammingInternshipPlatform.Infrastructure.csproj", "{45D9FA8E-3CC2-4B71-95A6-69E652DD0C1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingInternshipPlatform.Domain.Tests", "ProgrammingInternshipPlatform.Domain.Tests\ProgrammingInternshipPlatform.Domain.Tests.csproj", "{025028BE-752F-4F83-A54E-3F3EBA79E8EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingInternshipPlatform.Application.Tests", "ProgrammingInternshipPlatform.Application.Tests\ProgrammingInternshipPlatform.Application.Tests.csproj", "{CFCCD8C8-6FCB-4AD1-B2B3-95B0B6CFD890}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingInternshipPlatform.Api.Tests", "ProgrammingInternshipPlatform.Api.Tests\ProgrammingInternshipPlatform.Api.Tests.csproj", "{5291A360-A349-49C2-ABD7-E3FE27AD801F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +38,21 @@ Global
 		{D2573E79-9FE7-4D83-B4CA-5DEBCACA2237}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2573E79-9FE7-4D83-B4CA-5DEBCACA2237}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2573E79-9FE7-4D83-B4CA-5DEBCACA2237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D9FA8E-3CC2-4B71-95A6-69E652DD0C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D9FA8E-3CC2-4B71-95A6-69E652DD0C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D9FA8E-3CC2-4B71-95A6-69E652DD0C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D9FA8E-3CC2-4B71-95A6-69E652DD0C1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{025028BE-752F-4F83-A54E-3F3EBA79E8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{025028BE-752F-4F83-A54E-3F3EBA79E8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{025028BE-752F-4F83-A54E-3F3EBA79E8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{025028BE-752F-4F83-A54E-3F3EBA79E8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFCCD8C8-6FCB-4AD1-B2B3-95B0B6CFD890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCCD8C8-6FCB-4AD1-B2B3-95B0B6CFD890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCCD8C8-6FCB-4AD1-B2B3-95B0B6CFD890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCCD8C8-6FCB-4AD1-B2B3-95B0B6CFD890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5291A360-A349-49C2-ABD7-E3FE27AD801F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5291A360-A349-49C2-ABD7-E3FE27AD801F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5291A360-A349-49C2-ABD7-E3FE27AD801F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5291A360-A349-49C2-ABD7-E3FE27AD801F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

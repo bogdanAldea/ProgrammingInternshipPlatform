@@ -2,17 +2,35 @@
 
 .container-fluid {
     padding: 0 100px;
-    background-color: $primary-dark-lighter;
-    border-bottom: 1px solid #d6d6d6;
+    background-color: white;
+    border-bottom: 1px solid $muted-light;
 }
 
-.search-box {
-    width: 500px;
+.app-logo {
+    width: 80px;
 }
 
-.user-welcome-message {
-    p {
+.account-notification-icon, 
+.account-control-icon,
+.account-more-icon {
+    width: 22px;
+}
+
+.user-welcome-container {
+    .user-message {
+        line-height: normal;
+    }
+
+    .welcome, .user {
         font-size: 12px;
-        color: white;
+    }
+
+    .welcome {
+        color: $primary-dark-lighter;
+    }
+
+    .user {
+        color: $primary-dark-lighter;
+        font-weight: 600;
     }
 }

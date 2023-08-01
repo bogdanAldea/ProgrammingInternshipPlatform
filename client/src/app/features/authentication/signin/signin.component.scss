@@ -1,0 +1,31 @@
+@import '../../../../assets/theme/colours/palette.scss';
+
+.container-fluid {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.app-logo {
+    width: 140px;
+    margin-bottom: 24px;
+}
+
+.signin-btn {
+    margin-top: 24px;
+    background-color: $brand-purple-main;
+    color: white;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.text, .title {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Poppins';
+    width: 480px;
+    margin-bottom: 16px;
+    color: white;
+  }

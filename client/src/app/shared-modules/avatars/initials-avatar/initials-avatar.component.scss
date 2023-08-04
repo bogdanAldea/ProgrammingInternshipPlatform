@@ -1,0 +1,15 @@
+@import '../../../../assets/theme/colours/palette.scss';
+
+.user-initials-avatar{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: $primary-dark;
+    color: #fff;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+  }

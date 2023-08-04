@@ -4,6 +4,7 @@ import { UserControlsNavigationComponent } from './user-controls-navigation/user
 import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component';
 import { RouterModule } from '@angular/router';
 import { NavLinkComponent } from './nav-link/nav-link.component';
+import { AvatarsModule } from '../avatars/avatars.module';
 
 
 
@@ -15,7 +16,8 @@ import { NavLinkComponent } from './nav-link/nav-link.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    AvatarsModule
   ],
   exports: [
     UserControlsNavigationComponent,

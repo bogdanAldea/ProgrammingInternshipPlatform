@@ -15,7 +15,7 @@ import { NoNavLayoutComponent } from './no-nav-layout/no-nav-layout.component';
   imports: [
     CommonModule,
     NavigationsModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class LayoutsModule { }

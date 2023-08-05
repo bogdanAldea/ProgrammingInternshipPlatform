@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'src/app/application-configs/app-menu/MenuItem';
 import { Menus } from 'src/app/application-configs/app-menu/Menus';
-import { ApplicationToken } from 'src/core/authentication/response/ApplicationToken';
-import { AuthenticationService } from 'src/core/authentication/service/authentication.service';
+import { ApplicationToken } from 'src/app/core/authentication/response/ApplicationToken';
+import { AuthenticationService } from 'src/app/core/authentication/service/authentication.service';
+
 
 @Component({
   selector: 'app-navigation-layout',
@@ -15,14 +16,13 @@ export class NavigationLayoutComponent {
   public constructor(private authService: AuthenticationService) {
     this.authService.getAccessToken()
     .then((token?: ApplicationToken) => {
-      console.log('Access Token:', token);
+      if (token) {
+        localStorage.setItem('access_token', token.accessToken.toString());
+        localStorage.setItem('id_token', token.idToken.toString())
+      }
     })
     .catch((error) => {
       console.error('Error acquiring token:', error);
     });
-  }
-
-  public logout = () => {
-    this.authService.logout();
   }
 }

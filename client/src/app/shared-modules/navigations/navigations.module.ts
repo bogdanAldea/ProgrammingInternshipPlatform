@@ -5,6 +5,8 @@ import { NavigationMenuComponent } from './navigation-menu/navigation-menu.compo
 import { RouterModule } from '@angular/router';
 import { NavLinkComponent } from './nav-link/nav-link.component';
 import { AvatarsModule } from '../avatars/avatars.module';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 
@@ -17,7 +19,8 @@ import { AvatarsModule } from '../avatars/avatars.module';
   imports: [
     CommonModule,
     RouterModule,
-    AvatarsModule
+    AvatarsModule,
+    MatInputModule
   ],
   exports: [
     UserControlsNavigationComponent,

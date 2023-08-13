@@ -6,32 +6,26 @@ export class Menus {
         {
             name: "Overview",
             route: "overview",
-            icon: "../../../assets/icons/menus/admin/overview.svg"
+            icon: "../../../assets/icons/light/Menu/Overview.svg"
         },
 
         {
             name: "Internships",
             route: "internships",
-            icon: "../../../assets/icons/menus/admin/internship.svg"
+            icon: "../../../assets/icons/light/Global/Internship.svg"
         },
 
         {
             name: "Curriculum",
             route: "curriculum",
-            icon: "../../../assets/icons/menus/admin/list.svg"
+            icon: "../../../assets/icons/light/Global/Curriculum.svg"
         },
 
         {
             name: "Accounts",
             route: "accounts",
-            icon: "../../../assets/icons/menus/admin/acounts.svg"
+            icon: "../../../assets/icons/light/Global/Trainers.svg"
         },
-        
-        {
-            name: "Organisation",
-            route: "organisation",
-            icon: "../../../assets/icons/menus/admin/organisation.svg"
-        }
     ] 
 
 }

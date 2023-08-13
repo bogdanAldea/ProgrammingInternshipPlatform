@@ -1,0 +1,31 @@
+<div class="inline-navigation-container navbar-expand-lg">
+
+        <div class="app-logo">
+            <img src="../../../../assets/images/logo/app-logo-new-light.svg" alt="">
+        </div>
+
+        <div class="menu-nav-container">
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
+                <li class="nav-item d-flex" *ngFor="let menuItem of menu">
+                  <app-nav-link [menuItem]="menuItem"/>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        <div class="user-controls">
+            <div class="account-controls">
+                <img src="../../../../assets/icons/light/Global/Notification.svg" alt="">
+                <img src="../../../../assets/icons/light/Global/Settings.svg" alt="">
+            </div>
+            <div class="account-message">
+                <div class="welcome-message">
+                    <p class="welcome">Welcome,</p>
+                    <p class="username">User</p>
+                </div>
+                <app-picture-avatar pictureUrl="../../../../assets/images/profile/profile-pic.jpg"/>
+            </div>
+        </div>
+
+</div>

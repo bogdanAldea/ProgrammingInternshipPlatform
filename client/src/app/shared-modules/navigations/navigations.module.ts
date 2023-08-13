@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NavLinkComponent } from './nav-link/nav-link.component';
 import { AvatarsModule } from '../avatars/avatars.module';
 import {MatInputModule} from '@angular/material/input';
+import { InlineNavigationComponent } from './inline-navigation/inline-navigation.component';
 
 
 
@@ -14,7 +15,8 @@ import {MatInputModule} from '@angular/material/input';
   declarations: [
     UserControlsNavigationComponent,
     NavigationMenuComponent,
-    NavLinkComponent
+    NavLinkComponent,
+    InlineNavigationComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import {MatInputModule} from '@angular/material/input';
   ],
   exports: [
     UserControlsNavigationComponent,
-    NavigationMenuComponent
+    NavigationMenuComponent,
+    InlineNavigationComponent
   ]
 })
 export class NavigationsModule { }

@@ -1,10 +1,22 @@
 <div class="cards">
     <h1>Cards</h1>
-    <div class="mentorship-card">
-        <app-mentorship-participant-card
-        role="Intern" 
-        pictureUrl="../../../assets/images/profile/profile-pic.jpg"
-        username="Michael Scott" 
-        email="scott@gmail.com"/>
+    
+    <div class="d-flex gap-5">
+        <div class="mentorship-card">
+            <app-mentorship-participant-card
+            role="Intern" 
+            pictureUrl="../../../assets/images/profile/profile-pic.jpg"
+            username="Michael Scott" 
+            email="scott@gmail.com"/>
+        </div>
+    
+        <div class="action-card">
+            <app-action-card 
+            icon="../../../assets/icons/light/Global/Internship.svg"
+            description="Start setting up a new internship  
+            for your company and manage 
+            all its aspects."
+            actionName="Add item" />
+        </div>
     </div>
 </div>

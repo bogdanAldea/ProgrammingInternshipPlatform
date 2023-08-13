@@ -7,8 +7,6 @@ import {MatInputModule} from '@angular/material/input';
 import { InlineNavigationComponent } from './inline-navigation/inline-navigation.component';
 
 
-
-
 @NgModule({
   declarations: [
     NavLinkComponent,

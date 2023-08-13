@@ -13,6 +13,11 @@ const routes: Routes =
         path: 'overview',
         loadChildren: () => import('./features/overview/overview.module')
         .then(module => module.OverviewModule)
+      },
+      {
+        path: 'internships',
+        loadChildren: () => import('./features/internship-hub/internship-hub.module')
+        .then(module => module.InternshipHubModule)
       }
   ]
   },

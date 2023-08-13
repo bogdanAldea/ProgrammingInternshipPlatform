@@ -8,11 +8,14 @@ import { NavigationsModule } from './shared-modules/navigations/navigations.modu
 import { LayoutsModule } from './shared-modules/layouts/layouts.module';
 import { AvatarsModule } from './shared-modules/avatars/avatars.module';
 import { AuthenticationInterceptor } from './core/interceptors/authentication.interceptor';
+import { SandboxComponent } from './features/sandbox/sandbox.component';
+import { MentorshipParticipantCardComponent } from './shared-modules/cards/internship-cards/mentorship/mentorship-participant-card/mentorship-participant-card.component';
+import { InternshipCardsModule } from './shared-modules/cards/internship-cards/internship-cards.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    SandboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { AuthenticationInterceptor } from './core/interceptors/authentication.in
     NavigationsModule,
     LayoutsModule,
     AvatarsModule,
+    InternshipCardsModule
   ],
   providers: [
     {

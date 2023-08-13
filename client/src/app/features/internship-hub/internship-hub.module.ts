@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InternshipHubRoutingModule } from './internship-hub-routing.module';
 import { InternshipListingComponent } from './internship-listing/internship-listing.component';
 import { MentorshipsComponent } from './settings/mentorships/mentorships.component';
+import { InternshipCardsModule } from 'src/app/shared-modules/cards/internship-cards/internship-cards.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MentorshipsComponent } from './settings/mentorships/mentorships.compone
   ],
   imports: [
     CommonModule,
-    InternshipHubRoutingModule
+    InternshipHubRoutingModule,
+    InternshipCardsModule
   ]
 })
 export class InternshipHubModule { }

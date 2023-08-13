@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class PictureAvatarComponent {
   @Input() public pictureUrl: string | undefined;
+  @Input() public width: string = '30px'
+  @Input() public height: string = '30px';
 }

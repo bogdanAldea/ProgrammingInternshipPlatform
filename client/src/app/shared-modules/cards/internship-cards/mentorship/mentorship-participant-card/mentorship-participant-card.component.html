@@ -1,0 +1,18 @@
+<div class="mentorship-participant-card-container">
+    <div class="role-container">
+        <h1>{{ role }}</h1>
+    </div>
+    <div class="body-container">
+       <div class="avatar">
+            <app-picture-avatar 
+            height="63px"
+            width="60px"
+            [pictureUrl]=pictureUrl/>
+       </div>
+
+        <div class="user-information">
+            <h2>{{ username }}</h2>
+            <p>{{ email }}</p>
+        </div>
+    </div>
+</div>

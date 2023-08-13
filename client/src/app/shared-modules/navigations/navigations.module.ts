@@ -5,12 +5,14 @@ import { NavLinkComponent } from './nav-link/nav-link.component';
 import { AvatarsModule } from '../avatars/avatars.module';
 import {MatInputModule} from '@angular/material/input';
 import { InlineNavigationComponent } from './inline-navigation/inline-navigation.component';
+import { SettingsNavigationComponent } from './settings-navigation/settings-navigation.component';
 
 
 @NgModule({
   declarations: [
     NavLinkComponent,
-    InlineNavigationComponent
+    InlineNavigationComponent,
+    SettingsNavigationComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { InlineNavigationComponent } from './inline-navigation/inline-navigation
     MatInputModule
   ],
   exports: [
-    InlineNavigationComponent
+    InlineNavigationComponent,
+    SettingsNavigationComponent
   ]
 })
 export class NavigationsModule { }

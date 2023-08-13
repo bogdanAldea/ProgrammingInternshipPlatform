@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavigationLayoutComponent } from './shared-modules/layouts/navigation-layout/navigation-layout.component';
 import { NoNavLayoutComponent } from './shared-modules/layouts/no-nav-layout/no-nav-layout.component';
+import { SandboxComponent } from './features/sandbox/sandbox.component';
 
 const routes: Routes = 
 [
@@ -18,6 +19,10 @@ const routes: Routes =
         path: 'internships',
         loadChildren: () => import('./features/internship-hub/internship-hub.module')
         .then(module => module.InternshipHubModule)
+      },
+      {
+        path: 'sandbox',
+        component: SandboxComponent
       }
   ]
   },

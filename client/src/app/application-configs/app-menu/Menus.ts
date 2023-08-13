@@ -26,6 +26,11 @@ export class Menus {
             route: "accounts",
             icon: "../../../assets/icons/light/Global/Trainers.svg"
         },
+        {
+            name: "Sandbox",
+            route: "sandbox",
+            icon: "../../../assets/icons/light/Global/Search.svg"
+        }
     ] 
 
 }

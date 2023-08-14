@@ -33,4 +33,12 @@ export class Menus {
         }
     ] 
 
+    public static InternshipSettings: MenuItem[] = [
+        {
+            name: "Mentorships",
+            route: "mentorships",
+            icon: "../../../assets/icons/dark/Global/Mentorships.svg"
+        },
+    ]
+
 }

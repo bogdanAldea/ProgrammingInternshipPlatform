@@ -1,1 +1,7 @@
-<p>settings-navigation works!</p>
+<div class="internship-settings-nav">
+    <ul class="setting-list">
+        <li class="nav-item d-flex" *ngFor="let setting of settings">
+          <app-nav-link [menuItem]="setting" color="primaryDark"/>
+        </li>
+      </ul>
+</div>

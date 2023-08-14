@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Menus } from 'src/app/application-configs/app-menu/Menus';
 
 @Component({
   selector: 'app-settings-navigation',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./settings-navigation.component.scss']
 })
 export class SettingsNavigationComponent {
-
+  public settings = Menus.InternshipSettings;
 }

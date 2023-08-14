@@ -8,4 +8,5 @@ import { MenuItem } from 'src/app/application-configs/app-menu/MenuItem';
 })
 export class NavLinkComponent {
   @Input() menuItem!: MenuItem
+  @Input() color: string = 'white'
 }

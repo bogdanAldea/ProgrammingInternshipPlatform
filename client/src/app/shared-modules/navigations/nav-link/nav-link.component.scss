@@ -10,7 +10,7 @@
     align-items: center;
     gap: 8px;
     position: relative;
-    color: white;
+    color: var(--app-nav-link-color, $primary-dark);
     font-size: 14px;
     font-weight: 400;
     padding: 4px 16px;

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MenuItem } from 'src/app/application-configs/app-menu/MenuItem';
+import { MenuItem } from 'src/app/views/application-configs/app-menu/MenuItem';
 
 @Component({
   selector: 'app-inline-navigation',

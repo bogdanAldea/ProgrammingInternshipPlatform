@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Menus } from 'src/app/application-configs/app-menu/Menus';
+import { Menus } from 'src/app/views/application-configs/app-menu/Menus';
 
 @Component({
   selector: 'app-settings-navigation',

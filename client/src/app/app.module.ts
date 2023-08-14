@@ -12,6 +12,7 @@ import { MentorshipTaskCardModule } from './views/components/cards/mentorship-ta
 import { LayoutsModule } from './views/components/layouts/layouts.module';
 import { NavigationsModule } from './views/components/navigations/navigations.module';
 import { SandboxComponent } from './views/pages/sandbox/sandbox.component';
+import { ViewModule } from './views/view.module';
 
 
 
@@ -30,7 +31,8 @@ import { SandboxComponent } from './views/pages/sandbox/sandbox.component';
     AvatarsModule,
     InternshipCardsModule,
     ActionCardsModule,
-    MentorshipTaskCardModule
+    MentorshipTaskCardModule,
+    ViewModule
   ],
   providers: [
     {

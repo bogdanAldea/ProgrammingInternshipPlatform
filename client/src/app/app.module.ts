@@ -11,6 +11,7 @@ import { AuthenticationInterceptor } from './core/interceptors/authentication.in
 import { SandboxComponent } from './features/sandbox/sandbox.component';
 import { InternshipCardsModule } from './shared-modules/cards/internship-cards/internship-cards.module';
 import { ActionCardsModule } from './shared-modules/cards/action-cards/action-cards.module';
+import { MentorshipTaskCardModule } from './shared-modules/cards/mentorship-task-card/mentorship-task-card.module';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ActionCardsModule } from './shared-modules/cards/action-cards/action-ca
     LayoutsModule,
     AvatarsModule,
     InternshipCardsModule,
-    ActionCardsModule
+    ActionCardsModule,
+    MentorshipTaskCardModule
   ],
   providers: [
     {

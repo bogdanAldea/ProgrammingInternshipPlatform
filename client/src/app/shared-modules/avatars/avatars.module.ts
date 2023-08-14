@@ -11,7 +11,7 @@ import { InitialsAvatarComponent } from './initials-avatar/initials-avatar.compo
     InitialsAvatarComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     PictureAvatarComponent,

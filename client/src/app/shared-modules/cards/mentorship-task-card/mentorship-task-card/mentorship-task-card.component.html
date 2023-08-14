@@ -19,9 +19,8 @@
 
     </div>  
     <div class="task-footer">
-        <div class="deadline-picker">
-            <img src="../../../../../assets/icons/light/Menu/Presentations.svg" alt="">
-            <p>{{ deadline | date }}</p>
+        <div>
+            <app-date-picker [deadline]="deadline"/>
         </div>
         <div class="assignee">
             <app-picture-avatar 

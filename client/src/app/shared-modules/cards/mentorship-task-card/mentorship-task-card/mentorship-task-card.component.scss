@@ -56,16 +56,6 @@
     font-weight: 500;
 }
 
-.deadline-picker {
-    display: flex;
-    align-items: center;
-    background-color: $brand-purple-main;
-    color: white;
-    gap: 8px;
-    padding: 8px;
-    border-radius: 8px;
-}
-
 .assignee {
     display: flex;
     align-items: center;
@@ -75,6 +65,8 @@
 .assignee p {
     margin: 0;
     font-size: 14px;
+    color: $primary-dark;
+    font-weight: 500;
 }
 
 .deadline-picker p {
@@ -85,4 +77,5 @@
 .task-footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }

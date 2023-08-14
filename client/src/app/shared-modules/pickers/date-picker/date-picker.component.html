@@ -1,0 +1,7 @@
+<div class="date-picker">
+    <input class="deadline-input" [matDatepicker]="basicDatepicker" placeholder="Deadline" [formControl]="deadlineFormControl">
+    <mat-datepicker-toggle [for]="basicDatepicker">
+      <mat-icon svgIcon="app_calendar" matDatepickerToggleIcon></mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #basicDatepicker></mat-datepicker>
+  </div>  

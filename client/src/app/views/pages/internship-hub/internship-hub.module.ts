@@ -4,6 +4,7 @@ import { InternshipHubRoutingModule } from './internship-hub-routing.module';
 import { InternshipListingComponent } from './internship-listing/internship-listing.component';
 import { MentorshipsComponent } from './settings/mentorships/mentorships.component';
 import { InternshipCardsModule } from '../../components/cards/internship-cards/internship-cards.module';
+import { ActionCardsModule } from '../../components/cards/action-cards/action-cards.module';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { InternshipCardsModule } from '../../components/cards/internship-cards/i
   imports: [
     CommonModule,
     InternshipHubRoutingModule,
-    InternshipCardsModule
+    ActionCardsModule
   ]
 })
 export class InternshipHubModule { }

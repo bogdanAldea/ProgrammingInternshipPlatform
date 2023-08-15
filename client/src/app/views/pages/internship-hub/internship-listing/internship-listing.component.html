@@ -1,1 +1,18 @@
-<p>internship-listing works!</p>
+<div *ngIf="internships | async">
+    <div *ngIf="hasInternships">
+        <div class="col-7"></div>
+        <div class="col-4"></div>
+    </div>
+    <div *ngIf="!hasInternships" class="add-internship-action">
+        <div class="card-container">
+            <app-action-card 
+            icon="../../../assets/icons/light/Global/Internship.svg"
+            description="Start setting up a new internship  
+            for your company and manage 
+            all its aspects."
+            actionName="Add internship" />
+        </div>
+    </div>
+</div>
+
+

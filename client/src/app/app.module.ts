@@ -13,6 +13,10 @@ import { LayoutsModule } from './views/components/layouts/layouts.module';
 import { NavigationsModule } from './views/components/navigations/navigations.module';
 import { SandboxComponent } from './views/pages/sandbox/sandbox.component';
 import { ViewModule } from './views/view.module';
+import { IGEtAllInternships } from './application/internship-hub/get-all-internships/IGetAllInternships';
+import { GetAllInternships } from './application/internship-hub/get-all-internships/GetAllInternships';
+import { IInternshipService } from './application/internship-hub/service/IInternshipService';
+import { InternshipService } from './services/internship-hub/internship.service';
 
 
 
@@ -39,7 +43,9 @@ import { ViewModule } from './views/view.module';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
       multi: true,
-    }
+    },
+    {provide: IGEtAllInternships, useClass: GetAllInternships},
+    {provide: IInternshipService, useClass: InternshipService}
   ],
   bootstrap: [AppComponent]
 })

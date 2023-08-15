@@ -1,4 +1,5 @@
 using System.Text;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
 using ProgrammingInternshipPlatform.Application.Helpers;
+using ProgrammingInternshipPlatform.Application.InternshipHub.GetInternshipPrograms;
 using ProgrammingInternshipPlatform.Dal.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,7 +44,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.InvalidModelStateResponseFactory = ApiErrorResponse.CreateErrorResponse;
 });
 
-/*builder.Services.AddMediatR(typeof(SetupNewInternshipProgramCommand));*/
+builder.Services.AddMediatR(typeof(GetInternshipProgramsHandler));
 
 builder.Services.AddDbContext<ProgrammingInternshipPlatformDbContext>
 (

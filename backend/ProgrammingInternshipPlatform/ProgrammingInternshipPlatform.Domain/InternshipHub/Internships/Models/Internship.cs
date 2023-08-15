@@ -13,6 +13,7 @@ public class Internship
     private readonly List<Mentorship> _mentorships = new();
     public InternshipId Id { get; private set; }
     public InternshipStatus Status { get; private set; } = InternshipStatus.SetupInProgress;
+    public Center Center { get; private set; }
     public DateTime ScheduledToStartOn { get; private set; }
     public DateTime EstimatedToEndOn { get; private set; }
     public IReadOnlyCollection<Trainer> Trainers => _trainers;

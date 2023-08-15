@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingInternshipPlatform.Dal.Context;
 
 #nullable disable
 
-namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
+namespace ProgrammingInternshipPlatform.Dal.Migrations.Patches
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    partial class ProgrammingInternshipPlatformDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230815102244_CenterToInternship")]
+    partial class CenterToInternship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

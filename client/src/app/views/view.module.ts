@@ -1,5 +1,6 @@
 import { ApplicationModule, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DropdownsModule } from './components/dropdowns/dropdowns.module';
 
 
 
@@ -7,7 +8,8 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   imports: [
     CommonModule,
-    ApplicationModule
+    ApplicationModule,
+    DropdownsModule
   ]
 })
 export class ViewModule { }

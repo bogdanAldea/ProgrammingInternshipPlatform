@@ -17,6 +17,8 @@ import { IGEtAllInternships } from './application/internship-hub/get-all-interns
 import { GetAllInternships } from './application/internship-hub/get-all-internships/GetAllInternships';
 import { IInternshipService } from './application/internship-hub/service/IInternshipService';
 import { InternshipService } from './services/internship-hub/internship.service';
+import { FilterDropdownComponent } from './views/components/dropdowns/filter-dropdown/filter-dropdown.component';
+import { DropdownsModule } from './views/components/dropdowns/dropdowns.module';
 
 
 
@@ -36,6 +38,7 @@ import { InternshipService } from './services/internship-hub/internship.service'
     InternshipCardsModule,
     ActionCardsModule,
     MentorshipTaskCardModule,
+    DropdownsModule,
     ViewModule
   ],
   providers: [

@@ -1,31 +1,42 @@
-<div class="cards">
-    <h1>Cards</h1>
+<div class="container-fluid">
+    <div class="cards">
+        <h1>Cards</h1>
+        
+        <div class="d-flex gap-5">
+            <div class="mentorship-card">
+                <app-mentorship-participant-card
+                role="Intern" 
+                pictureUrl="../../../assets/images/profile/profile-pic.jpg"
+                username="Michael Scott" 
+                email="scott@gmail.com"/>
+            </div>
+        
+            <div class="action-card">
+                <app-action-card 
+                icon="../../../assets/icons/light/Global/Internship.svg"
+                description="Start setting up a new internship  
+                for your company and manage 
+                all its aspects."
+                actionName="Add item" />
+            </div>
     
-    <div class="d-flex gap-5">
-        <div class="mentorship-card">
-            <app-mentorship-participant-card
-            role="Intern" 
-            pictureUrl="../../../assets/images/profile/profile-pic.jpg"
-            username="Michael Scott" 
-            email="scott@gmail.com"/>
+            <div class="mentorship-task-card">
+                <app-mentorship-task-card 
+                taskTitle="Research Azure functions"
+                [deadline]="taskDeadline"
+                [assigneePicture]="pictureUrl"
+                [assigneeName]="assigneeName"
+                />
+            </div>
         </div>
-    
-        <div class="action-card">
-            <app-action-card 
-            icon="../../../assets/icons/light/Global/Internship.svg"
-            description="Start setting up a new internship  
-            for your company and manage 
-            all its aspects."
-            actionName="Add item" />
-        </div>
+    </div>
 
-        <div class="mentorship-task-card">
-            <app-mentorship-task-card 
-            taskTitle="Research Azure functions"
-            [deadline]="taskDeadline"
-            [assigneePicture]="pictureUrl"
-            [assigneeName]="assigneeName"
-            />
+    <div class="dropdowns">
+        <div class="filter-dropdown">
+            <app-filter-dropdown 
+            icon="../../../assets/icons/dark/Global/Internship.svg"
+            filterLabel="Filter"
+            [options]="dropdownOptions"/>
         </div>
     </div>
 </div>

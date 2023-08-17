@@ -1,0 +1,9 @@
+<div class="filter-dropdown">
+    <div class="dropdown-trigger" (click)="toggleDropdown()">
+        <img [src]="icon" alt="">
+        <p class="selected">{{ selectedOption || filterLabel }}</p>
+      </div>
+      <ul class="options-list" *ngIf="isOpen">
+        <li *ngFor="let option of options" (click)="selectOption(option)">{{ option }}</li>
+      </ul>
+</div>

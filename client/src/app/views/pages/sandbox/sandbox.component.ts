@@ -9,4 +9,7 @@ export class SandboxComponent {
   public taskDeadline: Date = new Date('06-23-1993');
   public pictureUrl: string = "../../../assets/images/profile/profile-pic.jpg";
   public assigneeName: string = "Michael Scott"
+  public dropdownOptions: string[] = [
+    'Option A', 'Option B', 'Option C'
+  ]
 }

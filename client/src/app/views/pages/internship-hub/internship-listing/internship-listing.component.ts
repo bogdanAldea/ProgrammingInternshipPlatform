@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IGEtAllInternships } from 'src/app/application/internship-hub/get-all-internships/IGetAllInternships';
 import { PartialInternship } from 'src/app/domain/internship-hub/internships/PartialInternship';
+import { IconRegistrar } from 'src/app/views/application-configs/icon-registrar/IconRegistrar';
 
 @Component({
   selector: 'app-internship-listing',
@@ -11,6 +12,7 @@ import { PartialInternship } from 'src/app/domain/internship-hub/internships/Par
 export class InternshipListingComponent implements OnInit {
   public internships: Observable<PartialInternship[]> | undefined;
   public hasInternships: boolean | undefined;
+  public icons = IconRegistrar;
 
   public constructor(private handler: IGEtAllInternships) {}
   

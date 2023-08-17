@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { InternshipHubRoutingModule } from './internship-hub-routing.module';
 import { InternshipListingComponent } from './internship-listing/internship-listing.component';
 import { MentorshipsComponent } from './settings/mentorships/mentorships.component';
-import { InternshipCardsModule } from '../../components/cards/internship-cards/internship-cards.module';
 import { ActionCardsModule } from '../../components/cards/action-cards/action-cards.module';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { DropdownsModule } from '../../components/dropdowns/dropdowns.module';
+
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { ActionCardsModule } from '../../components/cards/action-cards/action-ca
   imports: [
     CommonModule,
     InternshipHubRoutingModule,
-    ActionCardsModule
+    ActionCardsModule,
+    MatProgressBarModule,
+    DropdownsModule
   ]
 })
 export class InternshipHubModule { }

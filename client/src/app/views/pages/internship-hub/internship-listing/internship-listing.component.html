@@ -1,7 +1,28 @@
-<div *ngIf="internships | async">
-    <div *ngIf="hasInternships">
-        <div class="col-7"></div>
-        <div class="col-4"></div>
+<div *ngIf="internships | async as internships">
+    <div *ngIf="hasInternships" class="row align-items-center">
+        <div class="col-7">
+            <!-- <table class="w-100">   
+                <tbody>
+                    <tr *ngFor="let internship of internships" class="account-row">
+                        <td>{{ internship.center }}</td>
+                        <td>{{ internship.status }}</td>
+                        <td>{{ internship.scheduledToStartOn | date: 'mediumDate' }}</td>
+                        <td>{{ internship.estimatedToEndOn | date: 'mediumDate' }}</td>
+                        <td>{{ internship.durationInMonths }}</td>
+                        <td>{{ internship.maxInternsToEnroll }}</td>
+                    </tr>
+                </tbody>
+            
+            </table> -->
+        </div>
+        <div class="col-4"> 
+            <app-action-card 
+            icon="../../../assets/icons/light/Global/Internship.svg"
+            description="Start setting up a new internship  
+            for your company and manage 
+            all its aspects."
+            actionName="Add internship" />
+        </div>
     </div>
     <div *ngIf="!hasInternships" class="add-internship-action">
         <div class="card-container">

@@ -25,11 +25,11 @@
                     <thead>
                         <tr>
                             <th>Center</th>
-                            <th>Status</th>
+                            <th>Interns</th>
                             <th>Scheduled to start on</th>
                             <th>Estimated to end on</th>
                             <th>Duration</th>
-                            <th>Interns</th>
+                            <th>Status</th>
                             <th>Completion Rate</th>
                             <th></th>
                         </tr>
@@ -38,32 +38,32 @@
                         <tr *ngFor="let internship of internships" class="account-row">
                             <td>
                                 <div class="table-data">
-                                    <img class="icon" [src]="icons.Location.Dark" alt="">
+                                    <img class="icon" [src]="icons.Location.Muted" alt="">
                                     <p class="data">{{ internship.center }}</p>
                                 </div>
                             </td>
     
                             <td>
                                 <div class="table-data">
-                                    <img class="icon" [src]="icons.Users.Dark" alt="">
+                                    <img class="icon" [src]="icons.Users.Muted" alt="">
                                     <p class="data">{{ internship.maxInternsToEnroll }} Interns</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="table-data">
-                                    <img class="icon" [src]="icons.Presentation.Dark" alt="">
+                                    <img class="icon" [src]="icons.Presentation.Muted" alt="">
                                     <p class="data">{{ internship.scheduledToStartOn | date: 'mediumDate' }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="table-data">
-                                    <img class="icon" [src]="icons.Presentation.Dark" alt="">
+                                    <img class="icon" [src]="icons.Presentation.Muted" alt="">
                                     <p class="data">{{ internship.estimatedToEndOn | date: 'mediumDate' }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="table-data">
-                                    <img class="icon" [src]="icons.Presentation.Dark" alt="">
+                                    <img class="icon" [src]="icons.Presentation.Muted" alt="">
                                     <p class="data">{{ internship.durationInMonths }} Months</p>
                                 </div>
                             </td>
@@ -76,7 +76,7 @@
                             <th>
                                 <div class="table-data">
                                     <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-                                    <p class="data">40</p>
+                                    <p class="data">40%</p>
                                 </div>
                             </th>
                             <td>

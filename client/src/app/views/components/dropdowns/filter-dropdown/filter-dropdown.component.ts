@@ -1,26 +1,25 @@
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { AbstractInputComponent } from '../../abstracts/abstract-input/abstract-input.component';
 
 @Component({
   selector: 'app-filter-dropdown',
   templateUrl: './filter-dropdown.component.html',
   styleUrls: ['./filter-dropdown.component.scss']
 })
-export class FilterDropdownComponent {
+export class FilterDropdownComponent extends AbstractInputComponent {
   @Input() options: string[] | undefined;
-  @Input() icon: string | undefined;
-  @Input() filterLabel: string | undefined;
   public isOpen: boolean = false;
-  public selectedOption: string | undefined;
 
-  public constructor(private elementRef: ElementRef) {}
+  public constructor(private elementRef: ElementRef) {super()}
+
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;
   }
 
   selectOption(option: string) {
-    this.selectedOption = option;
+    this.selectedValue = option;
     this.isOpen = false;
   }
 

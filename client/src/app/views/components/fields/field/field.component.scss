@@ -1,0 +1,19 @@
+@import '../../../../../assets/theme/colours/palette.scss';
+
+.field-container {
+    .field-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 8px 24px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 400;
+        color: $primary-dark;
+        border: 1px solid $stroke;
+        border-radius: 8px;
+        text-align: center;
+    }
+}

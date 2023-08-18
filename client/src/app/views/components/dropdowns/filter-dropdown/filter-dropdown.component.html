@@ -1,7 +1,7 @@
 <div class="filter-dropdown" [style.border-color]="isOpen ? '$brand-purple-main' : '$stroke' ">
     <div class="dropdown-trigger" (click)="toggleDropdown()">
         <img [src]="icon" alt="">
-        <p class="selected">{{ selectedValue || filterLabel }}</p>
+        <p class="selected">{{ selectedValue || label }}</p>
       </div>
       <ul class="options-list" *ngIf="isOpen">
         <li *ngFor="let option of options" (click)="selectOption(option)">{{ option }}</li>

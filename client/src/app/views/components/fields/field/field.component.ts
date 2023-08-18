@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AbstractInputComponent } from '../../abstracts/abstract-input/abstract-input.component';
 import { FormControl } from '@angular/forms';
 
@@ -8,5 +8,5 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./field.component.scss']
 })
 export class FieldComponent extends AbstractInputComponent {
-
+  @Input() fieldType?: string = 'text';
 }

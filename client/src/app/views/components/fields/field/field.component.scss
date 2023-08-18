@@ -1,19 +1,36 @@
 @import '../../../../../assets/theme/colours/palette.scss';
 
 .field-container {
-    .field-input {
+    input.field-input {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
         width: 100%;
         padding: 8px 24px;
-        cursor: pointer;
-        font-size: 12px;
-        font-weight: 400;
-        color: $primary-dark;
+        font-size: 14px;
+        font-weight: 500;
         border: 1px solid $stroke;
         border-radius: 8px;
         text-align: center;
+        transition: ease-in-out .1s;
+        cursor: pointer;
+    }
+
+    input.field-input:hover {
+        outline: $brand-purple-main;
+        border-color: $brand-purple-main;
+        border: 2px solid $brand-purple-main;
+        transition: ease-in-out .1s;
+    }
+
+    input.field-input:focus {
+        outline: $brand-purple-main;
+        border-color: $brand-purple-main;
+        border: 2px solid $brand-purple-main;
+    }
+
+    input.field-input::placeholder {
+        color: $primary-dark-lighter;
     }
 }

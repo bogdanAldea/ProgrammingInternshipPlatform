@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IconRegistrar } from 'src/app/views/application-configs/icon-registrar/IconRegistrar';
 
 @Component({
   selector: 'app-setup-step',
@@ -7,4 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SetupStepComponent {
   @Input() stepTitle: string | undefined;
+  @Input() icons = IconRegistrar;
 }

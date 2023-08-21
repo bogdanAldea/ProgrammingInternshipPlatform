@@ -13,8 +13,8 @@ export class AuthenticationService {
   constructor() { }
 
   public login = () => {
-    this.msalInstance.loginRedirect({
-      scopes: ['openid', 'profile', 'user.read']
+    this.msalInstance.loginPopup({
+      scopes: ['api://3eea5a6b-cc13-4f0e-b797-b32dfade784a/user_impersonation']
     })
   }
 
@@ -22,35 +22,17 @@ export class AuthenticationService {
     this.msalInstance.logout();
   }
 
-  public getAccessToken = (): Promise<ApplicationToken | undefined> => {
-    const account = this.msalInstance.getAccount();
-    if (!account) {
-      // If the user is not logged in, you can redirect to the login page
-      this.login();
-      return Promise.reject('User login is required.');
-    }
-
-    return this.msalInstance.acquireTokenSilent({
-      scopes: ['openid', 'profile', 'user.read'],
-      account: account
-    }).then((response) => {
-      const token = new ApplicationToken(response.accessToken, response.idToken);
-      return token;
+  public getAccessToken = (): Promise<string | undefined> => {
+    const request = {
+      scopes: ['User.Read', 'User.ReadBasic.All']
+    };
+    return this.msalInstance.acquireTokenSilent({scopes: ['api://3eea5a6b-cc13-4f0e-b797-b32dfade784a/user_impersonation']}).then((response) => {
+      console.log(response)
+      return response.accessToken;
     }).catch((error) => {
       console.error('Error acquiring token:', error);
       return undefined;
     });
   }
 
-  // public handleRedirectCallback = (): Promise<Msal.AuthResponse> => {
-  //   return this.msalInstance.handleRedirectCallback((error, response) => {
-  //     if (error) {
-  //       console.error('Authentication error:', error);
-  //     } else if (response) {
-  //       // The tokens are available in response.idToken and response.accessToken
-  //       console.log('ID Token:', response.idToken);
-  //       console.log('Access Token:', response.accessToken);
-  //     }
-  //   });
-  // }
 }

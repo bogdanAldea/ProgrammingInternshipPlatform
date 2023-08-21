@@ -13,8 +13,6 @@ export class SigninComponent {
 
   public login = () => {
     this.authenticationService.login();
-    this.authenticationService.getAccessToken().then(x => console.log(x));
-
   }
   
 }

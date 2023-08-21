@@ -13,6 +13,8 @@ import { ButtonsModule } from '../../components/buttons/buttons.module';
 import { InternsStepComponent } from './internship-wizard/interns-step/interns-step.component';
 import { InternshipCardsModule } from '../../components/cards/internship-cards/internship-cards.module';
 import { MentorshipsStepComponent } from './internship-wizard/mentorships-step/mentorships-step.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NewAuthenticationInterceptor } from 'src/app/services/interceptors/authentication.interceptor';
 
 
 
@@ -40,6 +42,9 @@ import { MentorshipsStepComponent } from './internship-wizard/mentorships-step/m
     TrainersStepComponent, 
     InternsStepComponent, 
     MentorshipsStepComponent
+  ],
+  providers: [
+
   ]
 })
 export class InternshipHubModule { }

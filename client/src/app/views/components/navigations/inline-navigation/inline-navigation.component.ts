@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AuthenticationService } from 'src/app/core/authentication/service/authentication.service';
 import { MenuItem } from 'src/app/views/application-configs/app-menu/MenuItem';
 
 @Component({
@@ -8,4 +9,10 @@ import { MenuItem } from 'src/app/views/application-configs/app-menu/MenuItem';
 })
 export class InlineNavigationComponent {
   @Input() menu: MenuItem[] | undefined;
+
+  public constructor(private auth: AuthenticationService) {}
+  
+  public logout = () => {
+    this.auth.logout
+  }
 }

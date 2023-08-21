@@ -9,6 +9,10 @@ export class ApplicationToken {
         this._idToken = idToken;
     }
 
-    public accessToken = (): string => this._accessToken;
-    public idToken = (): IdToken => this._idToken;
+    public getAccessToken = (): string => {
+        return this._accessToken;
+    }
+    public getIdToken = (): IdToken => {
+        return this._idToken;
+    }
 }

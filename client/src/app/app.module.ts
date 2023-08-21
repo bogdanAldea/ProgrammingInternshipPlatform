@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthenticationInterceptor } from './core/interceptors/authentication.interceptor';
 import { AvatarsModule } from './views/components/avatars/avatars.module';
 import { ActionCardsModule } from './views/components/cards/action-cards/action-cards.module';
 import { InternshipCardsModule } from './views/components/cards/internship-cards/internship-cards.module';
@@ -22,6 +21,7 @@ import { InternshipHubModule } from './views/pages/internship-hub/internship-hub
 import { FieldsModule } from './views/components/fields/fields.module';
 import { ActionButtonComponent } from './views/components/buttons/action-button/action-button.component';
 import { ButtonsModule } from './views/components/buttons/buttons.module';
+import { NewAuthenticationInterceptor } from './services/interceptors/authentication.interceptor';
 
 
 
@@ -50,11 +50,17 @@ import { ButtonsModule } from './views/components/buttons/buttons.module';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthenticationInterceptor,
+      useClass: NewAuthenticationInterceptor,
       multi: true,
     },
-    {provide: IGEtAllInternships, useClass: GetAllInternships},
-    {provide: IInternshipService, useClass: InternshipService}
+    {
+      provide: IGEtAllInternships, 
+      useClass: GetAllInternships
+    },
+    {
+      provide: IInternshipService, 
+      useClass: InternshipService
+    }
   ],
   bootstrap: [AppComponent]
 })

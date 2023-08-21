@@ -10,6 +10,8 @@ import { SetupStepComponent } from './internship-wizard/setup-step/setup-step.co
 import { FieldsModule } from '../../components/fields/fields.module';
 import { TrainersStepComponent } from './internship-wizard/trainers-step/trainers-step.component';
 import { ButtonsModule } from '../../components/buttons/buttons.module';
+import { InternsStepComponent } from './internship-wizard/interns-step/interns-step.component';
+import { InternshipCardsModule } from '../../components/cards/internship-cards/internship-cards.module';
 
 
 
@@ -19,6 +21,7 @@ import { ButtonsModule } from '../../components/buttons/buttons.module';
     MentorshipsComponent,
     SetupStepComponent,
     TrainersStepComponent,
+    InternsStepComponent,
   ],
   imports: [
     CommonModule,
@@ -27,8 +30,9 @@ import { ButtonsModule } from '../../components/buttons/buttons.module';
     MatProgressBarModule,
     DropdownsModule,
     FieldsModule,
-    ButtonsModule
+    ButtonsModule,
+    InternshipCardsModule
   ],
-  exports: [SetupStepComponent, TrainersStepComponent]
+  exports: [SetupStepComponent, TrainersStepComponent, InternsStepComponent]
 })
 export class InternshipHubModule { }

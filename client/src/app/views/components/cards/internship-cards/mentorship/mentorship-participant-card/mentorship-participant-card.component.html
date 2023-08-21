@@ -1,18 +1,33 @@
-<div class="mentorship-participant-card-container">
-    <div class="role-container">
-        <h1>{{ role }}</h1>
+<div class="mentorship-participant-card-container" >
+    <div *ngIf="participant">
+        <div class="role-container">
+            <h1>{{ participant.role }}</h1>
+        </div>
+        <div class="body-container">
+           <div class="avatar">
+                <app-picture-avatar 
+                [height]="height"
+                [width]="width"
+                [pictureUrl]=participant.pictureUrl/>
+           </div>
+    
+            <div class="user-information">
+                <h2>{{ participant.fullName }}</h2>
+                <p>{{ participant.email }}</p>
+            </div>
+        </div>
     </div>
-    <div class="body-container">
-       <div class="avatar">
-            <app-picture-avatar 
-            height="63px"
-            width="60px"
-            [pictureUrl]=pictureUrl/>
-       </div>
 
-        <div class="user-information">
-            <h2>{{ username }}</h2>
-            <p>{{ email }}</p>
+    <div *ngIf="!participant">
+
+        <div class="body-container">
+           <div class="avatar">
+                <app-action-button 
+                appearance="clean"
+                [icon]="icon"
+                label="Assign member"/>
+           </div>
+    
         </div>
     </div>
 </div>

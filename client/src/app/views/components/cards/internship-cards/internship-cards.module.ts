@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MentorshipParticipantCardComponent } from './mentorship/mentorship-participant-card/mentorship-participant-card.component';
 import { AvatarsModule } from '../../avatars/avatars.module';
 import { ActionCardComponent } from '../action-cards/action-card/action-card.component';
+import { ButtonsModule } from '../../buttons/buttons.module';
 
 
 
@@ -12,7 +13,8 @@ import { ActionCardComponent } from '../action-cards/action-card/action-card.com
   ],
   imports: [
     CommonModule,
-    AvatarsModule
+    AvatarsModule,
+    ButtonsModule
   ],
   exports: [
     MentorshipParticipantCardComponent,

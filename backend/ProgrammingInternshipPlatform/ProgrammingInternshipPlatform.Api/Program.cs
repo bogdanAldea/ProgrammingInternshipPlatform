@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
-using ProgrammingInternshipPlatform.Application.Abstractions.ExternalRequests;
+using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi;
 using ProgrammingInternshipPlatform.Application.Accounts;
 using ProgrammingInternshipPlatform.Application.Helpers;
 using ProgrammingInternshipPlatform.Application.InternshipHub.GetInternshipPrograms;

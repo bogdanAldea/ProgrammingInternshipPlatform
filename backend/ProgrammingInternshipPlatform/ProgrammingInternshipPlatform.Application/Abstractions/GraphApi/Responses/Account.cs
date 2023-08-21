@@ -1,6 +1,6 @@
 ﻿using ProgrammingInternshipPlatform.Domain.Accounts.Identifiers;
 
-namespace ProgrammingInternshipPlatform.Application.Abstractions.ExternalRequests.Responses;
+namespace ProgrammingInternshipPlatform.Application.Abstractions.GraphApi.Responses;
 
 public class Account
 {

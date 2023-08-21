@@ -43,20 +43,4 @@ public class InternshipsController : ApiController
 
         return HandleApiErrorResponse(result.FailureReason);
     }
-
-    [HttpGet]
-    [Route("test")]
-    public async Task<IActionResult> Get()
-    {
-
-        var u = User;
-        var x = new GetAllAccounts();
-        var y = await Mediator.Send(x);
-        if (y.IsSuccess)
-        {
-            return Ok(y.Payload);
-        }
-
-        return HandleApiErrorResponse(y.FailureReason);
-    }
 }

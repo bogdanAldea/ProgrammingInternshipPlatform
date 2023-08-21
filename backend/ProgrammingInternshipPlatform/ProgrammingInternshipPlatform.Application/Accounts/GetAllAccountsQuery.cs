@@ -1,14 +1,14 @@
-﻿using ProgrammingInternshipPlatform.Application.Abstractions.ExternalRequests;
-using ProgrammingInternshipPlatform.Application.Abstractions.ExternalRequests.Responses;
+﻿using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi;
+using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi.Responses;
 using ProgrammingInternshipPlatform.Application.Abstractions.Handlers;
 using ProgrammingInternshipPlatform.Application.Abstractions.Requests;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 
 namespace ProgrammingInternshipPlatform.Application.Accounts;
 
-public record GetAllAccounts : IApplicationCollectionRequest<Account>;
+public record GetAllAccountsQuery : IApplicationCollectionRequest<Account>;
 
-public class GetAllAccountsHandler : IApplicationCollectionHandler<GetAllAccounts, Account>
+public class GetAllAccountsHandler : IApplicationCollectionHandler<GetAllAccountsQuery, Account>
 {
     private readonly IAccountsService _service;
 
@@ -17,7 +17,7 @@ public class GetAllAccountsHandler : IApplicationCollectionHandler<GetAllAccount
         _service = service;
     }
     
-    public async Task<HandlerResult<IReadOnlyList<Account>>> Handle(GetAllAccounts request, CancellationToken cancellationToken)
+    public async Task<HandlerResult<IReadOnlyList<Account>>> Handle(GetAllAccountsQuery request, CancellationToken cancellationToken)
     {
         try
         {

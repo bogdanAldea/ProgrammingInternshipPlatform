@@ -1,10 +1,7 @@
 ﻿using Azure.Identity;
-using Microsoft.Graph.Models;
 using Microsoft.Graph;
-using Microsoft.Identity.Client;
-using ProgrammingInternshipPlatform.Application.Abstractions.ExternalRequests;
-using ProgrammingInternshipPlatform.Application.Abstractions.ExternalRequests.Responses;
-using ProgrammingInternshipPlatform.Domain.Accounts.Identifiers;
+using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi;
+using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi.Responses;
 using AccountId = ProgrammingInternshipPlatform.Domain.Accounts.Identifiers.AccountId;
 
 namespace ProgrammingInternshipPlatform.Infrastructure.Accounts;

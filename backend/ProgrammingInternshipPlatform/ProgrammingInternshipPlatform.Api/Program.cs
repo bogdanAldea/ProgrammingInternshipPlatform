@@ -1,16 +1,17 @@
 using System.Text;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
+using ProgrammingInternshipPlatform.Application.Abstractions.ExternalRequests;
+using ProgrammingInternshipPlatform.Application.Accounts;
 using ProgrammingInternshipPlatform.Application.Helpers;
 using ProgrammingInternshipPlatform.Application.InternshipHub.GetInternshipPrograms;
 using ProgrammingInternshipPlatform.Dal.Context;
+using ProgrammingInternshipPlatform.Infrastructure.Accounts;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -58,30 +59,33 @@ builder.Services.AddHttpContextAccessor();
     .AddEntityFrameworkStores<ProgrammingInternshipPlatformDbContext>()
     .AddDefaultTokenProviders();*/
 
+builder.Services.AddScoped<IAccountsService, AccountsService>();
+
 var jwtSettings = new JwtSettings();
 builder.Configuration.Bind(nameof(JwtSettings), jwtSettings);
 var jwtSection = builder.Configuration.GetSection(nameof(JwtSettings));
 builder.Services.Configure<JwtSettings>(jwtSection);
 
-builder.Services.AddAuthentication(auth =>
+builder.Services.AddAuthentication(option =>
     {
-        auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        auth.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-        auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     })
+
     .AddJwtBearer(jwt =>
     {
         jwt.SaveToken = true;
-        jwt.ClaimsIssuer = jwtSettings.Issuer;
+        jwt.Audience = "3eea5a6b-cc13-4f0e-b797-b32dfade784a";
+        jwt.Authority = "https://login.microsoftonline.com/94a2fec0-9f74-4b78-973c-8985b3bd36f9/v2.0";
+
         jwt.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings.SigningKey)),
-            ValidIssuer = jwtSettings.Issuer,
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            RequireExpirationTime = false,
-            ValidateLifetime = true
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = "https://login.microsoftonline.com/94a2fec0-9f74-4b78-973c-8985b3bd36f9/v2.0",
+            ValidAudience = "3eea5a6b-cc13-4f0e-b797-b32dfade784a",
         };
     });
 

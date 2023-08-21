@@ -8,6 +8,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { DropdownsModule } from '../../components/dropdowns/dropdowns.module';
 import { SetupStepComponent } from './internship-wizard/setup-step/setup-step.component';
 import { FieldsModule } from '../../components/fields/fields.module';
+import { TrainersStepComponent } from './internship-wizard/trainers-step/trainers-step.component';
+import { ButtonsModule } from '../../components/buttons/buttons.module';
 
 
 
@@ -16,6 +18,7 @@ import { FieldsModule } from '../../components/fields/fields.module';
     InternshipListingComponent,
     MentorshipsComponent,
     SetupStepComponent,
+    TrainersStepComponent,
   ],
   imports: [
     CommonModule,
@@ -23,8 +26,9 @@ import { FieldsModule } from '../../components/fields/fields.module';
     ActionCardsModule,
     MatProgressBarModule,
     DropdownsModule,
-    FieldsModule
+    FieldsModule,
+    ButtonsModule
   ],
-  exports: [SetupStepComponent]
+  exports: [SetupStepComponent, TrainersStepComponent]
 })
 export class InternshipHubModule { }

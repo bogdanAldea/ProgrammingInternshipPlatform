@@ -60,6 +60,9 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
                     b.Property<int>("Center")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("CoordinatorId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("DurationInMonths")
                         .HasColumnType("int");
 

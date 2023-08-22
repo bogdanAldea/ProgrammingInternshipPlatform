@@ -20,6 +20,7 @@
         background-color: white;
         padding: 32px 48px;
         gap: 16px;
+        border-radius: 36px;
     }
 
     .setup-input-col {
@@ -43,9 +44,4 @@
             line-height: 12px;
         }
     }
-}
-
-.mentorship-participant-card-container,
-.body-container {
-    border-radius: 36px;
 }

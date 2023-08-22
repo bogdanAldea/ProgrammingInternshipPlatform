@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProgrammingInternshipPlatform.Domain.Accounts.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models;
 
@@ -19,21 +20,27 @@ public class InternshipConfig : IEntityTypeConfiguration<Internship>
             .IsRequired();
 
         builder
+            .Property(internship => internship.CoordinatorId)
+            .HasConversion(id => id.Value,
+                value => new AccountId(value))
+            .IsRequired();
+
+        builder
             .Property(internship => internship.Status)
             .IsRequired();
 
         builder
             .Property(internship => internship.ScheduledToStartOn)
             .IsRequired();
-        
+
         builder
             .Property(internship => internship.EstimatedToEndOn)
             .IsRequired();
-        
+
         builder
             .Property(internship => internship.DurationInMonths)
             .IsRequired();
-        
+
         builder
             .Property(internship => internship.MaxInternsToEnroll)
             .IsRequired();
@@ -47,7 +54,7 @@ public class InternshipConfig : IEntityTypeConfiguration<Internship>
             .WithOne()
             .HasForeignKey(intern => intern.InternshipId)
             .OnDelete(DeleteBehavior.Cascade);
-        
+
         builder
             .HasMany(internship => internship.Mentorships)
             .WithOne()

@@ -1,4 +1,6 @@
-﻿namespace ProgrammingInternshipPlatform.Application.ResultPattern;
+﻿using ProgrammingInternshipPlatform.Domain.Shared.Validators;
+
+namespace ProgrammingInternshipPlatform.Application.ResultPattern;
 
 public class HandlerResultFailureHelper
 {
@@ -20,9 +22,9 @@ public class HandlerResultFailureHelper
         return HandlerResult<TResponse>.Fail(applicationError);
     }
     
-    public static HandlerResult<TResponse> DomainValidationFailure<TResponse>(string message)
+    public static HandlerResult<TResponse> DomainValidationFailure<TResponse>(DomainValidationFailure failure)
     {
-        var applicationError = FailureReason.DomainValidationFailure(message);
+        var applicationError = FailureReason.DomainValidationFailure(failure);
         return HandlerResult<TResponse>.Fail(applicationError);
     }
 }

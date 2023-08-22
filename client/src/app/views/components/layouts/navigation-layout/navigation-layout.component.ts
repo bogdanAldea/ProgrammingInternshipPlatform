@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ApplicationToken } from 'src/app/core/authentication/response/ApplicationToken';
-import { AuthenticationService } from 'src/app/core/authentication/service/authentication.service';
+import { Component } from '@angular/core';
 import { MenuItem } from 'src/app/views/application-configs/app-menu/MenuItem';
 import { Menus } from 'src/app/views/application-configs/app-menu/Menus';
 
@@ -12,17 +10,4 @@ import { Menus } from 'src/app/views/application-configs/app-menu/Menus';
 })
 export class NavigationLayoutComponent {
   public menu: MenuItem[] = Menus.Administrator;
-
-  public constructor(private authService: AuthenticationService) {
-    this.authService.getAccessToken()
-    .then((token?: ApplicationToken) => {
-      if (token) {
-        localStorage.setItem('access_token', token.accessToken.toString());
-        localStorage.setItem('id_token', token.idToken.toString())
-      }
-    })
-    .catch((error) => {
-      console.error('Error acquiring token:', error);
-    });
-  }
 }

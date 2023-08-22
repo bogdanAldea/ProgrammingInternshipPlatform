@@ -23,6 +23,7 @@
       <ProjectReference Include="..\ProgrammingInternshipPlatform.Application\ProgrammingInternshipPlatform.Application.csproj" />
       <ProjectReference Include="..\ProgrammingInternshipPlatform.Dal\ProgrammingInternshipPlatform.Dal.csproj" />
       <ProjectReference Include="..\ProgrammingInternshipPlatform.Domain\ProgrammingInternshipPlatform.Domain.csproj" />
+      <ProjectReference Include="..\ProgrammingInternshipPlatform.Infrastructure\ProgrammingInternshipPlatform.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

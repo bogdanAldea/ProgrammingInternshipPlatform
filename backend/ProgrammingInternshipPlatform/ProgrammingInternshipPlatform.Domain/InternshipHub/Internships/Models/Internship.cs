@@ -1,4 +1,5 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipHub.Interns.Models;
+﻿using ProgrammingInternshipPlatform.Domain.Accounts.Identifiers;
+using ProgrammingInternshipPlatform.Domain.InternshipHub.Interns.Models;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Enums;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Validators;
@@ -13,6 +14,7 @@ public class Internship
     private readonly List<Intern> _interns = new();
     private readonly List<Mentorship> _mentorships = new();
     public InternshipId Id { get; private set; } = new(Guid.NewGuid());
+    public AccountId CoordinatorId { get; private set; }
     public InternshipStatus Status { get; private set; } = InternshipStatus.SetupInProgress;
     public Center Center { get; private set; }
     public DateTime ScheduledToStartOn { get; private set; }

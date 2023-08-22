@@ -19,7 +19,6 @@ import { InternshipService } from './services/internship-hub/internship.service'
 import { DropdownsModule } from './views/components/dropdowns/dropdowns.module';
 import { InternshipHubModule } from './views/pages/internship-hub/internship-hub.module';
 import { FieldsModule } from './views/components/fields/fields.module';
-import { ActionButtonComponent } from './views/components/buttons/action-button/action-button.component';
 import { ButtonsModule } from './views/components/buttons/buttons.module';
 import { NewAuthenticationInterceptor } from './services/interceptors/authentication.interceptor';
 

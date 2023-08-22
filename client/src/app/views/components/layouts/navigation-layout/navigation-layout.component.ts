@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ApplicationToken } from 'src/app/core/authentication/response/ApplicationToken';
-import { AuthenticationService } from 'src/app/core/authentication/service/authentication.service';
+import { Component } from '@angular/core';
 import { MenuItem } from 'src/app/views/application-configs/app-menu/MenuItem';
 import { Menus } from 'src/app/views/application-configs/app-menu/Menus';
 

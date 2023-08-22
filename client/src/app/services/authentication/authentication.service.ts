@@ -1,7 +1,5 @@
-import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import * as Msal from 'msal';
-import { ApplicationToken } from '../response/ApplicationToken';
 import { config } from 'src/app/views/pages/authentication/config/config';
 
 @Injectable({

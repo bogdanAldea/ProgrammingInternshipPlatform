@@ -28,6 +28,7 @@ public class InternshipsController : ApiController
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> CreateInternshipSetup([FromBody] InternshipSetupRequest request)
     {
         var internshipSetupCreateCommand = new CreateInternshipSetupCommand(

@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.Accounts.Contracts.Responses;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Application.Accounts;
 
 namespace ProgrammingInternshipPlatform.Api.Accounts.Controllers;
 
+
 public class AccountsController : ApiController
 {
+    [Authorize]
     [HttpGet]
     public async Task<IActionResult> GetAllAccounts()
     {

@@ -1,5 +1,5 @@
-import { Component, INJECTOR, Inject, OnDestroy, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/core/authentication/service/authentication.service';
+import { Component } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-signin',

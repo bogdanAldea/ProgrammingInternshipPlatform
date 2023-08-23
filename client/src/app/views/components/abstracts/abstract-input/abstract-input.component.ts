@@ -7,6 +7,7 @@ import { InputOptions } from '../InputOptions';
   styleUrls: ['./abstract-input.component.scss']
 })
 export abstract class AbstractInputComponent implements InputOptions {
+  @Input() identifier: string | undefined;
   @Input() icon: string | undefined;
   @Input() label: string | undefined;
   public selectedValue: string | undefined;

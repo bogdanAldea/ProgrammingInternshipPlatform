@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { InternshipWizardDialogComponent } from '../internship-wizard/internship-wizard-dialog/internship-wizard-dialog.component';
 import { InternshipsHubControllerService } from 'src/app/views/controllers/internship-hub/internships-hub-controller.cs.service';
 import { CentersControllerService } from 'src/app/views/controllers/centers/centers-controller.cs.service';
+import { AccountsController } from 'src/app/views/controllers/accounts/accounts-controller.service';
 
 @Component({
   selector: 'app-internship-listing',
@@ -19,7 +20,8 @@ export class InternshipListingComponent implements OnInit {
 
   public constructor(
     private internshipsController: InternshipsHubControllerService,
-    private centersHandler: CentersControllerService,
+    private centersController: CentersControllerService,
+    private accountsController: AccountsController,
     private dialog: MatDialog
     ) {}
   
@@ -29,8 +31,14 @@ export class InternshipListingComponent implements OnInit {
   }
 
   public openInternshipWizard = () => {
-    const centers = this.centersHandler.getAllCenters().subscribe();
-    this.dialog.open(InternshipWizardDialogComponent, {width: "1000px", height: "640px", data: {"centers": centers}})
+    const coordinators = this.accountsController.getAllAccountsByRole("Coordinator");
+    const centers = this.centersController.getAllCenters();
+    this.dialog.open(InternshipWizardDialogComponent, 
+      {width: "1000px", height: "640px", data: 
+        {
+          "centers": centers,
+          "coordinators": coordinators
+        }})
   }
 
 }

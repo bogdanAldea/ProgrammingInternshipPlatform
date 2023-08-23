@@ -12,7 +12,7 @@ import { FieldsModule } from './components/fields/fields.module';
     CommonModule,
     ApplicationModule,
     DropdownsModule,
-    FieldsModule
+    FieldsModule,
   ]
 })
 export class ViewModule { }

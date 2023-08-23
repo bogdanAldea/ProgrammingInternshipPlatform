@@ -1,26 +1,29 @@
 ﻿using Azure.Identity;
+using Microsoft.Extensions.Options;
 using Microsoft.Graph;
 using Microsoft.Graph.Models;
 using Microsoft.Kiota.Abstractions;
 using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi;
 using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi.Responses;
+using ProgrammingInternshipPlatform.Infrastructure.GraphApi.Settings;
 using AccountId = ProgrammingInternshipPlatform.Domain.Accounts.Identifiers.AccountId;
 
-namespace ProgrammingInternshipPlatform.Infrastructure.Accounts;
+namespace ProgrammingInternshipPlatform.Infrastructure.GraphApi;
 
 public class AccountsService : IAccountsService
 {
     private readonly GraphServiceClient _graphServiceClient;
 
-    public AccountsService()
+    public AccountsService(IOptions<GraphApiSettings> graphApiSettings)
     {
         ClientSecretCredential credential = new ClientSecretCredential(
-            tenantId: "94a2fec0-9f74-4b78-973c-8985b3bd36f9",
-            clientId: "3eea5a6b-cc13-4f0e-b797-b32dfade784a",
-            clientSecret: "Y2O8Q~Ip7AfH4_ToI58.IG2Xgjp7wCWUUtFAQc05");
+            tenantId: graphApiSettings.Value.TenantId,
+            clientId: graphApiSettings.Value.ClientId,
+            clientSecret: graphApiSettings.Value.Secret);
 
         string[] scopes = { "https://graph.microsoft.com/.default" };
-        this._graphServiceClient = new GraphServiceClient(credential, scopes);
+        
+        _graphServiceClient = new GraphServiceClient(credential, scopes);
 
     }
 

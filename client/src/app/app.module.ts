@@ -25,6 +25,10 @@ import { CentersService } from './services/centers/centers.service';
 import { InternshipApplicationHandler } from './application/internship-hub/handler/InternshipApplicationHandler';
 import { IInternshipApplicationHandler } from './application/internship-hub/handler/IInternshipApplicationHandler';
 import { ICenterApplicationHandler } from './application/centers/handlers/ICenterApplicationHandler';
+import { IAccountApplicationHandler } from './application/accounts/handlers/IAccountApplicationHandler';
+import { AccountApplicationHandler } from './application/accounts/handlers/AccountApplicationHandler';
+import { IAccountsService } from './application/service/IAccountService';
+import { AccountsService } from './services/accounts/accounts.service';
 
 
 
@@ -71,6 +75,14 @@ import { ICenterApplicationHandler } from './application/centers/handlers/ICente
     {
       provide: ICenterService,
       useClass: CentersService
+    },
+    {
+      provide: IAccountApplicationHandler,
+      useClass: AccountApplicationHandler,
+    },
+    {
+      provide: IAccountsService,
+      useClass: AccountsService
     }
 
   ],

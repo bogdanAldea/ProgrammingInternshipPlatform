@@ -21,7 +21,10 @@
             <mat-step>
                 <form>
                     <ng-template matStepLabel>Setup</ng-template>
-                    <app-setup-step stepTitle="Define internship parameters"/>
+                    <app-setup-step 
+                    stepTitle="Define internship parameters"
+                    [centers]="centers"
+                    [coordinators]="coordinators"/>
                 </form>
             </mat-step>
 

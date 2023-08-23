@@ -16,4 +16,8 @@
       <PackageReference Include="Microsoft.Identity.Client" Version="4.55.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="GraphApi\Service" />
+    </ItemGroup>
+
 </Project>

@@ -1,16 +1,16 @@
 import { Observable } from "rxjs";
 import { PartialInternship } from "src/app/domain/internship-hub/internships/PartialInternship";
-import { IGEtAllInternships } from "./IGetAllInternships";
 import { Injectable } from "@angular/core";
-import { IInternshipService } from "../service/IInternshipService";
+import { IInternshipService } from "../../service/IInternshipService";
+import { IInternshipApplicationHandler } from "./IInternshipApplicationHandler";
 
 @Injectable({
     providedIn: 'root'
   })
-export class GetAllInternships implements IGEtAllInternships{
+export class InternshipApplicationHandler implements IInternshipApplicationHandler{
     public constructor(private service: IInternshipService) {}
 
-    execute(): Observable<PartialInternship[]> {
+    public getAllInternships(): Observable<PartialInternship[]> {
         return this.service.getAllInternshipPrograms();
     }
 }

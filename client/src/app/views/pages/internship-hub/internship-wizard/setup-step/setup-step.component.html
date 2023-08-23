@@ -1,5 +1,5 @@
 <div class="setup-step-body-container">
-    <div class="title-container">
+    <div class="title">
         <h1 class="step-title">{{ stepTitle }}</h1>
     </div>
     <div class="body-container">
@@ -55,6 +55,17 @@
                 </div>
                 <div class="col-input">
                     <app-field label="In months"/>
+                    <p>Creating a new internship requires a center to be set.</p>
+                </div>
+            </div>
+
+            <div class="col-4 setup-input-col">
+                <div class="col-header">
+                    <img [src]="icons.Users.Dark" alt="">
+                    <span class="col-name">Coordinator</span>
+                </div>
+                <div class="col-input">
+                    <app-filter-dropdown label="Coordinator"/>
                     <p>Creating a new internship requires a center to be set.</p>
                 </div>
             </div>

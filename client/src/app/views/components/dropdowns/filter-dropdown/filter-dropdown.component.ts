@@ -14,11 +14,11 @@ export class FilterDropdownComponent extends AbstractInputComponent {
   public constructor(private elementRef: ElementRef) {super()}
 
 
-  toggleDropdown() {
+  public toggleDropdown() {
     this.isOpen = !this.isOpen;
   }
 
-  selectOption(option: string) {
+  public selectOption(option: string) {
     this.selectedValue = option;
     this.isOpen = false;
   }

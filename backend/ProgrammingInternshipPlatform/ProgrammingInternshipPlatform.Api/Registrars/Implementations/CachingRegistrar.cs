@@ -1,4 +1,6 @@
-﻿namespace ProgrammingInternshipPlatform.Api.Registrars.Implementations;
+﻿using ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
+
+namespace ProgrammingInternshipPlatform.Api.Registrars.Implementations;
 
 public class CachingRegistrar : IWebApplicationBuilderRegistrar
 {

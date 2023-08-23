@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
 using ProgrammingInternshipPlatform.Dal.Context;
 
 namespace ProgrammingInternshipPlatform.Api.Registrars.Implementations;

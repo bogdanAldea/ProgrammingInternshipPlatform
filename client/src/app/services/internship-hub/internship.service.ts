@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { IInternshipService } from 'src/app/application/internship-hub/service/IInternshipService';
+import { IInternshipService } from 'src/app/application/service/IInternshipService';
 import { PartialInternship, PartialInternshipResponse } from 'src/app/domain/internship-hub/internships/PartialInternship';
 
 @Injectable({

@@ -12,15 +12,19 @@ import { LayoutsModule } from './views/components/layouts/layouts.module';
 import { NavigationsModule } from './views/components/navigations/navigations.module';
 import { SandboxComponent } from './views/pages/sandbox/sandbox.component';
 import { ViewModule } from './views/view.module';
-import { IGEtAllInternships } from './application/internship-hub/get-all-internships/IGetAllInternships';
-import { GetAllInternships } from './application/internship-hub/get-all-internships/GetAllInternships';
-import { IInternshipService } from './application/internship-hub/service/IInternshipService';
+import { IInternshipService } from './application/service/IInternshipService';
 import { InternshipService } from './services/internship-hub/internship.service';
 import { DropdownsModule } from './views/components/dropdowns/dropdowns.module';
 import { InternshipHubModule } from './views/pages/internship-hub/internship-hub.module';
 import { FieldsModule } from './views/components/fields/fields.module';
 import { ButtonsModule } from './views/components/buttons/buttons.module';
 import { NewAuthenticationInterceptor } from './services/interceptors/authentication.interceptor';
+import { CenterApplicationHandler } from './application/centers/handlers/CenterApplicationHandler';
+import { ICenterService } from './application/service/ICenterService';
+import { CentersService } from './services/centers/centers.service';
+import { InternshipApplicationHandler } from './application/internship-hub/handler/InternshipApplicationHandler';
+import { IInternshipApplicationHandler } from './application/internship-hub/handler/IInternshipApplicationHandler';
+import { ICenterApplicationHandler } from './application/centers/handlers/ICenterApplicationHandler';
 
 
 
@@ -53,13 +57,22 @@ import { NewAuthenticationInterceptor } from './services/interceptors/authentica
       multi: true,
     },
     {
-      provide: IGEtAllInternships, 
-      useClass: GetAllInternships
+      provide: IInternshipApplicationHandler, 
+      useClass: InternshipApplicationHandler
     },
     {
       provide: IInternshipService, 
       useClass: InternshipService
+    },
+    {
+      provide: ICenterApplicationHandler,
+      useClass: CenterApplicationHandler
+    },
+    {
+      provide: ICenterService,
+      useClass: CentersService
     }
+
   ],
   bootstrap: [AppComponent]
 })

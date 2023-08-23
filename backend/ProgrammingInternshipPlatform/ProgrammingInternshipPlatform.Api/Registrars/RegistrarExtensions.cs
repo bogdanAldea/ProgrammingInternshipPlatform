@@ -1,4 +1,6 @@
-﻿namespace ProgrammingInternshipPlatform.Api.Registrars;
+﻿using ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
+
+namespace ProgrammingInternshipPlatform.Api.Registrars;
 
 public static class RegistrarExtensions
 {

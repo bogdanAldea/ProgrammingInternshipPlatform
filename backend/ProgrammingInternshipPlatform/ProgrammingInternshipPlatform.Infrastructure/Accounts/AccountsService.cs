@@ -1,5 +1,7 @@
 ﻿using Azure.Identity;
 using Microsoft.Graph;
+using Microsoft.Graph.Models;
+using Microsoft.Kiota.Abstractions;
 using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi;
 using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi.Responses;
 using AccountId = ProgrammingInternshipPlatform.Domain.Accounts.Identifiers.AccountId;
@@ -21,24 +23,92 @@ public class AccountsService : IAccountsService
         this._graphServiceClient = new GraphServiceClient(credential, scopes);
 
     }
-    
+
     public async Task<IEnumerable<Account>> GetAllAccounts()
     {
-        var userAccounts = await _graphServiceClient.Users.GetAsync();
+        var userAccounts = await GetAccounts();
             if (userAccounts is not null)
             {
                 if (userAccounts.Value != null)
-                    return userAccounts.Value.Select(user => new Account
+                    return MapUserToAccount(userAccounts.Value);
+            }
+            throw new NullReferenceException();
+    }
+
+    public async Task<IEnumerable<Account>> GetAccountsByRole(string roleId)
+    {
+        var users = await GetAccounts("appRoleAssignments");
+
+        if (users is null)
+        {
+            throw new NullReferenceException();
+        }
+
+        var usersWithRoles = await ParseUsersForGivenRole(users, roleId);
+        return MapUserToAccount(usersWithRoles);
+    }
+    
+    private async Task<UserCollectionResponse?> GetAccounts(string? query = null)
+    {
+        if (query is null)
+        {
+            return await _graphServiceClient.Users.GetAsync();
+        }
+
+        return await _graphServiceClient.Users.GetAsync(request
+            => request.QueryParameters.Expand = new string[] { query }
+        );
+    }
+
+    private async Task<List<User>> ParseUsersForGivenRole(UserCollectionResponse users, string roleId)
+    {
+        if (users.Value is null) throw new NullReferenceException();
+        var usersWithRoles = new List<User>();
+
+        var nextLink = users.OdataNextLink;
+        while (!string.IsNullOrEmpty(nextLink))
+        {
+            var nextPageRequestInformation = new RequestInformation
+            {
+                HttpMethod = Method.GET,
+                UrlTemplate = nextLink
+            };
+
+            var nextPageResult = await _graphServiceClient.RequestAdapter.SendAsync(nextPageRequestInformation,
+                (parseNode) => new UserCollectionResponse());
+
+            if (nextPageResult is null) throw new NullReferenceException();
+
+            foreach (var user in users.Value)
+            {
+                var roles = user.AppRoleAssignments;
+                if (roles is null) throw new NullReferenceException();
+                foreach (var role in roles)
+                {
+                    if (role.AppRoleId == new Guid(roleId))
                     {
-                        Id = new AccountId(Guid.Parse(user.Id!)),
-                        DisplayName = user.DisplayName!,
-                        GivenName = user.GivenName!,
-                        Surname = user.Surname!,
-                        JobTitle = user.JobTitle!,
-                        Email = user.UserPrincipalName!
-                    });
+                        usersWithRoles.Add(user);
+                        break;
+                    }
+                }
             }
 
-            throw new InvalidOperationException();
+            nextLink = nextPageResult.OdataNextLink;
+        }
+
+        return usersWithRoles;
+    }
+
+    private IEnumerable<Account> MapUserToAccount(List<User> users)
+    {
+        return users.Select(user => new Account
+        {
+            Id = new AccountId(Guid.Parse(user.Id!)),
+            DisplayName = user.DisplayName!,
+            GivenName = user.GivenName!,
+            Surname = user.Surname!,
+            JobTitle = user.JobTitle!,
+            Email = user.UserPrincipalName!,
+        });
     }
 }

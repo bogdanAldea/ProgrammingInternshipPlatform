@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
 
 namespace ProgrammingInternshipPlatform.Api.Registrars.Implementations;
 

@@ -1,0 +1,59 @@
+@import '../../../../../../assets/theme/colours/palette.scss';
+
+.internship-dialog-wizard{
+    display: flex;
+    flex-direction: column;
+    padding: 0 56px;
+
+    .wizard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+
+        .wizard-title .title {
+            font-size: 14px;
+            margin: 0;
+            color: $primary-dark-lighter;
+        }
+
+        .wizard-actions {
+            display: flex;
+
+            .vertical-divider {
+                width: 0;
+                border-left: 1px solid $stroke;
+            }
+        }
+    }
+
+    .wizard-stepper {
+        ::ng-deep .mat-step-icon {
+            background-color: transparent;
+            border: 2px solid $stroke;
+        }
+
+        ::ng-deep .mat-step-icon-selected {
+            background-color: $brand-purple-main;
+            border: none;
+        }
+
+        ::ng-deep .mat-step-icon-content {
+            font-size: 9px;
+        }
+
+        ::ng-deep .mat-step-label {
+            font-size: 12px;
+            color: $stroke;
+        }
+
+        ::ng-deep .mat-step-label-selected {
+            color: $primary-dark;
+            font-weight: 700;
+        }
+
+        ::ng-deep .mat-horizontal-content-container {
+            margin-top: 24px;
+        }
+    }
+}

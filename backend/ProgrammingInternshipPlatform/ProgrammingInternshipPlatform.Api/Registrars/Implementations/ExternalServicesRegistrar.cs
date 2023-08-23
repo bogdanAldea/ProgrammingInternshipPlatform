@@ -1,4 +1,5 @@
-﻿using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi;
+﻿using ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
+using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi;
 using ProgrammingInternshipPlatform.Infrastructure.Accounts;
 
 namespace ProgrammingInternshipPlatform.Api.Registrars.Implementations;

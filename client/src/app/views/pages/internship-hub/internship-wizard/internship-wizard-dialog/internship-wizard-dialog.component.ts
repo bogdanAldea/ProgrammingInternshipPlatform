@@ -4,6 +4,7 @@ import { MatStep, MatStepper } from '@angular/material/stepper';
 import { PartialAccount } from 'src/app/domain/accounts/PartialAccount';
 import { Center } from 'src/app/domain/internship-hub/centers/center';
 import { SetupStepComponent } from '../setup-step/setup-step.component';
+import { InternshipsHubControllerService } from 'src/app/views/controllers/internship-hub/internships-hub-controller.cs.service';
 
 @Component({
   selector: 'app-internship-wizard-dialog',
@@ -18,7 +19,8 @@ export class InternshipWizardDialogComponent {
   @ViewChild(SetupStepComponent) setup!: SetupStepComponent;
 
   public constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any) 
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private internshipController: InternshipsHubControllerService) 
   {
     this.data.centers.subscribe((centers: Center[]) => this.centers = centers);
     this.data.coordinators.subscribe((coordinators: PartialAccount[]) => this.coordinators = coordinators);
@@ -26,8 +28,16 @@ export class InternshipWizardDialogComponent {
 
   public proceedToNextStep = (): void => {
     if (this.isSetupValid()) {
-      this.setup.getDropdownValues();
-      // this.wizardStepper.next();
+      const data = this.setup.getDropdownValues();
+      const request = this.setup.createInternshipSetup(data);
+      this.internshipController.createInternshipSetup(request).subscribe({
+        next: () => {
+          this.wizardStepper.next();
+        },
+        error: (error: any) => {
+          console.error('API request failed:', error);
+        }
+      });
     }
   }
 

@@ -1,9 +1,12 @@
 import { AfterViewInit, Component, Input, QueryList, ViewChildren } from '@angular/core';
 import { PartialAccount } from 'src/app/domain/accounts/PartialAccount';
 import { Center } from 'src/app/domain/internship-hub/centers/center';
+import { InternshipSetupRequest } from 'src/app/domain/internship-hub/internships/InternshipSetupRequest';
 import { IconRegistrar } from 'src/app/views/application-configs/icon-registrar/IconRegistrar';
 import { FilterDropdownComponent } from 'src/app/views/components/dropdowns/filter-dropdown/filter-dropdown.component';
+import { DatePickerComponent } from 'src/app/views/components/fields/date-picker/date-picker.component';
 import { FieldComponent } from 'src/app/views/components/fields/field/field.component';
+import { InternshipsHubControllerService } from 'src/app/views/controllers/internship-hub/internships-hub-controller.cs.service';
 
 @Component({
   selector: 'app-setup-step',
@@ -20,6 +23,7 @@ export class SetupStepComponent {
 
   @ViewChildren(FilterDropdownComponent) dropdowns!: QueryList<FilterDropdownComponent>;
   @ViewChildren(FieldComponent) fields!: QueryList<FieldComponent>;
+  @ViewChildren(DatePickerComponent) timeframe! : QueryList<DatePickerComponent>;
 
   public validate = (): boolean => {
     this.dropdowns.forEach(field => {
@@ -28,6 +32,10 @@ export class SetupStepComponent {
 
     this.fields.forEach(field => {
       this.isStepFilled = field.getSelectedValue() ? true : false;
+    })
+
+    this.timeframe.forEach(date => {
+      this.isStepFilled = date.getSelectedValue() ? true : false;
     })
 
     return this.isStepFilled;
@@ -43,6 +51,22 @@ export class SetupStepComponent {
       data[field.identifier!] = field.getSelectedValue()
     })
 
-    console.log(data);
+    this.timeframe.forEach(field => {
+      data[field.identifier!] = field.getSelectedValue();
+    })
+
+    return data;
+  }
+
+  public createInternshipSetup = (data: {[key: string]: any}) => {
+    var internshipSetupRequest: InternshipSetupRequest = {
+      center: data['center'].value,
+      coordinatorId: data['coordinator'].id,
+      maxInternsToEnroll: parseInt(data['interns']),
+      durationInMonths: parseInt(data['duration']),
+      scheduledToStartOn: new Date(data['startDate']),
+      estimatedToEndOn: data['endDate'] ?? new Date(data['endDate'])
+    }
+    return internshipSetupRequest;
   }
 }

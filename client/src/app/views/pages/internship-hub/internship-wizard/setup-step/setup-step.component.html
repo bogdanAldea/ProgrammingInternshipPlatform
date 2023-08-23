@@ -2,7 +2,7 @@
     <div class="title">
         <h1 class="step-title">{{ stepTitle }}</h1>
     </div>
-    <div class="body-container">
+    <div class="step-body">
         <div class="row">
             <div class="col-4 setup-input-col">
                 <div class="col-header">
@@ -52,8 +52,8 @@
                     <span class="col-name">Start date</span>
                 </div>
                 <div class="col-input">
-                    <app-field 
-                    label="In months"
+                    <app-date-picker 
+                    label="Start"
                     identifier="startDate"
                     />
                     <p>Creating a new internship requires a center to be set.</p>
@@ -66,8 +66,8 @@
                     <span class="col-name">Estimated end date</span>
                 </div>
                 <div class="col-input">
-                    <app-field 
-                    label="In months"
+                    <app-date-picker 
+                    label="End"
                     identifier="endDate"
                     />
                     <p>Creating a new internship requires a center to be set.</p>
@@ -91,4 +91,5 @@
            
         </div>
     </div>
+
 </div>

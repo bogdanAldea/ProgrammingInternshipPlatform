@@ -25,13 +25,14 @@ public class Internship
     public int DurationInMonths { get; private set; }
     public int MaxInternsToEnroll { get; private set; }
 
-    public static async Task<Internship> CreateInternshipSetup(Center center, int durationInMonths, int maxInternsToEnroll,
-        DateTime scheduledToStartOn, DateTime? estimatedToEndOn, CancellationToken cancellationToken)
+    public static async Task<Internship> CreateInternshipSetup(Center center, Guid coordinatorId, int durationInMonths,
+        int maxInternsToEnroll, DateTime scheduledToStartOn, DateTime? estimatedToEndOn, CancellationToken cancellationToken)
     {
         var internshipSetupValidator = new InternshipSetupValidator();
         var internshipSetup = new Internship
         {
             Center = center,
+            CoordinatorId = new AccountId(coordinatorId),
             DurationInMonths = durationInMonths,
             MaxInternsToEnroll = maxInternsToEnroll,
             ScheduledToStartOn = scheduledToStartOn,

@@ -34,7 +34,7 @@ export class InternshipListingComponent implements OnInit {
     const coordinators = this.accountsController.getAllAccountsByRole("Coordinator");
     const centers = this.centersController.getAllCenters();
     this.dialog.open(InternshipWizardDialogComponent, 
-      {width: "1000px", height: "640px", data: 
+      {width: "1000px", height: "660px", data: 
         {
           "centers": centers,
           "coordinators": coordinators

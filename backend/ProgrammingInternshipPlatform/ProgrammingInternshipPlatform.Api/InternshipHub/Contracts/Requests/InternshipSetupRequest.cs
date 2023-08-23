@@ -7,6 +7,8 @@ public class InternshipSetupRequest
     [Required]
     public int Center { get; init; }
     [Required]
+    public Guid CoordinatorId { get; init; }
+    [Required]
     public int MaxInternsToEnroll { get; init; }
     [Required]
     public int DurationInMonths { get; init; }

@@ -45,6 +45,8 @@
       border-radius: 8px;
       background-color: white;
       z-index: 1000;
+      max-height: 200px;
+      overflow-y: auto;
   
       li {
         padding: 8px 16px;

@@ -7,7 +7,7 @@ import { PartialInternship } from 'src/app/domain/internship-hub/internships/Par
 @Injectable({
   providedIn: 'root'
 })
-export class InternshipsHubControllerService {
+export class InternshipsHubController {
 
   constructor(private internshipHandler: IInternshipApplicationHandler) { }
 

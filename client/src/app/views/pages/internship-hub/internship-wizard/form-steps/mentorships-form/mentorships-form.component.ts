@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ParticipantToSelect } from 'src/app/domain/internship-hub/mentorship-participants/ParticipantToSelect';
 import { AbstractForm } from 'src/app/views/components/abstracts/AbstractForm';
 
@@ -16,9 +17,16 @@ export class MentorshipsFormComponent implements AbstractForm {
   @Input() createdMentorshipPairs: undefined;
 
   public validateForm(): boolean {
-    throw new Error('Method not implemented.');
+    return true;
   }
+
   public getFilledDate(): { [key: string]: any; } {
-    throw new Error('Method not implemented.');
+    return {}
+  }
+
+  public createRequestData = () => {}
+
+  public sendRequest = ():Observable<any> => {
+    return new Observable();
   }
 }

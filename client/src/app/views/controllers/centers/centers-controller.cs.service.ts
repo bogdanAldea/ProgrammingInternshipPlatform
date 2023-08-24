@@ -6,7 +6,7 @@ import { Center } from 'src/app/domain/internship-hub/centers/center';
 @Injectable({
   providedIn: 'root'
 })
-export class CentersControllerService {
+export class CentersController {
 
   constructor(private handler: ICenterApplicationHandler) { }
 

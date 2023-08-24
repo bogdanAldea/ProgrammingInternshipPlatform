@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InternshipListingComponent } from './internship-listing/internship-listing.component';
 import { InternshipDetailComponent } from './internship-detail/internship-detail/internship-detail.component';
+import { CreateInternshipWizardComponent } from './internship-wizard/create-internship-wizard/create-internship-wizard.component';
 
 const routes: Routes = [
   {
     path: '',
     component: InternshipListingComponent
+  },
+  {
+    path: 'new',
+    component: CreateInternshipWizardComponent,
   },
   {
     path: ':id',
@@ -18,8 +23,7 @@ const routes: Routes = [
         .then(module => module.InternshipDetailModule)
       },
     ]
-  }
-
+  },
 ];
 
 @NgModule({

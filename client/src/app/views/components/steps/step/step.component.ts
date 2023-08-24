@@ -1,5 +1,6 @@
 import { AfterContentInit, AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ComposeDirective } from 'src/app/views/directives/compose.directive';
+import { AbstractForm } from '../../abstracts/AbstractForm';
 
 type NewType = ComposeDirective;
 
@@ -9,10 +10,8 @@ type NewType = ComposeDirective;
   styleUrls: ['./step.component.scss']
 })
 export class StepComponent implements OnInit, AfterViewInit{
-
-
   @Input() public stepTitle: string | undefined;
-  @Input() public form: any | undefined;
+  @Input() public form: any | undefined | AbstractForm;
   @ViewChild('compose', { read: ViewContainerRef }) compose!: ViewContainerRef;
   
   
@@ -24,6 +23,6 @@ export class StepComponent implements OnInit, AfterViewInit{
   }
 
   public loadComponent = () => {
-    const component = this.compose.createComponent<any>(this.form);
+    this.form = this.compose.createComponent<any>(this.form).instance;
   }
 }

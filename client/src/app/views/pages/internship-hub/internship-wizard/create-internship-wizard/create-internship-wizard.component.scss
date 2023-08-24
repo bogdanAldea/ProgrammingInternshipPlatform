@@ -52,4 +52,13 @@
             margin-top: 24px;
         }
     }
+
+    .wizard-footer {
+        text-align: center;
+        p {
+            font-size: 14px;
+            color: $primary-dark-lighter;
+            font-weight: 500;
+        }
+    }
 }

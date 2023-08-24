@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { PartialAccount } from 'src/app/domain/accounts/PartialAccount';
 import { AbstractForm } from 'src/app/views/components/abstracts/AbstractForm';
 
 @Component({
@@ -8,13 +10,21 @@ import { AbstractForm } from 'src/app/views/components/abstracts/AbstractForm';
 })
 export class InternsFormComponent implements AbstractForm {
   public readonly isRequired: boolean = false;
+
+  @Input() interns: PartialAccount[] = [];
   
   public validateForm(): boolean {
-    throw new Error('Method not implemented.');
+    return true;
   }
   
   public getFilledDate(): { [key: string]: any; } {
-    throw new Error('Method not implemented.');
+    return {}
+  }
+
+  public createRequestData = () => {}
+
+  public sendRequest = (): Observable<any> => {
+    return new Observable();
   }
 
 }

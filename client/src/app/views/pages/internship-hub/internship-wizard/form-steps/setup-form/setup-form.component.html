@@ -5,8 +5,11 @@
             <span class="col-name">Center</span>
         </div>
         <div class="col-body">
-            <app-filter-dropdown #field
-            label="Center"/>
+            <app-filter-dropdown
+            [options]="centers"
+            displayProperty="name"
+            label="Center"
+            identifier="center"/>
 
             <p class="field-information">
                 Creating a new internship requires a center to be set.
@@ -20,7 +23,11 @@
             <span class="col-name">Coordinator</span>
         </div>
         <div class="col-body">
-            <app-filter-dropdown label="Coordinator" #field/>
+            <app-filter-dropdown 
+            [options]="coordinators"
+            displayProperty="displayName"
+            label="Coordinator"
+            identifier="coordinators"/>
             <p class="field-information">
                 Creating a new internship requires a center to be set.
             </p>
@@ -33,7 +40,10 @@
             <span class="col-name">Duration</span>
         </div>
         <div class="col-body">
-            <app-field label="In months" #field/>
+            <app-field 
+            [type]="fieldType.int"
+            label="In months"
+            identifier="duration"/>
             <p class="field-information">
                 Creating a new internship requires a center to be set.
             </p>
@@ -46,7 +56,10 @@
             <span class="col-name">Interns to enroll</span>
         </div>
         <div class="col-body">
-            <app-field label="Number of interns" #field/>
+            <app-field 
+            [type]="fieldType.int"
+            label="Number of interns"
+            identifier="interns"/>
             <p class="field-information">
                 Creating a new internship requires a center to be set.
             </p>
@@ -59,7 +72,9 @@
             <span class="col-name">Scheduled start date</span>
         </div>
         <div class="col-body">
-            <app-date-picker label="Start" #field/>
+            <app-date-picker 
+            label="Start"
+            identifier="startDate"/>
             <p class="field-information">
                 Creating a new internship requires a center to be set.
             </p>
@@ -72,7 +87,9 @@
             <span class="col-name">Estimated end date</span>
         </div>
         <div class="col-body">
-            <app-date-picker label="End" #field/>
+            <app-date-picker 
+            label="End"
+            identifier="endDate"/>
             <p class="field-information">
                 Creating a new internship requires a center to be set.
             </p>

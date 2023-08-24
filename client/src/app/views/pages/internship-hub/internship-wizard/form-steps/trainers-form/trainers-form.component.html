@@ -12,8 +12,16 @@
             </div>
 
             <div class="fields mt-4">
-                <app-filter-dropdown label="Select user..."/>
-                <app-filter-dropdown label="Technology Stack"/>
+                <app-filter-dropdown 
+                label="Select user..."
+                [options]="trainers"
+                displayProperty="displayName"/>
+                
+                <app-filter-dropdown 
+                label="Technology Stack"
+                [options]="technologies"
+                displayProperty="name"
+                />
             </div>
 
             <div class="actions mt-2">

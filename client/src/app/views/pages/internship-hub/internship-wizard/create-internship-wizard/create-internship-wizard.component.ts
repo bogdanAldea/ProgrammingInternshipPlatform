@@ -11,6 +11,7 @@ import { AccountsController } from 'src/app/views/controllers/accounts/accounts-
 import { CentersController } from 'src/app/views/controllers/centers/centers-controller.cs.service';
 import { PartialAccount } from 'src/app/domain/accounts/PartialAccount';
 import { Center } from 'src/app/domain/internship-hub/centers/center';
+import { ConnectionPositionPair } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-create-internship-wizard',
@@ -49,7 +50,8 @@ export class CreateInternshipWizardComponent {
     if (currentForm.isRequired) {
       const isFormValid = currentForm.validateForm();
       if (isFormValid) {
-        const request = currentForm.createRequestData(currentForm.getFilledDate());
+        const data = currentForm.getFilledDate()
+        const request = currentForm.createRequestData(data);
         currentForm.sendRequest(request).subscribe({
           next: () => {
             this.wizardStepper.next();

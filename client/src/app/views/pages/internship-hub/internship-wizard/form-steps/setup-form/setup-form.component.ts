@@ -92,6 +92,7 @@ export class SetupFormComponent implements OnInit, AfterViewInit, AbstractForm {
   }
 
   public createRequestData = (requestData: { [key: string]: any }): InternshipSetupRequest => {
+    console.log(requestData['coordinator'])
     var internshipSetupRequest: InternshipSetupRequest = {
       center: requestData['center'].value,
       coordinatorId: requestData['coordinator'].id,

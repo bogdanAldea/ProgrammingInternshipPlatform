@@ -30,6 +30,10 @@ import { AccountApplicationHandler } from './application/accounts/handlers/Accou
 import { IAccountsService } from './application/service/IAccountService';
 import { AccountsService } from './services/accounts/accounts.service';
 import { StepsModule } from './views/components/steps/steps.module';
+import { ITechnologyStackService } from './application/service/ITechnologyStackService';
+import { TechnologyStackService } from './services/technology-stack/technology-stack.service';
+import { ITechnologyStackApplicationHandler } from './application/technology-stack/ITechnologyStackApplicationHandler';
+import { TechnologyStackApplicationHandler } from './application/technology-stack/TechnologyStackApplicationHandler';
 
 
 
@@ -85,6 +89,14 @@ import { StepsModule } from './views/components/steps/steps.module';
     {
       provide: IAccountsService,
       useClass: AccountsService
+    },
+    {
+      provide: ITechnologyStackService,
+      useClass: TechnologyStackService
+    },
+    {
+      provide: ITechnologyStackApplicationHandler,
+      useClass: TechnologyStackApplicationHandler
     }
 
   ],

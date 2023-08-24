@@ -1,14 +1,6 @@
-export interface CenterResponse {
-    value: number;
-    name: string;
-}
+import { BaseEnumEntity, BaseEnumResponse } from "../../base/BaseEnumEntity";
 
-export class Center {
-    public value: number;
-    public name: string;
 
-    public constructor(response: CenterResponse) {
-        this.value = response.value;
-        this.name = response.name
-    }
-}
+export interface CenterResponse extends BaseEnumResponse {}
+
+export class Center extends BaseEnumEntity {}

@@ -5,7 +5,12 @@
           {{ getSelectedDisplayValue(selectedValue) || label }}
         </p>
       </div>
-      <ul class="options-list" *ngIf="isOpen">
-        <li *ngFor="let option of options" (click)="selectOption(option)">{{ option[displayProperty] }}</li>
-      </ul>
+      <div>
+        <ul class="options-list" *ngIf="isOpen">
+          <li *ngIf="options.length === 0" class="no-results-text">No results available.</li>
+          <li *ngFor="let option of options" (click)="selectOption(option)">{{ option[displayProperty] }}</li>
+        </ul>
+      </div>
+
+
 </div>

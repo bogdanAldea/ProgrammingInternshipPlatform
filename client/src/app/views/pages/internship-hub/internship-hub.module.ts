@@ -18,6 +18,7 @@ import { NewAuthenticationInterceptor } from 'src/app/services/interceptors/auth
 import { InternshipWizardDialogComponent } from './internship-wizard/internship-wizard-dialog/internship-wizard-dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import {MatStepperModule} from '@angular/material/stepper';
+import { SetupFormComponent } from './internship-wizard/form-steps/setup-form/setup-form.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     InternsStepComponent,
     MentorshipsStepComponent,
     InternshipWizardDialogComponent,
+    SetupFormComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     SetupStepComponent, 
     TrainersStepComponent, 
     InternsStepComponent, 
-    MentorshipsStepComponent
+    MentorshipsStepComponent,
+    SetupFormComponent
   ],
   providers: [
 

@@ -21,6 +21,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { SetupFormComponent } from './internship-wizard/form-steps/setup-form/setup-form.component';
 import { TrainersFormComponent } from './internship-wizard/form-steps/trainers-form/trainers-form.component';
 import { InternsFormComponent } from './internship-wizard/form-steps/interns-form/interns-form.component';
+import { MentorshipsFormComponent } from './internship-wizard/form-steps/mentorships-form/mentorships-form.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { InternsFormComponent } from './internship-wizard/form-steps/interns-for
     SetupFormComponent,
     TrainersFormComponent,
     InternsFormComponent,
+    MentorshipsFormComponent,
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { InternsFormComponent } from './internship-wizard/form-steps/interns-for
     MentorshipsStepComponent,
     SetupFormComponent,
     TrainersFormComponent,
-    InternsFormComponent
+    InternsFormComponent,
+    MentorshipsFormComponent
   ],
   providers: [
 

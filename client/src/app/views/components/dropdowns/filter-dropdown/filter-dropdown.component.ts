@@ -8,7 +8,7 @@ import { AbstractInputComponent } from '../../abstracts/abstract-input/abstract-
   styleUrls: ['./filter-dropdown.component.scss']
 })
 export class FilterDropdownComponent extends AbstractInputComponent {
-  @Input() options: any | undefined;
+  @Input() options: any | undefined = [];
   @Input() displayProperty: any;
   public isOpen: boolean = false;
 

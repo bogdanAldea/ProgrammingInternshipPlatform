@@ -1,0 +1,31 @@
+@import '../../../../../../../assets/theme/colours/palette.scss';
+.setup-form-row {
+
+    .col-container {
+        margin-bottom: 36px;
+        
+        .col-header {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .col-name {
+                font-size: 14px;
+                font-weight: 500;
+                color: $primary-dark;
+            }
+        }
+
+        .col-body {
+            .field-information {
+                margin-top: 16px;
+                margin-bottom: 0;
+                font-size: 12px;
+                color: $primary-dark-lighter;
+                line-height: 12px;
+            }
+        }
+
+    }
+}

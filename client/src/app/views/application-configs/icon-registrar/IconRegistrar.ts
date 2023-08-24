@@ -35,4 +35,11 @@ export namespace IconRegistrar {
         public static Light = '';
         public static Brand = `${brand}/Actions/Add.svg`;
     }
+
+    export class Interns {
+        public static Dark = `${dark}/Global/Internship.svg`;
+        public static Muted = `${muted}/Global/Internship.svg`;
+        public static Light = '';
+        public static Brand = `${brand}/Global/Internship.svg`;
+    }
 }

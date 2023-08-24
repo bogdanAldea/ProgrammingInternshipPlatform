@@ -19,6 +19,7 @@ import { InternshipWizardDialogComponent } from './internship-wizard/internship-
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import {MatStepperModule} from '@angular/material/stepper';
 import { SetupFormComponent } from './internship-wizard/form-steps/setup-form/setup-form.component';
+import { TrainersFormComponent } from './internship-wizard/form-steps/trainers-form/trainers-form.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { SetupFormComponent } from './internship-wizard/form-steps/setup-form/se
     MentorshipsStepComponent,
     InternshipWizardDialogComponent,
     SetupFormComponent,
+    TrainersFormComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,8 @@ import { SetupFormComponent } from './internship-wizard/form-steps/setup-form/se
     TrainersStepComponent, 
     InternsStepComponent, 
     MentorshipsStepComponent,
-    SetupFormComponent
+    SetupFormComponent,
+    TrainersFormComponent
   ],
   providers: [
 

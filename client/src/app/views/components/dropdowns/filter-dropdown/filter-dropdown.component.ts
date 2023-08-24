@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AbstractInputComponent } from '../../abstracts/abstract-input/abstract-input.component';
 
@@ -7,12 +7,17 @@ import { AbstractInputComponent } from '../../abstracts/abstract-input/abstract-
   templateUrl: './filter-dropdown.component.html',
   styleUrls: ['./filter-dropdown.component.scss']
 })
-export class FilterDropdownComponent extends AbstractInputComponent {
+export class FilterDropdownComponent extends AbstractInputComponent implements OnInit {
   @Input() options: any | undefined = [];
   @Input() displayProperty: any;
   public isOpen: boolean = false;
+  public borderColor: string = '$stroke';
 
   public constructor(private elementRef: ElementRef) {super()}
+ 
+  ngOnInit(): void {
+    this.borderColor = this.isOpen ? '$brandPurpleMain' : '$stroke'
+  }
 
 
   public toggleDropdown() {

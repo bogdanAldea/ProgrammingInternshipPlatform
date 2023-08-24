@@ -22,6 +22,8 @@ import { SetupFormComponent } from './internship-wizard/form-steps/setup-form/se
 import { TrainersFormComponent } from './internship-wizard/form-steps/trainers-form/trainers-form.component';
 import { InternsFormComponent } from './internship-wizard/form-steps/interns-form/interns-form.component';
 import { MentorshipsFormComponent } from './internship-wizard/form-steps/mentorships-form/mentorships-form.component';
+import { CreateInternshipWizardComponent } from './internship-wizard/create-internship-wizard/create-internship-wizard.component';
+import { StepsModule } from '../../components/steps/steps.module';
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { MentorshipsFormComponent } from './internship-wizard/form-steps/mentors
     TrainersFormComponent,
     InternsFormComponent,
     MentorshipsFormComponent,
+    CreateInternshipWizardComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +51,8 @@ import { MentorshipsFormComponent } from './internship-wizard/form-steps/mentors
     ButtonsModule,
     InternshipCardsModule,
     MatDialogModule,
-    MatStepperModule
+    MatStepperModule,
+    StepsModule
   ],
   exports: [
     SetupStepComponent, 
@@ -58,7 +62,8 @@ import { MentorshipsFormComponent } from './internship-wizard/form-steps/mentors
     SetupFormComponent,
     TrainersFormComponent,
     InternsFormComponent,
-    MentorshipsFormComponent
+    MentorshipsFormComponent,
+    CreateInternshipWizardComponent
   ],
   providers: [
 

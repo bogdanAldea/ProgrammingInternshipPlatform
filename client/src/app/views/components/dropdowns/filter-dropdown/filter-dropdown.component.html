@@ -1,4 +1,4 @@
-<div class="filter-dropdown" [style.border-color]="isOpen ? '$brand-purple-main' : '$stroke' ">
+<div class="filter-dropdown" [ngStyle]="{'border-color': borderColor }">
     <div class="dropdown-trigger" (click)="toggleDropdown()">
         <img [src]="icon" alt="">
         <p class="selected">

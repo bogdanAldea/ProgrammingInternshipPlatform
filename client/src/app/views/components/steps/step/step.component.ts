@@ -1,11 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { ComposeDirective } from 'src/app/views/directives/compose.directive';
+
+type NewType = ComposeDirective;
 
 @Component({
   selector: 'app-step',
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.scss']
 })
-export class StepComponent {
+export class StepComponent implements OnInit, AfterViewInit{
+
+
   @Input() public stepTitle: string | undefined;
   @Input() public form: any | undefined;
+  @ViewChild('compose', { read: ViewContainerRef }) compose!: ViewContainerRef;
+  
+  
+  public ngOnInit(): void {
+  }
+
+  public ngAfterViewInit(): void {
+    this.loadComponent()
+  }
+
+  public loadComponent = () => {
+    const component = this.compose.createComponent<any>(this.form);
+  }
 }

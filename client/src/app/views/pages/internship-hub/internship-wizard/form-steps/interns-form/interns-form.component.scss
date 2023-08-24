@@ -1,0 +1,31 @@
+@import '../../../../../../../assets/theme/colours/palette.scss';
+
+.interns-form-row {
+    width: 100%;
+    height: 100%;
+    
+    .description {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .description-title, .description-text {
+        font-size: 12px;
+        color: $primary-dark-lighter;
+        margin: 0;
+    }
+
+    .description-title {
+        font-weight: 800px;
+    }
+
+    .description-text {
+        width: 60%;
+        line-height: 16px;
+    }
+
+    .fields {
+        display: flex;
+        gap: 8px;
+    }
+}

@@ -29,6 +29,7 @@ import { IAccountApplicationHandler } from './application/accounts/handlers/IAcc
 import { AccountApplicationHandler } from './application/accounts/handlers/AccountApplicationHandler';
 import { IAccountsService } from './application/service/IAccountService';
 import { AccountsService } from './services/accounts/accounts.service';
+import { StepsModule } from './views/components/steps/steps.module';
 
 
 
@@ -52,7 +53,8 @@ import { AccountsService } from './services/accounts/accounts.service';
     FieldsModule,
     ViewModule,
     InternshipHubModule,
-    ButtonsModule
+    ButtonsModule,
+    StepsModule
   ],
   providers: [
     {

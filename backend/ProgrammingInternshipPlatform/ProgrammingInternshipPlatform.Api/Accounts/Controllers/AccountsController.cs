@@ -22,4 +22,18 @@ public class AccountsController : ApiController
         }
         return HandleApiErrorResponse(result.FailureReason);
     }
+
+    [HttpGet]
+    [Route("role")]
+    public async Task<IActionResult> GetAllAccountByRole([FromQuery] string role)
+    {
+        var getAccountsByRoleQuery = new GetAccountsByRoleQuery(role);
+        var result = await Mediator.Send(getAccountsByRoleQuery);
+        if (result.IsSuccess && result.Payload is not null)
+        {
+            return Ok(result.Payload);
+        }
+
+        return HandleApiErrorResponse(result.FailureReason);
+    }
 }

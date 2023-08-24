@@ -16,4 +16,10 @@ public static class FailureMessages
         public const string InternshipSetUpPhaseHasPassed =
             "The internship is no longer in the setup phase so no interns can be enrolled anymore.";
     }
+    
+    public static class Account
+    {
+        public const string RoleNotFound = 
+            "This role could not be found.";
+    }
 }

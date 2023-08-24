@@ -32,7 +32,7 @@ public class InternshipsController : ApiController
     public async Task<IActionResult> CreateInternshipSetup([FromBody] InternshipSetupRequest request)
     {
         var internshipSetupCreateCommand = new CreateInternshipSetupCommand(
-            Center: request.Center, DurationInMonths: request.DurationInMonths,
+            Center: request.Center, DurationInMonths: request.DurationInMonths, CoordinatorId: request.CoordinatorId,
             MaxInternsToEnroll: request.MaxInternsToEnroll, ScheduledToStartOn: request.ScheduledToStartOn,
             EstimatedToEndOn: request.EstimatedToEndOn);
 

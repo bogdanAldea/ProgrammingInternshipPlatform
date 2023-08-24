@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { IInternshipService } from 'src/app/application/internship-hub/service/IInternshipService';
+import { IInternshipService } from 'src/app/application/service/IInternshipService';
+import { InternshipSetupRequest } from 'src/app/domain/internship-hub/internships/InternshipSetupRequest';
 import { PartialInternship, PartialInternshipResponse } from 'src/app/domain/internship-hub/internships/PartialInternship';
 
 @Injectable({
@@ -17,5 +18,9 @@ export class InternshipService implements IInternshipService {
       .pipe(map((response: PartialInternshipResponse[]) => {
         return response.map((response: PartialInternshipResponse) => new PartialInternship(response));
       }))
+  }
+
+  public createInternshipSetup = (request: InternshipSetupRequest): Observable<string> => {
+    return this.httpClient.post(this.apiUrl, request, {responseType: 'text'})
   }
 }

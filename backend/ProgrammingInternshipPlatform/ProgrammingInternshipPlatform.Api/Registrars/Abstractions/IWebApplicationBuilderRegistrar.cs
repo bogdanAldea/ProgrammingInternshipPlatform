@@ -1,4 +1,4 @@
-﻿namespace ProgrammingInternshipPlatform.Api.Registrars;
+﻿namespace ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
 
 public interface IWebApplicationBuilderRegistrar
 {

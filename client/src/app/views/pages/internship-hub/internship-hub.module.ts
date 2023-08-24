@@ -15,7 +15,9 @@ import { InternshipCardsModule } from '../../components/cards/internship-cards/i
 import { MentorshipsStepComponent } from './internship-wizard/mentorships-step/mentorships-step.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NewAuthenticationInterceptor } from 'src/app/services/interceptors/authentication.interceptor';
-
+import { InternshipWizardDialogComponent } from './internship-wizard/internship-wizard-dialog/internship-wizard-dialog.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { NewAuthenticationInterceptor } from 'src/app/services/interceptors/auth
     TrainersStepComponent,
     InternsStepComponent,
     MentorshipsStepComponent,
+    InternshipWizardDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,9 @@ import { NewAuthenticationInterceptor } from 'src/app/services/interceptors/auth
     DropdownsModule,
     FieldsModule,
     ButtonsModule,
-    InternshipCardsModule
+    InternshipCardsModule,
+    MatDialogModule,
+    MatStepperModule
   ],
   exports: [
     SetupStepComponent, 

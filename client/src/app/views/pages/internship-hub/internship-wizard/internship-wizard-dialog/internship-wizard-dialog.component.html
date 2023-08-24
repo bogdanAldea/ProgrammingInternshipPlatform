@@ -1,0 +1,59 @@
+<div class="internship-dialog-wizard">
+    <div class="wizard-header">
+        <div class="wizard-title">
+            <h1 class="title">Internship Setup Wizard</h1>
+        </div>
+        <div class="wizard-actions">
+            <app-action-button label="Proceed" appearance="clean" (executeOnClick)="proceedToNextStep()"/>
+
+            <div class="vertical-divider"></div>
+
+            <div class="wizard-actions">
+                <app-action-button label="Close" appearance="clean" />
+            </div>
+        </div>
+    </div>
+
+    <div class="wizard-stepper">
+
+
+        <mat-stepper linear #stepper>
+            <mat-step>
+                <form>
+                    <ng-template matStepLabel>Setup</ng-template>
+                    <app-setup-step 
+                    stepTitle="Define internship parameters"
+                    [centers]="centers"
+                    [coordinators]="coordinators"/>
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <form>
+                    <ng-template matStepLabel>Trainers</ng-template>
+                    <app-trainers-step stepTitle="Delegate trainers" />
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <form>
+                    <ng-template matStepLabel>Interns</ng-template>
+                    <app-interns-step steptitle="Enroll interns" />
+                </form>
+            </mat-step>
+
+            <mat-step>
+                <form>
+                    <ng-template matStepLabel>Mentorships</ng-template>
+                    <app-mentorships-step stepTitle="Create mentorship pairs" />
+                </form>
+            </mat-step>
+        </mat-stepper>
+
+
+    </div>
+
+    <div class="wizard-footer">
+        <p>All fields in the Setup step are required to be completed!</p>
+    </div>
+</div>

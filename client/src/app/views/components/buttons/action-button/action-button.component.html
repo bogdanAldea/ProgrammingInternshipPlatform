@@ -1,4 +1,4 @@
-<button class="action-button" [ngClass]='appearance'>
+<button class="action-button" [ngClass]='appearance' (click)="execute()">
     <img [src]="icon" alt="">
     {{ label }}
 </button>

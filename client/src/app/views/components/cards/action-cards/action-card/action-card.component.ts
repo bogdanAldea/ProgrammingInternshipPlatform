@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-action-card',
@@ -9,4 +9,9 @@ export class ActionCardComponent {
   @Input() icon: string | undefined;
   @Input() description: string | undefined;
   @Input() actionName: string | undefined;
+  @Output() executeWhenClicked: EventEmitter<void> = new EventEmitter<void>();
+
+  public execute = () => {
+    this.executeWhenClicked.emit();
+  }
 }

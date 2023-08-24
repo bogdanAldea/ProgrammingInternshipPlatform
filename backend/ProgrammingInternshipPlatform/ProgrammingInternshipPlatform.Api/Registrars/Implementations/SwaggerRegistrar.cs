@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
 
 namespace ProgrammingInternshipPlatform.Api.Registrars.Implementations;
 

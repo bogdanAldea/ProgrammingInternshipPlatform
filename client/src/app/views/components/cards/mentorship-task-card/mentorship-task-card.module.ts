@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MentorshipTaskCardComponent } from './mentorship-task-card/mentorship-task-card.component';
 import { AvatarsModule } from '../../avatars/avatars.module';
-import { PickersModule } from '../../pickers/pickers.module';
-
+import { FieldsModule } from '../../fields/fields.module';
 
 
 @NgModule({
@@ -13,7 +12,7 @@ import { PickersModule } from '../../pickers/pickers.module';
   imports: [
     CommonModule,
     AvatarsModule,
-    PickersModule
+    FieldsModule
   ],
   exports: [
     MentorshipTaskCardComponent

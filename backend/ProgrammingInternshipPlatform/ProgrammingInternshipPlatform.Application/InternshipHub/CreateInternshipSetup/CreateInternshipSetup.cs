@@ -8,7 +8,7 @@ using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Application.InternshipHub.CreateInternshipSetup;
 
-public record CreateInternshipSetupCommand(int Center, int DurationInMonths, int MaxInternsToEnroll,
+public record CreateInternshipSetupCommand(int Center, Guid CoordinatorId, int DurationInMonths, int MaxInternsToEnroll,
     DateTime ScheduledToStartOn, DateTime? EstimatedToEndOn) : IApplicationRequest<Internship>;
 
 public class CreateInternshipSetupHandler : IApplicationHandler<CreateInternshipSetupCommand, Internship>
@@ -25,10 +25,10 @@ public class CreateInternshipSetupHandler : IApplicationHandler<CreateInternship
     {
         try
         {
-            var internshipSetup = await Internship.CreateInternshipSetup(center: (Center)request.Center,
-                durationInMonths: request.DurationInMonths, maxInternsToEnroll: request.MaxInternsToEnroll,
-                scheduledToStartOn: request.ScheduledToStartOn, estimatedToEndOn: request.EstimatedToEndOn,
-                cancellationToken);
+            var internshipSetup = await Internship.CreateInternshipSetup(center: (Center)request.Center, 
+                coordinatorId: request.CoordinatorId, durationInMonths: request.DurationInMonths, 
+                maxInternsToEnroll: request.MaxInternsToEnroll, scheduledToStartOn: request.ScheduledToStartOn, 
+                estimatedToEndOn: request.EstimatedToEndOn, cancellationToken);
 
             var createdInternship = await _context.Internships.AddAsync(internshipSetup, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);

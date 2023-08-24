@@ -10,4 +10,5 @@ public class Account
     public string Surname { get; set; }
     public string JobTitle { get; set; }
     public string Email { get; set; }
+    public List<string> Roles { get; set; }
 }

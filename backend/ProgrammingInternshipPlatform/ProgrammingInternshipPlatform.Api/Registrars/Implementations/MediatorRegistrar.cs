@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
 using ProgrammingInternshipPlatform.Application.InternshipHub.CreateInternshipSetup;
 
 namespace ProgrammingInternshipPlatform.Api.Registrars.Implementations;

@@ -1,8 +1,8 @@
 <div class="setup-step-body-container">
-    <div class="title-container">
+    <div class="title">
         <h1 class="step-title">{{ stepTitle }}</h1>
     </div>
-    <div class="body-container">
+    <div class="step-body">
         <div class="row">
             <div class="col-4 setup-input-col">
                 <div class="col-header">
@@ -10,7 +10,11 @@
                     <span class="col-name">Center</span>
                 </div>
                 <div class="col-input">
-                    <app-filter-dropdown label="Center"/>
+                    <app-filter-dropdown 
+                    label="Center"
+                    [options]="centers"
+                    displayProperty="name"
+                    identifier="center"/>
                     <p>Creating a new internship requires a center to be set.</p>
                 </div>
             </div>
@@ -21,7 +25,10 @@
                     <span class="col-name">Duration</span>
                 </div>
                 <div class="col-input">
-                    <app-field label="In months"/>
+                    <app-field 
+                    label="In months"
+                    identifier="duration"
+                    />
                     <p>Creating a new internship requires a center to be set.</p>
                 </div>
             </div>
@@ -32,7 +39,9 @@
                     <span class="col-name">Interns to enroll</span>
                 </div>
                 <div class="col-input">
-                    <app-field label="In months"/>
+                    <app-field 
+                    label="Number of interns"
+                    identifier="interns"/>
                     <p>Creating a new internship requires a center to be set.</p>
                 </div>
             </div>
@@ -43,7 +52,10 @@
                     <span class="col-name">Start date</span>
                 </div>
                 <div class="col-input">
-                    <app-field label="In months"/>
+                    <app-date-picker 
+                    label="Start"
+                    identifier="startDate"
+                    />
                     <p>Creating a new internship requires a center to be set.</p>
                 </div>
             </div>
@@ -54,11 +66,30 @@
                     <span class="col-name">Estimated end date</span>
                 </div>
                 <div class="col-input">
-                    <app-field label="In months"/>
+                    <app-date-picker 
+                    label="End"
+                    identifier="endDate"
+                    />
+                    <p>Creating a new internship requires a center to be set.</p>
+                </div>
+            </div>
+
+            <div class="col-4 setup-input-col">
+                <div class="col-header">
+                    <img [src]="icons.Users.Dark" alt="">
+                    <span class="col-name">Coordinator</span>
+                </div>
+                <div class="col-input">
+                    <app-filter-dropdown 
+                    label="Coordinator"
+                    [options]="coordinators"
+                    displayProperty="displayName"
+                    identifier="coordinator"/>
                     <p>Creating a new internship requires a center to be set.</p>
                 </div>
             </div>
            
         </div>
     </div>
+
 </div>

@@ -42,16 +42,15 @@ export class SetupFormComponent implements OnInit, AfterViewInit, AbstractForm {
   public ngOnInit(): void {
     this.icons = IconRegistrar;
     this.isRequired = true;
+  }
 
+  public ngAfterViewInit(): void {
+    this.isRequired = true;
     this.centersController.getAllCenters()
     .subscribe((centers: Center[]) => this.centers = centers)
 
     this.accountsController.getAllAccountsByRole("Coordinator")
     .subscribe((accounts: PartialAccount[]) => this.coordinators = accounts)
-  }
-
-  public ngAfterViewInit(): void {
-    this.isRequired = true;
   }
 
   public sendRequest = (request: InternshipSetupRequest): Observable<string> => {

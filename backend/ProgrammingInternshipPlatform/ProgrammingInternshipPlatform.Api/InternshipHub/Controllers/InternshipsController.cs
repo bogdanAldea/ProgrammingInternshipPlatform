@@ -3,9 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using ProgrammingInternshipPlatform.Api.API.Controllers;
 using ProgrammingInternshipPlatform.Api.InternshipHub.Contracts.Requests;
 using ProgrammingInternshipPlatform.Api.InternshipHub.Contracts.Responses;
+using ProgrammingInternshipPlatform.Application.Abstractions.Requests;
 using ProgrammingInternshipPlatform.Application.Accounts;
 using ProgrammingInternshipPlatform.Application.InternshipHub.CreateInternshipSetup;
+using ProgrammingInternshipPlatform.Application.InternshipHub.DelegateTrainer;
 using ProgrammingInternshipPlatform.Application.InternshipHub.GetInternshipPrograms;
+using ProgrammingInternshipPlatform.Application.ResultPattern;
+using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Enums;
+using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models;
 
 namespace ProgrammingInternshipPlatform.Api.InternshipHub.Controllers;
 
@@ -42,6 +47,20 @@ public class InternshipsController : ApiController
             return Ok(result.Payload.Id);
         }
 
+        return HandleApiErrorResponse(result.FailureReason);
+    }
+
+    [HttpPatch]
+    public async Task<IActionResult> DelegateTrainer(string id, [FromBody] TrainerDelegationRequest request)
+    {
+        var trainerDelegateCommand = new DelegateTrainerCommand(
+            InternshipId: Guid.Parse(id),
+            AccountId: request.AccountId,
+            Technologies: request.Technologies.Select(tech => tech.Value).ToList()
+        );
+        var result = await Mediator.Send(trainerDelegateCommand);
+        if (result.IsSuccess)
+            return NoContent();
         return HandleApiErrorResponse(result.FailureReason);
     }
 }

@@ -48,6 +48,7 @@ export class CreateInternshipWizardComponent {
   public proceedToNextStep = (): void => {
     const currentForm = this.getCurrentStepForm();
     if (currentForm.isRequired) {
+      console.log(currentForm, currentForm.isRequired)
       const isFormValid = currentForm.validateForm();
       if (isFormValid) {
         const data = currentForm.getFilledDate()

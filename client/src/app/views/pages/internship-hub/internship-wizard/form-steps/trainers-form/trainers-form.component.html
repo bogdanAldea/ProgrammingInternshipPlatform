@@ -15,18 +15,21 @@
                 <app-filter-dropdown 
                 label="Select user..."
                 [options]="trainers"
+                identifier="trainer"
                 displayProperty="displayName"/>
                 
                 <app-filter-dropdown 
                 label="Technology Stack"
                 [options]="technologies"
+                identifier="technology"
                 displayProperty="name"
                 />
             </div>
 
             <div class="actions mt-2">
                 <app-action-button 
-                label="Delegate"/>
+                label="Delegate"
+                (executeOnClick)="sendRequest()"/>
             </div>
         </div>
     </div>

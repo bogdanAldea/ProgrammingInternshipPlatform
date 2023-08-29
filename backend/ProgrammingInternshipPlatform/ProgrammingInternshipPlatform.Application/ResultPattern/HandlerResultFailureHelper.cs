@@ -27,4 +27,10 @@ public class HandlerResultFailureHelper
         var applicationError = FailureReason.DomainValidationFailure(failure);
         return HandlerResult<TResponse>.Fail(applicationError);
     }
+    
+    public static HandlerResult<TResponse> DomainValidationFailure<TResponse>(string failure)
+    {
+        var applicationError = FailureReason.DomainValidationFailure(failure);
+        return HandlerResult<TResponse>.Fail(applicationError);
+    }
 }

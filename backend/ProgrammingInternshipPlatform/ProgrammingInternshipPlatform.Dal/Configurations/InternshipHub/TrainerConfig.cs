@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProgrammingInternshipPlatform.Domain.Accounts.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Trainers.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Trainers.Models;
 
@@ -18,5 +19,10 @@ public class TrainerConfig : IEntityTypeConfiguration<Trainer>
                 value => new TrainerId(value))
             .IsRequired();
         
+        builder
+            .Property(trainer => trainer.AccountId)
+            .HasConversion(id => id.Value,
+                value => new AccountId(value))
+            .IsRequired();
     }
 }

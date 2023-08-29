@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 import { IInternshipService } from "../../service/IInternshipService";
 import { IInternshipApplicationHandler } from "./IInternshipApplicationHandler";
 import { InternshipSetupRequest } from "src/app/domain/internship-hub/internships/InternshipSetupRequest";
+import { TrainerDelegateRequest } from "src/app/domain/internship-hub/internships/TrainerDelegateRequest";
 
 @Injectable({
     providedIn: 'root'
@@ -17,5 +18,9 @@ export class InternshipApplicationHandler implements IInternshipApplicationHandl
 
     public createInternshipSetup = (request: InternshipSetupRequest): Observable<string> => {
         return this.service.createInternshipSetup(request);
+    }
+
+    public delegateTrainer = (internshipId: string, request: TrainerDelegateRequest): Observable<any> => {
+        return this.service.delegateTrainer(internshipId, request);
     }
 }

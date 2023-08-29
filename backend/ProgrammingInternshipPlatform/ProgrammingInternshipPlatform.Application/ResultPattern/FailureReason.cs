@@ -40,6 +40,9 @@ public class FailureReason
     public static FailureReason DomainValidationFailure(DomainValidationFailure failure)
         => new(errorType: FailureType.DomainValidationFailure, failure: failure);
 
+    public static FailureReason DomainValidationFailure(string errorMessage)
+        => new(errorType: FailureType.DomainValidationFailure, errorMessage: errorMessage);
+
     public static FailureReason TransactionFailure(string errorMessage)
         => new(errorType: FailureType.TransactionFailure, errorMessage: errorMessage);
 }

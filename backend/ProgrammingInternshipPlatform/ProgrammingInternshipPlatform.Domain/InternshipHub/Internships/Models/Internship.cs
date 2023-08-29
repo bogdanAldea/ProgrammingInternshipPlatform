@@ -5,6 +5,7 @@ using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Identifiers
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Validators;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Mentorships.Models;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Trainers.Models;
+using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
 namespace ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models;
 
@@ -40,5 +41,19 @@ public class Internship
         };
         await internshipSetupValidator.ValidateDomainModelAsync(internshipSetup, cancellationToken);
         return internshipSetup;
+    }
+
+    public Task DelegateTrainer(Trainer trainer)
+    {
+        var isTrainerAlreadyDelegated =
+            _trainers.Any(delegatedTrainer => delegatedTrainer.Id.Value == trainer.Id.Value);
+
+        if (isTrainerAlreadyDelegated)
+        {
+            var errorMessage = "This trainer is already delegated to current internship.";
+            throw new DomainModelValidationException(errorMessage);
+        }
+        _trainers.Add(trainer);
+        return Task.CompletedTask;
     }
 }

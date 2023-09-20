@@ -2,8 +2,8 @@
 
 public class RoleSettings
 {
-    public string? AdministratorRoleId { get; init; }
-    public string? CoordinatorRoleId { get; init; }
-    public string? InternRoleId { get; init; }
-    public string? TrainerRoleId { get; init; }
+    public string? AdministratorRoleId { get; set; }
+    public string? CoordinatorRoleId { get; set; }
+    public string? InternRoleId { get; set; }
+    public string? TrainerRoleId { get; set; }
 }

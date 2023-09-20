@@ -1,26 +1,26 @@
-﻿using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Enums;
-using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Identifiers;
+﻿using ProgrammingInternshipPlatform.Application.Helpers.EnumRetrieval;
+using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Enums;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models;
 
 namespace ProgrammingInternshipPlatform.Api.InternshipHub.Contracts.Responses;
 
 public class InternshipPartialResponse
 {
-    public Guid Id { get; private set; }
-    public InternshipStatus Status { get; private set; }
-    public Center Center { get; private set; }
+    public Guid InternshipId { get; private set; }
+    public Converted<InternshipStatus> Status { get; private set; } = null!;
+    public Converted<Center> Center { get; private set; } = null!;
     public DateTime ScheduledToStartOn { get; private set; }
     public DateTime EstimatedToEndOn { get; private set; }
     public int DurationInMonths { get; private set; }
     public int MaxInternsToEnroll { get; private set; }
 
-    public static InternshipPartialResponse MapResource(Internship internship)
+    public static InternshipPartialResponse MapFrom(Internship internship)
     {
         return new InternshipPartialResponse
         {
-            Id = internship.Id.Value,
-            Status = internship.Status,
-            Center = internship.Center,
+            InternshipId = internship.Id.Value,
+            Status = EnumRetrievalHelper.ConvertEnumValue(internship.Status),
+            Center = EnumRetrievalHelper.ConvertEnumValue(internship.Center),
             ScheduledToStartOn = internship.ScheduledToStartOn,
             EstimatedToEndOn = internship.EstimatedToEndOn,
             DurationInMonths = internship.DurationInMonths,

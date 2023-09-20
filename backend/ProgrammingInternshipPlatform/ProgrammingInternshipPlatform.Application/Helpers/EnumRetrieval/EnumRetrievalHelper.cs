@@ -8,6 +8,15 @@ public static class EnumRetrievalHelper
     {
         return Regex.Replace(toConvert, @"(\B[A-Z])", " $1");
     }
+    
+    public static Converted<TEnum> ConvertEnumValue<TEnum>(TEnum value) where TEnum : Enum
+    {
+        return new Converted<TEnum>
+        {
+            Name = ConvertPascalToReadable(value.ToString()),
+            Value = value
+        };
+    }
 
     public static IReadOnlyList<Converted<TEnum>> GetAllEnumValues<TEnum>() where TEnum : Enum
     {

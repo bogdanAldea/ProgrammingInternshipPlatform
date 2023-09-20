@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ProgrammingInternshipPlatform.Domain.Accounts.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Interns.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Interns.Models;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Identifiers;
@@ -23,5 +24,10 @@ public class InternConfig : IEntityTypeConfiguration<Intern>
             .Property(intern => intern.InternshipId)
             .HasConversion(id => id.Value,
                 value => new InternshipId(value));
+
+        builder
+            .Property(intern => intern.AccountId)
+            .HasConversion(id => id.Value,
+                value => new AccountId(value));
     }
 }

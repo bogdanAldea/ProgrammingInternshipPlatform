@@ -6,7 +6,7 @@ using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Enums;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
-namespace ProgrammingInternshipPlatform.Application.InternshipHub.CreateInternshipSetup;
+namespace ProgrammingInternshipPlatform.Application.InternshipHub.Internships.CreateInternshipSetup;
 
 public record CreateInternshipSetupCommand(int Center, Guid CoordinatorId, int DurationInMonths, int MaxInternsToEnroll,
     DateTime ScheduledToStartOn, DateTime? EstimatedToEndOn) : IApplicationRequest<Internship>;

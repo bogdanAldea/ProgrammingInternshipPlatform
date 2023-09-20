@@ -4,11 +4,11 @@ namespace ProgrammingInternshipPlatform.Application.Abstractions.GraphApi.Respon
 
 public class Account
 {
-    public AccountId Id { get; set; }
-    public string DisplayName { get; set; }
-    public string GivenName { get; set; }
-    public string Surname { get; set; }
-    public string JobTitle { get; set; }
-    public string Email { get; set; }
-    public List<string> Roles { get; set; }
+    public AccountId Id { get; init; }
+    public string DisplayName { get; init; }
+    public string GivenName { get; init; }
+    public string Surname { get; init; }
+    public string Initials { get; init; }
+    public string JobTitle { get; init; }
+    public string Email { get; init; }
 }

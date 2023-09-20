@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProgrammingInternshipPlatform.Dal.Context;
 
 #nullable disable
 
-namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
+namespace ProgrammingInternshipPlatform.Dal.Migrations
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    [Migration("20230731184726_MentorshipModel")]
-    partial class MentorshipModel
+    partial class ProgrammingInternshipPlatformDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,6 +42,9 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
                     b.Property<Guid>("InternId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("InternshipId")
                         .HasColumnType("uniqueidentifier");
 
@@ -57,6 +58,12 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models.Internship", b =>
                 {
                     b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Center")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("CoordinatorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("DurationInMonths")
@@ -103,6 +110,9 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Trainers.Models.Trainer", b =>
                 {
                     b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AccountId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");

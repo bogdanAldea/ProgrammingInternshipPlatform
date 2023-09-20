@@ -63,43 +63,25 @@ public class AccountsService : IAccountsService
         );
     }
 
-    private async Task<List<User>> ParseUsersForGivenRole(UserCollectionResponse users, string roleId)
+    private Task<List<User>> ParseUsersForGivenRole(UserCollectionResponse users, string roleId)
     {
         if (users.Value is null) throw new NullReferenceException();
         var usersWithRoles = new List<User>();
-
-        var nextLink = users.OdataNextLink;
-        while (!string.IsNullOrEmpty(nextLink))
+        
+        foreach (var user in users.Value)
         {
-            var nextPageRequestInformation = new RequestInformation
+            var roles = user.AppRoleAssignments;
+            if (roles is null) throw new NullReferenceException();
+            foreach (var role in roles)
             {
-                HttpMethod = Method.GET,
-                UrlTemplate = nextLink
-            };
-
-            var nextPageResult = await _graphServiceClient.RequestAdapter.SendAsync(nextPageRequestInformation,
-                (parseNode) => new UserCollectionResponse());
-
-            if (nextPageResult is null) throw new NullReferenceException();
-
-            foreach (var user in users.Value)
-            {
-                var roles = user.AppRoleAssignments;
-                if (roles is null) throw new NullReferenceException();
-                foreach (var role in roles)
+                if (role.AppRoleId == new Guid(roleId))
                 {
-                    if (role.AppRoleId == new Guid(roleId))
-                    {
-                        usersWithRoles.Add(user);
-                        break;
-                    }
+                    usersWithRoles.Add(user);
+                    break;
                 }
             }
-
-            nextLink = nextPageResult.OdataNextLink;
         }
-
-        return usersWithRoles;
+        return Task.FromResult(usersWithRoles);
     }
 
     private IEnumerable<Account> MapUserToAccount(List<User> users)
@@ -110,6 +92,7 @@ public class AccountsService : IAccountsService
             DisplayName = user.DisplayName!,
             GivenName = user.GivenName!,
             Surname = user.Surname!,
+            Initials = $"{user.GivenName![0]}{user.Surname![0]}",
             JobTitle = user.JobTitle!,
             Email = user.UserPrincipalName!,
         });

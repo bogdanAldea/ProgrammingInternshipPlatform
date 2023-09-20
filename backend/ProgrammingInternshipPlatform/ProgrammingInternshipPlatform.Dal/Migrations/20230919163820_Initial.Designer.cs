@@ -9,11 +9,11 @@ using ProgrammingInternshipPlatform.Dal.Context;
 
 #nullable disable
 
-namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
+namespace ProgrammingInternshipPlatform.Dal.Migrations
 {
     [DbContext(typeof(ProgrammingInternshipPlatformDbContext))]
-    [Migration("20230731180748_TrainerModel")]
-    partial class TrainerModel
+    [Migration("20230919163820_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,9 +39,33 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
                     b.ToTable("InternshipTrainer");
                 });
 
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Interns.Models.Intern", b =>
+                {
+                    b.Property<Guid>("InternId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InternshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("InternId");
+
+                    b.HasIndex("InternshipId");
+
+                    b.ToTable("Intern");
+                });
+
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models.Internship", b =>
                 {
                     b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Center")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("CoordinatorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("DurationInMonths")
@@ -64,9 +88,33 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
                     b.ToTable("Internships");
                 });
 
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Mentorships.Models.Mentorship", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InternId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InternshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TrainerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InternshipId");
+
+                    b.ToTable("Mentorship");
+                });
+
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Trainers.Models.Trainer", b =>
                 {
                     b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AccountId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -87,6 +135,31 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations.Create
                         .HasForeignKey("TrainersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Interns.Models.Intern", b =>
+                {
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models.Internship", null)
+                        .WithMany("Interns")
+                        .HasForeignKey("InternshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Mentorships.Models.Mentorship", b =>
+                {
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models.Internship", null)
+                        .WithMany("Mentorships")
+                        .HasForeignKey("InternshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models.Internship", b =>
+                {
+                    b.Navigation("Interns");
+
+                    b.Navigation("Mentorships");
                 });
 #pragma warning restore 612, 618
         }

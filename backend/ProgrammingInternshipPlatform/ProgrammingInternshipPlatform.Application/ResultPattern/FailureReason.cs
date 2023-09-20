@@ -36,6 +36,9 @@ public class FailureReason
 
     public static FailureReason NotFoundFailure(string errorMessage)
         => new(errorType: FailureType.ResourceNotFoundFailure, errorMessage: errorMessage);
+    
+    public static FailureReason InternalServerFailure(string errorMessage)
+        => new(errorType: FailureType.InternalServerFailure, errorMessage: errorMessage);
 
     public static FailureReason DomainValidationFailure(DomainValidationFailure failure)
         => new(errorType: FailureType.DomainValidationFailure, failure: failure);

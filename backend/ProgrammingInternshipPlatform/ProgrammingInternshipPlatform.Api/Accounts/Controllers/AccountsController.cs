@@ -9,7 +9,7 @@ namespace ProgrammingInternshipPlatform.Api.Accounts.Controllers;
 
 public class AccountsController : ApiController
 {
-    [Authorize]
+    /*[Authorize]
     [HttpGet]
     public async Task<IActionResult> GetAllAccounts()
     {
@@ -21,10 +21,9 @@ public class AccountsController : ApiController
             return Ok(mappedAccounts);
         }
         return HandleApiErrorResponse(result.FailureReason);
-    }
+    }*/
 
     [HttpGet]
-    [Route("role")]
     public async Task<IActionResult> GetAllAccountByRole([FromQuery] string role)
     {
         var getAccountsByRoleQuery = new GetAccountsByRoleQuery(role);

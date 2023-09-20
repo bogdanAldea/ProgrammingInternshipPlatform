@@ -16,6 +16,12 @@ public class HandlerResultFailureHelper
         return HandlerResult<TResponse>.Fail(applicationError);
     }
     
+    public static HandlerResult<TResponse> InternalServerFailure<TResponse>(string message)
+    {
+        var applicationError = FailureReason.NotFoundFailure(message);
+        return HandlerResult<TResponse>.Fail(applicationError);
+    }
+    
     public static HandlerResult<TResponse> TransactionFailure<TResponse>(string message)
     {
         var applicationError = FailureReason.TransactionFailure(message);

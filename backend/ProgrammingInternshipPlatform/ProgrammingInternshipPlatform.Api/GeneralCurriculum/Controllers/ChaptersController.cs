@@ -16,9 +16,9 @@ public class ChaptersController : ApiController
         var queryResult = await Mediator.Send(allChaptersQuery);
         if (queryResult.IsSuccess && queryResult.Payload is not null)
         {
-            /*var mappedChapters = 
-                queryResult.Payload.Select(ChapterResponse.CreateFromResource);*/
-            return Ok(queryResult.Payload);
+            var mappedChapters = 
+                queryResult.Payload.Select(ChapterWithVersionServerResponse.CreateFromResource);
+            return Ok(mappedChapters);
         }
         return HandleApiErrorResponse(queryResult.FailureReason);
     }

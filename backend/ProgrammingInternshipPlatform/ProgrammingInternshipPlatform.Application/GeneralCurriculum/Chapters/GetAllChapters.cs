@@ -32,8 +32,7 @@ public class GetAllChaptersHandler : IApplicationCollectionHandler<GetAllChapter
         {
             var versions = MatchChapterToVersions(allVersionedChapters, chapter.ChapterId);
             var latestVersion = GetLatestVersionedModule(versions);
-            var versionedModulePartial = latestVersion != null ? CreateCurrentVersionPartial(latestVersion) : null;
-            var chapterWithVersioning = CreateChapterWithVersioning(chapter, versions.Count, versionedModulePartial);
+            var chapterWithVersioning = CreateChapterWithVersioning(chapter, versions.Count, latestVersion);
             chaptersWithVersioning.Add(chapterWithVersioning);
         }
         
@@ -57,23 +56,11 @@ public class GetAllChaptersHandler : IApplicationCollectionHandler<GetAllChapter
     private VersionedModule? GetLatestVersionedModule(IReadOnlyList<VersionedModule> versions) => 
         versions.MaxBy(version => version.VersionedOnDate);
 
-    private CurrentVersionPartial? CreateCurrentVersionPartial(VersionedModule currentVersionedModule)
-    {
-        return new CurrentVersionPartial
+    private ChapterWithVersioning CreateChapterWithVersioning(Chapter chapter, int numberIfVersions, 
+        VersionedModule? versionedModule) => new ChapterWithVersioning
         {
-            CurrentVersionId = currentVersionedModule.VersionedCurriculumId.Value,
-            VersionNumber = currentVersionedModule.ReleaseVersionNumber
-        };
-    }
-    
-    private ChapterWithVersioning CreateChapterWithVersioning(Chapter chapter, int numberIfVersions, CurrentVersionPartial? versionedModule) =>
-        new ChapterWithVersioning
-        {
-            ChapterId = chapter.ChapterId.Value,
-            Title = chapter.Title,
-            Description = chapter.Description,
-            NumberOfLessons = chapter.Lessons.Count,
-            Versions = numberIfVersions,
-            CurrentVersion = versionedModule
+            Chapter = chapter,
+            VersionedModule = versionedModule,
+            Versions = numberIfVersions
         };
 }

@@ -23,6 +23,11 @@ public static class FailureMessages
             "Mentorship program could not be found";
     }
     
+    public static class Curriculum
+    {
+        public const string VersionedModuleNotFound = "Versioned module could not be found.";
+    }
+    
     public static class Account
     {
         public const string RoleNotFound = 

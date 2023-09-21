@@ -48,6 +48,10 @@ public class InternshipConfig : IEntityTypeConfiguration<Internship>
         builder
             .HasMany(internship => internship.Trainers)
             .WithMany(trainer => trainer.Internships);
+        
+        builder
+            .HasMany(internship => internship.Curricula)
+            .WithMany(curriculum => curriculum.Internships);
 
         builder
             .HasMany(internship => internship.Interns)

@@ -6,7 +6,6 @@ using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Validators;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Mentorships.Models;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Trainers.Models;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.VersionedCurriculums.Modules;
-using ProgrammingInternshipPlatform.Domain.VersionedModules.Identifier;
 
 namespace ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models;
 

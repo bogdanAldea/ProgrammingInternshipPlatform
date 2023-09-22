@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Models;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models;
-using ProgrammingInternshipPlatform.Domain.VersionedModules.Model;
+using ProgrammingInternshipPlatform.Domain.ModuleVersioning.VersionedModules.Model;
 
 namespace ProgrammingInternshipPlatform.Dal.Context;
 

@@ -1,20 +1,22 @@
-﻿using ProgrammingInternshipPlatform.Dal.Migrations;
+﻿
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Models;
-using VersionedModule = ProgrammingInternshipPlatform.Domain.VersionedModules.Model.VersionedModule;
+using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Lesson.Model;
+using VersionedModule = ProgrammingInternshipPlatform.Domain.ModuleVersioning.VersionedModules.Model.VersionedModule;
 
 namespace ProgrammingInternshipPlatform.Application.GeneralCurriculum.Contracts.Responses;
 
 public class ChapterWithVersioning
 {
-    public Chapter Chapter { get; set; }
+    public Chapter Chapter { get; init; } = null!;
+    public VersionedModule? VersionedModule { get; init; }
+    public int Versions { get; init; }
 
-    public VersionedModule? VersionedModule { get; set; }
+}
 
+public class ChapterWithLessonsWithVersions
+{
+    public Chapter Chapter { get; set; } = null!;
+    public IReadOnlyList<Lesson> Lessons { get; set; } = null!;
+    public IReadOnlyList<VersionedModule> VersionedModules { get; set; } = null!;
     public int Versions { get; set; }
-    /*public Guid ChapterId { get; set; }
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public int NumberOfLessons { get; set; }
-    public int Versions { get; set; }
-    public CurrentVersionPartial? CurrentVersion { get; set; }*/
 }

@@ -28,6 +28,10 @@ public class ChapterConfig : IEntityTypeConfiguration<Chapter>
             .Property(chapter => chapter.Description)
             .HasMaxLength(ChapterValidationConstants.ChapterDescriptionLenght)
             .IsRequired();
+        
+        builder
+            .Property(chapter => chapter.SyllabusOrder)
+            .IsRequired();
 
         builder
             .HasMany(chapter => chapter.Lessons)

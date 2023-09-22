@@ -89,15 +89,24 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.Property<Guid>("ChapterId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("ChapterType")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int>("SyllabusOrder")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("VersioningState")
+                        .HasColumnType("int");
 
                     b.HasKey("ChapterId");
 
@@ -117,6 +126,14 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<string>("LearningObjective")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("SyllabusOrder")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -127,6 +144,28 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasIndex("ChapterId");
 
                     b.ToTable("Lesson");
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.GeneralCurriculum.LearningResources.Models.LearningResource", b =>
+                {
+                    b.Property<Guid>("LearningResourceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("LearningResourceType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("LessonId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LearningResourceId");
+
+                    b.HasIndex("LessonId");
+
+                    b.ToTable("LearningResource");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Interns.Models.Intern", b =>
@@ -225,7 +264,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.ToTable("VersionedCurriculum");
                 });
 
-            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.VersionedModules.Model.VersionedModule", b =>
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.ModuleVersioning.VersionedModules.Model.VersionedModule", b =>
                 {
                     b.Property<Guid>("VersionedModuleId")
                         .HasColumnType("uniqueidentifier");
@@ -233,7 +272,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.Property<Guid>("ChapterId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ReleaseVersionNumber")
+                    b.Property<string>("VersionNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -296,6 +335,15 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.GeneralCurriculum.LearningResources.Models.LearningResource", b =>
+                {
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Lesson.Model.Lesson", null)
+                        .WithMany("LearningResources")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Interns.Models.Intern", b =>
                 {
                     b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models.Internship", null)
@@ -323,6 +371,8 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                 {
                     b.Navigation("Assignment")
                         .IsRequired();
+
+                    b.Navigation("LearningResources");
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models.Internship", b =>

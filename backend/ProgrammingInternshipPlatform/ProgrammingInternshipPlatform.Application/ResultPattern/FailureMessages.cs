@@ -26,6 +26,7 @@ public static class FailureMessages
     public static class Curriculum
     {
         public const string VersionedModuleNotFound = "Versioned module could not be found.";
+        public const string OriginalUnversionedChapterNotFound = "Original unversioned chapter could not be found.";
     }
     
     public static class Account

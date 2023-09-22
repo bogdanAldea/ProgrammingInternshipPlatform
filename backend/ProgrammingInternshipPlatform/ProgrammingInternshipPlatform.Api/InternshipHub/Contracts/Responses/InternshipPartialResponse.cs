@@ -7,8 +7,8 @@ namespace ProgrammingInternshipPlatform.Api.InternshipHub.Contracts.Responses;
 public class InternshipPartialResponse
 {
     public Guid InternshipId { get; private set; }
-    public Converted<InternshipStatus> Status { get; private set; } = null!;
-    public Converted<Center> Center { get; private set; } = null!;
+    public DomainEnumConverted<InternshipStatus> Status { get; private set; } = null!;
+    public DomainEnumConverted<Center> Center { get; private set; } = null!;
     public DateTime ScheduledToStartOn { get; private set; }
     public DateTime EstimatedToEndOn { get; private set; }
     public int DurationInMonths { get; private set; }

@@ -4,6 +4,7 @@ using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.A
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Identifiers;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Lesson.Identifier;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Lesson.Model;
+using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.LearningResources.Models;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.ValidationConstants;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.GeneralCurriculum;
@@ -31,15 +32,30 @@ public class LessonConfig : IEntityTypeConfiguration<Lesson>
             .Property(lesson => lesson.Title)
             .HasMaxLength(ChapterValidationConstants.LessonTitleLength)
             .IsRequired();
-        
+
         builder
             .Property(lesson => lesson.Description)
             .HasMaxLength(ChapterValidationConstants.LessonDescriptionLength)
+            .IsRequired();
+        
+        builder
+            .Property(lesson => lesson.LearningObjective)
+            .HasMaxLength(ChapterValidationConstants.LessonLearningObjectiveLenght)
+            .IsRequired();
+        
+        builder
+            .Property(lesson => lesson.SyllabusOrder)
             .IsRequired();
 
         builder
             .HasOne(lesson => lesson.Assignment)
             .WithOne()
             .HasForeignKey<Assignment>(assignment => assignment.LessonId);
+
+        builder
+            .HasMany(lesson => lesson.LearningResources)
+            .WithOne()
+            .HasForeignKey(resource => resource.LessonId);
+
     }
 }

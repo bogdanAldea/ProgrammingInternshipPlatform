@@ -4,9 +4,10 @@ using ProgrammingInternshipPlatform.Application.Abstractions.Requests;
 using ProgrammingInternshipPlatform.Application.GeneralCurriculum.Contracts.Responses;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
+using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Enums;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Identifiers;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Models;
-using ProgrammingInternshipPlatform.Domain.VersionedModules.Model;
+using ProgrammingInternshipPlatform.Domain.ModuleVersioning.VersionedModules.Model;
 
 namespace ProgrammingInternshipPlatform.Application.GeneralCurriculum.Chapters;
 
@@ -42,6 +43,8 @@ public class GetAllChaptersHandler : IApplicationCollectionHandler<GetAllChapter
     private async Task<IReadOnlyList<Chapter>> GetAllChapters(CancellationToken cancellationToken) => 
         await _context.Chapter
         .Include(chapter => chapter.Lessons)
+        .Where(chapter => chapter.ChapterType == ChapterType.NotVersioned)
+        .OrderBy(chapter => chapter.SyllabusOrder)
         .ToListAsync(cancellationToken);
     
     private async Task<IReadOnlyList<VersionedModule>> GetAllVersionedChapters(CancellationToken cancellationToken) => 

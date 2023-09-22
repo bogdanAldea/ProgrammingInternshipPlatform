@@ -37,7 +37,7 @@ public class AssignmentConfig : IEntityTypeConfiguration<Assignment>
             .Property(assignment => assignment.Title)
             .HasMaxLength(ChapterValidationConstants.AssignmentTitleLength)
             .IsRequired();
-        
+
         builder
             .Property(assignment => assignment.Description)
             .HasMaxLength(ChapterValidationConstants.AssignmentDescriptionLength)

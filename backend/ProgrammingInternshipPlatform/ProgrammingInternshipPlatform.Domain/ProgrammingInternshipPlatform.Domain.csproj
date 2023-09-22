@@ -16,6 +16,7 @@
       <Folder Include="InternshipHub\Interns\Validators" />
       <Folder Include="InternshipHub\Mentorships\Validators" />
       <Folder Include="InternshipHub\Trainers\Validators" />
+      <Folder Include="ModuleVersioning\VersionedModules" />
     </ItemGroup>
 
 </Project>

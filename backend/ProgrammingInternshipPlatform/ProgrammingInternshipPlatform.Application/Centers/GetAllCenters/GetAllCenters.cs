@@ -6,13 +6,13 @@ using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Enums;
 
 namespace ProgrammingInternshipPlatform.Application.Centers.GetAllCenters;
 
-public record GetAllCentersQuery : IApplicationCollectionRequest<Converted<Center>>;
+public record GetAllCentersQuery : IApplicationCollectionRequest<DomainEnumConverted<Center>>;
 
-public class GetAllCentersHandler : IApplicationCollectionHandler<GetAllCentersQuery, Converted<Center>>
+public class GetAllCentersHandler : IApplicationCollectionHandler<GetAllCentersQuery, DomainEnumConverted<Center>>
 {
-    public Task<HandlerResult<IReadOnlyList<Converted<Center>>>> Handle(GetAllCentersQuery request, CancellationToken cancellationToken)
+    public Task<HandlerResult<IReadOnlyList<DomainEnumConverted<Center>>>> Handle(GetAllCentersQuery request, CancellationToken cancellationToken)
     {
         var allCenters = EnumRetrievalHelper.GetAllEnumValues<Center>();
-        return Task.FromResult(HandlerResult<IReadOnlyList<Converted<Center>>>.Success(allCenters));
+        return Task.FromResult(HandlerResult<IReadOnlyList<DomainEnumConverted<Center>>>.Success(allCenters));
     }
 }

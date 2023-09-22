@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Identifiers;
 using ProgrammingInternshipPlatform.Domain.InternshipHub.VersionedCurriculums.Identifiers;
-using ProgrammingInternshipPlatform.Domain.VersionedModules.Identifier;
+using ProgrammingInternshipPlatform.Domain.ModuleVersioning.VersionedModules.Identifier;
 
 namespace ProgrammingInternshipPlatform.Dal.Configurations.VersionedModule;
 
-public class VersionedModuleConfig : IEntityTypeConfiguration<Domain.VersionedModules.Model.VersionedModule>
+public class VersionedModuleConfig : IEntityTypeConfiguration<Domain.ModuleVersioning.VersionedModules.Model.VersionedModule>
 {
-    public void Configure(EntityTypeBuilder<Domain.VersionedModules.Model.VersionedModule> builder)
+    public void Configure(EntityTypeBuilder<Domain.ModuleVersioning.VersionedModules.Model.VersionedModule> builder)
     {
         builder
             .HasKey(version => version.VersionedModuleId);
@@ -29,10 +29,6 @@ public class VersionedModuleConfig : IEntityTypeConfiguration<Domain.VersionedMo
             .Property(version => version.VersionedModuleId)
             .HasConversion(id => id.Value, 
                 value => new VersionedModuleId(value))
-            .IsRequired();
-
-        builder
-            .Property(version => version.ReleaseVersionNumber)
             .IsRequired();
     }
 }

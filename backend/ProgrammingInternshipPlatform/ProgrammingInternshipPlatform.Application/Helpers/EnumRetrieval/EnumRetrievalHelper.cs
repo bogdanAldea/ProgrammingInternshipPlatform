@@ -9,21 +9,21 @@ public static class EnumRetrievalHelper
         return Regex.Replace(toConvert, @"(\B[A-Z])", " $1");
     }
     
-    public static Converted<TEnum> ConvertEnumValue<TEnum>(TEnum value) where TEnum : Enum
+    public static DomainEnumConverted<TEnum> ConvertEnumValue<TEnum>(TEnum value) where TEnum : Enum
     {
-        return new Converted<TEnum>
+        return new DomainEnumConverted<TEnum>
         {
             Name = ConvertPascalToReadable(value.ToString()),
             Value = value
         };
     }
 
-    public static IReadOnlyList<Converted<TEnum>> GetAllEnumValues<TEnum>() where TEnum : Enum
+    public static IReadOnlyList<DomainEnumConverted<TEnum>> GetAllEnumValues<TEnum>() where TEnum : Enum
     {
-        var convertedEnumValues = new List<Converted<TEnum>>();
+        var convertedEnumValues = new List<DomainEnumConverted<TEnum>>();
         foreach (TEnum value in Enum.GetValues(typeof(TEnum)))
         {
-            var converted = new Converted<TEnum>
+            var converted = new DomainEnumConverted<TEnum>
             {
                 Name = ConvertPascalToReadable(value.ToString()),
                 Value = value

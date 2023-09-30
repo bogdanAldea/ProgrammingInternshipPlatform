@@ -46,7 +46,7 @@ public class GetAllChaptersHandler : IApplicationCollectionHandler<GetAllChapter
         .Where(chapter => chapter.ChapterType == ChapterType.NotVersioned)
         .OrderBy(chapter => chapter.SyllabusOrder)
         .ToListAsync(cancellationToken);
-    
+
     private async Task<IReadOnlyList<VersionedModule>> GetAllVersionedChapters(CancellationToken cancellationToken) => 
         await _context.VersionedModule
             .ToListAsync(cancellationToken);

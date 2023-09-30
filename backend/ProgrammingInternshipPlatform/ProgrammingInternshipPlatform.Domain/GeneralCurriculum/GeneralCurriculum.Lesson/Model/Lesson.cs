@@ -42,14 +42,13 @@ public class Lesson : IDeepCloneable<Lesson>
         {
             LessonId = new LessonId(Guid.NewGuid()),
             ChapterId = this.ChapterId,
-            Assignment = this.Assignment.Clone(),
+            /*Assignment = this.Assignment.Clone(),*/
             Title = this.Title,
             Description = this.Description,
             LearningObjective = this.LearningObjective,
             SyllabusOrder = this.SyllabusOrder
         };
-
-        clone._learningResources.Clear();
+        
         var clonedResources = _learningResources.Select(resource => resource.Clone()).ToList();
         clonedResources.ForEach(resource => clone._learningResources.Add(resource));
         return clone;

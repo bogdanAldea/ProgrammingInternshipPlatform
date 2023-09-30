@@ -26,6 +26,10 @@ public class CreateVersionOfChapterHandler : IApplicationHandler<CreateVersioned
     public async Task<HandlerResult<Chapter>> Handle(CreateVersionedOfChapterCommand request, CancellationToken cancellationToken)
     {
         var originalChapterToVersion = await _context.Chapter
+            .Include(chapter => chapter.Lessons)
+            .ThenInclude(lesson => lesson.LearningResources)
+            .Include(chapter => chapter.Lessons)
+            .ThenInclude(lesson => lesson.Assignment)
             .Where(chapter => chapter.ChapterId == request.ChapterId 
                               && chapter.ChapterType == ChapterType.NotVersioned)
             .SingleOrDefaultAsync(cancellationToken);
@@ -34,9 +38,8 @@ public class CreateVersionOfChapterHandler : IApplicationHandler<CreateVersioned
             return HandlerResultFailureHelper.NotFoundFailure<Chapter>(
                 FailureMessages.Curriculum.OriginalUnversionedChapterNotFound);
 
-        var currentChapterVersions = _context.Chapter
-            .Where(chapter => chapter.ChapterId == request.ChapterId)
-            .Count(chapter => chapter.ChapterType == ChapterType.Versioned) + 1;
+        var currentChapterVersions = _context.VersionedModule
+            .Count(chapter => chapter.ChapterId == request.ChapterId) + 1;
 
         try
         {

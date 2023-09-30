@@ -17,7 +17,7 @@ public class VersionedModule
         return new VersionedModule
         {
             ChapterId = new ChapterId(chapterToVersionId),
-            VersionedOnDate = DateTime.Today,
+            VersionedOnDate = DateTime.Now,
             VersionNumber = $"{DateTime.Today.Year}.{versionedChapters}"
         };
     }

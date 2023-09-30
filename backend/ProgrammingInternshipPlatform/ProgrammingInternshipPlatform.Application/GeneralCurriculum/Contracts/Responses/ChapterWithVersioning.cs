@@ -13,10 +13,7 @@ public class ChapterWithVersioning
 
 }
 
-public class ChapterWithLessonsWithVersions
+public class ChapterWithLessonsWithVersions : ChapterWithVersioning
 {
-    public Chapter Chapter { get; set; } = null!;
-    public IReadOnlyList<Lesson> Lessons { get; set; } = null!;
-    public IReadOnlyList<VersionedModule> VersionedModules { get; set; } = null!;
-    public int Versions { get; set; }
+    public int Lessons { get; init; }
 }

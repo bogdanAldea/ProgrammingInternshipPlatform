@@ -55,8 +55,6 @@ public class Chapter : IDeepCloneable<Chapter>
             Description = this.Description,
             SyllabusOrder = this.SyllabusOrder
         };
-        
-        clone._lessons.Clear();
         var clonedLessons = _lessons.Select(lesson => lesson.Clone()).ToList();
         clonedLessons.ForEach(lesson => clone._lessons.Add(lesson));
         return clone;

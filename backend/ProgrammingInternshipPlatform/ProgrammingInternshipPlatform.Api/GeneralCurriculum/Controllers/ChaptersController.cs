@@ -29,16 +29,32 @@ public class ChaptersController : ApiController
 
     [HttpGet]
     [Authorize]
-    [Route("{id}/unversioned-lessons")]
-    public async Task<IActionResult> GetChapterWithLessonWithVersions(Guid id)
+    [Route("{id}/unversioned")]
+    public async Task<IActionResult> GetUnversionedChapter(Guid id)
     {
-        var allLessonsFromUnversionedChapterQuery = new GetUnversionedChapterWithLessonsQuery(new ChapterId(id));
-        var queryResult = await Mediator.Send(allLessonsFromUnversionedChapterQuery);
+        var unversionedChapterQuery = new GetUnversionedChapterQuery(new ChapterId(id));
+        var queryResult = await Mediator.Send(unversionedChapterQuery);
         if (queryResult.IsSuccess && queryResult.Payload is not null)
         {
             var mappedChapter = ChapterWithLessonsWithVersionsServerResponse.CreateFromResource(queryResult.Payload);
             return Ok(mappedChapter);
         }
+        return HandleApiErrorResponse(queryResult.FailureReason);
+    }
+
+    [HttpGet]
+    [Authorize]
+    [Route("{id}/unversioned-lessons")]
+    public async Task<IActionResult> GetLessonsFromUnversionedChapter(Guid id)
+    {
+        var allLessonsFromUnversionedChapterQuery = new GetLessonsFromUnversionedChapterQuery(new ChapterId(id));
+        var queryResult = await Mediator.Send(allLessonsFromUnversionedChapterQuery);
+        if (queryResult.IsSuccess && queryResult.Payload is not null)
+        {
+            var mappedLessons = queryResult.Payload.Select(LessonServerResponse.CreateFromResource);
+            return Ok(mappedLessons);
+        }
+
         return HandleApiErrorResponse(queryResult.FailureReason);
     }
 

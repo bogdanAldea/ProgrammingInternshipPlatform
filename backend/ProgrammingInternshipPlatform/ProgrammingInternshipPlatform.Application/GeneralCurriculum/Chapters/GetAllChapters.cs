@@ -4,6 +4,8 @@ using ProgrammingInternshipPlatform.Application.Abstractions.Requests;
 using ProgrammingInternshipPlatform.Application.GeneralCurriculum.Contracts.Responses;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
+using ProgrammingInternshipPlatform.Dal.GeneralCurriculum;
+using ProgrammingInternshipPlatform.Dal.VersionedModuleExtensions;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Enums;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Identifiers;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.GeneralCurriculum.Chapter.Models;
@@ -31,7 +33,7 @@ public class GetAllChaptersHandler : IApplicationCollectionHandler<GetAllChapter
 
         foreach (var chapter in allChapters)
         {
-            var versions = MatchChapterToVersions(allVersionedChapters, chapter.ChapterId);
+            var versions = MatchChapterToVersions(chapter.ChapterId);
             var latestVersion = GetLatestVersionedModule(versions);
             var chapterWithVersioning = CreateChapterWithVersioning(chapter, versions.Count, latestVersion);
             chaptersWithVersioning.Add(chapterWithVersioning);
@@ -39,22 +41,18 @@ public class GetAllChaptersHandler : IApplicationCollectionHandler<GetAllChapter
         
         return HandlerResult<IReadOnlyList<ChapterWithVersioning>>.Success(chaptersWithVersioning);
     }
-    
-    private async Task<IReadOnlyList<Chapter>> GetAllChapters(CancellationToken cancellationToken) => 
-        await _context.Chapter
-        .Include(chapter => chapter.Lessons)
-        .Where(chapter => chapter.ChapterType == ChapterType.NotVersioned)
-        .OrderBy(chapter => chapter.SyllabusOrder)
-        .ToListAsync(cancellationToken);
+
+    private async Task<IReadOnlyList<Chapter>> GetAllChapters(CancellationToken cancellationToken) =>
+        await _context.GetOrdererUnversionedChaptersWithLessons(cancellationToken);
 
     private async Task<IReadOnlyList<VersionedModule>> GetAllVersionedChapters(CancellationToken cancellationToken) => 
         await _context.VersionedModule
             .ToListAsync(cancellationToken);
-    
-    private IReadOnlyList<VersionedModule> MatchChapterToVersions(IReadOnlyList<VersionedModule> allVersionedChapters, 
-        ChapterId chapterId) => allVersionedChapters
-            .Where(version => version.ChapterId == chapterId)
-            .ToList();
+
+    private IReadOnlyList<VersionedModule> MatchChapterToVersions(ChapterId chapterId) 
+        => _context
+        .MatchVersionedModulesByChapter(chapterId)
+        .ToList();
     
     private VersionedModule? GetLatestVersionedModule(IReadOnlyList<VersionedModule> versions) => 
         versions.MaxBy(version => version.VersionedOnDate);

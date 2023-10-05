@@ -29,7 +29,7 @@ public class ChaptersController : ApiController
 
     [HttpGet]
     [Authorize]
-    [Route("{id}/unversioned")]
+    [Route(ApiRoutes.IdRoute)]
     public async Task<IActionResult> GetUnversionedChapter(Guid id)
     {
         var unversionedChapterQuery = new GetUnversionedChapterQuery(new ChapterId(id));
@@ -44,7 +44,7 @@ public class ChaptersController : ApiController
 
     [HttpGet]
     [Authorize]
-    [Route("{id}/unversioned-lessons")]
+    [Route(ApiRoutes.ChapterRoutes.Lessons)]
     public async Task<IActionResult> GetLessonsFromUnversionedChapter(Guid id)
     {
         var allLessonsFromUnversionedChapterQuery = new GetLessonsFromUnversionedChapterQuery(new ChapterId(id));
@@ -60,7 +60,7 @@ public class ChaptersController : ApiController
 
     [HttpPost]
     [Authorize]
-    [Route("{id:guid}/version")]
+    [Route(ApiRoutes.ChapterRoutes.Version)]
     public async Task<IActionResult> CreateVersionOfChapter(Guid id)
     {
         var versionChapterCommand = new CreateVersionedOfChapterCommand(new ChapterId(id));
@@ -74,7 +74,7 @@ public class ChaptersController : ApiController
 
     [HttpPatch]
     [Authorize]
-    [Route("{id}/not-versioned-lessons")]
+    [Route(ApiRoutes.ChapterRoutes.Lessons)]
     public async Task<IActionResult> AddLessonToNotVersionedChapter(Guid id, [FromBody] NewLessonRequest request)
     {
         var newLessonCommand = new AddNewLessonToNotVersionedChapterCommand(

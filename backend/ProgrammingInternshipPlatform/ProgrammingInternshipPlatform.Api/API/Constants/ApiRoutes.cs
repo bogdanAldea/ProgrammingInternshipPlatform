@@ -11,4 +11,10 @@ public static class ApiRoutes
         public const string MentorshipIdRoute = "{mentorshipId}";
         public const string MentorshipPair = $"{IdRoute}/mentorships/{MentorshipIdRoute}";
     }
+    
+    public static class ChapterRoutes
+    {
+        public const string Lessons = $"{IdRoute}/lessons";
+        public const string Version = $"{IdRoute}/version";
+    }
 }

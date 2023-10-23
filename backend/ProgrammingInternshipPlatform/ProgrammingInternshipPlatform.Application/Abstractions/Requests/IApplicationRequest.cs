@@ -3,4 +3,4 @@ using ProgrammingInternshipPlatform.Application.ResultPattern;
 
 namespace ProgrammingInternshipPlatform.Application.Abstractions.Requests;
 
-public interface IApplicationRequest<TResponse> :  IRequest<HandlerResult<TResponse>> { }
+public interface IApplicationRequest<TPayload, TFailure> :  IRequest<HandlerResult<TPayload, TFailure>> { }

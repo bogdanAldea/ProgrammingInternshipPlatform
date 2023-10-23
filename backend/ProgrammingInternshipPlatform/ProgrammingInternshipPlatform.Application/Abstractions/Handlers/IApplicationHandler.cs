@@ -4,5 +4,8 @@ using ProgrammingInternshipPlatform.Application.ResultPattern;
 
 namespace ProgrammingInternshipPlatform.Application.Abstractions.Handlers;
 
-public interface IApplicationHandler<in TRequest, TResponse> : IRequestHandler<TRequest, HandlerResult<TResponse>>
-    where TRequest : IApplicationRequest<TResponse> { }
+public interface
+    IApplicationHandler<in TRequest, TPayload, TFailure> : IRequestHandler<TRequest, HandlerResult<TPayload, TFailure>>
+    where TRequest : IApplicationRequest<TPayload, TFailure>
+{
+}

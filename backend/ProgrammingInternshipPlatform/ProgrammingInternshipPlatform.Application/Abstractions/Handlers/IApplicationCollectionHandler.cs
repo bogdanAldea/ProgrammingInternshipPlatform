@@ -4,5 +4,9 @@ using ProgrammingInternshipPlatform.Application.ResultPattern;
 
 namespace ProgrammingInternshipPlatform.Application.Abstractions.Handlers;
 
-public interface IApplicationCollectionHandler<in TRequest, TResponse> : IRequestHandler<TRequest, HandlerResult<IReadOnlyList<TResponse>>>
-    where TRequest : IApplicationCollectionRequest<TResponse> { }    
+public interface
+    IApplicationCollectionHandler<in TRequest, TPayload, TFailure> : IRequestHandler<TRequest,
+        HandlerResult<IReadOnlyList<TPayload>, TFailure>>
+    where TRequest : IApplicationCollectionRequest<TPayload, TFailure>
+{
+}

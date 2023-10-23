@@ -1,28 +1,28 @@
 ﻿namespace ProgrammingInternshipPlatform.Application.ResultPattern;
 
-public class HandlerResult<TEntity>
+public class HandlerResult<TPayload, TFailure>
 {
     private HandlerResult()
     {
         IsSuccess = true;
     }
-    private HandlerResult(FailureReason failureReason)
+    private HandlerResult(TFailure failureReason)
     {
         FailureReason = failureReason;
         IsSuccess = false;
     }
 
-    private HandlerResult(TEntity payload)
+    private HandlerResult(TPayload payload)
     {
         Payload = payload;
         IsSuccess = true;
     }
 
-    public TEntity? Payload { get; }
-    public FailureReason FailureReason { get; } = null!;
+    public TPayload? Payload { get; }
+    public TFailure? FailureReason { get; }
     public bool IsSuccess { get; set; }
 
-    public static HandlerResult<TEntity> Fail(FailureReason failureReason) => new(failureReason);
-    public static HandlerResult<TEntity> Success(TEntity payload) => new(payload);
-    public static HandlerResult<TEntity> Success() => new();
+    public static HandlerResult<TPayload, TFailure> Fail(TFailure failureReason) => new(failureReason);
+    public static HandlerResult<TPayload, TFailure> Success(TPayload payload) => new(payload);
+    public static HandlerResult<TPayload, TFailure> Success() => new();
 }

@@ -22,4 +22,8 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ProgrammingInternshipPlatform.Application\ProgrammingInternshipPlatform.Application.csproj" />
+    </ItemGroup>
+
 </Project>

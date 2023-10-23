@@ -19,9 +19,9 @@ public class Chapter : IDeepCloneable<Chapter>
     public int SyllabusOrder { get; private set; }
     public IReadOnlyList<Lesson.Model.Lesson> Lessons => _lessons;
 
-    public static async Task<Chapter> CreateNew(string title, string description, int syllabusOrder, CancellationToken cancellationToken)
+    public static async Task<Chapter> CreateNew(string title, string description, CancellationToken cancellationToken)
     {
-        var chapter = new Chapter { Title = title, Description = description, SyllabusOrder = syllabusOrder};
+        var chapter = new Chapter { Title = title, Description = description};
         await new ChapterValidator().ValidateDomainModelAsync(chapter, cancellationToken);
         return chapter;
     }

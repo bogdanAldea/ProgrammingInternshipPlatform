@@ -20,10 +20,11 @@ public class ChaptersController : ApiController
         var queryResult = await Mediator.Send(allChaptersQuery);
         if (queryResult.IsSuccess && queryResult.Payload is not null)
         {
-            var mappedChapters = 
+            var mappedChapters =
                 queryResult.Payload.Select(ChapterWithVersionServerResponse.CreateFromResource);
             return Ok(mappedChapters);
         }
+
         return HandleApiErrorResponse(queryResult.FailureReason);
     }
 
@@ -39,6 +40,7 @@ public class ChaptersController : ApiController
             var mappedChapter = ChapterWithLessonsWithVersionsServerResponse.CreateFromResource(queryResult.Payload);
             return Ok(mappedChapter);
         }
+
         return HandleApiErrorResponse(queryResult.FailureReason);
     }
 
@@ -60,6 +62,17 @@ public class ChaptersController : ApiController
 
     [HttpPost]
     [Authorize]
+    public async Task<IActionResult> CreateUnversionedChapter([FromBody] NewChapterRequest request)
+    {
+        var newUnversionedChapterCommand =
+            new CreateNewUnversionedChapterCommand(Title: request.TItle, Description: request.Description);
+
+        var commandResult = await Mediator.Send(newUnversionedChapterCommand);
+        return commandResult.IsSuccess ? Ok() : HandleApiErrorResponse(commandResult.FailureReason);
+    }
+
+    [HttpPost]
+    [Authorize]
     [Route(ApiRoutes.ChapterRoutes.Version)]
     public async Task<IActionResult> CreateVersionOfChapter(Guid id)
     {
@@ -69,6 +82,7 @@ public class ChaptersController : ApiController
         {
             return Ok();
         }
+
         return HandleApiErrorResponse(commandResult.FailureReason);
     }
 

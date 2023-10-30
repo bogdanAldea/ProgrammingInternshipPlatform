@@ -3,21 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ProgrammingInternshipPlatform.Api.API.Contracts.ApiErrorResponse;
 
-public class ApiErrorResponse
+public class ApiErrorResponse<TFailure>
 {
-    private readonly List<string?> _errorMessages = new();
+    private readonly List<TFailure?> _errorMessages = new();
     public HttpStatusCode StatusCode { get; set; }
-    public IReadOnlyCollection<string?> ErrorMessages => _errorMessages;
+    public IReadOnlyCollection<TFailure?> ErrorMessages => _errorMessages;
     public DateTime Timestamp { get; } = DateTime.UtcNow;
 
-    public void AddErrorMessage(string? errorMessage)
+    public void AddErrorMessage(TFailure? errorMessage)
     {
         _errorMessages.Add(errorMessage);
+    }
+    
+    public void AddErrorMessage(string errorMessage)
+    {
+        _errorMessages.Add((TFailure)(object)errorMessage);
     }
 
     public static IActionResult CreateErrorResponse(ActionContext context)
     {
-        var apiErrorResponse = new ApiErrorResponse { StatusCode = HttpStatusCode.BadRequest };
+        var apiErrorResponse = new ApiErrorResponse<TFailure> { StatusCode = HttpStatusCode.BadRequest };
         foreach (var error in context.ModelState)
         {
             foreach (var innerError in error.Value.Errors)

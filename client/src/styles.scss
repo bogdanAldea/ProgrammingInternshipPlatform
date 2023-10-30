@@ -1,15 +1,16 @@
-@import './assets/theme/colours/palette.scss';
 body, html {
-    font-family: 'Roboto';
+    font-family: 'Poppins';
     background-color: white;
+    height: 100%;
+    overflow-y: auto;
 }
 
 .container-fluid {
     padding: 0;
     margin: 0;
+    height: 100%;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1, h2, h3, h4, h5, h6, p, span, small { margin: 0;}

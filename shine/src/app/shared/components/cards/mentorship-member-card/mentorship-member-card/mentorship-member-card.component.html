@@ -1,0 +1,31 @@
+<div class="mentorship-participant-card-container" >
+    <div *ngIf="member">
+        <div class="role-container">
+            <h1>{{ member.role }}</h1>
+        </div>
+        <div class="body-container">
+           <div class="avatar">
+                <initials-avatar 
+                [initials]="member.initials"/>
+           </div>
+    
+            <div class="user-information">
+                <h2>{{ member.displayName }}</h2>
+                <p>{{ member.shortenedEmail }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!member">
+
+        <div class="body-container">
+           <div class="avatar">
+                <action-button 
+                appearance="clean"
+                [icon]="addActionIcon"
+                label="Assign member"/>
+           </div>
+    
+        </div>
+    </div>
+</div>

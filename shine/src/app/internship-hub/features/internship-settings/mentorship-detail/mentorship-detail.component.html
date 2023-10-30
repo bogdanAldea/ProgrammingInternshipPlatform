@@ -1,0 +1,44 @@
+<div class="mentorship-detail-container" *ngIf="mentorshipPair">
+    <spinner *ngIf="isPageLoading"></spinner>
+
+    <div class="members pair-col">
+        <mentorship-member-card [member]="mentorshipPair.trainer"/>
+        <mentorship-member-card [member]="mentorshipPair.intern"/>
+    </div>
+
+    <div class="connector pair-col">
+        <div class="arrow"></div>
+        <div class="point"></div>
+    </div>
+
+    <div class="tasks-container pair-col">
+        <div class="task-filters">
+            <dropdown-selector label="Status"/>
+            <dropdown-selector label="Project"/>
+        </div>
+    </div>
+
+    <div class="actions-container pair-col">
+        <action-card 
+        [icon]="addItem" 
+        actionName="Add item"
+        description="Start setting up a new internship  
+        for your company and manage 
+        all its aspects."/>
+        
+        <action-card 
+        [icon]="requestTransfer" 
+        actionName="Request transfer"
+        description="Start setting up a new internship  
+        for your company and manage 
+        all its aspects."/>
+        
+        <action-card 
+        [icon]="provideFeedback" 
+        actionName="Provide feedback"
+        description="Start setting up a new internship  
+        for your company and manage 
+        all its aspects."/>
+    </div>
+
+</div>

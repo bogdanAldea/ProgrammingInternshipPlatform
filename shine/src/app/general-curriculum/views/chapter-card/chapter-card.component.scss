@@ -1,0 +1,84 @@
+@import '../../../../assets/theme/palettes/palette.scss';
+
+.chapter-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $background-muted;
+    border: 1px solid $stroke;
+    border-radius: 16px;
+    padding: 24px 36px;
+    height: 100%;
+
+    .chapter-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+
+        .header-data:hover {
+            cursor: pointer;
+        }
+
+        .chapter-title {
+            font-size: 16px;
+            color: $dark;
+            margin: 0;
+        }
+
+        .versioning-state {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .versioning-state-name {
+                margin: 0;
+                font-size: 14px;
+                color: $dark-lighter;
+            }
+
+            .versioning-symbol {
+                border: 3px solid red;
+                padding: 2px;
+                border-radius: 50%;
+            }
+        }
+
+        .header-actions {
+            .menu-button:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .chapter-card-body {
+        font-size: 14px;
+        color: $dark-lighter;
+
+        .chapter-metadata {
+            display: flex;
+            gap: 24px;
+            
+
+            .metadata:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .chapter-card-footer {
+        display: flex;
+        gap: 16px;
+
+        .metadata {
+            display: flex;
+            color: $purple-main;
+            align-items: center;
+            gap: 8px;
+            
+            p {
+                margin: 0
+            }
+        }
+    }
+}

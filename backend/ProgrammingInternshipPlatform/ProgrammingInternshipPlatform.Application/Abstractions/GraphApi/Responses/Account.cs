@@ -1,4 +1,4 @@
-﻿using ProgrammingInternshipPlatform.Domain.Accounts.Identifiers;
+﻿using ProgrammingInternshipPlatform.Domain.AccountManagement.Identifiers;
 
 namespace ProgrammingInternshipPlatform.Application.Abstractions.GraphApi.Responses;
 

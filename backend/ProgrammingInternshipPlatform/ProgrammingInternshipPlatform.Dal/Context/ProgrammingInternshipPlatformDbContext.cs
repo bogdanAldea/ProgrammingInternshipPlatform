@@ -1,30 +1,35 @@
 ﻿using System.Reflection;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ProgrammingInternshipPlatform.Domain.GeneralCurriculum.Topics.Models;
-using ProgrammingInternshipPlatform.Domain.InternshipHub.Internships.Models;
+using ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Topics.Models;
+using ProgrammingInternshipPlatform.Domain.Shared.DomainEventHandling;
+using Module = ProgrammingInternshipPlatform.Domain.ModuleManagement.Models.Module;
 
 namespace ProgrammingInternshipPlatform.Dal.Context;
 
 public class ProgrammingInternshipPlatformDbContext : DbContext
 {
-    public ProgrammingInternshipPlatformDbContext()
-    {}
-
+    public ProgrammingInternshipPlatformDbContext() {}
     public ProgrammingInternshipPlatformDbContext(DbContextOptions<ProgrammingInternshipPlatformDbContext> options) :
         base(options) {}
-
-    public DbSet<Internship> Internships { get; set; } = null!;
+    
     public DbSet<Topic> Topics { get; set; } = null!;
+    public DbSet<Module> Modules { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
         var efCoreConfigAssembly = Assembly.GetAssembly(typeof(ProgrammingInternshipPlatformDbContext));
-        if (efCoreConfigAssembly is not null)
-            modelBuilder.ApplyConfigurationsFromAssembly(efCoreConfigAssembly);
+        if (efCoreConfigAssembly is null) 
+            throw new NullReferenceException();
+        
+        modelBuilder.Ignore<DomainEvent>();
+        modelBuilder.ApplyConfigurationsFromAssembly(efCoreConfigAssembly);
     }
 
-    /*private Assembly? GetAssemblyForEfCoreConfigurations()
-        => Assembly.GetAssembly(typeof(ProgrammingInternshipPlatformDbContext));*/
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer(
+            "Server=ROMOB41181\\SQLEXPRESS01;Database=prog-internship-platform-dev;Trusted_Connection=True;TrustServerCertificate=True;"
+        );
+    }
 }

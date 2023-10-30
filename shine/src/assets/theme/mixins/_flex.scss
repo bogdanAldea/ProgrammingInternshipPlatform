@@ -1,0 +1,28 @@
+$directions: (
+  row: row,
+  column: column,
+);
+
+$justify-content-values: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  space-between: space-between,
+  space-around: space-around,
+);
+
+$align-items-values: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+  baseline: baseline,
+);
+
+@mixin flex($direction: row, $gap: 8px, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: map-get($directions, $direction);
+  gap: $gap;
+  justify-content: map-get($justify-content-values, $justify);
+  align-items: map-get($align-items-values, $align);
+}

@@ -1,0 +1,46 @@
+<div class="general-curriculum-list-components-topic-card" *ngIf="topic">
+    <div class="topic-card-header">
+        <div class="topic-card-header-data">
+            <h1 class="topic-title">{{ topic.title }}</h1>
+            <div class="topic-versioning-state">
+                <div [ngClass]="topic.versioningState.cssClass" class="versioning-symbol"></div>
+                <p class="versioning-name">{{ topic.versioningState.name }}</p>
+            </div>
+        </div>
+        <div class="topic-card-header-menu" *ngIf="actions">
+            <action-button [matMenuTriggerFor]="menu" appearance="clean" icon="../../../../assets/icons/muted/Global/More.svg"/>
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item [disabled]="topic.versioningState.isReadyForVersioning" (click)="actions.versionateTopic(topic.topicId)">
+                    <span>Versionate</span>
+                </button>
+                <button mat-menu-item (click)="actions.editTopic(topic.topicId)">
+                    <span>Edit</span>
+                </button>
+                <button mat-menu-item (click)="actions.deleteTopic(topic.topicId)">
+                    <span>Delete</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="topic-card-body">
+        <p class="topic-description">{{ topic.description }}</p>
+    </div>
+    <div class="topic-card-footer">
+        <div class="metadata">
+            <img src="../../../../assets/icons/muted/Menu/Curriculum.svg" alt="">
+            <p>Lessons: {{ topic.numberOfLessons }}</p>
+        </div>
+
+        <div class="metadata">
+            <img src="../../../../assets/icons/muted/Menu/Curriculum.svg" alt="">
+            <p>Versions: {{ topic.versions }}</p>
+        </div>
+
+        <div class="metadata">
+            <img src="../../../../assets/icons/muted/Menu/Curriculum.svg" alt="">
+            <p *ngIf="topic.currentVersion">Current version: {{ topic.currentVersion.versionNumber }}</p>
+            <p *ngIf="!topic.currentVersion">N/A</p>
+        </div>
+    </div>
+</div>

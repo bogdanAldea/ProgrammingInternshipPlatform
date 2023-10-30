@@ -1,0 +1,77 @@
+<div class="internship-setup-container">
+    <spinner *ngIf="isLoading"/>
+    <div class="page-data" *ngIf="internshipConfiguration">
+        <div class="page-title">
+            <h1 class="page-title">Internship {{internshipConfiguration.center.name}}</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h1 class="config-title">Center</h1>
+                <div class="config-container">
+                    <div class="left">
+                        <div class="config-description-container">
+                            <p class="config-description">Change the current location of where the internship will take place.</p>
+                            <p class="warning-description"> Attention: One the internship has been started, you will be 
+                                prohibited from changing the location again.</p>
+                        </div>
+                        <div class="action-button-container">
+                            <action-button label="Change location" [isDisabled]="isLocationButtonDisabled"/>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <dropdown-selector 
+                        class="input"
+                        [options]="centers"
+                        displayProperty="name"
+                        [preselectedValue]="internshipConfiguration.center"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <h1 class="config-title">Timeframe</h1>
+                <div class="config-container">
+                    <div class="left">
+                        <div class="config-description-container">
+                            <p class="config-description">Change the current location of where the internship will take place.</p>
+                            <p class="warning-description"> Attention: One the internship has been started, you will be 
+                                prohibited from changing the location again.</p>
+                        </div>
+                        <div class="action-button-container">
+                            <action-button label="Reschedule" [isDisabled]="isTimeframeButtonDisabled"/>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <date-picker class="input" [preselectedDate]="internshipConfiguration.scheduledToStartOn"/>
+                            <date-picker class="input" [preselectedDate]="internshipConfiguration.estimatedToEndOn"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <h1 class="config-title">Center</h1>
+                    <div class="config-container">
+                        <div class="left">
+                            <div class="config-description-container">
+                                <p class="config-description">Change the current location of where the internship will take place.</p>
+                                <p class="warning-description"> Attention: One the internship has been started, you will be 
+                                    prohibited from changing the location again.</p>
+                            </div>
+                            <div class="action-button-container">
+                                <action-button label="Change" [isDisabled]="isStatusButtonDisabled"/>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <dropdown-selector 
+                            class="input"
+                            [options]="status"
+                            displayProperty="name"
+                            [preselectedValue]="internshipConfiguration.status"/>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

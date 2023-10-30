@@ -1,0 +1,46 @@
+@import '../../../../../../assets/theme/palettes/palette.scss';
+
+.action-card-component {
+    background-color: #F5F6F8;
+    text-align: center;
+    border-radius: 24px;
+    padding: 24px 16px;
+    width: fit-content;
+    height: fit-content;
+}
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+}
+
+.description-container {
+    font-size: 12px;
+    color: #647895;
+    padding: 0 16px;
+}
+
+.description-container p {
+    margin: 0;
+}
+
+.icon {
+    height: 60px;
+    width: 60px;
+    background-color: $purple-main;
+    border-radius: 100%;
+    padding: 8px;
+}
+
+.icon path {
+    stroke-width: .2;
+}
+
+.action-button {
+    border: none;
+    color: $purple-main;
+    background-color: transparent;
+}

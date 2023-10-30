@@ -1,0 +1,42 @@
+@import '../../../../../assets/theme/palettes/palette.scss';
+
+.action-button {
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .hidden {
+        display: none;
+    }
+
+
+    &.filled {
+        background-color: $purple-main;
+        border: none;
+        color: white;
+        border-radius: 4px;
+}
+
+    &.clean {
+        border: none;
+        background-color: transparent;
+        color: $purple-main;
+    }
+
+    &.outlined {
+        border: 1.6px solid $purple-main;
+        background-color: transparent;
+        color: $purple-main;
+        border-radius: 4px;
+    }
+}
+
+.disabled-button {
+    background-color: $background-muted; 
+    color: $stroke; 
+    cursor: not-allowed; 
+    border: none;
+  }

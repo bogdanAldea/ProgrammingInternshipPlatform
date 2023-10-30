@@ -1,0 +1,73 @@
+<table class="w-100">  
+    <thead>
+        <tr>
+            <th>Coordinator</th>
+            <th>Center</th>
+            <th>Interns</th>
+            <th>Scheduled to start on</th>
+            <th>Estimated to end on</th>
+            <th>Duration</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead> 
+    
+    <tbody>
+        <tr *ngFor="let program of programs" [routerLink]="['./', program.internship.id]">
+            <td>
+                <div class="table-data">
+                    <initials-avatar [initials]="program.coordinator.initials"/>
+                    <div class="coordinator-data">
+                        <p class="data">{{ program.coordinator.displayName }}</p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="table-data">
+                    <img class="icon" src="../../../../assets/icons/muted/Global/Location.svg" alt="">
+                    <p class="data">{{ program.internship.center.name }}</p>
+                </div>
+            </td>
+            <td>
+                <div class="table-data">
+                    <img class="icon" src="../../../../assets/icons/muted/Global/Users.svg" alt="">
+                    <p class="data">{{ program.internship.maxInternsToEnroll }} Interns</p>
+                </div>
+            </td>
+            <td>
+                <div class="table-data">
+                    <img class="icon" src="../../../../assets/icons/muted/Menu/Presentations.svg" alt="">
+                    <p class="data">{{ program.internship.scheduledToStartOn | date: 'mediumDate' }}</p>
+                </div>
+            </td>
+            <td>
+                <div class="table-data">
+                    <img class="icon" src="../../../../assets/icons/muted/Menu/Presentations.svg" alt="">
+                    <p class="data">{{ program.internship.estimatedToEndOn | date: 'mediumDate' }}</p>
+                </div>
+            </td>
+            <td>
+                <div class="table-data">
+                    <img class="icon" [src]="" alt="">
+                    <p class="data">{{ program.internship.durationInMonths }} Months</p>
+                </div>
+            </td>
+            <td>
+                <div class="table-data">
+                    <img class="icon" [src]="" alt="">
+                    <p class="data">{{ program.internship.status.name }}</p>
+                </div>
+            </td>
+            <td>
+                <div class="table-data">
+                    <button class="table-action" [routerLink]="['./', program.internship.id]">
+                    <!-- <button class="table-action"> -->
+                        <img src="../../../../assets/icons/purple/Actions/See-More.svg" alt="">
+                        
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

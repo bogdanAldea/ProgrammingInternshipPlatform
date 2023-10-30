@@ -1,0 +1,36 @@
+@import '../../../../assets/theme/palettes/palette.scss';
+
+.text-field-container {
+    input.text-field {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 8px 24px;
+        font-size: 14px;
+        font-weight: 400;
+        border: 1px solid $stroke;
+        border-radius: 8px;
+        text-align: left;
+        transition: ease-in-out .1s;
+        cursor: pointer;
+    }
+
+    input.text-field:hover {
+        outline: $purple-main;
+        border-color: $purple-main;
+        border: 2px solid $purple-main;
+        transition: ease-in-out .1s;
+    }
+
+    input.text-field:focus {
+        outline: $purple-main;
+        border-color: $purple-main;
+        border: 2px solid $purple-main;
+    }
+
+    input.text-field::placeholder {
+        color: $dark-lighter;
+    }
+}

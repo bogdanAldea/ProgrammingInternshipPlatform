@@ -1,0 +1,17 @@
+@import '../../../../../assets/theme/palettes/palette.scss';
+
+.page-header-title {
+    font-size: 20px;
+    color: $dark;
+
+}
+
+.page-header-description {
+    font-size: 14px;
+    color: $dark-lighter;
+}
+
+.page-header-title,
+.page-header-description {
+    margin: 0;
+}

@@ -6,7 +6,7 @@ using Microsoft.Kiota.Abstractions;
 using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi;
 using ProgrammingInternshipPlatform.Application.Abstractions.GraphApi.Responses;
 using ProgrammingInternshipPlatform.Infrastructure.GraphApi.Settings;
-using AccountId = ProgrammingInternshipPlatform.Domain.Accounts.Identifiers.AccountId;
+using AccountId = ProgrammingInternshipPlatform.Domain.AccountManagement.Identifiers.AccountId;
 
 namespace ProgrammingInternshipPlatform.Infrastructure.GraphApi;
 

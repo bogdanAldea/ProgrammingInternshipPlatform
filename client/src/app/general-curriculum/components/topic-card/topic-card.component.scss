@@ -1,0 +1,69 @@
+@import '../../../../assets/theme/palettes/palette.scss';
+
+.general-curriculum-list-components-topic-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $background-muted;
+    border: 1px solid $stroke;
+    border-radius: 16px;
+    padding: 24px 36px;
+    height: 100%;
+    gap: 24px;
+}
+
+.general-curriculum-list-components-topic-card .topic-card-header,
+.general-curriculum-list-components-topic-card .topic-card-footer {
+    display: flex;
+    align-items: center;
+}
+
+.general-curriculum-list-components-topic-card .topic-card-header {
+    justify-content: space-between;
+}
+
+.general-curriculum-list-components-topic-card .topic-card-footer {
+    gap: 24px;
+}
+
+.topic-card-header-data .topic-title {
+    font-size: 16px;
+    color: $dark;
+}
+
+.topic-card-header-data .topic-versioning-state {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.topic-card-header-data .versioning-name {
+    font-size: 14px;
+    color: $dark-lighter;
+}
+
+.topic-card-header-data .versioning-symbol {
+    border: 3px solid;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.topic-card-header-data .not-ready-for-versioning {
+    border-color: #ff4757;
+}
+
+.topic-card-header-data .ready-for-versioning {
+    border-color: #079992;
+}
+
+.topic-card-body .topic-description {
+    font-size: 14px;
+    color: $dark-lighter;
+}
+
+.topic-card-footer .metadata {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $purple-main;
+}

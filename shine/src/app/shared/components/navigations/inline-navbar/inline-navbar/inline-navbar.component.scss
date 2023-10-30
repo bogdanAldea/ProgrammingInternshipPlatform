@@ -1,0 +1,30 @@
+@import '../../../../../../assets/theme/mixins/flex';
+@import '../../../../../../assets/theme/palettes/palette.scss';
+
+.inline-navigation-container{
+    @include flex(row, 8px, space-between, center);
+    padding: 0 100px;
+    height: 60px;
+    background-color: $dark;
+}
+
+.user-controls {
+    @include flex(row, 8px, center, center);
+}
+
+.account-controls {
+    @include flex(row, 8px, center, center);
+}
+
+.account-message {
+    @include flex(row, 16px, center, center);
+    text-align: end;
+    line-height: 14px;
+}
+
+.welcome, .username {
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}

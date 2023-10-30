@@ -1,0 +1,18 @@
+<div class="general-curriculum-components-add-edit-topic-dialog">
+    <div class="add-edit-topic-dialog-header">
+        <h1 class="title">{{ dialogData.title }}</h1>
+        <img class="close-icon" src="../../../../assets/icons/muted/Global/Close.svg" alt="" (click)="requestCloseWithCancel()">
+    </div>
+
+    <div class="add-edit-topic-dialog-body" *ngIf="dialogData.form">
+        <form [formGroup]="dialogData.form" class="form">
+            <input-field label="Title" [control]="dialogData.form.title"/>
+            <textarea-field label="Description" [control]="dialogData.form.description"/>
+        </form>
+    </div>
+
+    <div class="add-edit-topic-dialog-footer">
+        <action-button label="Cancel" appearance="outlined" (click)="requestCloseWithCancel()"/>
+        <action-button label="Save" (click)="requestCloseWithOk()"/>
+    </div>
+</div>

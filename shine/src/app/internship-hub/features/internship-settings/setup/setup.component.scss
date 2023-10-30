@@ -1,0 +1,42 @@
+@import '../../../../../assets/theme/palettes/palette.scss';
+
+.page-title, .config-title {
+    font-size: 20px;
+    color: $dark;
+    margin: 0;
+}
+
+.config-description, .warning-description {
+    font-weight: 400;
+    color: $dark-lighter;
+    margin: 0;
+}
+
+.config-description {
+    font-size: 13px;
+}
+
+.warning-description {
+    font-style: italic;
+    font-size: 11px;
+}
+
+.col-6 {
+    margin-top: 36px;
+}
+
+.config-container {
+    display: flex;
+    margin-top: 16px;
+}
+
+.left {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.right {
+    width: 30%;
+}

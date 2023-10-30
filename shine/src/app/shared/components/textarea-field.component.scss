@@ -1,0 +1,33 @@
+@import '../../../assets/theme/palettes/palette.scss';
+
+.textarea-field-container {
+    .textarea-field {
+        min-height: 160px;
+        width: 100%;
+        padding: 8px 24px;
+        font-size: 14px;
+        font-weight: 400;
+        border: 1px solid $stroke;
+        border-radius: 8px;
+        text-align: left;
+        transition: ease-in-out .1s;
+        cursor: pointer;
+    }
+
+    .textarea-field:hover {
+        outline: $purple-main;
+        border-color: $purple-main;
+        border: 2px solid $purple-main;
+        transition: ease-in-out .1s;
+    }
+
+    .textarea-field:focus {
+        outline: $purple-main;
+        border-color: $purple-main;
+        border: 2px solid $purple-main;
+    }
+
+    .textarea-field::placeholder {
+        color: $dark-lighter;
+    }
+}

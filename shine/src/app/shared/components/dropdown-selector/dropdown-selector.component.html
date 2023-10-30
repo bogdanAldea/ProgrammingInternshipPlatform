@@ -1,0 +1,10 @@
+<div class="filter-dropdown" [style.border-color]="isOpen ? '$brand-purple-main' : '$stroke' ">
+    <div class="dropdown-trigger" (click)="toggleDropdown()">
+        <p class="selected">
+          {{ getSelectedDisplayValue(selectedValue) || label }}
+        </p>
+      </div>
+      <ul class="options-list" *ngIf="isOpen">
+        <li *ngFor="let option of options" (click)="selectOption(option)">{{ option[displayProperty] }}</li>
+      </ul>
+</div>

@@ -1,0 +1,6 @@
+@import '../../../../assets/theme/mixins/table';
+
+table {
+    @include table;
+    margin-top: 48px;
+}

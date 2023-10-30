@@ -1,0 +1,28 @@
+<container>
+    <spinner *ngIf="spinnerIsLoading"></spinner>
+    <div class="internships-list-container">
+        <div class="page-header">
+            <h1 class="page-title">Internships</h1>
+            <p class="page-description">Manage all available internships in your organisation by selecting whichever you want to.</p>
+        </div>
+        
+        <div class="table-row">
+            <div  class="row align-items-start">
+                <div class="col-9">
+                    <internships-table [programs]="internshipPrograms"/>
+                </div>
+                <div class="col-3"> 
+                    <div class="add-internship-card">
+                        <action-card 
+                        icon="../../../../assets/icons/light/Global/Internship.svg"
+                        description="Start setting up a new internship  
+                        for your company and manage 
+                        all its aspects."
+                        actionName="Add internship" 
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</container>

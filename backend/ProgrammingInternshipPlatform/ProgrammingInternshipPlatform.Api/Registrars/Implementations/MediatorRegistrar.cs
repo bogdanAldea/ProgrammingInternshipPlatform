@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using ProgrammingInternshipPlatform.Api.Registrars.Abstractions;
+using ProgrammingInternshipPlatform.Application.GeneralCurriculumManagement.General.CreateVersionOfTopic;
 
 namespace ProgrammingInternshipPlatform.Api.Registrars.Implementations;
 
@@ -7,7 +8,6 @@ public class MediatorRegistrar : IWebApplicationBuilderRegistrar
 {
     public void RegisterServices(WebApplicationBuilder builder)
     {
-        throw new NotImplementedException();
-        /*builder.Services.AddMediatR(typeof());*/
+        builder.Services.AddMediatR(typeof(CreateVersionOfTopicCommand));
     }
 }

@@ -1,0 +1,16 @@
+.menu-link-icon {
+    width: 14px;
+    height: 14px;
+    margin-top: .8px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: black;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 4px 16px;
+    transition: width 0.3s ease;
+}

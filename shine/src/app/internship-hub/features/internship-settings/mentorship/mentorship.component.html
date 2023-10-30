@@ -1,0 +1,12 @@
+<div class="" *ngFor="let pair of mentorshipPairs">
+    <div class="mentorship-pair">
+        <mentorship-member-card [member]="pair.trainer" [options]="cardOptions"/>
+        <div class="connector-container">
+            <div class="button">
+                <action-button label="See pair" [routerLink]="['./', pair.mentorshipPairId]"/>
+            </div>
+            <hr class="connector">
+        </div>
+        <mentorship-member-card [member]="pair.intern" [options]="cardOptions"/>
+    </div>
+</div>

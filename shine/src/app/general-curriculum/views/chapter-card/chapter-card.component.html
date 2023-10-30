@@ -1,0 +1,43 @@
+<div class="chapter-card-container" *ngIf="chapter">
+    <div>
+        <div class="chapter-card-header">
+            <div class="header-data" [routerLink]="['./', chapter.chapterId]">
+                <h1 class="chapter-title">{{ chapter.title }}</h1>
+                <div class="versioning-state">
+                    <div class="versioning-symbol"></div>
+                    <p class="versioning-state-name">{{ chapter.versioningState.name }}</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <img class="menu-button" src="../../../../assets/icons/muted/Global/More.svg" alt=""
+                    [matMenuTriggerFor]="menu">
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="createChapterVersion()">Create version</button>
+                    <button mat-menu-item>Delete</button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="chapter-card-body">
+            <div class="chapter-description">
+                <p>{{ chapter.description }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="chapter-card-footer">
+        <div class="metadata">
+            <img src="../../../../assets/icons/muted/Menu/Curriculum.svg" alt="">
+            <p>Lessons: {{ chapter.numberOfLessons }}</p>
+        </div>
+
+        <div class="metadata">
+            <img src="../../../../assets/icons/muted/Menu/Curriculum.svg" alt="">
+            <p>Versions: {{ chapter.versions }}</p>
+        </div>
+
+        <div class="metadata">
+            <img src="../../../../assets/icons/muted/Menu/Curriculum.svg" alt="">
+            <p *ngIf="chapter.currentVersion">Current version: {{ chapter.currentVersion.versionNumber }}</p>
+            <p *ngIf="!chapter.currentVersion">N/A</p>
+        </div>
+    </div>
+</div>

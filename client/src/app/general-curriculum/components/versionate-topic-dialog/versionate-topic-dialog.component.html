@@ -1,0 +1,28 @@
+<div class="general-curriculum-components-versionate-topic-dialog" *ngIf="topic$ | async as topic">
+    <spinner *ngIf="isLoading"/>
+    <div class="versionate-topic-dialog-header">
+        <h1 class="title">Create version of {{ topic.title }}</h1>
+        <img class="close-icon" src="../../../../assets/icons/muted/Global/Close.svg" (click)="requestCloseWithCancel()">
+    </div>
+
+    <div class="versionate-topic-dialog-body">
+        <p>Select which lesson to include int next version.</p>
+        <div class="lesson-select-list">
+            <mat-checkbox class="all-lessons-option" [checked]="allLessonsSelected" (change)="selectAllLessons($event.checked)">
+                All lessons
+            </mat-checkbox>
+            <ul>
+                <li *ngFor="let lesson of selectedLessons">
+                    <mat-checkbox [checked]="lesson.isSelected">
+                        {{lesson.title}}
+                    </mat-checkbox>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="versionate-topic-dialog-footer">
+        <action-button label="Cancel" appearance="outlined" (click)="requestCloseWithCancel()" />
+        <action-button label="Save" (click)="requestCloseWithOk()" />
+    </div>
+</div>

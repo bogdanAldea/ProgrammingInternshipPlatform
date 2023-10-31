@@ -1,0 +1,36 @@
+@import '../../../../assets/theme/palettes/palette.scss';
+
+.general-curriculum-components-versionate-topic-dialog {
+    padding: 48px 64px;
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.general-curriculum-components-versionate-topic-dialog .versionate-topic-dialog-header,
+.general-curriculum-components-versionate-topic-dialog .versionate-topic-dialog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.general-curriculum-components-versionate-topic-dialog .versionate-topic-dialog-body {
+    border: 1px solid $stroke;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: $background-muted;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.versionate-topic-dialog-header .title {
+    font-size: 24px;
+    color: $dark;
+}
+
+.versionate-topic-dialog-header .close-icon:hover {
+    cursor: pointer;
+}

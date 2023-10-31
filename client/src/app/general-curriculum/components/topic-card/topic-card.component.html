@@ -14,10 +14,10 @@
                 <button mat-menu-item [disabled]="topic.versioningState.isReadyForVersioning" (click)="actions.versionateTopic(topic.topicId)">
                     <span>Versionate</span>
                 </button>
-                <button mat-menu-item (click)="actions.editTopic(topic.topicId)">
+                <button mat-menu-item disabled (click)="actions.editTopic(topic.topicId)">
                     <span>Edit</span>
                 </button>
-                <button mat-menu-item (click)="actions.deleteTopic(topic.topicId)">
+                <button mat-menu-item disabled (click)="actions.deleteTopic(topic.topicId)">
                     <span>Delete</span>
                 </button>
             </mat-menu>

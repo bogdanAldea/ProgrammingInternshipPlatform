@@ -8,12 +8,16 @@
     <div class="versionate-topic-dialog-body">
         <p>Select which lesson to include int next version.</p>
         <div class="lesson-select-list">
-            <mat-checkbox class="all-lessons-option" [checked]="allLessonsSelected" (change)="selectAllLessons($event.checked)">
+            <mat-checkbox class="all-lessons-option" 
+                [checked]="lessonSelectionManager.allLessonsAreSelected" 
+                (change)="areAllLessonSelected($event.checked)">
                 All lessons
             </mat-checkbox>
             <ul>
-                <li *ngFor="let lesson of selectedLessons">
-                    <mat-checkbox [checked]="lesson.isSelected">
+                <li *ngFor="let lesson of lessonSelectionManager.lessons">
+                    <mat-checkbox 
+                        [checked]="lesson.isSelected" 
+                        (change)="setLessonSelectionStatus($event.checked, lesson.lessonId)">
                         {{lesson.title}}
                     </mat-checkbox>
                 </li>

@@ -65,7 +65,7 @@ export class GeneralCurriculumListPage implements OnInit {
     const dialog = this.dialog.open(VersionateTopicDialog, {data: dialogData})
     dialog.afterClosed().subscribe((response: ModalResult<TopicToVersionateRequest>) => {
       if (response.result === ModalAction.Ok && response.payload) {
-        //
+        console.log(response.payload)
       }
     })
   };

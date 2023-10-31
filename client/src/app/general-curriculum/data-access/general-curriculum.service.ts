@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { TopicWithVersions } from '../models/topicWithVersions';
-import { TopicServerResponse, TopicWithVersionsServerResponse } from './types';
+import { NewTopicRequest, TopicServerResponse, TopicWithVersionsServerResponse } from './types';
+import { TopicReadyToVersionServerResponse } from '../models/topicReadyToVersion';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,13 @@ export class GeneralCurriculumService {
       }))
   }
 
-  public addNewTopic = (topic: any): Observable<any> => {
-    return new Observable();
+  public viewTopciReadyToVersion = (topicId: string): Observable<TopicReadyToVersionServerResponse> => {
+    const url = `${this.baseUrl}/${topicId}/ready-to-version`;
+    return this.httpClient.get<TopicReadyToVersionServerResponse>(url);
+  } 
+
+  public addNewTopic = (topic: NewTopicRequest): Observable<any> => {
+    console.log('in service')
+    return this.httpClient.post(this.baseUrl, topic);
   }
 }

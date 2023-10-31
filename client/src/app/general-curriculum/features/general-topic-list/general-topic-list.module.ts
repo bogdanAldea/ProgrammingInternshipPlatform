@@ -13,8 +13,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AddEditTopicDialog } from '../../components/add-edit-topic-dialog/add-edit-topic-dialog.component';
 import { ActionButtonModule } from 'src/app/shared/components/buttons/action-button/action-button.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FieldsModule } from 'src/app/shared/components/fields/fields.module';
+import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
+import { VersionateTopicDialog } from '../../components/versionate-topic-dialog/versionate-topic-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -23,18 +26,22 @@ import { FieldsModule } from 'src/app/shared/components/fields/fields.module';
     GeneralCurriculumListPage,
     TopicCard,
     AddEditTopicDialog,
+    VersionateTopicDialog
   ],
   imports: [
     CommonModule,
+    FormsModule,
     GeneralCurriculumListRoutingModule,
     HttpClientModule,
     MatMenuModule,
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    MatCheckboxModule,
     ActionButtonModule,
     ReactiveFormsModule,
-    FieldsModule
+    FieldsModule,
+    SpinnerModule
   ]
 })
 export class GeneralCurriculumListModule { }

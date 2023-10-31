@@ -7,6 +7,7 @@ public static class ApiRoutes
     public static class GeneralCurriculum
     {
         public const string TopicVersions = $"{BaseIdRoute}/versions";
+        public const string TopicReadyToVersion = $"{BaseIdRoute}/ready-to-version";
     }
     
 }

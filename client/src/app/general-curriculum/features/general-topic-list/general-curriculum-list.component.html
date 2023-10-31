@@ -1,11 +1,12 @@
 <container class="general-curriculum-shell-general-topic-list">
+    <spinner *ngIf="isLoading"/>
     <div class="general-topic-list-page-header">
         <page-header [title]="title" [description]="description"/>
         <action-button label="Add new topic" (click)="createTopic()" />
     </div>
 
-    <div class="general-topic-list-topic-cards row gy-4">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let topic of generalTopics">
+    <div class="general-topic-list-topic-cards row gy-4" *ngIf="topics | async as topics">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let topic of topics">
             <topic-card [topic]="topic" [actions]="topicActions"/>
         </div>
     </div>

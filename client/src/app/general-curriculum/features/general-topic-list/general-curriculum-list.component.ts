@@ -13,9 +13,9 @@ import {
   AddEditTopicDialog,
 } from '../../components/add-edit-topic-dialog/add-edit-topic-dialog.component';
 import { ModalResult } from 'src/app/shared/helpers/modals/modalResult/modalResult';
-import { ActionResult } from 'src/app/shared/helpers/modals/modalResult/modalActionResult';
 import { ModalAction } from 'src/app/shared/helpers/modals/modalResult/modalAction';
 import { NewTopicRequest } from '../../data-access/types';
+import { TopicToVersionateRequest, VersionateTopicDialog, VersionateTopicDialogData } from '../../components/versionate-topic-dialog/versionate-topic-dialog.component';
 
 @Component({
   selector: 'general-curriculum-list',
@@ -25,11 +25,12 @@ import { NewTopicRequest } from '../../data-access/types';
 export class GeneralCurriculumListPage implements OnInit {
   public title = 'Topics';
   public description = 'Manage all general topics.';
-  public generalTopics: ReadonlyArray<TopicWithVersions> | undefined;
   public topicActions: TopicCardActions | undefined;
+  public topics: Observable<ReadonlyArray<TopicWithVersions>> | undefined;
+  public existingTopicNames: string[] = [];
+  public isLoading: boolean = true;
 
-  public constructor(
-    private readonly generalCurriculumService: GeneralCurriculumService,
+  public constructor(private readonly generalCurriculumService: GeneralCurriculumService,
     private readonly dialog: MatDialog
   ) {
     this.topicActions = {
@@ -40,39 +41,57 @@ export class GeneralCurriculumListPage implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.generalCurriculumService
-      .getAllGeneralTopics()
-      .subscribe((response) => {
-        this.generalTopics = response;
-      });
+    this.refreshPage();
   }
 
   private refreshPage = () => {
-    this.generalCurriculumService
-      .getAllGeneralTopics()
-      .subscribe((response) => {
-        this.generalTopics = response;
-      });
+    this.topics = this.getAllTopics();
+    this.topics.subscribe((topics: ReadonlyArray<TopicWithVersions>) => {
+      topics.forEach(topic => this.existingTopicNames.push(topic.title));
+      this.isLoading = false;
+    })
+
+    
   };
 
-  public versionateTopic = (topicId: string): Observable<any> => {
-    return new Observable();
+  private getAllTopics = (): Observable<ReadonlyArray<TopicWithVersions>> => {
+      return this.generalCurriculumService.getAllGeneralTopics();
+  }
+
+  public versionateTopic = (topicId: string): void => {
+    const dialogData: VersionateTopicDialogData = {
+      topicId: topicId
+    }
+    const dialog = this.dialog.open(VersionateTopicDialog, {data: dialogData})
+    dialog.afterClosed().subscribe((response: ModalResult<TopicToVersionateRequest>) => {
+      if (response.result === ModalAction.Ok && response.payload) {
+        //
+      }
+    })
   };
 
-  public createTopic = (): Observable<any> => {
+  public createTopic = (): void => {
     const data: AddEditTopicData = {
       topicId: undefined,
-      existingTopicNames: this.generalTopics!.map((topic) => topic.title),
+      existingTopicNames: this.existingTopicNames,
     };
 
-    this.dialog.open(AddEditTopicDialog, { data: data });
-    return new Observable();
+    const dialog = this.dialog.open(AddEditTopicDialog, { data: data });
+    dialog.afterClosed().subscribe((response: ModalResult<NewTopicRequest>) => {
+      
+      if (response.result === ModalAction.Ok && response.payload) {
+        const observable = this.generalCurriculumService.addNewTopic(response.payload);
+        observable.subscribe(() => this.isLoading = false)
+        this.refreshPage();
+
+      }  
+    })
   };
 
   public editTopic = (topicId: string): void => {
     const data: AddEditTopicData = {
       topicId: topicId,
-      existingTopicNames: this.generalTopics!.map((topic) => topic.title),
+      existingTopicNames: this.existingTopicNames,
     };
 
     const dialog = this.dialog.open(AddEditTopicDialog, { data: data });

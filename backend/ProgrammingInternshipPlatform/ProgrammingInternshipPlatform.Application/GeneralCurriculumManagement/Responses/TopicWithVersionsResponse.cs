@@ -28,6 +28,7 @@ public class TopicWithVersionsResponse
             TopicId = topic.TopicId.Value,
             Title = topic.Title,
             Description = topic.Description,
+            NumberOfLessons = topic.Lessons.Count,
             VersioningState = EnumRetrievalHelper.ConvertEnumValue(topic.VersioningState),
             LatestModuleVersion = latestModuleVersion ?? null
         };

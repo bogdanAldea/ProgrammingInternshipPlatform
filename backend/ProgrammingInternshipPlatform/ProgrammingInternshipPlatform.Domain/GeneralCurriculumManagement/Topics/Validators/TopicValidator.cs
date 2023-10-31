@@ -64,14 +64,14 @@ public class TopicValidator : DomainAbstractValidator<Topic>
                 .Cascade(CascadeMode.Stop)
                 .IsInEnum()
                 .WithMessage(RuleFailureMessages.PropertyMustBeAEnumValue)
-                .NotEmpty()
+                .NotNull()
                 .WithMessage(RuleFailureMessages.PropertyMustExist);
 
             RuleFor(topic => topic.VersioningState)
                 .Cascade(CascadeMode.Stop)
                 .IsInEnum()
                 .WithMessage(RuleFailureMessages.PropertyMustBeAEnumValue)
-                .NotEmpty()
+                .NotNull()
                 .WithMessage(RuleFailureMessages.PropertyMustExist);
         });
     }

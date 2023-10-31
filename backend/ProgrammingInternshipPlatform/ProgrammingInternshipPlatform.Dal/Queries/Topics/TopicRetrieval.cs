@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using ProgrammingInternshipPlatform.Dal.Context;
+using ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Lessons.Models;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Topics.Models;
 
 namespace ProgrammingInternshipPlatform.Dal.Queries.Topics;
@@ -13,6 +14,12 @@ public static class TopicRetrieval
             .WithLearningResourcesForEachLesson()
             .Single(topic => topic.TopicId.Value == topicId.Value);
 
+    public static Topic? GetTopicReadyForVersioningWithLessons(
+        this ProgrammingInternshipPlatformDbContext context, TopicId topicId)
+        => context.Topics
+            .WithLessons()
+            .SingleOrDefault(topic => topic.TopicId == topicId);
+
     public static IReadOnlyList<Topic> GetAllVersionsOfTopic(this ProgrammingInternshipPlatformDbContext context,
         TopicId topicId)
         => context.Topics
@@ -23,7 +30,8 @@ public static class TopicRetrieval
     public static IQueryable<Topic> GetAllOrderedUnversionedTopicsWithLessons(
         this ProgrammingInternshipPlatformDbContext context)
         => context.Topics
-            /*.AsUnversioned()*/
+            .AsUnversioned()
             .OrderedBySyllabusOrder()
-            .WithLessons();
+            .WithAssignmentForEachLesson()
+            .WithLearningResourcesForEachLesson();
 }

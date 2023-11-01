@@ -8,9 +8,10 @@ import { PrivateLayout } from '../shared/components/layouts/private-layout/priva
 import { PrimaryNavigation } from '../shared/components/navigations/primary-navigation/primary-navigation.component';
 import { LinkNode } from '../shared/components/navigations/link-node/link-node.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthorizationInterceptor } from '../shared/interceptors/authorization.interceptor';
+import { AuthorizationInterceptor } from '../shared/interceptors/authorization/authorization.interceptor';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApiFailureInterceptor } from '../shared/interceptors/api-failure/api-failure.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,
+      multi: true
+    },
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiFailureInterceptor,
       multi: true
     }
   ],

@@ -49,9 +49,7 @@ export class GeneralCurriculumListPage implements OnInit {
     this.topics.subscribe((topics: ReadonlyArray<TopicWithVersions>) => {
       topics.forEach(topic => this.existingTopicNames.push(topic.title));
       this.isLoading = false;
-    })
-
-    
+    })   
   };
 
   private getAllTopics = (): Observable<ReadonlyArray<TopicWithVersions>> => {
@@ -62,12 +60,15 @@ export class GeneralCurriculumListPage implements OnInit {
     const dialogData: VersionateTopicDialogData = {
       topicId: topicId
     }
-    const dialog = this.dialog.open(VersionateTopicDialog, {data: dialogData})
-    dialog.afterClosed().subscribe((response: ModalResult<TopicToVersionateRequest>) => {
-      if (response.result === ModalAction.Ok && response.payload) {
-        console.log(response.payload)
-      }
-    })
+
+    this.dialog
+      .open(VersionateTopicDialog, {data: dialogData})
+      .afterClosed()
+      .subscribe((response: ModalResult<TopicToVersionateRequest>) => {
+        if (response.result === ModalAction.Ok && response.payload) {
+          console.log(response.payload)
+        }
+      })
   };
 
   public createTopic = (): void => {
@@ -76,15 +77,15 @@ export class GeneralCurriculumListPage implements OnInit {
       existingTopicNames: this.existingTopicNames,
     };
 
-    const dialog = this.dialog.open(AddEditTopicDialog, { data: data });
-    dialog.afterClosed().subscribe((response: ModalResult<NewTopicRequest>) => {
-      
-      if (response.result === ModalAction.Ok && response.payload) {
-        const observable = this.generalCurriculumService.addNewTopic(response.payload);
-        observable.subscribe(() => this.isLoading = false)
-        this.refreshPage();
-
-      }  
+    this.dialog
+      .open(AddEditTopicDialog, { data: data })
+      .afterClosed()
+      .subscribe((response: ModalResult<NewTopicRequest>) => {
+        if (response.result === ModalAction.Ok && response.payload) {
+          const observable = this.generalCurriculumService.addNewTopic(response.payload);
+          observable.subscribe(() => this.isLoading = false)
+          this.refreshPage();
+        }  
     })
   };
 
@@ -94,11 +95,12 @@ export class GeneralCurriculumListPage implements OnInit {
       existingTopicNames: this.existingTopicNames,
     };
 
-    const dialog = this.dialog.open(AddEditTopicDialog, { data: data });
-
-    dialog.afterClosed().subscribe((result: ModalResult<NewTopicRequest>) => {
-      if (result.result === ModalAction.Ok)
-        console.log(result.payload)
+    this.dialog
+      .open(AddEditTopicDialog, { data: data })
+      .afterClosed()
+      .subscribe((result: ModalResult<NewTopicRequest>) => {
+        if (result.result === ModalAction.Ok)
+          console.log(result.payload)
     });
   };
 

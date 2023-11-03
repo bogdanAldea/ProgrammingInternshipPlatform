@@ -1,3 +1,5 @@
+@import '../../../../assets/theme/palettes/palette.scss';
+
 .general-curriculum-shell-general-topic-list .general-topic-list-page-header {
     display: flex;
     justify-content: space-between;
@@ -6,4 +8,22 @@
 
 .general-curriculum-shell-general-topic-list .general-topic-list-topic-cards {
     margin-top: 24px;
+}
+
+.general-curriculum-shell-general-topic-list .with-no-topics {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    margin-top: 160px;
+}
+
+.with-no-topics .topics-icon {
+    width: 64px;
+    height: 64px;
+}
+
+.with-no-topics .topics-message {
+    color: $dark-lighter;
 }

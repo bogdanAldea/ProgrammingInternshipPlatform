@@ -1,0 +1,22 @@
+.components-layouts-sidebar-layout {
+    height: 100%;
+}
+
+.components-layouts-sidebar-layout .sidebar-layout-container {
+    display: flex;
+    height: calc(100% - 60px);
+    width: 100%;
+}
+
+.components-layouts-sidebar-layout .sidebar-layout-topbar {
+    height: 60px;
+}
+
+.sidebar-layout-container .sidebar-layout-container-sidebar {
+    width: 64px;
+
+}
+
+.sidebar-layout-container .sidebar-layout-container-content {
+    width: 100%;
+}

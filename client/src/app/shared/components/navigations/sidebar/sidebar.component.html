@@ -1,0 +1,23 @@
+<div class="components-navigations-sidebar">
+    <div class="sidebar-menu-container">
+        <ul class="sidebar-menu-list" *ngFor="let node of nodes">
+            <a class="components-link-node" [routerLink]="[node.route]" [routerLinkActive]="'active'" aria-current="page" href="#">
+                <li class="sidebar-menu-node">
+                    <img [src]="node.icon" alt="">
+                </li>
+            </a>
+        </ul>
+    </div>
+   
+    <div class="sidebar-footer-container">
+        <ul class="sidebar-menu-list">
+            <li class="sidebar-menu-node">
+                <img src="../../../../../assets/icons/muted/Global/Feedback.svg" alt="">
+            </li> 
+
+            <li class="sidebar-menu-node">
+                <img src="../../../../../assets/icons/muted/Menu/Presentations.svg" alt="">
+            </li> 
+        </ul>
+    </div>
+</div>

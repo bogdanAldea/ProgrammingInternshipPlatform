@@ -1,0 +1,11 @@
+@import '../../../../../assets/theme/palettes/palette.scss';
+
+.components-navigations-options-bar {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border-bottom: 1px solid $muted-light;
+    padding: 0 36px;
+}

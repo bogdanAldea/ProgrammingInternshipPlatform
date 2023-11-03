@@ -1,27 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PrivateLayout } from '../shared/components/layouts/private-layout/private-layout.component';
-import { PrimaryNavigation } from '../shared/components/navigations/primary-navigation/primary-navigation.component';
-import { LinkNode } from '../shared/components/navigations/link-node/link-node.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthorizationInterceptor } from '../shared/interceptors/authorization/authorization.interceptor';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiFailureInterceptor } from '../shared/interceptors/api-failure/api-failure.interceptor';
+import { SidebarLayoutModule } from '../shared/components/layouts/sidebar-layout/sidebar-layout.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-
-    // Custom components
-    LinkNode,
-    PrimaryNavigation,
-    PrivateLayout
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +24,7 @@ import { ApiFailureInterceptor } from '../shared/interceptors/api-failure/api-fa
     ReactiveFormsModule,
 
     // Custom Modules
-    
+    SidebarLayoutModule,
 
     // Material UI Modules
     MatInputModule

@@ -1,13 +1,24 @@
 <container class="general-curriculum-shell-general-topic-list">
     <spinner *ngIf="isLoading"/>
-    <div class="general-topic-list-page-header">
+    <div class="general-topic-list-page-header" *ngIf="hasTopics">
         <page-header [title]="title" [description]="description"/>
-        <action-button label="Add new topic" (click)="createTopic()" />
+        <action-button label="Add new topic" (click)="createTopic()"/>
     </div>
 
-    <div class="general-topic-list-topic-cards row gy-4" *ngIf="topics | async as topics">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let topic of topics">
-            <topic-card [topic]="topic" [actions]="topicActions"/>
+    <div class="with-available-topics" *ngIf="hasTopics">
+        <div class="general-topic-list-topic-cards row gy-4" *ngIf="topics | async as topics">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let topic of topics">
+                <topic-card [topic]="topic" [actions]="topicActions"/>
+            </div>
         </div>
+    </div>
+
+    <div class="with-no-topics" *ngIf="!hasTopics">
+        <div class="with-no-internships">
+            <action-card 
+            icon = "../../../../../assets/icons/light/Menu/Curriculum.svg"
+            description="There are no topics in the curriculum at the moment." 
+            actionName="Create Topic"/>
+    </div>
     </div>
 </container>

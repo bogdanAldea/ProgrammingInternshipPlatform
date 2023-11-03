@@ -29,7 +29,6 @@ public class ApiController : ControllerBase
     protected IActionResult HandleApiErrorResponse<TFailure>(FailureReason<TFailure> failureReason)
     {
         var apiErrorResponse = new ApiErrorResponse<TFailure>();
-        ObjectResult objectResult;
         if (failureReason.Failures.Count > 0)
         {
             failureReason.Failures

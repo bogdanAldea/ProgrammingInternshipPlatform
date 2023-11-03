@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Topics.Models;
+using ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Models;
 using ProgrammingInternshipPlatform.Domain.Shared.DomainEventHandling;
 using Module = ProgrammingInternshipPlatform.Domain.ModuleManagement.Models.Module;
 
@@ -14,6 +15,7 @@ public class ProgrammingInternshipPlatformDbContext : DbContext
     
     public DbSet<Topic> Topics { get; set; } = null!;
     public DbSet<Module> Modules { get; set; } = null!;
+    public DbSet<Internship> Internships { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,7 +31,9 @@ public class ProgrammingInternshipPlatformDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
-            "Server=ROMOB41181\\SQLEXPRESS01;Database=prog-internship-platform-dev;Trusted_Connection=True;TrustServerCertificate=True;"
+            "Server=ROMOB41181\\SQLEXPRESS01;" +
+            "Database=prog-internship-platform-dev;" +
+            "Trusted_Connection=True;TrustServerCertificate=True;"
         );
     }
 }

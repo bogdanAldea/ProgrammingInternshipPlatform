@@ -1,0 +1,27 @@
+<container class="internship-hub-internship-hub-list">
+        <spinner *ngIf="isLoading"/>
+        <div class="with-internships" *ngIf="hasInternships">
+                <div class="internship-hub-list-header-container">
+                        <page-header title="Internship Hub" description="Manage all your internships in the organisation."/>
+                </div>
+                <div class="internship-hub-list-filters-container">
+                        <internship-filter />
+                </div>
+                <div class="internship-hub-list-table-container" *ngIf="internships$ | async as internships">
+                        <div class="internship-list-table">
+                                <internship-list-table [internships]="internships"/>
+                        </div>
+        
+                        <div class="internship-list-action">
+                                <action-card />
+                        </div>    
+                </div>
+        </div>
+
+        <div class="with-no-internships">
+                <action-card 
+                icon = "../../../../../assets/icons/light/Global/Internship.svg"
+                description="There are no internships scheduled at the moment." 
+                actionName="Sechedule internship"/>
+        </div>
+</container>

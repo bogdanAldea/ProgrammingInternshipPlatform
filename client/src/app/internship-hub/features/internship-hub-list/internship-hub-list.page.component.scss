@@ -1,0 +1,32 @@
+.internship-hub-internship-hub-list .internship-hub-list-header-container {
+    margin-bottom: 32px;
+}
+.internship-hub-internship-hub-list .internship-hub-list-filters-container {
+    margin-bottom: 16px;
+}
+
+.internship-hub-internship-hub-list .internship-hub-list-table-container {
+    display: flex;
+    align-items:end;
+    gap: 24px;
+}
+
+.internship-hub-list-table-container .internship-list-table {
+    width: 80%;
+}
+
+.internship-hub-list-table-container .internship-list-action {
+    width: 20%;
+}
+
+.internship-hub-list-table-container .internship-list-table,
+.internship-hub-list-table-container .internship-list-action {
+    height: 100%;
+}
+
+.internship-hub-internship-hub-list .with-no-internships {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 160px;
+}

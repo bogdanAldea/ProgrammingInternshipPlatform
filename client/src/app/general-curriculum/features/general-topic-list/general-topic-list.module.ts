@@ -18,11 +18,12 @@ import { FieldsModule } from 'src/app/shared/components/fields/fields.module';
 import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
 import { VersionateTopicDialog } from '../../components/versionate-topic-dialog/versionate-topic-dialog.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PageHeaderModule } from 'src/app/shared/components/typography/page-header/page-header.module';
+import { ContainerModule } from 'src/app/shared/components/layouts/container/container.module';
+import { ActionCardModule } from 'src/app/shared/components/cards/action-card/action-card.module';
 
 @NgModule({
   declarations: [
-    Container,
-    PageHeader,
     GeneralCurriculumListPage,
     TopicCard,
     AddEditTopicDialog,
@@ -41,7 +42,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ActionButtonModule,
     ReactiveFormsModule,
     FieldsModule,
-    SpinnerModule
+    SpinnerModule,
+    PageHeaderModule,
+    ContainerModule,
+    ActionCardModule
   ]
 })
 export class GeneralCurriculumListModule { }

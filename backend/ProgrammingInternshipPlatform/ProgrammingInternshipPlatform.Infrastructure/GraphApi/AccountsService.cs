@@ -27,6 +27,12 @@ public class AccountsService : IAccountsService
 
     }
 
+    public async Task<User?> GetUserAccount(AccountId accountId)
+    {
+        var accountIdValue = accountId.Value;
+        return await _graphServiceClient.Users[accountIdValue.ToString()].GetAsync();
+    }
+
     public async Task<IEnumerable<Account>> GetAllAccounts()
     {
         var userAccounts = await GetAccounts();
@@ -94,7 +100,14 @@ public class AccountsService : IAccountsService
             Surname = user.Surname!,
             Initials = $"{user.GivenName![0]}{user.Surname![0]}",
             JobTitle = user.JobTitle!,
-            Email = user.UserPrincipalName!,
+            Email = FormatAccountEmail(user.UserPrincipalName!),
         });
+    }
+    
+    private static string FormatAccountEmail(string email)
+    {
+        var emailParts = email.Split('@');
+        var rebuiltEmail = $"{emailParts[0]}@shine.com";
+        return rebuiltEmail;
     }
 }

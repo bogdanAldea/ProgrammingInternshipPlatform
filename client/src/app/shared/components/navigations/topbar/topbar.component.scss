@@ -1,0 +1,102 @@
+@import '../../../../../assets/theme/palettes/palette.scss';
+
+.components-navigations-topbar {
+    background-color: $dark;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 24px;
+}
+
+.components-navigations-topbar .topbar-metadata-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.components-navigations-topbar .topbar-user-account-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.topbar-current-page-name .today-date {
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+}
+
+.topbar-vertical-divider {
+    width: 1px;
+    height: 30px;
+    background-color: $stroke;
+}
+
+.topbar-search-container {
+    display: flex;
+    align-items: center;
+    border-color: $dark-lighter;
+    background-color: #161b31;;
+    padding: 0 36px;
+    border-radius: 50px;
+    width: 320px;
+}
+
+.topbar-search-container {
+    input.search-bar-field {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: 300;
+        border: none;
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+    }
+
+    input.search-bar-field:focus  {
+        outline: none;
+    }
+
+    input.search-bar-field::placeholder  {
+        font-weight: 500;
+        color: $dark-lighter;
+    }
+}
+
+.topbar-user-account-section .account-user-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.topbar-user-account-section .account-user-information {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.account-user-information .account-avatar {
+    background-color: $purple-main;
+    color: white;
+    font-size: 14px;
+    line-height: 12px;
+    padding: 10px;
+    border-radius: 100%;
+}
+
+.account-user-information .account-name-email {
+    line-height: 16px;
+}
+
+.account-user-information .username {
+    color: white;
+    font-size: 14px;
+}
+
+.account-user-information .user-email {
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+}

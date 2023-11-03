@@ -29,6 +29,7 @@ export class GeneralCurriculumListPage implements OnInit {
   public topics: Observable<ReadonlyArray<TopicWithVersions>> | undefined;
   public existingTopicNames: string[] = [];
   public isLoading: boolean = true;
+  public hasTopics: boolean = false;
 
   public constructor(private readonly generalCurriculumService: GeneralCurriculumService,
     private readonly dialog: MatDialog
@@ -49,6 +50,7 @@ export class GeneralCurriculumListPage implements OnInit {
     this.topics.subscribe((topics: ReadonlyArray<TopicWithVersions>) => {
       topics.forEach(topic => this.existingTopicNames.push(topic.title));
       this.isLoading = false;
+      this.hasTopics = topics.length > 0;
     })   
   };
 

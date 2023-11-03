@@ -12,7 +12,7 @@ public class LessonConfig : IEntityTypeConfiguration<Lesson>
     public void Configure(EntityTypeBuilder<Lesson> builder)
     {
         builder
-            .ToTable("Lessons");
+            .ToTable(AggregatesToTableNames.CurriculumManagement.Lessons);
         builder
             .HasKey(lesson => lesson.LessonId);
         

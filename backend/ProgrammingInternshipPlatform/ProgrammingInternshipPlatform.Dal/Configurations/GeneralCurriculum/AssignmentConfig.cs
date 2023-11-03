@@ -11,7 +11,7 @@ public class AssignmentConfig : IEntityTypeConfiguration<Assignment>
     public void Configure(EntityTypeBuilder<Assignment> builder)
     {
         builder
-            .ToTable("Assignments");
+            .ToTable(AggregatesToTableNames.CurriculumManagement.Assignments);
         
         builder
             .HasKey(assignment => assignment.AssignmentId);

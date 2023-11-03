@@ -10,6 +10,9 @@ public class TopicConfig : IEntityTypeConfiguration<Topic>
     public void Configure(EntityTypeBuilder<Topic> builder)
     {
         builder
+            .ToTable(AggregatesToTableNames.CurriculumManagement.Topics);
+        
+        builder
             .HasKey(topic => topic.TopicId);
         
         builder

@@ -7,7 +7,7 @@ using ProgrammingInternshipPlatform.Application.ResultPattern.FailureReason;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Topics.Models;
 
-namespace ProgrammingInternshipPlatform.Application.GeneralCurriculumManagement.General;
+namespace ProgrammingInternshipPlatform.Application.GeneralCurriculumManagement.General.GetGeneralTopic;
 
 public record GetGeneralTopicQuery(TopicId TopicId) : IApplicationRequest<TopicResponse, object>;
 

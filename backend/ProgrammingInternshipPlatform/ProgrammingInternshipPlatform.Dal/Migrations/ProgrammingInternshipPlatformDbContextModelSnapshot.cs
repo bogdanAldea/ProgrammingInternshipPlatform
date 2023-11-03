@@ -45,7 +45,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                     b.HasIndex("LessonId")
                         .IsUnique();
 
-                    b.ToTable("Assignments", (string)null);
+                    b.ToTable("GeneralCurriculumManagement.Assignments", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.LearningResources.Models.LearningResource", b =>
@@ -67,7 +67,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("LearningResources", (string)null);
+                    b.ToTable("GeneralCurriculumManagement.LearningResources", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Lessons.Models.Lesson", b =>
@@ -95,7 +95,7 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasIndex("TopicId");
 
-                    b.ToTable("Lessons", (string)null);
+                    b.ToTable("GeneralCurriculumManagement.Lessons", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Topics.Models.Topic", b =>
@@ -129,7 +129,102 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
 
                     b.HasAlternateKey("TempId");
 
-                    b.ToTable("Topics");
+                    b.ToTable("GeneralCurriculumManagement.Topics", (string)null);
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.AssignedTrainer", b =>
+                {
+                    b.Property<Guid>("TrainerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InternshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TrainerId", "InternshipId");
+
+                    b.HasIndex("InternshipId");
+
+                    b.ToTable("InternshipManagement.AssignedTrainers", (string)null);
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns.Models.Intern", b =>
+                {
+                    b.Property<Guid>("InternId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InternshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("InternId");
+
+                    b.HasIndex("InternshipId");
+
+                    b.ToTable("InternshipManagement.Interns", (string)null);
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Models.Internship", b =>
+                {
+                    b.Property<Guid>("InternshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CoordinatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DurationInMonths")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EstimatedGraduationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InternshipStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaxInternsToEnroll")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ScheduledStartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("InternshipId");
+
+                    b.ToTable("InternshipManagement.Internships", (string)null);
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships.Models.Mentorship", b =>
+                {
+                    b.Property<Guid>("MentorshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InternId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InternshipId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TrainerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("MentorshipId");
+
+                    b.HasIndex("InternshipId");
+
+                    b.ToTable("InternshipManagement.Mentorships", (string)null);
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers.Models.Trainer", b =>
+                {
+                    b.Property<Guid>("TrainerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TrainerId");
+
+                    b.ToTable("InternshipManagement.Trainers", (string)null);
                 });
 
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.ModuleManagement.Models.Module", b =>
@@ -185,6 +280,39 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.AssignedTrainer", b =>
+                {
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Models.Internship", null)
+                        .WithMany()
+                        .HasForeignKey("InternshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipManagement.Trainers.Models.Trainer", null)
+                        .WithMany()
+                        .HasForeignKey("TrainerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Interns.Models.Intern", b =>
+                {
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Models.Internship", null)
+                        .WithMany("Interns")
+                        .HasForeignKey("InternshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Mentorships.Models.Mentorship", b =>
+                {
+                    b.HasOne("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Models.Internship", null)
+                        .WithMany("Mentorships")
+                        .HasForeignKey("InternshipId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Lessons.Models.Lesson", b =>
                 {
                     b.Navigation("Assignment");
@@ -195,6 +323,13 @@ namespace ProgrammingInternshipPlatform.Dal.Migrations
             modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Topics.Models.Topic", b =>
                 {
                     b.Navigation("Lessons");
+                });
+
+            modelBuilder.Entity("ProgrammingInternshipPlatform.Domain.InternshipManagement.Internships.Models.Internship", b =>
+                {
+                    b.Navigation("Interns");
+
+                    b.Navigation("Mentorships");
                 });
 #pragma warning restore 612, 618
         }

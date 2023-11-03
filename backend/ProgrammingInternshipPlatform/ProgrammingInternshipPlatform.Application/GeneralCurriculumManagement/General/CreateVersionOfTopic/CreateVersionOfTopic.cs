@@ -38,7 +38,7 @@ public class CreateVersionOfTopicHandler : IApplicationHandler<CreateVersionOfTo
         }
         catch (DomainModelValidationException exception)
         {
-            return HandlerResult<Guid, object>.DomainValidationFailure(exception.DomainValidationFailure!);
+            return HandlerResult<Guid, object>.DomainValidationFailure(exception.DomainValidationFailures);
         }
 
         catch (Exception exception)

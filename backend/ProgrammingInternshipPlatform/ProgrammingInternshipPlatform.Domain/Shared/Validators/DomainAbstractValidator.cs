@@ -25,17 +25,23 @@ public abstract class DomainAbstractValidator<TEntity> : AbstractValidator<TEnti
         if (validationResult.IsValid)
             return;
 
-        var domainValidationFailure = CreateFailure(validationResult.Errors);
-        throw new DomainModelValidationException(domainValidationFailure);
+        var domainValidationFailures = CreateFailure(validationResult.Errors);
+        throw new DomainModelValidationException(domainValidationFailures);
     }
 
-    private DomainValidationFailure CreateFailure(List<ValidationFailure> validationFailures)
+    private IReadOnlyList<DomainValidationFailure> CreateFailure(List<ValidationFailure> validationFailures)
     {
-        return validationFailures.Select(failure => new DomainValidationFailure(
+        var domainValidationFailures = new List<DomainValidationFailure>();
+        foreach (var failure in validationFailures)
+        {
+            var domainValidationFailure = new DomainValidationFailure(
                 failure.PropertyName,
                 failure.ErrorMessage,
-                failure.AttemptedValue)
-            )
-            .Single();
+                failure.AttemptedValue);
+            domainValidationFailures.Add(domainValidationFailure);
+
+        }
+
+        return domainValidationFailures;
     }
 }

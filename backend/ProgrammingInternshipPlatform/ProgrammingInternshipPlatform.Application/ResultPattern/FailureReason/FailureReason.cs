@@ -22,6 +22,9 @@ public class FailureReason<TFailure>
     public static FailureReason<TFailure> DomainValidationFailure(TFailure failure)
         => new(failureType: FailureType.DomainValidationFailure, failure: failure);
     
+    public static FailureReason<TFailure> DomainValidationFailure(IReadOnlyList<TFailure> failures)
+        => new(failureType: FailureType.DomainValidationFailure, failures: failures);
+    
     public static FailureReason<TFailure> NotFoundFailure(TFailure failure)
         => new(failureType: FailureType.ResourceNotFoundFailure, failure: failure);
     

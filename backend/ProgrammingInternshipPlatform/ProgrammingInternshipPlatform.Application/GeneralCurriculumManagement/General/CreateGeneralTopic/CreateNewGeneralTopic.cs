@@ -1,12 +1,11 @@
 ﻿using ProgrammingInternshipPlatform.Application.Abstractions.Handlers;
 using ProgrammingInternshipPlatform.Application.Abstractions.Requests;
-using ProgrammingInternshipPlatform.Application.GeneralCurriculumManagement.General.CreateVersionOfTopic;
 using ProgrammingInternshipPlatform.Application.ResultPattern;
 using ProgrammingInternshipPlatform.Dal.Context;
 using ProgrammingInternshipPlatform.Domain.GeneralCurriculumManagement.Topics.Models;
 using ProgrammingInternshipPlatform.Domain.Shared.ErrorHandling.Exceptions;
 
-namespace ProgrammingInternshipPlatform.Application.GeneralCurriculumManagement.General;
+namespace ProgrammingInternshipPlatform.Application.GeneralCurriculumManagement.General.CreateGeneralTopic;
 
 public record CreateNewGeneralTopicCommand(string Title, string Description) : IApplicationRequest<Guid, object>;
 
@@ -30,7 +29,7 @@ public class CreateNewGeneralTopicHandler : IApplicationHandler<CreateNewGeneral
         }
         catch (DomainModelValidationException exception)
         {
-            return HandlerResult<Guid, object>.DomainValidationFailure(exception.DomainValidationFailure!);
+            return HandlerResult<Guid, object>.DomainValidationFailure(exception.DomainValidationFailures);
         }
         catch (Exception exception)
         {

@@ -40,6 +40,9 @@ public class HandlerResult<TPayload, TFailure>
     
     public static HandlerResult<TPayload, TFailure> DomainValidationFailure(TFailure failureReason)
         => new(FailureReason<TFailure>.DomainValidationFailure(failureReason));
+    
+    public static HandlerResult<TPayload, TFailure> DomainValidationFailure(IReadOnlyList<TFailure> failureReasons)
+        => new(FailureReason<TFailure>.DomainValidationFailure(failureReasons));
 
     public static HandlerResult<TPayload, TFailure> ReadSuccessful(TPayload payload)
         => new(SuccessResult<TPayload>.ReadSuccessful(payload));

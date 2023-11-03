@@ -10,7 +10,7 @@ public class LearningResourceConfig : IEntityTypeConfiguration<LearningResource>
     public void Configure(EntityTypeBuilder<LearningResource> builder)
     {
         builder
-            .ToTable("LearningResources");
+            .ToTable(AggregatesToTableNames.CurriculumManagement.LearningResources);
         
         builder
             .HasKey(resource => resource.LearningResourceId);

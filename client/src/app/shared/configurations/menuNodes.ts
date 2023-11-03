@@ -10,7 +10,7 @@ export class MenuNodes {
 
         {
             label: 'Internship Hub',
-            route: 'internships',
+            route: 'internship-hub',
             icon: '../../../assets/icons/light/Global/Internship.svg'
         },
 
@@ -19,5 +19,59 @@ export class MenuNodes {
             route: 'general-topics',
             icon: '../../../assets/icons/light/Menu/Curriculum.svg'
         },
+    ]
+
+    public static ForAdministratorMuted: ReadonlyArray<Node> = [
+        {
+            label: 'Overview',
+            route: 'dashboard',
+            icon: '../../../assets/icons/muted/Menu/Overview.svg'
+        },
+
+        {
+            label: 'Internship Hub',
+            route: 'internship-hub',
+            icon: '../../../assets/icons/muted/Global/Internship.svg'
+        },
+
+        {
+            label: 'General Curriculum',
+            route: 'general-topics',
+            icon: '../../../assets/icons/muted/Menu/Curriculum.svg'
+        },
+    ]
+}
+
+export class InternshipOptionsNodes {
+    public static ForAdministrator: ReadonlyArray<Node> = [
+        {
+            label: 'Configuration',
+            route: 'configurations',
+            icon: '../../../assets/icons/dark/Global/Configuration.svg'
+        },
+
+        {
+            label: 'Curriculum',
+            route: 'curriculum',
+            icon: '../../../assets/icons/dark/Global/Curriculum.svg'
+        },
+
+        {
+            label: 'Trainers',
+            route: '',
+            icon: '../../../assets/icons/dark/Global/Trainers.svg'
+        },
+
+        {
+            label: 'Interns',
+            route: '',
+            icon: '../../../assets/icons/dark/Global/Internship.svg'
+        },
+
+        {
+            label: 'Mentorships',
+            route: '',
+            icon: '../../../assets/icons/dark/Global/Mentorships.svg'
+        }
     ]
 }

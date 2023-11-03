@@ -1,3 +1,5 @@
+@import '../../../../../assets/theme/palettes/palette.scss';
+
 .components-link-node {
     display: flex;
     align-items: center;
@@ -5,10 +7,10 @@
     font-size: 12px;
     font-weight: 400;
     text-decoration: none;
+    color: $dark;
 }
 
 .menu-link-icon {
-    width: 14px;
-    height: 14px;
-    margin-top: .8px;
+    width: 16px;
+    height: 16px;
 }

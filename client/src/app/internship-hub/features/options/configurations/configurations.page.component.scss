@@ -1,0 +1,44 @@
+@import '../../../../../assets/theme/palettes/palette.scss';
+
+.internship-hub-detail-options-configurations .configurations-page-body {
+    display: flex;
+    align-items: start;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.configuration-section-divider {
+    width: 1px;
+    height: 400px;
+    background-color: $stroke;
+}
+
+.configuration-option {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.configuration-option-details {
+    .configuration-name {
+        font-size: 20px;
+        color: $dark;
+        margin-bottom: 8px;
+    }
+
+    .configuration-summary, .configuration-warning {
+        font-size: 13px;
+        color: $dark-lighter;
+    }
+
+    .configuration-action {
+        margin-top: 16px;
+    }
+}
+
+.configuration-left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}

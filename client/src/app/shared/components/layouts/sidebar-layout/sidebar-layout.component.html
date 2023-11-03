@@ -1,0 +1,13 @@
+<div class="components-layouts-sidebar-layout">
+    <section class="sidebar-layout-topbar">
+        <topbar />
+    </section>
+    <section class="sidebar-layout-container">
+        <div class="sidebar-layout-container-sidebar">
+            <sidebar [nodes]="nodes"/>
+        </div>
+        <div class="sidebar-layout-container-content">
+            <router-outlet></router-outlet>
+        </div>
+    </section>
+</div>

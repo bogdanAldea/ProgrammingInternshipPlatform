@@ -1,0 +1,14 @@
+<div class="components-layouts-sidebar-layout">
+    <section class="sidebar-navigation-section">
+        <s-sidebar [nodes]="nodes"/>
+    </section>
+
+    <section class="layout-content-container">
+        <div class="topbar-container">
+            <s-topbar [account$]="account$"/>
+        </div>
+        <div class="content-container">
+            <router-outlet></router-outlet>
+        </div>
+    </section>
+</div>

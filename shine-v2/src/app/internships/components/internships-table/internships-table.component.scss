@@ -1,0 +1,90 @@
+@import '../../../../assets/theme/pallete.scss';
+
+.internship-hub-listing-component-internship-table .internship-listing-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.internship-listing-table .internship-listing-thead {
+
+    th {
+        font-weight: 300;
+    }
+
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    color: $stroke;
+    background-color: transparent; 
+    height: 48px;
+}
+
+.internship-list-tbody .coordinator-cel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: start;
+    width: 100%;
+}
+
+.internship-list-tbody .internship-cel-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.coordinator-cel .avatar {
+    background-color: $purple-main;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 100%;
+}
+
+.coordinator-cel .coordinator-details {
+    line-height: 14px;
+}
+
+.coordinator-details .coordinator-name {
+    color: $dark;
+    font-size: 12px;
+    font-weight: 500;;
+}
+
+.coordinator-details .coordinator-email {
+    color: $purple-main;
+    font-size: 12px;
+}
+
+.internship-cel .spanned-data {
+    font-size: 12px;
+    color: $dark-lighter;
+}
+
+.internship-list-tbody tr {
+    height: 64px;
+}
+
+.internship-list-tbody  tr:nth-child(odd) {
+    background-color: #F5F6F8;
+}
+
+.internship-list-tbody   tr:first-child td:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.internship-list-tbody   tr:first-child td:last-child {
+    border-radius: 0 10px 0 0; 
+}
+
+.internship-list-tbody    tr:last-child td:first-child {
+    border-radius: 0 0 0 10px; 
+}
+
+.internship-list-tbody tr:last-child td:last-child {
+    border-radius: 0 0 10px 0; 
+}
+
+.internship-list-tbody td:first-child,
+.internship-listing-thead th:first-child {
+    padding-left: 32px;
+}

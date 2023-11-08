@@ -1,0 +1,38 @@
+@import '../../../../assets/theme/palettes/palette.scss';
+
+.internship-hub-components-schedule-internship-dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px;
+}
+
+.internship-hub-components-schedule-internship-dialog .schedule-internship-dialog-header,
+.internship-hub-components-schedule-internship-dialog .schedule-internship-dialog-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.internship-hub-components-schedule-internship-dialog .schedule-internship-dialog-body {
+
+}
+
+.schedule-internship-dialog-body .internship-options-description {
+    width: 600px;
+    font-size: 14px;
+    color: $dark-lighter;
+}
+
+.schedule-internship-dialog-header .title {
+    font-size: 24px;
+    color: $dark;
+}
+
+.schedule-internship-dialog-header .close-icon:hover {
+    cursor: pointer;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+}

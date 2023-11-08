@@ -1,5 +1,9 @@
 <container class="internship-hub-internship-hub-list">
         <spinner *ngIf="isLoading"/>
+        <div class="breadcrumbs">
+                <h1 class="current-page">Internships</h1>
+                <h2 class="breadcrumb">Overview > Internships</h2>
+        </div>
         <div class="with-internships" *ngIf="hasInternships">
                 <div class="internship-hub-list-header-container">
                         <page-header title="Internship Hub" description="Manage all your internships in the organisation."/>
@@ -22,6 +26,7 @@
                 <action-card 
                 icon = "../../../../../assets/icons/light/Global/Internship.svg"
                 description="There are no internships scheduled at the moment." 
-                actionName="Sechedule internship"/>
+                actionName="Sechedule internship"
+                (click)="scheduleInternship()"/>
         </div>
 </container>

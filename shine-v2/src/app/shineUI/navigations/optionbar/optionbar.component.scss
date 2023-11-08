@@ -1,0 +1,16 @@
+@import '../../../../assets/theme/pallete.scss';
+
+.shineUI-navigations-optionbar .options-menu-list {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.options-menu-list .option-route {
+    color: $dark;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 16px;
+    // padding: 8px 0;
+    // border-bottom: 3px solid $purple-main;
+}

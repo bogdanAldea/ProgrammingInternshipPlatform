@@ -25,19 +25,19 @@ export class MenuNodes {
         {
             label: 'Overview',
             route: 'dashboard',
-            icon: '../../../assets/icons/muted/Menu/Overview.svg'
+            icon: '../../../assets/icons/dark/Menu/Overview.svg'
         },
 
         {
             label: 'Internship Hub',
             route: 'internship-hub',
-            icon: '../../../assets/icons/muted/Global/Internship.svg'
+            icon: '../../../assets/icons/dark/Global/Internship.svg'
         },
 
         {
             label: 'General Curriculum',
             route: 'general-topics',
-            icon: '../../../assets/icons/muted/Menu/Curriculum.svg'
+            icon: '../../../assets/icons/dark/Menu/Curriculum.svg'
         },
     ]
 }

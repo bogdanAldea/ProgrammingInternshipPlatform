@@ -12,13 +12,13 @@ export class MenuNodes {
         {
             label: 'Internship Hub',
             route: 'internships',
-            icon: '../../../../assets/icons/light/Global/Internship.svg'
+            icon: 'assets/icons/light/Global/Internship.svg'
         },
 
         {
             label: 'General Curriculum',
             route: 'general-curriculum',
-            icon: '../../../../assets/icons/light/Menu/Curriculum.svg'
+            icon: 'assets/icons/light/Menu/Curriculum.svg'
         },
         
     ]
@@ -27,17 +27,17 @@ export class MenuNodes {
         {
             label: 'Setup',
             route: 'setup',
-            icon: '../../../../assets/icons/dark/Global/Configuration.svg'
+            icon: 'assets/icons/dark/Global/Configuration.svg'
         },
         {
             label: 'Trainers',
             route: 'trainers',
-            icon: '../../../../assets/icons/dark/Global/Configuration.svg'
+            icon: 'assets/icons/dark/Global/Configuration.svg'
         },
         {
             label: 'Mentorships',
             route: 'mentorships',
-            icon: '../../../../assets/icons/dark/Global/Mentorships.svg'
+            icon: 'assets/icons/dark/Global/Mentorships.svg'
         },
     ]
 

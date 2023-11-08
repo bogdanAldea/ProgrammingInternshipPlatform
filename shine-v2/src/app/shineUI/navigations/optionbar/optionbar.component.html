@@ -1,0 +1,7 @@
+<div class="shineUI-navigations-optionbar">
+    <div class="options-menu-list">
+        <a *ngFor="let option of options" class="option-route active" [routerLink]="[option.route]" [routerLinkActive]="'active'" aria-current="page" href="#">
+            {{ option.label }}
+        </a>
+    </div>
+</div>

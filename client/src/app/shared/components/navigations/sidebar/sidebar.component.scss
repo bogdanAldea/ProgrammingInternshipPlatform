@@ -3,11 +3,20 @@
 .components-navigations-sidebar {
     height: 100%;
     border-right: 1px solid $muted-light;
+
+    // background-color: $purple-main;
+
     padding: 24px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
+// .components-navigations-sidebar .sidebar-menu-container {
+//     background-color: $background-light;
+//     border-radius: 16px;
+//     margin: 0 8px;
+// }
 
 .components-navigations-sidebar .sidebar-menu-container,
 .components-navigations-sidebar .sidebar-footer-container {
@@ -33,13 +42,14 @@
 }
 
 .sidebar-menu-list .active {
-    border-right: 6px solid $purple-main;
+    background-color: $muted-light;
+    // border-right: 6px solid $purple-main;
 
-    img {
-        padding-right: -6px;
-    }
+    // img {
+    //     padding-right: -6px;
+    // }
 }
 
 .active img{
-    padding-left: 6px;
+    // padding-left: 6px;
 }

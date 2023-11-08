@@ -1,3 +1,5 @@
+@import '../../../../assets/theme/palettes/palette.scss';
+
 .internship-hub-internship-hub-list .internship-hub-list-header-container {
     margin-bottom: 32px;
 }
@@ -29,4 +31,15 @@
     flex-direction: column;
     align-items: center;
     margin-top: 160px;
+}
+
+.current-page {
+    font-size: 20px;
+    color: $dark;
+}
+
+.breadcrumb {
+    font-size: 12px;
+    font-weight: 400;
+    color: $dark-lighter
 }

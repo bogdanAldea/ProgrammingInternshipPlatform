@@ -1,0 +1,61 @@
+<div class="internship-hub-listing-component-internship-table" *ngIf="internshipResponse">
+    <table class="internship-listing-table">
+        <thead class="internship-listing-thead">
+            <th>Coordinator</th>
+            <th>Timeframe</th>
+            <th>Duration</th>
+            <th>Interns</th>
+            <th>Status</th>
+            <th>Completion Rate</th>
+            <th></th>
+        </thead>
+        <tbody class="internship-list-tbody">
+            <tr *ngFor="let internship of internshipResponse.results">
+                <td>
+                    <div class="coordinator-cel">
+                        <div class="avatar">BI</div>
+                        <div class="coordinator-details">
+                            <p class="coordinator-name">{{ internship.coordinatorName }}</p>
+                            <div class="coordinator-email">{{ internship.coordinatorEmail }}</div>
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="internship-cel-with-icon internship-cel">
+                        <!-- <img src="../../../../assets/icons/muted/Menu/Presentations.svg" alt=""> -->
+                        <span class="spanned-data">{{ internship.scheduledToStartDate | date: 'mediumDate' }} to {{ internship.estimatedGraduationDate | date: 'mediumDate' }}</span>
+                    </div>
+                </td>
+                
+                <td>
+                    <div class="internship-cel-with-icon internship-cel">
+                        <!-- <img src="../../../../assets/icons/muted/Menu/Presentations.svg" alt=""> -->
+                        <span class="spanned-data">{{ internship.durationInMonths }} Months</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="internship-cel-with-icon internship-cel">
+                        <!-- <img src="../../../../assets/icons/muted/Menu/Presentations.svg" alt=""> -->
+                        <span class="spanned-data">{{ internship.maxEnrolledInterns }} Interns</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="internship-status-cel internship-cel">
+                       <div class="status-symbol"></div>
+                        <span class="spanned-data">{{ internship.internshipStatus.name }}</span>
+                    </div>
+                </td>
+
+                <td>--</td>
+                <td>
+                    <a class="routing" [routerLink]="['/internship-hub', internship.internshipId]">
+                        See More
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

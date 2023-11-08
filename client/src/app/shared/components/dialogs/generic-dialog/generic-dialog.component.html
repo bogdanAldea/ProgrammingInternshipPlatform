@@ -1,0 +1,21 @@
+<div class="shared-components-dialogs-generic-dialog">
+    <div class="generic-dialog-header" *ngIf="header">
+        <h1 class="title">{{ header.title }}</h1>
+        <img class="close-icon" src="../../../../assets/icons/muted/Global/Close.svg" alt="">
+    </div>
+
+    <div class="generic-dialog-body">
+        <ng-template target></ng-template>
+    </div>
+
+    <div class="generic-dialog-actions">
+        <div class="cancel-action-container">
+            <action-button label="Cancel" appearance="outlined" (click)="requestCloseWithCancel()"/>
+        </div>
+
+        <div class="executable-actions-container">
+            <action-button *ngFor="let action of actions" [label]="action.actionName" (click)="action.executable()"/>
+            <action-button label="Save" (click)="requestCloseWithOk()"/>
+        </div>
+    </div>
+</div>

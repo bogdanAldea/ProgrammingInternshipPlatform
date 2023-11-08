@@ -1,0 +1,63 @@
+@import './assets/theme/pallete.scss';
+
+html, body, #root { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+ul, ol { list-style: none;}
+
+h1, h2, h3, h4, h5, h5, p, span, small {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+
+    &.routing {
+        font-size: 12px;
+        color: $purple-main;
+        font-weight: 600;
+    }
+}
+
+h1 {
+    color: $dark;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+p {
+    color: $dark-lighter;
+    font-size: 14px;
+}
+
+small {
+    color: $dark-lighter;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+
+    &.filled {
+        background-color: $purple-main;
+        color: white;
+    }
+
+    &.outlined {
+        border: 2px solid $purple-main;
+        color: $purple-main;
+    }
+
+    &.outlined-muted {
+        border: 2px solid $stroke;
+        color: $dark-lighter;
+    }
+}
+
+label {
+    font-size: 12px;
+    color: $dark-lighter;
+}

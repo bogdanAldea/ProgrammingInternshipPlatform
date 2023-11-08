@@ -1,0 +1,39 @@
+<div class="components-navigations-topbar">
+    <div class="topbar-metadata-container">
+        <div class="topbar-app-logo">
+            <img src="../../../../../assets/images/logo/app-logo-new-light.svg" alt="">
+        </div>
+
+        <div class="topbar-current-page-name" *ngIf="todayDate">
+            <p class="today-label">Today</p>
+            <img src="assets/icons/dark/Presentations.svg" alt="">
+            <div class="topbar-vertical-divider"></div>
+            
+            <h1 class="today-date">{{ todayDate.month }} {{ todayDate.day }}, {{ todayDate.year }}</h1>
+        </div>
+
+    </div>
+    <div class="topbar-search-container">
+        <img src="assets/icons/dark/Search.svg" alt="">
+        <input class="search-bar-field" type="text" placeholder="Search...">
+    </div>
+    <div class="topbar-user-account-section">
+        <div class="account-user-controls">
+            <img src="assets/icons/dark/Notification.svg" alt="">
+            <img src="assets/icons/dark/Settings.svg" alt="">
+        
+        </div>
+
+        <div class="topbar-vertical-divider"></div>
+
+        <div class="account-user-information" *ngIf="account$ | async as account">
+            <div class="account-avatar">{{account.initials}}</div>
+            <div class="account-name-email">
+                <p class="username">{{ account.displayName}}</p>
+                <p class="user-email">{{ account.email }}</p>
+            </div>
+            <img src="assets/icons/dark//More.svg" alt="">
+        </div>
+    </div>
+</div>
+

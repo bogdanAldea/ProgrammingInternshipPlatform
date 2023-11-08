@@ -1,0 +1,30 @@
+<div class="components-navigations-sidebar">
+    <div class="sidebar-top">
+        <div class="sidebar-app-logo-container">
+            <img src="assets/logos/app-logo-small-light.svg" alt="">
+        </div>
+        <div class="sidebar-menu-container">
+            <ul class="sidebar-menu-list" *ngFor="let node of nodes">
+                <a class="components-link-node" [routerLink]="[node.route]" [routerLinkActive]="'active'" aria-current="page" href="#">
+                        <img class="icon" [src]="isActiveRoute(node.route) ? node.activeIcon : node.icon" alt="">
+                </a>
+            </ul>
+        </div>
+    </div>
+   
+    <div class="sidebar-footer-container">
+        <ul class="sidebar-menu-list">
+            <li class="sidebar-menu-node">
+                <img src="assets/icons/light/Feedback.svg" alt="">
+            </li> 
+
+            <li class="sidebar-menu-node">
+                <img src="assets/icons/light/Presentations.svg" alt="">
+            </li> 
+
+            <li class="sidebar-menu-node">
+                <div class="avatar">ID</div>
+            </li> 
+        </ul>
+    </div>
+</div>

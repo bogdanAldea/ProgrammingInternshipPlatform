@@ -1,0 +1,41 @@
+<s-container class="internships-shell-internships-listing-container" *ngIf="internshipsResult$ | async as result">
+    <div class="internships-listing-header">
+        <div class="page-description">
+            <h1>Internships</h1>
+            <small>Home > Internships</small>
+        </div>
+        <div class="table-filters">
+            <div class="filter">
+                <label for="">Status</label>
+                <input class="filter" type="text">
+            </div>
+            <div class="filter">
+                <label for="">Coordinators</label>
+                <input class="filter" type="text">
+            </div>
+            <div class="filter">
+                <label for="">Timeframe</label>
+                <input class="filter" type="text">
+            </div>
+        </div>
+    </div>
+
+    <div class="internship-listing-content" >
+        <div class="with-internship-data">
+            <div class="table-container">
+                
+                <s-internship-table [internshipResponse]="result"/>
+            </div>
+            <div class="action-container">
+                <img src="assets/icons/dark/Internship.svg" alt="">
+                <p>Start scheduling new internships for your company's upcoming programs.</p>
+                <button class="filled">Schedule Internship</button>
+            </div>
+        </div>
+        <div class="without-internship-data" *ngIf="result.totalItems === 0">
+            <img class="internship-icon" src="assets/icons/dark/Internship.svg">
+            <p class="no-results-message">There are currently no internships scheduled, completed or in any other state.</p>
+            <button class="filled">Schedule internships</button>
+        </div>
+    </div>
+</s-container>

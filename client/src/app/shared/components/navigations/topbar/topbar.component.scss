@@ -1,7 +1,7 @@
 @import '../../../../../assets/theme/palettes/palette.scss';
 
 .components-navigations-topbar {
-    background-color: $dark;
+    background-color: $purple-main;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,17 +12,23 @@
 .components-navigations-topbar .topbar-metadata-container {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
 }
 
 .components-navigations-topbar .topbar-user-account-section {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
+}
+
+.topbar-current-page-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .topbar-current-page-name .today-date {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     color: white;
 }
@@ -37,7 +43,7 @@
     display: flex;
     align-items: center;
     border-color: $dark-lighter;
-    background-color: #161b31;;
+    background-color: #665de5;;
     padding: 0 36px;
     border-radius: 50px;
     width: 320px;
@@ -61,7 +67,7 @@
 
     input.search-bar-field::placeholder  {
         font-weight: 500;
-        color: $dark-lighter;
+        color: $background-muted;
     }
 }
 
@@ -78,7 +84,7 @@
 }
 
 .account-user-information .account-avatar {
-    background-color: $purple-main;
+    background-color: $dark;
     color: white;
     font-size: 14px;
     line-height: 12px;

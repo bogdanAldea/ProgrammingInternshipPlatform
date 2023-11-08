@@ -27,10 +27,11 @@ public class AccountsService : IAccountsService
 
     }
 
-    public async Task<User?> GetUserAccount(AccountId accountId)
+    public async Task<Account?> GetUserAccount(AccountId accountId)
     {
         var accountIdValue = accountId.Value;
-        return await _graphServiceClient.Users[accountIdValue.ToString()].GetAsync();
+        var user =  await _graphServiceClient.Users[accountIdValue.ToString()].GetAsync();
+        return user is not null ? MapUserToAccount(user) : null;
     }
 
     public async Task<IEnumerable<Account>> GetAllAccounts()
@@ -39,7 +40,7 @@ public class AccountsService : IAccountsService
             if (userAccounts is not null)
             {
                 if (userAccounts.Value != null)
-                    return MapUserToAccount(userAccounts.Value);
+                    return MapUsersToAccounts(userAccounts.Value);
             }
             throw new NullReferenceException();
     }
@@ -54,7 +55,7 @@ public class AccountsService : IAccountsService
         }
 
         var usersWithRoles = await ParseUsersForGivenRole(users, roleId);
-        return MapUserToAccount(usersWithRoles);
+        return MapUsersToAccounts(usersWithRoles);
     }
     
     private async Task<UserCollectionResponse?> GetAccounts(string? query = null)
@@ -90,7 +91,7 @@ public class AccountsService : IAccountsService
         return Task.FromResult(usersWithRoles);
     }
 
-    private IEnumerable<Account> MapUserToAccount(List<User> users)
+    private IEnumerable<Account> MapUsersToAccounts(List<User> users)
     {
         return users.Select(user => new Account
         {
@@ -102,6 +103,20 @@ public class AccountsService : IAccountsService
             JobTitle = user.JobTitle!,
             Email = FormatAccountEmail(user.UserPrincipalName!),
         });
+    }
+    
+    private Account MapUserToAccount(User user)
+    {
+        return new Account
+        {
+            Id = new AccountId(Guid.Parse(user.Id!)),
+            DisplayName = user.DisplayName!,
+            GivenName = user.GivenName!,
+            Surname = user.Surname!,
+            Initials = $"{user.GivenName![0]}{user.Surname![0]}",
+            JobTitle = user.JobTitle!,
+            Email = FormatAccountEmail(user.UserPrincipalName!),
+        };
     }
     
     private static string FormatAccountEmail(string email)

@@ -6,4 +6,9 @@ public static class FailureMessages
     {
         public const string UnversionedChapterNotFound = "The requested topic could not be found.";
     }
+    
+    public static class Accounts
+    {
+        public const string AccountNotFound = "Requested account could not be found";
+    }
 }

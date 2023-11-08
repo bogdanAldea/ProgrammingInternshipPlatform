@@ -1,0 +1,23 @@
+@import '../../../../assets/theme/pallete.scss';
+
+.error-page-features-error-page-container {
+        text-align: center;
+}
+
+.error-page-features-error-page-container .error-page-error-information {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+}
+
+.error-page-error-information .error-status-code {
+        color: $stroke;
+        font-weight: bolder;
+        font-size: 80px;
+}
+
+.error-page-error-information .error-status-message {
+        width: 70%;
+        color: $dark-lighter;
+}

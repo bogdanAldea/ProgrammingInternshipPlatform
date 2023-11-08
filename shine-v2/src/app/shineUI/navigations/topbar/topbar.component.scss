@@ -1,0 +1,119 @@
+@import "../../../../assets/theme/pallete.scss";
+
+.components-navigations-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 54px;
+    padding: 0 24px;
+    background-color: $background-light;
+}
+
+.components-navigations-topbar .topbar-metadata-container {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.components-navigations-topbar .topbar-user-account-section {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.topbar-current-page-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.topbar-current-page-name .today-label,
+.topbar-current-page-name .today-date {
+    font-size: 12px;
+    color: $dark;
+}
+
+.topbar-current-page-name .today-label {
+    font-weight: 500;
+}
+
+.topbar-current-page-name .today-date {
+    font-weight: 600;
+}
+
+.topbar-vertical-divider {
+    width: 1px;
+    height: 30px;
+    background-color: $muted-light;
+}
+
+.topbar-search-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid $muted-light;
+    padding: 0 36px;
+    border-radius: 50px;
+    width: 320px;
+}
+
+.topbar-search-container {
+    input.search-bar-field {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        font-weight: 300;
+        border: none;
+        background-color: transparent;
+        color: $dark;
+        cursor: pointer;
+    }
+
+    input.search-bar-field:focus  {
+        outline: none;
+    }
+
+    input.search-bar-field::placeholder  {
+        font-weight: 500;
+        color: $stroke;
+    }
+}
+
+.topbar-user-account-section .account-user-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.topbar-user-account-section .account-user-information {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.account-user-information .account-avatar {
+    background-color: $purple-main;
+    color: white;
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 100%;
+}
+
+.account-user-information .account-name-email {
+    line-height: 16px;
+}
+
+.account-user-information .username,
+.account-user-information .user-email {
+    color: $dark;
+}
+
+.account-user-information .username {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.account-user-information .user-email {
+    font-size: 12px;
+    font-weight: 400;
+}
